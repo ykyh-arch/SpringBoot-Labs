@@ -8,6 +8,10 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 拦截器配置
+ * @author jaquez
+ */
 public class FirstInterceptor implements HandlerInterceptor {
 
     private Logger logger = LoggerFactory.getLogger(getClass());

@@ -31,6 +31,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * SpringMvc配置类
+ * @author Jaquez
+ * @date 2021/05/13 15:35
+ */
 @Configuration
 public class SpringMVCConfiguration implements WebMvcConfigurer {
 
@@ -101,7 +106,6 @@ public class SpringMVCConfiguration implements WebMvcConfigurer {
 
             @Override
             public void contextDestroyed(ServletContextEvent sce) {
-
             }
 
         });

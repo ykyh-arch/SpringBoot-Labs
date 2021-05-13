@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @SpringBootApplication
+//开启对 @WebServlet、@WebFilter、@WebListener 注解的扫描。
 @ServletComponentScan
 public class Application {
 

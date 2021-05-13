@@ -24,7 +24,7 @@ public class TestController {
      * @return 用户
      */
     @GetMapping("/get")
-//    @CrossOrigin(allowCredentials = "false") // 允许所有来源，不允许发送 Cookie
+//    @CrossOrigin(allowCredentials = "false")  // 允许所有来源，不允许发送 Cookie
     public UserVO get() {
         return new UserVO().setId(1).setUsername(UUID.randomUUID().toString());
     }
