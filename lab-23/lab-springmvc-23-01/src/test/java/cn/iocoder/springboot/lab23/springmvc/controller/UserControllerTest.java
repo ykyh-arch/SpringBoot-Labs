@@ -73,7 +73,7 @@ public class UserControllerTest {
         // 打印结果
         resultActions.andDo(MockMvcResultHandlers.print());
 
-        // 获得 MvcResult ，后续执行各种自定义逻辑
+        // 获得 MvcResult，后续执行各种自定义逻辑
         MvcResult mvcResult = resultActions.andReturn();
         System.out.println("拦截器数量：" + mvcResult.getInterceptors().length);
     }
