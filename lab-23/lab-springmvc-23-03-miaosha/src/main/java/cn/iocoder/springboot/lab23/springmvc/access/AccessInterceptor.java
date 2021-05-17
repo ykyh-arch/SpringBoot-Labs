@@ -19,7 +19,11 @@ import cn.iocoder.springboot.lab23.springmvc.redis.RedisService;
 import cn.iocoder.springboot.lab23.springmvc.result.CodeMsg;
 import cn.iocoder.springboot.lab23.springmvc.result.Result;
 import cn.iocoder.springboot.lab23.springmvc.service.MiaoshaUserService;
-
+/**
+ * 任何一个API对应一个Handler
+ * @author Jaquez
+ * @date 2021/05/17 10:11
+ */
 @Service
 public class AccessInterceptor  extends HandlerInterceptorAdapter{
 	
@@ -28,10 +32,20 @@ public class AccessInterceptor  extends HandlerInterceptorAdapter{
 	
 	@Autowired
 	RedisService redisService;
-	
+
+	/**
+	 * 预处理
+	 * @author Jaquez
+	 * @date 2021/05/17 10:13
+	 * @param request
+	 * @param response
+	 * @param handler
+	 * @return boolean
+	 */
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		//SpringMvc中重要的一个类HandlerMethod
 		if(handler instanceof HandlerMethod) {
 			MiaoshaUser user = getUser(request, response);
 			cn.iocoder.springboot.lab23.springmvc.access.UserContext.setUser(user);
@@ -85,7 +99,15 @@ public class AccessInterceptor  extends HandlerInterceptorAdapter{
 		String token = StringUtils.isEmpty(paramToken)?cookieToken:paramToken;
 		return userService.getByToken(response, token);
 	}
-	
+
+	/**
+	 * 获取cookie值
+	 * @author Jaquez
+	 * @date 2021/05/17 10:16
+	 * @param request
+	 * @param cookiName
+	 * @return java.lang.String
+	 */
 	private String getCookieValue(HttpServletRequest request, String cookiName) {
 		Cookie[]  cookies = request.getCookies();
 		if(cookies == null || cookies.length <= 0){
