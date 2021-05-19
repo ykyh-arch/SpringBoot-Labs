@@ -1,7 +1,8 @@
 #!/bin/bash
+# 告诉bash如果任何语句的执行结果不是true则应该退出。
 set -e
 
-# 基础
+# 基础，环境JDK配置
 # export JAVA_HOME=/work/programs/jdk/jdk1.8.0_181
 # export PATH=PATH=$PATH:$JAVA_HOME/bin
 # export CLASSPATH=$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
@@ -65,6 +66,7 @@ function stop() {
     if [ -n "$PID" ]; then
         # 正常关闭
         echo "[stop] $BASE_PATH/$SERVER_NAME 运行中，开始 kill [$PID]"
+        # 为操作系统发送一个通知告诉应用主动关闭
         kill -15 $PID
         # 等待最大 60 秒，直到关闭完成。
         for ((i = 0; i < 60; i++))
