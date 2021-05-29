@@ -11,13 +11,18 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.stereotype.Component;
 
+/**
+ * 运用程序监听器，监控服务的健康状态
+ * @author Jaquez
+ * @date 2021/05/28 16:18
+ */
 @Component
 public class ServerHealthIndicator extends AbstractHealthIndicator implements ApplicationListener<ApplicationEvent> {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     /**
-     * 是否在服务中
+     * 是否在服务中，标记是否提供服务
      */
     private volatile boolean inService = false;
 

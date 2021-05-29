@@ -14,6 +14,12 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
+    /**
+     * 模拟Java程序关闭是一个过程
+     * @author Jaquez
+     * @date 2021/05/28 16:14
+     * @return Listener
+     */
     @Component
     public class Listener implements ApplicationListener<ApplicationEvent> {
 
