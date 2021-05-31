@@ -67,6 +67,7 @@ function stop() {
     if [ -n "$PID" ]; then
         # 从注册中心下线
         echo "[stop] 从注册中心下线当前实例，并 sleep 20 秒"
+        # curl 用法参考：http://www.ruanyifeng.com/blog/2019/09/curl-reference.html
         curl -X POST $STATUS_URL -d '{"status": "DOWN"}' -H 'content-type: application/json'
         sleep 20
         # 正常关闭
