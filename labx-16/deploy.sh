@@ -17,7 +17,7 @@ SERVER_NAME=labx-16-demo-01
 PROFILES_ACTIVE=prod
 # 健康检查 URL
 HEALTH_CHECK_URL=http://127.0.0.1:8078/actuator/health/
-# 修改状态 URL
+# 修改状态 URL （UP、DOWN标记）
 STATUS_URL=http://127.0.0.1:8078/actuator/service-registry/
 
 # heapError 存放路径
