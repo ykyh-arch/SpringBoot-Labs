@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @SpringBootApplication
+//从 Spring Cloud Edgware 版本开始，不需要添加 @EnableDiscoveryClient 注解，只需要引入 Spring Cloud 注册发现组件，就会自动开启注册发现的功能。
 // @EnableDiscoveryClient
 public class DemoConsumerApplication {
 
