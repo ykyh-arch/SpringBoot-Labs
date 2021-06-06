@@ -12,7 +12,11 @@ import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
+/**
+ * 基于Java的数据迁移
+ * @author Jaquez
+ * @date 2021/06/06 20:11
+ */
 public class CHANGE_SET_3_FixUsername implements CustomTaskChange {
 
     private Logger logger = LoggerFactory.getLogger(getClass());

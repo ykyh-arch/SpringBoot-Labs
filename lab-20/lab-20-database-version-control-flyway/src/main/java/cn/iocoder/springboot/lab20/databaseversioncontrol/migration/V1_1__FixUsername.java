@@ -10,7 +10,11 @@ import org.springframework.jdbc.core.RowCallbackHandler;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+/**
+ * 基于Java的脚本迁移，FlyWay
+ * @author Jaquez
+ * @date 2021/06/05 19:53
+ */
 public class V1_1__FixUsername extends BaseJavaMigration {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
