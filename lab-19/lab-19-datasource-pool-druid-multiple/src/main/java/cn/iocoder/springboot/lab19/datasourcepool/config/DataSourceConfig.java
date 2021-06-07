@@ -16,7 +16,7 @@ public class DataSourceConfig {
      */
     @Primary
     @Bean(name = "ordersDataSource")
-    @ConfigurationProperties(prefix = "spring.datasource.orders") // 读取 spring.datasource.orders 配置到 HikariDataSource 对象
+    @ConfigurationProperties(prefix = "spring.datasource.orders") // 读取 spring.datasource.orders 配置到 DruidDataSource 对象
     public DataSource ordersDataSource() {
         return DruidDataSourceBuilder.create().build();
     }

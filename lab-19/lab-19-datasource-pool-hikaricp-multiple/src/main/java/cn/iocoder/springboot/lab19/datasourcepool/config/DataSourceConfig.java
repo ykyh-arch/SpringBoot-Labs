@@ -10,6 +10,11 @@ import org.springframework.util.StringUtils;
 
 import javax.sql.DataSource;
 
+/**
+ * 数据源的动态配置
+ * @author Jaquez
+ * @date 2021/06/07 11:06
+ */
 @Configuration
 public class DataSourceConfig {
 
@@ -67,7 +72,7 @@ public class DataSourceConfig {
     }
 
 //    /**
-//     * 创建 orders 数据源
+//     * 创建 orders 数据源，存在问题，取不到HikariCP 自定义的配置项
 //     */
 //    @Bean(name = "ordersDataSource")
 //    @ConfigurationProperties(prefix = "spring.datasource.orders")

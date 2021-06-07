@@ -13,7 +13,8 @@
     <artifactId>lab-19-datasource-pool-hikaricp-single</artifactId>
 
     <dependencies>
-        <!-- 实现对数据库连接池的自动化配置 -->
+        <!-- 实现对数据库连接池的自动化配置，无需主动引入 HikariCP 的依赖。
+        因为在 Spring Boot 2.X 中，spring-boot-starter-jdbc 默认引入 com.zaxxer.HikariCP 依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
