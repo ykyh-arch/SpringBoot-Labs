@@ -21,7 +21,8 @@ public class OrderServiceTest {
 
     @Test
     public void testMethod02() {
-        orderService.method02();
+        orderService.method02();//报错：Table 'test_users.orders' doesn't exist，原因参考：https://www.iocoder.cn/Spring-Boot/dynamic-datasource/?github
+
     }
 
     @Test

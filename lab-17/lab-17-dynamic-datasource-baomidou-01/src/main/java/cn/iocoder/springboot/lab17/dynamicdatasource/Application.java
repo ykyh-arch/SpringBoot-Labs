@@ -8,4 +8,5 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @MapperScan(basePackages = "cn.iocoder.springboot.lab17.dynamicdatasource.mapper")
 @EnableAspectJAutoProxy(exposeProxy = true) // http://www.voidcn.com/article/p-zddcuyii-bpt.html
 public class Application {
+    //spring 多数据源，参考：https://www.iocoder.cn/Fight/Profiling-Spring-multiple-data-sources/
 }
