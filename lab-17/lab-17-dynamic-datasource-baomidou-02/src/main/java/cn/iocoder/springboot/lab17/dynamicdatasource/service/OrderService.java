@@ -17,7 +17,7 @@ public class OrderService {
     @Transactional
     @DS(DBConstants.DATASOURCE_MASTER)
     public void add(OrderDO order) {
-        // 这里先假模假样的读取一下，
+        // 这里先假模假样的读取一下，这里取得是Master数据源
         OrderDO exists = orderMapper.selectById(order.getId());
         System.out.println(exists);
 

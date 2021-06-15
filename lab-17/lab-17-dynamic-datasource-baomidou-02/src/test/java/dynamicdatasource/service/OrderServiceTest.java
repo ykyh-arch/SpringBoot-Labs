@@ -9,6 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+/**
+ * 测试读写分离
+ * @author Jaquez
+ * @date 2021/06/15 10:20
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class OrderServiceTest {
@@ -19,6 +24,7 @@ public class OrderServiceTest {
     @Test
     public void testAdd() {
         OrderDO order = new OrderDO();
+        order.setId(1);
         order.setUserId(20);
         orderService.add(order);
     }

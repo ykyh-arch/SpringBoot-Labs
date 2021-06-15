@@ -18,6 +18,7 @@ public class OrderMapperTest {
 
     @Test
     public void testSelectById() {
+        //测试负载均衡
         for (int i = 0; i < 10; i++) {
             OrderDO order = orderMapper.selectById(1);
             System.out.println(order);

@@ -9,19 +9,19 @@ spring:
           url: jdbc:mysql://127.0.0.1:3306/test_orders?useSSL=false&useUnicode=true&characterEncoding=UTF-8
           driver-class-name: com.mysql.jdbc.Driver
           username: root
-          password:
+          password: 123456
         # 订单 orders 从库数据源配置
         slave_1:
           url: jdbc:mysql://127.0.0.1:3306/test_orders_01?useSSL=false&useUnicode=true&characterEncoding=UTF-8
           driver-class-name: com.mysql.jdbc.Driver
           username: root
-          password:
+          password: 123456
         # 订单 orders 从库数据源配置
         slave_2:
           url: jdbc:mysql://127.0.0.1:3306/test_orders_02?useSSL=false&useUnicode=true&characterEncoding=UTF-8
           driver-class-name: com.mysql.jdbc.Driver
           username: root
-          password:
+          password: 123456
 
 # mybatis 配置内容
 mybatis:
