@@ -15,6 +15,12 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
+/**
+ * orders 数据源配置类，DataSource->SqlSessionFactory->SqlSessionTemplate
+ * PlatformTransactionManager->DataSource
+ * @author Jaquez
+ * @date 2021/06/15 22:07
+ */
 @Configuration
 @MapperScan(basePackages = "cn.iocoder.springboot.lab17.dynamicdatasource.mapper.orders", sqlSessionTemplateRef = "ordersSqlSessionTemplate")
 public class MyBatisOrdersConfig {

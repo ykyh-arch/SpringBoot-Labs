@@ -32,6 +32,7 @@ public class OrderService {
         System.out.println(user);
     }
 
+    //NoUniqueBeanDefinitionException: No qualifying bean of type 'org.springframework.transaction.PlatformTransactionManager' available: expected single matching bean but found 2: ordersTransactionManager,usersTransactionManager
     @Transactional // 报错，找不到事务管理器
     public void method02() {
         // 查询订单
