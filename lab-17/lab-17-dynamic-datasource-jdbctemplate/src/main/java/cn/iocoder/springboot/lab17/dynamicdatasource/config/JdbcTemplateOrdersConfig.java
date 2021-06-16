@@ -11,6 +11,11 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
+/**
+ * 订单数据源配置，dataSource->JdbcTemplate dataSource->PlatformTransactionManager
+ * @author Jaquez
+ * @date 2021/06/16 10:53
+ */
 @Configuration
 public class JdbcTemplateOrdersConfig {
 

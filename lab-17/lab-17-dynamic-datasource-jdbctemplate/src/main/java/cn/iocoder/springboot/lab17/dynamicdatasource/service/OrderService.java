@@ -19,6 +19,12 @@ public class OrderService {
     @Autowired
     private UserDao userDao;
 
+    /**
+     * Aop代理类
+     * @author Jaquez
+     * @date 2021/06/16 13:48
+     * @return cn.iocoder.springboot.lab17.dynamicdatasource.service.OrderService 
+     */
     private OrderService self() {
         return (OrderService) AopContext.currentProxy();
     }
