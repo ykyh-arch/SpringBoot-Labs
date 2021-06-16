@@ -33,7 +33,7 @@ public class OrderService {
     }
 
     //NoUniqueBeanDefinitionException: No qualifying bean of type 'org.springframework.transaction.PlatformTransactionManager' available: expected single matching bean but found 2: ordersTransactionManager,usersTransactionManager
-    @Transactional // 报错，找不到事务管理器
+    @Transactional // 报错，找不到事务管理器，未指定事务管理器
     public void method02() {
         // 查询订单
         OrderDO order = orderMapper.selectById(1);
@@ -44,7 +44,7 @@ public class OrderService {
     }
 
     public void method03() {
-        // 查询订单
+        // 查询订单，使用的事AOP代理类
         self().method031();
         // 查询用户
         self().method032();
@@ -67,7 +67,7 @@ public class OrderService {
         // 查询订单
         OrderDO order = orderMapper.selectById(1);
         System.out.println(order);
-        // 查询用户
+        // 查询用户，AOP代理
         self().method052();
     }
 
