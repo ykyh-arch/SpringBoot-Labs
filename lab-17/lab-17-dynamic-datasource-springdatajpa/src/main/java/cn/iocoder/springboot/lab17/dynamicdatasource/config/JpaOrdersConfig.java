@@ -16,6 +16,11 @@ import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.Map;
 
+/**
+ * 订单数据源的配置，DataSource->LocalContainerEntityManagerFactoryBean->PlatformTransactionManager
+ * @author Jaquez
+ * @date 2021/06/16 10:19
+ */
 @Configuration
 @EnableJpaRepositories(
         entityManagerFactoryRef = DBConstants.ENTITY_MANAGER_FACTORY_ORDERS,

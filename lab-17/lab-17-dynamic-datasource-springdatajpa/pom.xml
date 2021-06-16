@@ -24,7 +24,7 @@
             <version>5.1.48</version>
         </dependency>
 
-        <!-- JPA 相关依赖 -->
+        <!-- JPA 相关依赖，实际上只需引入： spring-data-jpa、 hibernate-core -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>

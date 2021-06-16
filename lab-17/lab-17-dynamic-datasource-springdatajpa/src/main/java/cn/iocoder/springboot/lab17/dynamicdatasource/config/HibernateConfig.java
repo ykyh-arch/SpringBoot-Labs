@@ -9,6 +9,11 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
+/**
+ * 公用的配置类
+ * @author Jaquez
+ * @date 2021/06/16 10:06
+ */
 @Configuration
 public class HibernateConfig {
 

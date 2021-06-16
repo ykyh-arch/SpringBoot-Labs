@@ -19,6 +19,10 @@ public class OrderService {
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * 生成当前的代理类对象
+     * @return
+     */
     private OrderService self() {
         return (OrderService) AopContext.currentProxy();
     }
