@@ -112,6 +112,7 @@
 <!--        <module>labx-29-spring-cloud-consul-bus</module>-->
 <!--        <module>labx-30-spring-cloud-grpc</module>-->
         <module>lab-71-http-debug</module>
+        <module>lab-72-docker</module>
     </modules>
 
 </project>
