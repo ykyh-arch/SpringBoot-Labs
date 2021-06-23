@@ -15,6 +15,15 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <!--仓库地址-->
+        <docker.repostory>192.168.177.1:80</docker.repostory>
+        <!--仓库名称-->
+        <docker.image.prefix>lab-72-docker</docker.image.prefix>
+        <!--镜像Tag-->
+        <docker.image.tag>latest</docker.image.tag>
+        <!--docker.maven.version,1.4.10-->
+        <docker.maven.plugin.version>1.0.0</docker.maven.plugin.version>
+        <dockerfile.maven.plugin.version> 1.4.13</dockerfile.maven.plugin.version>
     </properties>
 
     <dependencies>
@@ -83,12 +92,82 @@
                     </execution>
                 </executions>
             </plugin>
-
+            <!--远程push到私服，踩坑：报错：\\.\pipe\docker_engine (系统找不到指定的文件。)，本地需要安装docker插件，
+            参考：https://blog.csdn.net/qq_43437874/article/details/107198498-->
+            <!--<plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>${dockerfile.maven.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>default</id>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <username>Jaquez</username>
+                    <password>Jaquez123456</password>
+                    <repository>${docker.repostory}/${docker.image.prefix}/jaquez/${project.artifactId}</repository>
+                    <tag>${docker.image.tag}</tag>
+                    <buildArgs>
+                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                    <useMavenSettingsForAuth>false</useMavenSettingsForAuth>
+                </configuration>
+            </plugin>-->
+            <!-- docker打包插件，推送到私服仓库，fabric8对K8S支持很友好 -->
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.33.0</version>
+                <configuration>
+                    <verbose>true</verbose>
+                    <!-- docker远程管理url -->
+                    <dockerHost>tcp://192.168.177.1:2375</dockerHost>
+                    <registry>${docker.repostory}</registry>
+                    <authConfig>
+                        <!-- docker私服账户密码 -->
+                        <push>
+                            <username>Jaquez</username>
+                            <password>Jaquez123456</password>
+                        </push>
+                    </authConfig>
+                    <buildArgs>
+                        <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                    <images>
+                        <image>
+                            <!-- 镜像名称，命名空间/仓库名称:镜像版本号 -->
+                            <name>${docker.image.prefix}/${project.artifactId}:${docker.image.tag}</name>
+                            <build>
+                                <!--<dockerFile>${project.basedir}/src/main/docker/Dockerfile</dockerFile>-->
+                                <dockerFile>${project.basedir}/Dockerfile</dockerFile>
+                                <assembly>
+                                    <name>/</name>
+                                    <!-- artifact是预定义的值，表示将项目打包后的jar拷贝到编译上下文中，便于Dockerfile ADD指令 -->
+                                    <descriptorRef>artifact</descriptorRef>
+                                </assembly>
+                            </build>
+                            <run>
+                                <!-- 运行时容器名称 -->
+                                <containerNamePattern>${project.artifactId}</containerNamePattern>
+                                <extraHosts>
+                                    <extraHost>192.168.177.1</extraHost>
+                                </extraHosts>
+                            </run>
+                        </image>
+                    </images>
+                </configuration>
+            </plugin>
+            <!--发布到容器中-->
             <plugin>
                 <!-- https://mvnrepository.com/artifact/com.spotify/docker-maven-plugin -->
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <version>1.0.0</version>
+                <version>${docker.maven.plugin.version}</version>
                 <!--将插件绑定在某个phase执行-->
                 <executions>
                     <!--执行-->

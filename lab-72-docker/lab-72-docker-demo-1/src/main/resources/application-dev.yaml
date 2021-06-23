@@ -1,5 +1,6 @@
 server:
   port: 8079
+  address: 0.0.0.0
 
 management:
   server:
