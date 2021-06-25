@@ -21,5 +21,8 @@
 firewall-cmd --permanent --add-port=2375/tcp
 firewall-cmd --reload
 
+#容器指令编排
+<https://blog.csdn.net/leilei1366615/article/details/106973517/>
+
 
 

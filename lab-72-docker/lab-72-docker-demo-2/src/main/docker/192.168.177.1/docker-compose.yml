@@ -1,0 +1,30 @@
+#文件版本（1.2.x+，用3即可）
+version: '3'
+
+networks:
+  lab-72:
+    driver: bridge
+
+#指定服务名，建议还是与项目名一致
+services:
+  lab-72-docker-demo:
+    #容器名
+    container_name: lab-72-docker-demo-2
+    #重启策略: 容器退出时总是重启容器
+    restart: always
+    #镜像编排，构建镜像名称，没有build属性的话，默认从远程仓库获取
+    #默认从本地服务器寻找，未找到则从仓库中寻找
+    image: jaquez/lab-72-docker-demo-2:latest
+    #指定设定上下文根目录，然后以该目录为准指定Dockerfile
+    build:
+      context: ./
+      dockerfile: Dockerfile-docker-demo-2
+    environment:
+      TZ: Asia/Shanghai
+    ports:
+      - 8079:8079
+      - 8078:8078
+    volumes:
+      - /soft/docker/file/:/opt/docker/file/
+    networks:
+      - lab-72

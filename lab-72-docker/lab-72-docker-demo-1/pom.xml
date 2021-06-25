@@ -21,8 +21,8 @@
         <docker.image.prefix>lab-72-docker</docker.image.prefix>
         <!--镜像Tag-->
         <docker.image.tag>latest</docker.image.tag>
-        <!--docker.maven.version,1.4.10-->
-        <docker.maven.plugin.version>1.0.0</docker.maven.plugin.version>
+        <!--docker.maven.version，1.0.0-->
+        <docker.maven.plugin.version>1.2.2</docker.maven.plugin.version>
         <dockerfile.maven.plugin.version> 1.4.13</dockerfile.maven.plugin.version>
     </properties>
 
@@ -135,6 +135,7 @@
                             <password>Jaquez123456</password>
                         </push>
                     </authConfig>
+                    <!--提供参数向Dockerfile传递-->
                     <buildArgs>
                         <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
                     </buildArgs>

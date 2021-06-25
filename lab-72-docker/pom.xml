@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>lab-72-docker-demo-1</module>
+        <module>lab-72-docker-demo-2</module>
     </modules>
 
     <properties>

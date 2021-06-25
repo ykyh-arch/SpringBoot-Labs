@@ -1,4 +1,4 @@
-package cn.iocoder.springboot.lab40.dockerdemo;
+package cn.iocoder.springboot.lab72.dockerdemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
