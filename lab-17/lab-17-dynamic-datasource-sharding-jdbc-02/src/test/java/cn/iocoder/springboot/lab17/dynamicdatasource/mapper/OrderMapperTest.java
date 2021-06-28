@@ -32,13 +32,15 @@ public class OrderMapperTest {
             // 执行查询
             OrderDO order = orderMapper.selectById(1);
             System.out.println(order);
+//            hintManager.close();//关闭资源，防止污染下次请求，但是这里不需要使用，因为
+//            hintManager 已经实现了 AutoCloseable 接口，可以通过 Try-with-resources 机制，自动关闭。
         }
     }
 
     @Test
     public void testInsert() { // 插入
         OrderDO order = new OrderDO();
-        order.setUserId(10);
+        order.setUserId(11);
         orderMapper.insert(order);
     }
 
