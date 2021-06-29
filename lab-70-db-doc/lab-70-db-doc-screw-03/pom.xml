@@ -18,10 +18,10 @@
             <artifactId>screw-core</artifactId>
             <version>1.0.5</version>
         </dependency>
+        <!-- 由于 screw-extension 项目处于初步开发阶段，暂时未将该依赖推到 Maven 中央仓库，所以需要自己克隆项目，进行编译打包到本地。-->
         <dependency>
             <groupId>cn.smallbun.screw</groupId>
             <artifactId>screw-extension</artifactId>
-            <version>1.0.5</version>
         </dependency>
 
         <!-- 数据库连接 -->
@@ -30,10 +30,17 @@
             <artifactId>HikariCP</artifactId>
             <version>3.4.5</version>
         </dependency>
+        <!--mysql-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.22</version>
+        </dependency>
+        <!--postgresql-->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.8</version>
         </dependency>
     </dependencies>
 

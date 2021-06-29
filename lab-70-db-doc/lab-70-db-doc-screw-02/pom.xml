@@ -24,18 +24,25 @@
                         <artifactId>HikariCP</artifactId>
                         <version>3.4.5</version>
                     </dependency>
+                    <!--mysql-->
                     <dependency>
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
                         <version>8.0.22</version>
                     </dependency>
+                    <!--postgresql-->
+                    <dependency>
+                        <groupId>org.postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                        <version>42.2.8</version>
+                    </dependency>
                 </dependencies>
                 <configuration>
                     <!-- 数据库相关配置 -->
-                    <driverClassName>com.mysql.cj.jdbc.Driver</driverClassName>
-                    <jdbcUrl>jdbc:mysql://400-infra.server.iocoder.cn:3306/mall_system</jdbcUrl>
-                    <username>root</username>
-                    <password>3WLiVUBEwTbvAfsh</password>
+                    <driverClassName>org.postgresql.Driver</driverClassName>
+                    <jdbcUrl>jdbc:postgresql://192.168.0.10:5432/RHMIS_AH</jdbcUrl>
+                    <username>postgres</username>
+                    <password>FW#postgres</password>
                     <!-- screw 配置 -->
                     <fileType>HTML</fileType>
                     <title>数据库文档</title> <!--标题-->

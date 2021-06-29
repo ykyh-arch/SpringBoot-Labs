@@ -12,14 +12,17 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class ScrewMain {
+    private static final String DB_URL = "jdbc:postgresql://192.168.0.10:5432";
 
-    private static final String DB_URL = "jdbc:mysql://400-infra.server.iocoder.cn:3306";
-    private static final String DB_NAME = "mall_system";
-    private static final String DB_USERNAME = "root";
-    private static final String DB_PASSWORD = "3WLiVUBEwTbvAfsh";
+    private static final String DRIVER_CLASS_NAME = "org.postgresql.Driver";
 
-    private static final String FILE_OUTPUT_DIR = "/Users/yunai/screw_test";
-    private static final EngineFileType FILE_OUTPUT_TYPE = EngineFileType.HTML; // 可以设置 Word 或者 Markdown 格式
+    private static final String DB_NAME = "RHMIS_AH";
+    private static final String DB_USERNAME = "postgres";
+    private static final String DB_PASSWORD = "FW#postgres";
+
+    private static final String FILE_OUTPUT_DIR = "C:/Users/fw001/Desktop/";
+    // 可以设置 Word 或者 Markdown 格式
+    private static final EngineFileType FILE_OUTPUT_TYPE = EngineFileType.WORD;
     private static final String DOC_FILE_NAME = "数据库文档";
     private static final String DOC_VERSION = "1.0.0";
     private static final String DOC_DESCRIPTION = "文档描述";
@@ -44,11 +47,12 @@ public class ScrewMain {
     private static DataSource buildDataSource() {
         // 创建 HikariConfig 配置类
         HikariConfig hikariConfig = new HikariConfig();
-        hikariConfig.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        hikariConfig.setDriverClassName(DRIVER_CLASS_NAME);
         hikariConfig.setJdbcUrl(DB_URL + "/" + DB_NAME);
         hikariConfig.setUsername(DB_USERNAME);
         hikariConfig.setPassword(DB_PASSWORD);
-        hikariConfig.addDataSourceProperty("useInformationSchema", "true"); // 设置可以获取 tables remarks 信息
+        // 设置可以获取 tables remarks 信息
+        hikariConfig.addDataSourceProperty("useInformationSchema", "true");
         // 创建数据源
         return new HikariDataSource(hikariConfig);
     }

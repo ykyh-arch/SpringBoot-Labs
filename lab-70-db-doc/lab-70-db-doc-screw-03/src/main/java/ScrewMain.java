@@ -11,12 +11,13 @@ import java.util.Collections;
 
 public class ScrewMain {
 
-    private static final String DB_URL = "jdbc:mysql://400-infra.server.iocoder.cn:3306";
-    private static final String DB_NAME = "mall_system";
-    private static final String DB_USERNAME = "root";
-    private static final String DB_PASSWORD = "3WLiVUBEwTbvAfsh";
+    private static final String DB_URL = "jdbc:postgresql://192.168.0.10:5432";
+    private static final String DRIVER_CLASS_NAME = "org.postgresql.Driver";
+    private static final String DB_NAME = "RHMIS_AH";
+    private static final String DB_USERNAME = "postgres";
+    private static final String DB_PASSWORD = "FW#postgres";
 
-    private static final String FILE_OUTPUT_DIR = "/Users/yunai/screw_test";
+    private static final String FILE_OUTPUT_DIR = "C:/Users/fw001/Desktop/";
     private static final String JAVA_CLASS_PACKAGE = "cn.iocoder.dataobject";
 
     public static void main(String[] args) {
@@ -30,7 +31,7 @@ public class ScrewMain {
                 .processConfig(buildProcessConfig()) // 处理配置
                 .build();
 
-        // 执行 screw，生成 POJO 实体类
+        // 执行 screw，生成 POJO 实体类，踩坑：目前版本只支持：MysQL数据库，参考：https://gitee.com/leshalv/screw#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%94%AF%E6%8C%81-1
         new PojoExecute(config).execute();
     }
 
@@ -40,7 +41,7 @@ public class ScrewMain {
     private static DataSource buildDataSource() {
         // 创建 HikariConfig 配置类
         HikariConfig hikariConfig = new HikariConfig();
-        hikariConfig.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        hikariConfig.setDriverClassName(DRIVER_CLASS_NAME);
         hikariConfig.setJdbcUrl(DB_URL + "/" + DB_NAME);
         hikariConfig.setUsername(DB_USERNAME);
         hikariConfig.setPassword(DB_PASSWORD);
