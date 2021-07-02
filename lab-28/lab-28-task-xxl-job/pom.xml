@@ -19,7 +19,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- XXL-JOB 相关依赖 -->
+        <!-- XXL-JOB 相关依赖，引入执行器相关依赖 -->
         <dependency>
             <groupId>com.xuxueli</groupId>
             <artifactId>xxl-job-core</artifactId>

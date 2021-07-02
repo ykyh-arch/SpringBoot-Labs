@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application02 {
 
     public static void main(String[] args) {
-        // 设置 Tomcat 随机端口
+        // 设置 Tomcat 随机端口，设置端口号为：0
         System.setProperty("server.port", "0");
 
         // 启动 Spring Boot 应用

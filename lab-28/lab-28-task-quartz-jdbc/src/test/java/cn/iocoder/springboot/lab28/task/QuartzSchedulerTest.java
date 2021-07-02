@@ -52,6 +52,7 @@ public class QuartzSchedulerTest {
                 .build();
         // 添加调度任务
         scheduler.scheduleJob(jobDetail, trigger);
+        // 覆盖数据库中的 Quartz 定时任务的配置
 //        scheduler.scheduleJob(jobDetail, Sets.newSet(trigger), true);
     }
 

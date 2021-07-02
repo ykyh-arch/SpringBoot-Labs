@@ -5,6 +5,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * 调度器：负责调度任务，下发给执行器。
+ * 执行器：负责接收任务，执行具体任务。
+ */
 @Configuration
 public class XxlJobConfiguration {
 
@@ -23,6 +27,12 @@ public class XxlJobConfiguration {
     @Value("${xxl.job.executor.logretentiondays}")
     private int logRetentionDays;
 
+    /**
+     *
+     * @author Jaquez
+     * @date 2021/07/02 15:56
+     * @return com.xxl.job.core.executor.impl.XxlJobSpringExecutor
+     */
     @Bean
     public XxlJobSpringExecutor xxlJobExecutor() {
         // 创建 XxlJobSpringExecutor 执行器

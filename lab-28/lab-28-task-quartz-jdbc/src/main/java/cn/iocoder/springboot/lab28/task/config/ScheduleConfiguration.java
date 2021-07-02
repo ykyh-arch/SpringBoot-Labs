@@ -6,6 +6,12 @@ import org.quartz.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * 定时调度配置类，Job（类）->JobDetail->Trigger，Cron表达式在线工具：https://www.bejson.com/othertools/cron/
+ * 自动设置，将 JobDetail 和 Trigger 持久化到数据库。
+ * @author Jaquez
+ * @date 2021/07/01 19:04
+ */
 @Configuration
 public class ScheduleConfiguration {
 
