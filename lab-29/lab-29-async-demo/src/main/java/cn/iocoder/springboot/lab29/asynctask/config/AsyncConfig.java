@@ -9,6 +9,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 import java.util.concurrent.Executor;
 
+/**
+ * 配置异常处理器
+ */
 @Configuration
 @EnableAsync // 开启 @Async 的支持
 public class AsyncConfig implements AsyncConfigurer {
@@ -16,6 +19,12 @@ public class AsyncConfig implements AsyncConfigurer {
     @Autowired
     private GlobalAsyncExceptionHandler exceptionHandler;
 
+    /**
+     * 执行器，采用默认执行器， ThreadPoolTaskExecutor
+     * @author Jaquez
+     * @date 2021/07/04 19:34
+     * @return java.util.concurrent.Executor
+     */
     @Override
     public Executor getAsyncExecutor() {
         return null;

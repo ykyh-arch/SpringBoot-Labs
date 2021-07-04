@@ -58,6 +58,13 @@ public class DemoService {
         return this.execute02();
     }
 
+    /**
+     * 异步执行任务
+     * 类：AsyncResult（成功forValue（），失败forExecutionException（））
+     * ->接口：ListenableFuture（addCallback（）、completable（））->Future（isDone（）、get（））
+     * ->实现类：ListenableFutureTask（addCallback（）、completable（）、done（））->ListenableFutureCallbackRegistry
+     * @return
+     */
     @Async
     public Future<Integer> execute01AsyncWithFuture() {
         return AsyncResult.forValue(this.execute01());
@@ -71,8 +78,10 @@ public class DemoService {
     @Async
     public ListenableFuture<Integer> execute01AsyncWithListenableFuture() {
         try {
-            return AsyncResult.forValue(this.execute02());
+            //成功结果
+            return AsyncResult.forValue(this.execute01());
         } catch (Throwable ex) {
+            //执行失败
             return AsyncResult.forExecutionException(ex);
         }
     }
