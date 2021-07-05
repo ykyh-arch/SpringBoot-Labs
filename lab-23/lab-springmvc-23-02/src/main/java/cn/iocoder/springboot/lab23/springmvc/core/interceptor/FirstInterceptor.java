@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 拦截器配置
+ * 拦截器配置，
+ * 日志拦截器
+ * 参考：https://github.com/YunaiV/onemall/blob/74724637b7408461e6570855172c753337293b30/common/mall-spring-boot/src/main/java/cn/iocoder/mall/spring/boot/web/interceptor/AccessLogInterceptor.java
  * @author jaquez
  */
 public class FirstInterceptor implements HandlerInterceptor {

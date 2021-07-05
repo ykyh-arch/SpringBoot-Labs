@@ -13,6 +13,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 @EnableAsync // 开启 @Async 的支持
 public class AsyncConfig {
 
+    //执行器名称
     public static final String EXECUTOR_ONE_BEAN_NAME = "executor-one";
     public static final String EXECUTOR_TWO_BEAN_NAME = "executor-two";
 
