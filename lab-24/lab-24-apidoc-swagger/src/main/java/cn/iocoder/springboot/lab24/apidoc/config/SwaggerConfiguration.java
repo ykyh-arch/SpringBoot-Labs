@@ -11,6 +11,9 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * 因为 Spring Boot 暂未提供 Swagger 内置的支持，所以我们需要自己定义配置类。
+ */
 @Configuration
 @EnableSwagger2 // 标记项目启用 Swagger API 接口文档
 public class SwaggerConfiguration {

@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/users")
-@Api(tags = "用户 API 接口")
+@Api(tags = "用户 API 接口")//分组标签
 public class UserController {
 
     @GetMapping("/list")
