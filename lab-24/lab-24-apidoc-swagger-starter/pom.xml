@@ -19,12 +19,13 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- 实现对 Swagger 的自动配置 -->
+        <!-- 实现对 Swagger 的自动配置，3.XX实现了自动配置，注意，最低支持使用 SpringBoot 版本为 2.2+ 。 -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-boot-starter</artifactId>
             <version>3.0.0</version>
         </dependency>
+
     </dependencies>
 
 </project>
