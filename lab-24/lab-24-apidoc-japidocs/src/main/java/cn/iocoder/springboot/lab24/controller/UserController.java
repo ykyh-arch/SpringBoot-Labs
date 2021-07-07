@@ -20,6 +20,7 @@ public class UserController {
      *
      * @param listReqVO 列表筛选条件
      * @return 用户列表
+     * @description
      */
     @GetMapping("list")
     public List<UserRespVO> list(UserListReqVO listReqVO){
