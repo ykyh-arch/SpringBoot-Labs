@@ -1,7 +1,7 @@
 package cn.iocoder.springboot.lab49.lombokdemo.dataobject;
 
+import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
