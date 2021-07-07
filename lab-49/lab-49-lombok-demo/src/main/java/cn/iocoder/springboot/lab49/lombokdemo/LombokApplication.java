@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * Lombok 的实现原理，基于 JSR269(Pluggable Annotation Processing API) 规范，
  * 自定义编译器注解处理器，用于在 Javac 编译阶段时，扫描使用到 Lombok 定义的注解的类，进行自定义的代码生成。
+ * 参考：https://www.iocoder.cn/Fight/Lombok-installation-and-Spring-Boot-integration-with-Lombok/?self
  */
 @SpringBootApplication
 public class LombokApplication {
