@@ -86,14 +86,16 @@ public class ArticleJdbcReader {
     }
 
     /**
-     * 读取csv示例
+     * 读取csv示例，参考：https://blog.csdn.net/masson32/article/details/91347849
      */
     public FlatFileItemReader<Article> readCsv() {
         return new FlatFileItemReaderBuilder<Article>()
                 .name("articleCsvReader")
                 .resource(new ClassPathResource("article.csv"))
+                // 默认分割符，
                 .delimited()
                 .names(new String[] { "title", "content", "eventOccurredTime" })
+                //.linesToSkip(1) //是否跳过几行
                 .fieldSetMapper(new BeanWrapperFieldSetMapper<Article>() {
                     {
                         setTargetType(Article.class);

@@ -5,6 +5,7 @@ import cn.iocoder.springboot.lab74.batchdemo.entity.Article;
 import cn.iocoder.springboot.lab74.batchdemo.entity.ArticleDetail;
 import cn.iocoder.springboot.lab74.batchdemo.processor.ArticleProcessor;
 import cn.iocoder.springboot.lab74.batchdemo.writer.ArticleJdbcWriter;
+import cn.iocoder.springboot.lab74.batchdemo.writer.ArticleWriter;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -12,8 +13,10 @@ import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
+import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.database.JdbcPagingItemReader;
+import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,10 +45,16 @@ public class ArticleBatchJob {
 	private ArticleJdbcWriter articleJdbcWriter;
 
 	@Bean(name = "articleReader")
-	@StepScope
+	@StepScope //生成代理类
 	public JdbcPagingItemReader<Article> batchReader(@Value("#{jobParameters['executedTime']}") String executedTime) {
 		return articleReader.getArticlePaging(executedTime);
 	}
+
+//	@Bean(name = "articleReader")
+//	@StepScope
+//	public FlatFileItemReader<Article> batchReader() {
+//		return articleReader.readCsv();
+//	}
 
 	@Bean(name = "articleWriter")
 	public ItemWriter<ArticleDetail> batchWriter() {
@@ -65,7 +74,7 @@ public class ArticleBatchJob {
 
 	@Bean(name = "articleStep")
 	public Step step(@Autowired @Qualifier("articleReader")
-								 JdbcPagingItemReader<Article> articleReader, ItemWriter<ArticleDetail> articleWriter) {
+							 ItemReader<Article> articleReader, ItemWriter<ArticleDetail> articleWriter) {
 		return stepBuilderFactory.get("crossHistoryStep")
 				// 数据会累积到一定量再提交到writer
 				.<Article, ArticleDetail>chunk(10)
