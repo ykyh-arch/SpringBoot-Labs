@@ -12,12 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 /**
- * Quartz 配置
+ * ArticleQuartzJob 配置
  */
 @Component
 @Slf4j
-@DisallowConcurrentExecution
+@DisallowConcurrentExecution //定时调度分布式下同一时间只有一个执行
 public class ArticleQuartzJob extends QuartzJobBean {
 
     @Autowired
@@ -28,9 +30,12 @@ public class ArticleQuartzJob extends QuartzJobBean {
     @Override
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         try {
+            //获取指定Job
             Job job = jobLocator.getJob("articleJob");
+            //手动启动批处理，执行一个JobInstance
             jobLauncher.run(job, new JobParametersBuilder()
-                    .addString("executedTime", "2021-11-10 16:21:01")
+                    .addDate("startTime", new Date())
+                    .addString("executedTime", "2021-11-11 16:21:01")
                     .toJobParameters());
         } catch (Exception e) {
             e.printStackTrace();

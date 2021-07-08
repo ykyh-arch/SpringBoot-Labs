@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * 数据库映射文件
+ * 数据库映射文件，表字段映射为实体字段
  */
 public class ArticleMapper implements RowMapper<Article> {
 

@@ -1,6 +1,6 @@
 package cn.iocoder.springboot.lab74.batchdemo.job;
 
-import cn.iocoder.springboot.lab74.batchdemo.Reader.ArticleReaderDemo;
+import cn.iocoder.springboot.lab74.batchdemo.Reader.ArticleJdbcReader;
 import cn.iocoder.springboot.lab74.batchdemo.entity.Article;
 import cn.iocoder.springboot.lab74.batchdemo.entity.ArticleDetail;
 import cn.iocoder.springboot.lab74.batchdemo.processor.ArticleProcessor;
@@ -15,16 +15,19 @@ import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.database.JdbcPagingItemReader;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.annotation.Resource;
+
 /**
- * 任务配置
+ * 批处理Job任务配置，整个流程是：jobLauncher 启动 -》Job -> Step -> 。。。
  *
  */
 @Configuration
-@EnableBatchProcessing
+@EnableBatchProcessing //开启批处理，默认自动执行Job，需要在配置文件设置spring.batch.job.enabled=false
 public class ArticleBatchJob {
 
 	@Autowired
@@ -32,7 +35,7 @@ public class ArticleBatchJob {
 	@Autowired
 	public StepBuilderFactory stepBuilderFactory;
 	@Autowired
-	private ArticleReaderDemo articleReader;
+	private ArticleJdbcReader articleReader;
 	@Autowired
 	private ArticleProcessor articleProcessor;
 	@Autowired
@@ -61,15 +64,16 @@ public class ArticleBatchJob {
 	}
 
 	@Bean(name = "articleStep")
-	public Step step(JdbcPagingItemReader<Article> articleReader, ItemWriter<ArticleDetail> articleWriter) {
+	public Step step(@Autowired @Qualifier("articleReader")
+								 JdbcPagingItemReader<Article> articleReader, ItemWriter<ArticleDetail> articleWriter) {
 		return stepBuilderFactory.get("crossHistoryStep")
 				// 数据会累积到一定量再提交到writer
 				.<Article, ArticleDetail>chunk(10)
 				.reader(articleReader)
 				.processor(articleProcessor)
 				.writer(articleWriter)
-				// 默认为false（如果参数未发生变化的话，任务不会重复执行），Job如果执行成功一次，下次任务启动时如果参数没有变化的话，默认情况下是不会重复执行的，如果想要执行可以传一个时间参数或者设置allowStartIfComplete(true)
-				.allowStartIfComplete(true)
+				// 默认为false（如果jobParameters参数未发生变化的话，任务不会重复执行），Job如果执行成功一次，下次任务启动时如果参数没有变化的话，默认情况下是不会重复执行的，如果想要执行可以传一个时间参数或者设置allowStartIfComplete(true)
+				.allowStartIfComplete(false)
 				.build();
 	}
 }

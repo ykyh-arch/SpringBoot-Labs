@@ -22,7 +22,7 @@ public class JobListener extends JobExecutionListenerSupport {
 					jobExecution.getJobParameters().getString("executedTime"));
 		} else {
 			log.info("任务[{}]执行失败", jobExecution.getJobInstance().getJobName());
-			// TODO something
+			// TODO something，主要为日志记录
 		}
 	}
 }

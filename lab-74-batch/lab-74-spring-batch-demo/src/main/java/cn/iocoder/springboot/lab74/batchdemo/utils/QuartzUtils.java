@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 /**
- * quartz任务管理
+ * quartz任务管理工具类
  * - Group统一使用quartz默认的组
  */
 @Component
@@ -29,6 +29,7 @@ public class QuartzUtils {
             .withIdentity(taskName).build();
       SimpleScheduleBuilder simpleScheduler = SimpleScheduleBuilder.simpleSchedule()
             .withMisfireHandlingInstructionNextWithRemainingCount();
+      //触发器设置
       Trigger trigger = TriggerBuilder.newTrigger().startAt(new Date(System.currentTimeMillis() + 1000 * 10)).withIdentity(taskName)
             .withSchedule(
                   simpleScheduler.withIntervalInSeconds(intervalTime).repeatForever())
@@ -46,6 +47,7 @@ public class QuartzUtils {
    public void addCronJob(Class<? extends Job> jobClass, String taskName, String cron) throws SchedulerException {
       JobDetail jobDetail = JobBuilder.newJob(jobClass)
             .withIdentity(taskName).build();
+      //基于Cron表达式的任务调度
       CronScheduleBuilder cronScheduler = CronScheduleBuilder.cronSchedule(cron).withMisfireHandlingInstructionDoNothing();
       Trigger trigger = TriggerBuilder.newTrigger().startNow().withIdentity(taskName)
             .withSchedule(cronScheduler)
@@ -66,6 +68,7 @@ public class QuartzUtils {
          TriggerBuilder<Trigger> triggerBuilder = TriggerBuilder.newTrigger();
          triggerBuilder.withIdentity(taskName).startNow().withSchedule(cronBuilder);
          trigger = (CronTrigger) triggerBuilder.build();
+         //重启启动Job，使用新的cron规则
          scheduler.rescheduleJob(triggerKey, trigger);
       }
    }

@@ -8,7 +8,7 @@ import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.stereotype.Component;
 
 /**
- * 参考：https://www.jianshu.com/p/0cd761c2e05e，https://github.com/itmrchen/SpringBatch-DataMigration
+ * 参考：https://www.jianshu.com/p/0cd761c2e05e，https://www.jianshu.com/p/0b09802f4910
  * 核心概念：
  * Job：最顶层的一个抽象概念，实现类：simplejob、flowjob，本质上可以看成step的一个容器，一对多关系
  * JobInstance：Job的更加底层的一个抽象，job运行当中，作业执行过程当中的概念。JobInstance = Job + JobParameters

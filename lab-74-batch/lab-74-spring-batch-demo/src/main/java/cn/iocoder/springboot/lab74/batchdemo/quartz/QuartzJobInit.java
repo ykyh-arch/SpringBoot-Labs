@@ -7,7 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 /**
- * QuartzJobInit 初始化
+ * QuartzJobInit 初始化，使用流程
+ * Quartz 定时启动（Scheduler、Trigger、JobDetail） -》 添加Job、配置JobDetail, Trigger（设置QuartzJobName）、定时执行任务 -》传入Batch Job（Batch Job、 jobLauncher.run(）手动启动
  */
 @Component
 public class QuartzJobInit implements CommandLineRunner {

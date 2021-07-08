@@ -3,7 +3,6 @@ package cn.iocoder.springboot.lab74.batchdemo.Reader;
 import cn.iocoder.springboot.lab74.batchdemo.entity.Article;
 import cn.iocoder.springboot.lab74.batchdemo.jdbc.ArticleMapper;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.database.JdbcCursorItemReader;
 import org.springframework.batch.item.database.JdbcPagingItemReader;
 import org.springframework.batch.item.database.Order;
@@ -17,19 +16,23 @@ import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 读数据流
+ * 读数据流，或自定义一个类 implements ItemReader<Object> 接口，重写read() 方法
+ * 读的来源可以是数据库，也可以是文件或队列，最终要封装成读的对象
  */
 @Component
-public class ArticleReaderDemo {
+public class ArticleJdbcReader {
 
+    //这里可以指定对应库的数据源，关于数据源设置参考lab-19
+//    @Resource(name = "articlesDataSource")
     private final DataSource dataSource;
 
-    public ArticleReaderDemo(DataSource dataSource) {
+    public ArticleJdbcReader(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
