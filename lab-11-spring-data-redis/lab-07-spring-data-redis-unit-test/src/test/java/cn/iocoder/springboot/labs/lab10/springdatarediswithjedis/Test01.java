@@ -28,8 +28,10 @@ public class Test01 {
 
     @Test
     public void test01() {
+
         // 写入
         stringRedisTemplate.opsForValue().set("yunai", "shuai");
+
         // 读取
         String value = stringRedisTemplate.opsForValue().get("yunai");
         Assert.assertEquals("值不匹配", "shuai", value);

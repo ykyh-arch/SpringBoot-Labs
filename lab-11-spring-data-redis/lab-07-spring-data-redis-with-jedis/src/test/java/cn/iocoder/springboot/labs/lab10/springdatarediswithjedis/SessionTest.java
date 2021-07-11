@@ -10,6 +10,11 @@ import org.springframework.data.redis.core.SessionCallback;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
+/**
+ * session测试，Pipeline、Transaction、Session 关系：三者可以组合使用
+ * @author Jaquez
+ * @date 2021/07/13 22:31
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SessionTest {

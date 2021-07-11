@@ -7,6 +7,11 @@ import org.springframework.session.data.redis.RedisOperationsSessionRepository;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration;
 
+/**
+ * Spring Session 使用 Redis 作为外部数据源
+ * @author Jaquez
+ * @date 2021/07/13 11:26
+ */
 @Configuration
 @EnableRedisHttpSession // 自动化配置 Spring Session 使用 Redis 作为数据源
 public class SessionConfiguration {

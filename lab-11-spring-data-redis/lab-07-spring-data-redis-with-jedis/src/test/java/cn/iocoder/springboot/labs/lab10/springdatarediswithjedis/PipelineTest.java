@@ -19,6 +19,12 @@ public class PipelineTest {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
+    /**
+     * Pipeline 操作
+     * @author Jaquez
+     * @date 2021/07/13 21:07
+     * @return void
+     */
     @Test
     public void test01() {
         List<Object> results = stringRedisTemplate.executePipelined(new RedisCallback<Object>() {
@@ -27,6 +33,7 @@ public class PipelineTest {
             public Object doInRedis(RedisConnection connection) throws DataAccessException {
                 // set 写入
                 for (int i = 0; i < 3; i++) {
+                    //提供了更底层的 Redis API 操作。已经序列化的入参和会被反序列化的出参
                     connection.set(String.format("yunai:%d", i).getBytes(), "shuai".getBytes());
                 }
 

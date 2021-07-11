@@ -4,13 +4,20 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisConnectionUtils;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * 事务管理测试，源码对应RedisConnectionUtils工具类里
+ * @author Jaquez
+ * @date 2021/07/13 21:24
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-//@EnableTransactionManagement
+@EnableTransactionManagement
 public class TransactionTest {
 
     @Autowired
@@ -33,14 +40,14 @@ public class TransactionTest {
 //                return null;
 //            }
 //
-////            @Override
-////            public List<String> execute(RedisOperations<String, String> operations) throws DataAccessException {
-////                for (int i = 0; i < 100; i++) {
-////                    operations.opsForValue(String.format("yunai:%d", i), "shuai");
-////                }
-////                return null;
-////            }
-//
+//            @Override
+//            public List<String> execute(RedisOperations<String, String> operations) throws DataAccessException {
+//                for (int i = 0; i < 100; i++) {
+//                    operations.opsForValue(String.format("yunai:%d", i), "shuai");
+//                }
+//                return null;
+//            }
+
 //        });
     }
 

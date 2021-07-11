@@ -1,5 +1,6 @@
 package cn.iocoder.springboot.labs.lab10.springdatarediswithjedis;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

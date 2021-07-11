@@ -14,6 +14,7 @@ public class UserCacheDao {
 
     @Resource(name = "redisTemplate")
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+    //申明KEY/VALUE数据类型
     private ValueOperations<String, String> operations;
 
     private static String buildKey(Integer id) {

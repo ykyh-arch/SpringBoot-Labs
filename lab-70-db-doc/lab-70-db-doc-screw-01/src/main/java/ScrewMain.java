@@ -12,17 +12,17 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class ScrewMain {
-    private static final String DB_URL = "jdbc:postgresql://192.168.0.10:5432";
+    private static final String DB_URL = "jdbc:postgresql://120.55.163.126:5432";
 
     private static final String DRIVER_CLASS_NAME = "org.postgresql.Driver";
 
-    private static final String DB_NAME = "RHMIS_AH";
+    private static final String DB_NAME = "homestead_dongzhi";
     private static final String DB_USERNAME = "postgres";
-    private static final String DB_PASSWORD = "FW#postgres";
+    private static final String DB_PASSWORD = "postgres";
 
     private static final String FILE_OUTPUT_DIR = "C:/Users/fw001/Desktop/";
     // 可以设置 Word 或者 Markdown 格式
-    private static final EngineFileType FILE_OUTPUT_TYPE = EngineFileType.WORD;
+    private static final EngineFileType FILE_OUTPUT_TYPE = EngineFileType.HTML;
     private static final String DOC_FILE_NAME = "数据库文档";
     private static final String DOC_VERSION = "1.0.0";
     private static final String DOC_DESCRIPTION = "文档描述";
@@ -48,7 +48,9 @@ public class ScrewMain {
         // 创建 HikariConfig 配置类
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setDriverClassName(DRIVER_CLASS_NAME);
-        hikariConfig.setJdbcUrl(DB_URL + "/" + DB_NAME);
+        //指定模式
+        //hikariConfig.setJdbcUrl(DB_URL + "/" + DB_NAME+"?searchpath=sde");//9.4之前版本
+        hikariConfig.setJdbcUrl(DB_URL + "/" + DB_NAME+"?currentSchema=sde");
         hikariConfig.setUsername(DB_USERNAME);
         hikariConfig.setPassword(DB_PASSWORD);
         // 设置可以获取 tables remarks 信息
