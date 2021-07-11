@@ -26,5 +26,9 @@ firewall-cmd --reload
 #容器指令编排
 <https://blog.csdn.net/leilei1366615/article/details/106973517/>
 
+#SpringCloud+Docker+Jenkins+GitLab+Maven实现自动化构建与部署
+<https://mp.weixin.qq.com/s/RycM5JJFn1_rjoiEtZ6oGA>
+
+
 
 
