@@ -1,12 +1,10 @@
-package cn.iocoder.springboot.lab28.task.task;
+package cn.iocoder.springboot.lab28.task.taskclass;
 
 import org.quartz.DisallowConcurrentExecution;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.stereotype.Component;
-
-import java.util.Date;
 
 /**
  * 测试任务类
