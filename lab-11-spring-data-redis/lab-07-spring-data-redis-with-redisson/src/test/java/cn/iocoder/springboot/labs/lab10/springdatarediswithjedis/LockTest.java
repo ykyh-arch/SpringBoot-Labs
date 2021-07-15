@@ -12,6 +12,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 实现分布式锁
+ * @author Jaquez
+ * @date 2021/07/15 15:36
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class LockTest {
@@ -21,6 +26,10 @@ public class LockTest {
     @Autowired
     private RedissonClient redissonClient;
 
+    /**
+     * 测试持有锁
+     * @throws InterruptedException
+     */
     @Test
     public void test() throws InterruptedException {
         // 启动一个线程 A ，去占有锁
@@ -39,6 +48,7 @@ public class LockTest {
         // 尝试加锁，最多等待 100 秒，上锁以后 10 秒自动解锁
         System.out.println(String.format("准备开始获得锁时间：%s", new SimpleDateFormat("yyyy-MM-DD HH:mm:ss").format(new Date())));
         final RLock lock = redissonClient.getLock(LOCK_KEY);
+        // 尝试加锁，最多等待100秒，上锁以后10秒自动解锁
         boolean res = lock.tryLock(100, 10, TimeUnit.SECONDS);
         if (res) {
             System.out.println(String.format("实际获得锁时间：%s", new SimpleDateFormat("yyyy-MM-DD HH:mm:ss").format(new Date())));

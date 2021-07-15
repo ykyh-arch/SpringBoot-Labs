@@ -3,6 +3,7 @@ package cn.iocoder.springboot.labs.lab10.springdatarediswithjedis;
 import cn.iocoder.springboot.labs.lab10.springdatarediswithjedis.cacheobject.UserCacheObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.redisson.connection.balancer.RoundRobinLoadBalancer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
