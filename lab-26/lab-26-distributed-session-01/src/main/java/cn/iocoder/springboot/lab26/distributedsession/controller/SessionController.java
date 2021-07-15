@@ -10,6 +10,11 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * session 测试类
+ * @author Jaquez
+ * @date 2021/07/15 17:41
+ */
 @RestController
 @RequestMapping("/session")
 public class SessionController {

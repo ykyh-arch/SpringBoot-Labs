@@ -19,7 +19,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- 实现对 Spring Session 使用 Redis 作为数据源的自动化配置 -->
+        <!-- 实现对 Spring Session 使用 Redis 作为数据源的自动化配置， 外部化存储-->
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-data-redis</artifactId>

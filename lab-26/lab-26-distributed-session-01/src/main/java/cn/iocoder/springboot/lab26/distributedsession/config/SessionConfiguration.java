@@ -6,9 +6,17 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.session.data.redis.RedisOperationsSessionRepository;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration;
+import org.springframework.session.web.http.CookieHttpSessionIdResolver;
+import org.springframework.session.web.http.DefaultCookieSerializer;
+import org.springframework.session.web.http.HeaderHttpSessionIdResolver;
 
 /**
- * Spring Session 使用 Redis 作为外部数据源
+ * Spring Session 使用 Redis 作为存储Session的外部数据源
+ * @EnableRedisHttpSession 参数说明：
+ * maxInactiveIntervalInSeconds 属性，Session 不活跃后的过期时间，默认为 1800 秒。
+ * redisNamespace 属性，在 Redis 的 key 的统一前缀，默认为 "spring:session" 。
+ * redisFlushMode Redis 会话刷新模式，RedisFlushMode.ON_SAVE 在请求执行完成时，统一写入 Redis 存储，RedisFlushMode.IMMEDIATE 在每次修改 Session 时，立即写入 Redis 存储。
+ * cleanupCron 清理 Redis Session 会话过期的任务执行 CRON 表达式，默认为 "0 * * * * *" 每分钟执行一次。
  * @author Jaquez
  * @date 2021/07/13 11:26
  */
@@ -26,6 +34,7 @@ public class SessionConfiguration {
      */
     @Bean(name = "springSessionDefaultRedisSerializer")
     public RedisSerializer springSessionDefaultRedisSerializer() {
+        // 默认采用GenericJackson2JsonRedisSerializer()序列化器
         return RedisSerializer.json();
     }
 
@@ -42,11 +51,11 @@ public class SessionConfiguration {
 //        return sessionIdResolver;
 //    }
 
-//    @Bean
-//    public HeaderHttpSessionIdResolver sessionIdResolver() {
-////        return HeaderHttpSessionIdResolver.xAuthToken();
-////        return HeaderHttpSessionIdResolver.authenticationInfo();
-//        return new HeaderHttpSessionIdResolver("token");
-//    }
+    @Bean
+    public HeaderHttpSessionIdResolver sessionIdResolver() {
+//        return HeaderHttpSessionIdResolver.xAuthToken();
+//        return HeaderHttpSessionIdResolver.authenticationInfo();
+        return new HeaderHttpSessionIdResolver("token");
+    }
 
 }
