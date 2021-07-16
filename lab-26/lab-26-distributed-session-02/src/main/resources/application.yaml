@@ -2,12 +2,14 @@ spring:
   data:
     # MongoDB 配置项，对应 MongoProperties 类
     mongodb:
-      host: 127.0.0.1
-      port: 27017
-      database: yourdatabase
-      username: test01
-      password: password01
+#      host: 192.168.177.1
+#      port: 27017
+#      database: lab-26-distributed-session-mongodb
+#      username: test01
+#      password: 123456
       # 上述属性，也可以只配置 uri
+      uri: mongodb://test01:123456@192.168.177.1:27017/lab-26-distributed-session-mongodb
+      authentication-database: lab-26-distributed-session-mongodb
 
 logging:
   level:
@@ -16,3 +18,6 @@ logging:
         data:
           mongodb:
             core: DEBUG # 打印 mongodb 操作的具体语句。生产环境下，不建议开启。
+
+server:
+  port: 8081

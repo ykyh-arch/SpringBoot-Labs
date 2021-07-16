@@ -38,6 +38,7 @@ public class SessionConfiguration {
         return RedisSerializer.json();
     }
 
+    //在 Spring Session 中，我们可以通过自定义 HttpSessionIdResolver Bean ，设置 sessionid 请求和响应时所在的地方。
 //    @Bean
 //    public CookieHttpSessionIdResolver sessionIdResolver() {
 //        // 创建 CookieHttpSessionIdResolver 对象
@@ -46,8 +47,10 @@ public class SessionConfiguration {
 //        // 创建 DefaultCookieSerializer 对象
 //        DefaultCookieSerializer cookieSerializer = new DefaultCookieSerializer();
 //        sessionIdResolver.setCookieSerializer(cookieSerializer); // 设置到 sessionIdResolver 中
+//        //返回给cookie的JSESSIONID 是base64加密后的SESSIONID 信息
 //        cookieSerializer.setCookieName("JSESSIONID");
-//
+//        cookieSerializer.setCookieMaxAge(10000);// 时长
+////        cookieSerializer.setDomainName("");// 域名设置
 //        return sessionIdResolver;
 //    }
 

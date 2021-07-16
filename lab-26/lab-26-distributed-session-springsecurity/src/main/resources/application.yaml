@@ -18,3 +18,6 @@ spring:
     user: # 配置内存中，可登陆的用户名和密码
       name: yudaoyuanma
       password: nicai
+
+server:
+  port: 8081
