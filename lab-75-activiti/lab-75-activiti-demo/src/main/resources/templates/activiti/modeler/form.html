@@ -1,0 +1,91 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="zn" th:remove="tag">
+
+<div class="page-header">
+    <h1>模型添加</h1>
+</div>
+
+<div class="row" style="margin-top: 5px;">
+    <div class="col-xs-12">
+        <form id="dataForm" name="dataForm" class="form-horizontal" role="form" method="post">
+
+            <div class="form-group">
+                <label class="control-label col-sm-2 no-padding-right" for="name"><span class="text-danger">*</span>模型名称</label>
+                <div class="col-sm-8">
+                    <div class="clearfix">
+                        <input class="form-control" name="name" id="name" type="text" placeholder="模型名称..." />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2 no-padding-right" for="key"><span class="text-danger">*</span>模型标识</label>
+                <div class="col-sm-8">
+                    <div class="clearfix">
+                        <input class="form-control" name="key" id="key" type="text" placeholder="模型标识..." />
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2 no-padding-right" for="category"><span class="text-danger">*</span>模型分类</label>
+                <div class="col-sm-8">
+                    <div class="clearfix">
+                        <input class="form-control" name="category" id="category" type="text" placeholder="模型分类..." />
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2 no-padding-right" for="description">描述</label>
+                <div class="col-sm-8">
+                    <div class="clearfix">
+                        <textarea class="form-control" id="description" name="description" placeholder="描述..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2 no-padding-right" for="version">版本</label>
+                <div class="col-sm-8">
+                    <div class="clearfix">
+                        <input class="form-control" name="version" id="version" type="text" placeholder="版本..." />
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div class="center">
+    <button id="btnSave" type="button" class="btn btn-info btn-sm" onclick="submit()">
+        <i class="fa fa-user-plus"></i>&nbsp;添加
+    </button>
+
+    <button id="btnReturn" type="button" class="btn btn-sm" onclick="loadPage(this, '/activiti/modeler/listUI')">
+        <i class="fa fa-undo"></i>&nbsp;返回
+    </button>
+</div>
+
+<script type="text/javascript" th:inline="javascript">
+
+    //提交数据
+    function submit() {
+        $.ajax({
+            type: "POST",
+            url: "/activiti/modeler/save",
+            data: $("#dataForm").serialize(),
+            dataType: "JSON",
+            success: function (data) {
+                alert(data);
+                loadPage(this, '/activiti/modeler/listUI');
+            }
+
+        });
+    }
+
+</script>
+
+</html>

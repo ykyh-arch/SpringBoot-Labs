@@ -1,0 +1,6 @@
+service # 业务逻辑层
+dao # 数据库访问层
+dataobject # DO 数据库实体对象
+cacheobject # 缓存对象
+DTO #数据库操作对象
+VO #视图解析对象

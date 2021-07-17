@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zn">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>工作流引擎示例</title>
+
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" th:href="@{/static/ace/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/static/ace/font-awesome/4.5.0/css/font-awesome.min.css}" />
+
+    <!-- text fonts -->
+    <link rel="stylesheet" th:href="@{/static/ace/css/fonts.googleapis.com.css}" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" th:href="@{/static/ace/css/ace.min.css}" class="ace-main-stylesheet" id="main-ace-style" />
+
+    <link rel="stylesheet" th:href="@{/static/ace/css/ace-skins.min.css}" />
+    <link rel="stylesheet" th:href="@{/static/ace/css/ace-rtl.min.css}" />
+
+    <script th:src="@{/static/ace/js/ace-extra.min.js}"></script>
+</head>
+
+<body class="no-skin">
+<div id="navbar" class="navbar navbar-default          ace-save-state">
+    <div class="navbar-container ace-save-state" id="navbar-container">
+        <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+            <span class="sr-only">Toggle sidebar</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
+        <div class="navbar-header pull-left">
+            <a href="index.html" class="navbar-brand">
+                <small>
+                    <i class="fa fa-leaf"></i>工作流引擎示例
+                </small>
+            </a>
+        </div>
+
+    </div><!-- /.navbar-container -->
+</div>
+
+<div class="main-container ace-save-state" id="main-container">
+    <script type="text/javascript">
+        try{ace.settings.loadState('main-container')}catch(e){}
+    </script>
+
+    <div id="sidebar" class="sidebar responsive ace-save-state">
+        <script type="text/javascript">
+            try{ace.settings.loadState('sidebar')}catch(e){}
+        </script>
+
+        <ul class="nav nav-list">
+
+            <li class="active open">
+                <a href="javascript:;" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-list"></i>
+                    <span class="menu-text"> 工作流 </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li>
+                        <a href="javascript:" onclick="loadPage(this, '/activiti/modeler/listUI')">
+                            <i class="menu-icon fa fa-caret-right"></i>模型管理
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li>
+                        <a href="javascript:" onclick="loadPage(this, '/activiti/process/listUI')">
+                            <i class="menu-icon fa fa-caret-right"></i>流程管理
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
+
+        </ul><!-- /.nav-list -->
+
+        <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+            <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+        </div>
+
+    </div>
+
+    <div class="main-content">
+        <div class="main-content-inner">
+
+            <div class="page-content"></div><!-- /.page-content -->
+
+        </div>
+    </div><!-- /.main-content -->
+
+    <div class="footer">
+        <div class="footer-inner">
+            <div class="footer-content">
+						<span class="bigger-120">
+							<span class="blue bolder">Ace</span>
+							Application &copy; 2013-2014
+						</span>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+    </a>
+</div><!-- /.main-container -->
+
+
+<!-- basic scripts -->
+<script th:src="@{/static/ace/js/jquery-2.1.4.min.js}"></script>
+<script th:src="@{/static/ace/js/bootstrap.min.js}"></script>
+<script th:src="@{/static/ace/js/ace-elements.min.js}"></script>
+<script th:src="@{/static/ace/js/ace.min.js}"></script>
+<script type="text/javascript" th:inline="javascript">
+
+    //点击菜单加载右侧内容方法
+    function loadPage(obj, url) {
+        //页面效果
+        $(".nav-list .active").removeClass("active");
+        $(obj).parent().addClass("active");
+        //加载右侧内容
+        $(".page-content").load(url);
+    }
+
+</script>
+<!-- inline scripts related to this page -->
+</body>
+</html>

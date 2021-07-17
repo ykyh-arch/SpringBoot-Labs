@@ -1,0 +1,26 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/lab-75-activiti-demo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&nullCatalogMeansCurrent=true
+    username: root
+    password: 123456
+
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
+  activiti:
+    # 自动检查并更新数据库表(第一次启动设置为true，其他时候设置为false)
+    database-schema-update: false
+    # 输出日志级别
+    history-level: full
+    # 关闭自动部署，自动部署验证设置:true-开启（默认）、false-关闭
+    check-process-definitions: false

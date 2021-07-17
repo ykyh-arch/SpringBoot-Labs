@@ -1,0 +1,53 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="zn" th:remove="tag">
+
+<div class="page-header">
+    <h1>流程管理</h1>
+</div>
+
+<div class="row" style="margin-top: 5px;">
+    <div class="col-xs-12">
+
+        <table id="simple-table" class="table  table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>流程名称</th>
+                    <th>流程定义</th>
+                    <th>流程bpmn文件名称</th>
+                    <th>流程bpmn图片名称</th>
+                    <th>版本</th>
+                    <th>状态</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="process:${processList}">
+                    <td class="center">
+                        <label class="pos-rel">
+                            <input type="checkbox" class="ace" /><span class="lbl"></span>
+                        </label>
+                    </td>
+                    <td th:text="${process.name}"></td>
+                    <td th:text="${process.key}"></td>
+                    <td th:text="${process.resourceName}"></td>
+                    <td th:text="${process.diagramResourceName}"></td>
+                    <td th:text="${process.version}"></td>
+                    <td th:text="${process.suspensionState}"></td>
+                </tr>
+
+                <tr th:if="${#lists.isEmpty(processList)}">
+                    <td colspan="8">暂无任何数据!</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+
+<script type="text/javascript" th:inline="javascript">
+
+</script>
+
+</html>

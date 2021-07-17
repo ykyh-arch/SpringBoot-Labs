@@ -1,0 +1,106 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="zn" th:remove="tag">
+
+<div class="page-header">
+    <h1>模型管理</h1>
+</div>
+
+<div class="row" style="margin-top: 5px;">
+    <div class="col-xs-12">
+
+        <div style="margin-bottom: 10px">
+            <button id="btnSave" type="button" class="btn btn-info btn-sm" onclick="loadPage(this, '/activiti/modeler/saveUI');">
+                <i class="fa fa-user-plus"></i>&nbsp;添加
+            </button>
+        </div>
+
+        <table id="simple-table" class="table  table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>模型名称</th>
+                    <th>模型标识</th>
+                    <th>分类</th>
+                    <th>创建时间</th>
+                    <th>更新时间</th>
+                    <th>版本</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="model:${modelList}">
+                    <td class="center">
+                        <label class="pos-rel">
+                            <input type="checkbox" class="ace" /><span class="lbl"></span>
+                        </label>
+                    </td>
+                    <td th:text="${model.name}"></td>
+                    <td th:text="${model.key}"></td>
+                    <td th:text="${model.category}"></td>
+                    <td th:text="${#dates.format(model.createTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <td th:text="${#dates.format(model.lastUpdateTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <td th:text="${model.version}"></td>
+                    <td>
+                        <button type="button" class="btn btn-purple btn-minier" th:onclick="designModel([[${model.id}]])">设计模型</button>
+                        <button type="button" class="btn btn-success btn-minier" th:onclick="deployModel([[${model.id}]])">部署</button>
+                        <button type="button" class="btn btn-danger btn-minier" th:onclick="delModel([[${model.id}]])">删除</button>
+                    </td>
+                </tr>
+
+                <tr th:if="${#lists.isEmpty(modelList)}">
+                    <td colspan="8">暂无任何数据!</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+
+<script type="text/javascript" th:inline="javascript">
+
+    //设计模型
+    function designModel(id) {
+        window.open("/static/activiti/modeler.html?modelId=" + id);
+        //loadPage(this, '/activiti/modeler/designUI?id=' + id);
+    }
+
+
+    //部署
+    function deployModel(id) {
+        $.ajax({
+            type: "POST",
+            url: "/activiti/modeler/deploy",
+            data: {
+                id: id
+            },
+            dataType: "JSON",
+            success: function (data) {
+                alert(data);
+            }
+
+        });
+    }
+
+    //删除
+    function delModel(id) {
+        $.ajax({
+            type: "POST",
+            url: "/activiti/modeler/delete",
+            data: {
+                id: id
+            },
+            dataType: "JSON",
+            success: function (data) {
+                alert(data);
+                loadPage(this, '/activiti/modeler/listUI');
+            }
+
+        });
+    }
+
+
+</script>
+
+</html>
