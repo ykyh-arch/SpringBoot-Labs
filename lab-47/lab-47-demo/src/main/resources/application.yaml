@@ -1,3 +1,13 @@
-yunai:
-  server:
-    port: 8888 # 自定义 HttpServer 端口
+#yunai:
+#  server:
+#    port: 8888 # 自定义 HttpServer 端口
+# 接口访问地址：http://localhost:8081/doc.html
+swagger:
+  enable: true
+  title: 管理后台接口
+  description: 管理后台接口服务
+  version: 版本V.10
+  basePackage: cn.iocoder.springboot.lab47.demo.controller
+
+server:
+  port: 8081

@@ -114,7 +114,6 @@
         <module>lab-71-http-debug</module>
         <module>lab-72-docker</module>
         <module>lab-73-aop</module>
-        <module>lab-73-aop-logging-demo</module>
         <module>lab-74-batch</module>
         <module>lab-75-activiti</module>
     </modules>

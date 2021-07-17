@@ -14,6 +14,7 @@
     <modules>
         <module>yunai-server-spring-boot-starter</module>
         <module>lab-47-demo</module>
+        <module>jaquez-swagger-spring-boot-starter</module>
     </modules>
 
 
