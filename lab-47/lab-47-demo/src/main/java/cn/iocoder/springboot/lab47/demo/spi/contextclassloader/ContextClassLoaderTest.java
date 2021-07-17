@@ -1,8 +1,7 @@
-package cn.iocoder.springboot.lab47.demo.spi.java.contextclassloader;
+package cn.iocoder.springboot.lab47.demo.spi.contextclassloader;
 
 import org.springframework.core.io.UrlResource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
-import org.springframework.core.io.support.SpringFactoriesLoader;
 import org.springframework.util.StringUtils;
 
 import java.io.IOException;
@@ -13,6 +12,15 @@ import java.util.*;
  * 参考：https://www.iocoder.cn/Fight/SPI-mechanism-in-Spring-Boot/?self
  * 线程上下文类加载器，通常我们可以通过Thread.currentThread().getClassLoader()和Thread.currentThread().getContextClassLoader()获取线程上下文类加载器。
  * 使用类加载器加载资源文件，比如jar包下资源
+ * 常见的类加载器获取方式：
+ * 一、Thread.currentThread().getClassLoader()
+ * 二、Thread.currentThread().getContextClassLoader()
+ * 三、this.getClass().getClassLoader()
+ * 四、ServiceLoader.load(Class clazz) JDK加载固定类路径下文件的一个加载器
+ * 获取资源
+ * 一、通过类加载器#getResources(String name)
+ * 二、通过类加载器#getSystemResources(String name)
+ * 三、通过类加载器#getResourceAsStream(String name)
  * @author jaquez
  * @date 2021/07/17 17:33
  **/

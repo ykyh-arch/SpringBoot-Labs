@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.web.embedded.EmbeddedWebServerFact
 
 /**
  * 更多自定义的starter可以参考开源项目onemall：https://github.com/YunaiV/onemall/tree/master/common
+ * 拓展 spring 知识清单：https://www.iocoder.cn/Fight/Give-you-a-list-of-Spring-Boot-knowledge/?self
  * @author Jaquez
  * @date 2021/07/17 14:17
  */
