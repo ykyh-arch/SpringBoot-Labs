@@ -3,7 +3,8 @@ package cn.iocoder.springboot.lab54.eventdemo.event;
 import org.springframework.context.ApplicationEvent;
 
 /**
- * 用户注册事件
+ * 申明一个事件
+ * 用户注册事件，继承ApplicationEvent事件，通过它的 source 属性可以获取事件源，timestamp 属性可以获得发生时间。
  */
 public class UserRegisterEvent extends ApplicationEvent {
 

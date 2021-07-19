@@ -7,6 +7,11 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+/**
+ * 邮箱服务，实现ApplicationListener，进行指定类型的事件的监听。
+ * @author Jaquez
+ * @date 2021/07/19 10:33
+ */
 @Service
 public class EmailService implements ApplicationListener<UserRegisterEvent> {
 

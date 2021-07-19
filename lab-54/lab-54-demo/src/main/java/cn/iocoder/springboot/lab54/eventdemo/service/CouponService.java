@@ -11,6 +11,7 @@ public class CouponService {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
+    // 设置监听的事件为 UserRegisterEvent。这是另一种使用方式！
     @EventListener
     public void addCoupon(UserRegisterEvent event) {
         logger.info("[addCoupon][给用户({}) 发放优惠劵]", event.getUsername());

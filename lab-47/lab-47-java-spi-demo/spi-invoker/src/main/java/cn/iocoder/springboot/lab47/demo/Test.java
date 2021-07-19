@@ -18,5 +18,5 @@ public class Test {
             printer.print();
         }
     }
-//    com.mysql.jdbc.Driver
+//    com.mysql.jdbc.Driver 采用的就是java spi 机制
 }
