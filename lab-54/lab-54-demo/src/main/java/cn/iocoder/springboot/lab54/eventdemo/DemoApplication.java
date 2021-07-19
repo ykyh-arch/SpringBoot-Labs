@@ -56,7 +56,7 @@ public class DemoApplication implements ApplicationListener<ApplicationEvent>, S
         } else if (event instanceof ApplicationFailedEvent) {
             logger.info("[ApplicationFailedEvent][({}) 启动失败]", ((ApplicationReadyEvent) event).getSpringApplication());
         } else if (event instanceof ContextClosedEvent) {
-            logger.info("[ContextClosedEvent][({}) 停止启动]", ((ApplicationReadyEvent) event).getSpringApplication());
+            logger.info("[ContextClosedEvent][({}) 关闭服务]", ((ApplicationReadyEvent) event).getSpringApplication());
         } else if (event instanceof ContextStoppedEvent) {
             logger.info("[ContextClosedEvent][({}) 停止服务完成]", ((ApplicationReadyEvent) event).getSpringApplication());
         }
