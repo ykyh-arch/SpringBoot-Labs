@@ -3,6 +3,10 @@ package cn.iocoder.springboot.lab29.asynctask;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * 参考：https://www.cnblogs.com/robothy/p/12101491.html
+ * https://blog.csdn.net/m0_37542889/article/details/92640903
+ */
 public class Demo {
 
     public static void main(String[] args) {
@@ -18,6 +22,7 @@ public class Demo {
             }
 
         });
+
     }
 
 }

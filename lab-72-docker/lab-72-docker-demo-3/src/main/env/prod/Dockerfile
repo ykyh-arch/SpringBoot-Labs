@@ -3,14 +3,13 @@ FROM frolvlad/alpine-oraclejdk8:slim
 #作者
 MAINTAINER Jaquez@email.com
 #根目录
-RUN mkdir -p /soft/work/application/
+RUN mkdir -p /soft/work/application/prod
 #工作目录
-WORKDIR /soft/work/application/
+WORKDIR /soft/work/application/prod
 #踩坑：相对路径
 COPY ./target/lib ./lib/
 #将项目的JAR包拷贝并命名
-ARG JAR_FILE
-ADD ./target/${JAR_FILE} ./
+ADD ./target/lab-72-docker-demo-3.jar ./
 EXPOSE 8079
 ENV APP_OPTS="--spring.profiles.active=prod"
 ENV JAVA_OPTS="-Xmx1024m"

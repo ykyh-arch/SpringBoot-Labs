@@ -58,7 +58,7 @@ if [ "$IMG_SERVER" != "" ] && [ "$IMG_NAME" != "" ] && [ "$IMG_VERSION" != "" ] 
     docker tag $IMG_NAME:$IMG_VERSION $REGISTRY_URL/$IMG_NAME:$IMG_VERSION
 
     # 推镜像到私服里面，私服安装参考：https://www.cnblogs.com/cgy-home/p/11239103.html，https://blog.csdn.net/weijx_/article/details/111289843
-    # docker push $REGISTRY_URL/$IMG_NAME:$IMG_VERSION
+    docker push $REGISTRY_URL/$IMG_NAME:$IMG_VERSION
 
     # 判断是否存在文件夹
     if [ -d "$IMG_PATH" ];then
