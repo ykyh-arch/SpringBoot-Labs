@@ -2,7 +2,7 @@
 # 动态变量的[等号]不能有空格和tab键置位,否则获取不了值，
 # 而且在shell脚本代码里面不支持空格格式化，支持tab置位格式化。
 # 在终端(ssh软件端)或Jenkins客户端shell命令,参数以空格隔开。
-# 如：sh build.sh 192.168.177.1 lab-72-docker-demo-3 0.0.1 8079 dev /soft/work/application/
+# 如：sh build.sh 192.168.177.1 lab-72-docker-demo-3 0.0.1 8079 dev /work/projects/lab-72-docker-demo-3/
 IMG_SERVER="$1"
 IMG_NAME="$2"
 IMG_VERSION="$3"
