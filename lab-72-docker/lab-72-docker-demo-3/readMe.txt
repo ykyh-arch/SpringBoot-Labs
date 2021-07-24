@@ -1,0 +1,4 @@
+测试Docker
+利用Jenkins部署boot项目并在docker容器内运行
+脚本文件build.sh放在部署服务器Linux里，防止windows编辑后导致在Linux环境下编译问题
+参考：https://mp.weixin.qq.com/s/RycM5JJFn1_rjoiEtZ6oGA

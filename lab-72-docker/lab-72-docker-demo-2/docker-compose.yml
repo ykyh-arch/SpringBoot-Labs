@@ -17,7 +17,7 @@ services:
     image: jaquez/lab-72-docker-demo-2:latest
     #指定设定上下文根目录，然后以该目录为准指定Dockerfile
     build:
-      context: ./
+      context: src/main/docker/192.168.177.4
       dockerfile: Dockerfile-docker-demo-2
     environment:
       TZ: Asia/Shanghai

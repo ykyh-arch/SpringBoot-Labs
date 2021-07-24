@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # 动态变量的[等号]不能有空格和tab键置位,否则获取不了值，
 # 而且在shell脚本代码里面不支持空格格式化，支持tab置位格式化。
 # 在终端(ssh软件端)或Jenkins客户端shell命令,参数以空格隔开。
-# 如：sh build.sh 192.168.177.1 lab-72-docker-demo-3 0.0.1 8079 dev /work/projects/lab-72-docker-demo-3/
+# 如：sh build_bak.sh 192.168.177.4 lab-72-docker-demo-3 0.0.1 8079 dev /work/projects/lab-72-docker-demo-3/
 IMG_SERVER="$1"
 IMG_NAME="$2"
 IMG_VERSION="$3"
@@ -17,8 +17,12 @@ echo "工程端口：$IMG_PORT"
 echo "服务环境：$RUN_EVN"
 
 #私服访问url路径和编译之后镜像文件存放到指定路径固定,不动态参数进行处理传值.
-REGISTRY_URL="192.168.177.1:5000"
-IMG_TAR_GZ_PATH="/soft/work/img_tar_gz_path/"
+REGISTRY_URL="192.168.177.4:5000"
+IMG_TAR_GZ_PATH="/work/docker/img_tar_gz_path/"
+
+if [ ! -d "$IMG_TAR_GZ_PATH" ]; then
+        mkdir -p $IMG_TAR_GZ_PATH
+    fi
 
 # 判断动态参数不为空字符串的时候才执行下面操作
 if [ "$IMG_SERVER" != "" ] && [ "$IMG_NAME" != "" ] && [ "$IMG_VERSION" != "" ] && [ "$IMG_PORT" != "" ]; then
@@ -47,11 +51,9 @@ if [ "$IMG_SERVER" != "" ] && [ "$IMG_NAME" != "" ] && [ "$IMG_VERSION" != "" ] 
 
     echo " .......进入Building & Images 操作 ....... "
 
-    #方法1、指定不同文件存放默认的Dockerfile，使用-f进行强制编译
-    #docker build -t $IMG_NAME:$IMG_VERSION -f $IMG_PATH"env/"$RUN_EVN/Dockerfile $IMG_PATH
 
-    #方法2、根据不同Dockerfile文件的后缀进行编译不同环境的文件
-    docker build -t $IMG_NAME:$IMG_VERSION -f $IMG_PATH"env/"Dockerfile_$RUN_EVN $IMG_PATH
+    #方法、根据不同Dockerfile文件的后缀进行编译不同环境的文件
+    docker build -t $IMG_NAME:$IMG_VERSION -f $IMG_PATH"/"Dockerfile_$RUN_EVN $IMG_PATH
 
 
     # 将镜像打一下标签，然后按照标签进行推送到私服里面，标签名就以服务名即可
@@ -71,7 +73,10 @@ if [ "$IMG_SERVER" != "" ] && [ "$IMG_NAME" != "" ] && [ "$IMG_VERSION" != "" ] 
     docker save $IMG_NAME -o $IMG_TAR_GZ_PATH/$IMG_NAME.tar.gz
 
     echo " .......进入Runing操作 ....."
-    docker run -d --network default_network --restart=always --env-file=./.env  -e spring.profiles.active=$RUN_EVN --expose=$IMG_PORT --name=$IMG_NAME  -p $IMG_PORT:$IMG_PORT $IMG_NAME:$IMG_VERSION
+    # 创建网络，docker network create --driver bridge default_network
+    # https://blog.csdn.net/hetoto/article/details/99892743
+
+    docker run -d --network default_network --restart=always  -e "spring.profiles.active=$RUN_EVN" --expose=$IMG_PORT --name=$IMG_NAME  -p $IMG_PORT:$IMG_PORT $IMG_NAME:$IMG_VERSION
 
     echo " .......Build & Run Finish Success~...."
 else

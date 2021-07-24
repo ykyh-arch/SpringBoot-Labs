@@ -6,14 +6,14 @@ MAINTAINER Jaquez@email.com
 RUN mkdir -p /soft/work/application/dev
 #工作目录
 WORKDIR /soft/work/application/dev
-#踩坑：相对路径
-COPY ./target/lib ./lib/
+#踩坑：相对路径，Dockerfile不能获取父目录
+COPY target/lib ./lib/
 #将项目的JAR包拷贝并命名
-ADD ./target/lab-72-docker-demo-3.jar ./
+ADD target/lab-72-docker-demo-3.jar ./
 EXPOSE 8079
 ENV APP_OPTS="--spring.profiles.active=dev"
 ENV JAVA_OPTS="-Xmx512m"
 #设置时区
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 #运行服务
-CMD java ${JJAVA_OPTS} $APP_OPTS -Djava.security.egd=file:/dev/./urandom -jar ${JAR_FILE}
+CMD java ${JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom -jar lab-72-docker-demo-3.jar $APP_OPTS
