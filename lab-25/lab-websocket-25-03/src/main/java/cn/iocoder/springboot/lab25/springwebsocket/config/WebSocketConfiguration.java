@@ -6,6 +6,11 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
+/**
+ * 使用 Spring WebSocket 对 Stomp 协议的支持
+ * @author Jaquez
+ * @date 2021/07/26 17:42
+ */
 @Configuration
 @EnableWebSocketMessageBroker // 开启 Spring WebSocket 对 Stomp 的支持
 public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer {

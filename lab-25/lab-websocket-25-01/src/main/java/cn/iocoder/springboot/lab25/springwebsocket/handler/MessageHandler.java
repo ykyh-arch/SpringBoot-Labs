@@ -5,7 +5,7 @@ import cn.iocoder.springboot.lab25.springwebsocket.message.Message;
 import javax.websocket.Session;
 
 /**
- * 消息处理器接口
+ * 消息处理器接口，需要传入泛型，对应具体Message
  */
 public interface MessageHandler<T extends Message> {
 

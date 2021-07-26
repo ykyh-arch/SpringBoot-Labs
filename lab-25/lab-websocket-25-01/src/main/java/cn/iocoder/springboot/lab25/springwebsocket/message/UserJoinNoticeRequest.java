@@ -5,6 +5,7 @@ package cn.iocoder.springboot.lab25.springwebsocket.message;
  */
 public class UserJoinNoticeRequest implements Message {
 
+    // 消息类型
     public static final String TYPE = "USER_JOIN_NOTICE_REQUEST";
 
     /**

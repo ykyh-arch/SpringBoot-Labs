@@ -136,9 +136,10 @@ public class WebSocketUtil {
             LOGGER.error("[sendTextMessage][session 为 null]");
             return;
         }
+        // 远程端点
         RemoteEndpoint.Basic basic = session.getBasicRemote();
         if (basic == null) {
-            LOGGER.error("[sendTextMessage][session 的  为 null]");
+            LOGGER.error("[sendTextMessage][session 的 basic 为 null]");
             return;
         }
         try {

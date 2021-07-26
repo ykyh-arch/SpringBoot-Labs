@@ -5,6 +5,7 @@ package cn.iocoder.springboot.lab25.springwebsocket.message;
  */
 public class AuthRequest implements Message {
 
+    // 消息类型
     public static final String TYPE = "AUTH_REQUEST";
 
     /**

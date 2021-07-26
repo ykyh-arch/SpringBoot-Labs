@@ -8,6 +8,11 @@ import org.springframework.stereotype.Component;
 
 import javax.websocket.Session;
 
+/**
+ * 私发消息
+ * @author Jaquez
+ * @date 2021/07/26 14:28
+ */
 @Component
 public class SendToOneHandler implements MessageHandler<SendToOneRequest> {
 

@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * WebSocket 工具类，提供客户端连接的管理等功能
+ * WebSocket 工具类，提供客户端连接的管理等功能，Spring WebSocket 会话采用的是WebSocketSession
  */
 public class WebSocketUtil {
 

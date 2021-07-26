@@ -35,7 +35,7 @@ public class DemoWebSocketHandler extends TextWebSocketHandler implements Initia
     private final Map<String, MessageHandler> HANDLERS = new HashMap<>();
 
     @Autowired
-    private ApplicationContext applicationContext;
+    private ApplicationContext applicationContext; // IOC 容器
 
     @Override // 对应 open 事件
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
@@ -89,12 +89,13 @@ public class DemoWebSocketHandler extends TextWebSocketHandler implements Initia
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        // 通过 ApplicationContext 获得所有 MessageHandler Bean
+        // 通过 ApplicationContext （Ioc容器）获得所有 MessageHandler Bean
         applicationContext.getBeansOfType(MessageHandler.class).values() // 获得所有 MessageHandler Bean
                 .forEach(messageHandler -> HANDLERS.put(messageHandler.getType(), messageHandler)); // 添加到 handlers 中
         logger.info("[afterPropertiesSet][消息处理器数量：{}]", HANDLERS.size());
     }
 
+    // 获取消息类类型
     private Class<? extends Message> getMessageClass(MessageHandler handler) {
         // 获得 Bean 对应的 Class 类名。因为有可能被 AOP 代理过。
         Class<?> targetClass = AopProxyUtils.ultimateTargetClass(handler);

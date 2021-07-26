@@ -12,11 +12,12 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 @EnableWebSocket // 开启 Spring WebSocket
 public class WebSocketConfiguration implements WebSocketConfigurer {
 
+    // 注册Bean
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(this.webSocketHandler(), "/") // 配置处理器
                 .addInterceptors(new DemoWebSocketShakeInterceptor()) // 配置拦截器
-                .setAllowedOrigins("*"); // 解决跨域问题
+                .setAllowedOrigins("*").withSockJS(); // 解决跨域问题，支持SockJ库、兼容浏览器
     }
 
     @Bean
