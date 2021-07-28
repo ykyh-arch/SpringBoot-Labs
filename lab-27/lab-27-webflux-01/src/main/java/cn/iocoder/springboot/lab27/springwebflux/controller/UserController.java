@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 用户 Controller
+ * 用户 Controller，基于注解的webFlux示例
  */
 @RestController
 @RequestMapping("/users")
@@ -24,7 +24,7 @@ public class UserController {
     private UserService userService;
 
     /**
-     * 查询用户列表
+     * 查询用户列表，Flux可以理解成list
      *
      * @return 用户列表
      */
@@ -40,7 +40,7 @@ public class UserController {
     }
 
     /**
-     * 获得指定用户编号的用户
+     * 获得指定用户编号的用户，Mono可以理解成一个对象
      *
      * @param id 用户编号
      * @return 用户
@@ -69,7 +69,8 @@ public class UserController {
 
     /**
      * 添加用户
-     *
+     * 请求Content-Type：application/json
+     * 参考：https://www.cnblogs.com/tugenhua0707/p/8975615.html
      * @param addDTO 添加用户信息 DTO
      * @return 添加成功的用户编号
      */
@@ -83,7 +84,7 @@ public class UserController {
 
     /**
      * 添加用户
-     *
+     * 请求Content-Type：application/x-www-form-urlencoded 或 multipart/form-data
      * @param addDTO 添加用户信息 DTO
      * @return 添加成功的用户编号
      */

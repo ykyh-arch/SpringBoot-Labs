@@ -8,6 +8,11 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
+/**
+ * 自定义注解参考：https://www.iocoder.cn/Fight/Spring-custom-annotations-go-from-beginner-to-expert/
+ * @author Jaquez
+ * @date 2021/07/26 17:57
+ */
 @Controller
 public class SendController {
 

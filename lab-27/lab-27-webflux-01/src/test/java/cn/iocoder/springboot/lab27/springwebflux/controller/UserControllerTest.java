@@ -7,6 +7,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.http.client.MultipartBodyBuilder;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.EntityExchangeResult;
 import org.springframework.test.web.reactive.server.WebTestClient;
@@ -18,10 +20,14 @@ import java.util.function.Consumer;
 
 /**
  * UserController 集成测试
+ * 参考：https://www.iocoder.cn/Fight/A-little-bit-about-Java-unit-testing/?self
+ * https://www.iocoder.cn/Architecture/talk-about-java-unit-test/?self
+ * 测试模型：1.数据准备 2.执行逻辑 3.输出验证。
  */
 @RunWith(SpringRunner.class)
+//@SpringBootTest(classes = Application.class,webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @SpringBootTest(classes = Application.class)
-@AutoConfigureWebTestClient
+@AutoConfigureWebTestClient // 导入WebTestClient客户端
 public class UserControllerTest {
 
     @Autowired
@@ -29,7 +35,7 @@ public class UserControllerTest {
 
     @Test
     public void testList() {
-        webClient.get().uri("/users/list")
+        webClient.get().uri("/users/list") // 请求URI
                 .exchange() // 执行请求
                 .expectStatus().isOk() // 响应状态码 200
                 .expectBody().json("[\n" +
@@ -85,6 +91,7 @@ public class UserControllerTest {
                 .expectBody().json("1"); // 响应结果。因为没有提供 content 的比较，所以只好使用 json 来比较。竟然能通过
     }
 
+    // 测试 application/x-www-form-urlencoded 或 multipart/form-data
     @Test
     public void testAdd2() { // 发送文件的测试，可以参考 https://dev.to/shavz/sending-multipart-form-data-using-spring-webtestclient-2gb7 文章
         BodyInserters.FormInserter<String> formData = // Form Data 数据，需要这么拼凑
@@ -96,6 +103,25 @@ public class UserControllerTest {
                 .exchange() // 执行请求
                 .expectStatus().isOk() // 响应状态码 200
                 .expectBody().json("1"); // 响应结果。因为没有提供 content 的比较，所以只好使用 json 来比较。竟然能通过
+        // 测试 multipart/form-data
+//        MultipartBodyBuilder bodyBuilder = new MultipartBodyBuilder();
+
+          // 上传文件到 src/test/resources 目录下，文件名为 test-image.jpg
+//        bodyBuilder.part("profileImage", ClassPathResource("test-image.jpg").file.readBytes()).header("Content-Disposition", "form-data; name=profileImage; filename=profile-image.jpg");
+//
+//        bodyBuilder.part("userDocument", ClassPathResource("test-document.pdf").file.readBytes()).header("Content-Disposition", "form-data; name=userDocument; filename=my-thesis.pdf");
+//
+//        bodyBuilder.part("username", "shiveenpandita", MediaType.TEXT_PLAIN).header("Content-Disposition", "form-data; name=username").header("Content-type", "text/plain");
+//
+//        bodyBuilder.part("email", "shiveenpandita@gmail.com", MediaType.TEXT_PLAIN).header("Content-Disposition", "form-data; name=email").header("Content-type", "text/plain");
+//
+//        webClient.post()
+//                .uri("/v1/test-api")
+//                .contentType(MediaType.MULTIPART_FORM_DATA)
+//                .body(BodyInserters.fromMultipartData(bodyBuilder.build()))
+//                .exchange()
+//                .expectStatus().isOk();
+
     }
 
 

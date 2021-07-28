@@ -12,7 +12,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 /**
- * UserController 单元测试
+ * UserController 单元测试，注意与springMvc 中的Mockmvc 集成测试比较
+ * controller - mock
+ * service - mock
+ * dao - 可以mock，一般是使用H2 内存数据库
  *
  * 参考 https://howtodoinjava.com/spring-webflux/webfluxtest-with-webtestclient/ 文章
  */
@@ -24,7 +27,7 @@ public class UserControllerTest2 {
     private WebTestClient webClient;
 
     @MockBean
-    private UserService userService;
+    private UserService userService; // Mockito生成的代理对象
 
     @Test
     public void testGet2() throws Exception {
@@ -35,7 +38,7 @@ public class UserControllerTest2 {
         System.out.println("after mock:" + userService.get(1));
 
         // 查询用户列表
-        webClient.get().uri("/users/v2/get?id=1")
+        webClient.get().uri("/users/v2/get?id=1") // 地址
                 .exchange() // 执行请求
                 .expectStatus().isOk() // 响应状态码 200
                 .expectBody().json("{\n" +

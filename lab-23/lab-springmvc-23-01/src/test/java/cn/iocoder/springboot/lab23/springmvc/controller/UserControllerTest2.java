@@ -27,7 +27,7 @@ public class UserControllerTest2 {
     private MockMvc mvc;
 
     @MockBean
-    private UserService userService;
+    private UserService userService; // 代理对象
 
     @Test
     public void testGet2() throws Exception {

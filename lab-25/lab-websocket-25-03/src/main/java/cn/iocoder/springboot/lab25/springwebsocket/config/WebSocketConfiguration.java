@@ -15,6 +15,7 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 @EnableWebSocketMessageBroker // 开启 Spring WebSocket 对 Stomp 的支持
 public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer {
 
+    // 配置 Stomp 消息代理
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         registry.enableSimpleBroker("/topic");
@@ -23,12 +24,12 @@ public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer 
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-//        registry.addEndpoint("/send_to_all")
-//                .setAllowedOrigins("*")
-//                .withSockJS();
-        registry.addEndpoint("/")
+        registry.addEndpoint("/send_to_all")
                 .setAllowedOrigins("*")
                 .withSockJS();
+//        registry.addEndpoint("/")
+//                .setAllowedOrigins("*")
+//                .withSockJS();
 
 //        RequestUpgradeStrategy upgradeStrategy = new TomcatRequestUpgradeStrategy();
 //        registry.addEndpoint("/")
