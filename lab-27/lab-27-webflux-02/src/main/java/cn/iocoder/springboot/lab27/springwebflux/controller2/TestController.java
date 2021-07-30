@@ -1,6 +1,7 @@
 package cn.iocoder.springboot.lab27.springwebflux.controller2;
 
 import cn.iocoder.springboot.lab27.springwebflux.vo.UserVO;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,7 +10,8 @@ import reactor.core.publisher.Mono;
 import java.util.UUID;
 
 /**
- * 测试 Controller
+ * 测试 Controller，测试跨域请求
+ * 在绝大数场合下，在 Controller 上，添加 @CrossOrigin(allowCredentials = "true") 即可。
  */
 @RestController
 @RequestMapping("/test")

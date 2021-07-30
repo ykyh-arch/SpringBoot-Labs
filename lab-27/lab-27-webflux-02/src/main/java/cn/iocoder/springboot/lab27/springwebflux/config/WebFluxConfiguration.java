@@ -9,6 +9,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 import org.springframework.web.reactive.accept.RequestedContentTypeResolver;
+import org.springframework.web.reactive.config.CorsRegistry;
 import org.springframework.web.reactive.config.WebFluxConfigurer;
 
 import java.util.Collections;
@@ -16,12 +17,14 @@ import java.util.Collections;
 @Configuration
 public class WebFluxConfiguration implements WebFluxConfigurer {
 
+    // 全局响应类
     @Bean
     public GlobalResponseBodyHandler responseWrapper(ServerCodecConfigurer serverCodecConfigurer,
                                                      RequestedContentTypeResolver requestedContentTypeResolver) {
         return new GlobalResponseBodyHandler(serverCodecConfigurer.getWriters(), requestedContentTypeResolver);
     }
 
+      // 注册表配置跨域
 //    @Override
 //    public void addCorsMappings(CorsRegistry registry) {
 //        // 添加全局的 CORS 配置
@@ -30,10 +33,11 @@ public class WebFluxConfiguration implements WebFluxConfigurer {
 //                .allowCredentials(true) // 允许发送 Cookie
 //                .allowedMethods("*") // 允许所有请求 Method
 //                .allowedHeaders("*") // 允许所有请求 Header
-////                .exposedHeaders("*") // 允许所有响应 Header
-//                .maxAge(1800L); // 有效期 1800 秒，2 小时
+//                .exposedHeaders("*") // 允许所有响应 Header
+//                .maxAge(1800L); // 有效期 1800 秒，2 分钟
 //    }
 
+    // 推荐的使用方式
     @Bean
     @Order(0) // 设置 order 排序。这个顺序很重要哦，为避免麻烦请设置在最前
     public CorsWebFilter corsFilter() {
@@ -46,7 +50,7 @@ public class WebFluxConfiguration implements WebFluxConfigurer {
         config.addAllowedMethod("*"); // 允许所有请求 Method
         config.setAllowedHeaders(Collections.singletonList("*")); // 允许所有请求 Header
         // config.setExposedHeaders(Collections.singletonList("*")); // 允许所有响应 Header
-        config.setMaxAge(1800L); // 有效期 1800 秒，2 小时
+        config.setMaxAge(1800L); // 有效期 1800 秒，2 分钟
         source.registerCorsConfiguration("/**", config);
         // 创建 CorsWebFilter 对象
         return new CorsWebFilter(source); // 创建 CorsFilter 过滤器
