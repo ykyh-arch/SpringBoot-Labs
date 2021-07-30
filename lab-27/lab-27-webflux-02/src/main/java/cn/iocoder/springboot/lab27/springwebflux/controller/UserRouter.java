@@ -69,9 +69,11 @@ public class UserRouter {
         return route(GET("/users2/demo"), request -> ok().bodyValue("demo"));
     }
 
+    // 路由过滤功能
     @Bean
     public RouterFunction<ServerResponse> demo2RouterFunction() {
         return route(GET("/users2/demo2"), request -> ok().bodyValue("demo"))
+                // 处理过滤
                 .filter(new HandlerFilterFunction<ServerResponse, ServerResponse>() {
 
                     @Override

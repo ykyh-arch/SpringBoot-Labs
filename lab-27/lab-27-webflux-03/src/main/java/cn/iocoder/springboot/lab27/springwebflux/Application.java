@@ -17,12 +17,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collections;
 
+/**
+ * 测试 WebFlux 整合Servlet、Filter、Lister 组件，经测试无效！
+ * @author Jaquez
+ * @date 2021/07/30 15:59
+ */
 @SpringBootApplication
-@ServletComponentScan
+@ServletComponentScan // 开启Servlet组件扫描
 public class Application {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
+    // 注册Servlet
     @Bean
     public ServletRegistrationBean testServlet01() {
         ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean<>(new HttpServlet() {
@@ -37,6 +43,7 @@ public class Application {
         return servletRegistrationBean;
     }
 
+    // 注册Filter
     @Bean
     public FilterRegistrationBean testFilter01() {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean<>(new Filter() {
@@ -52,15 +59,18 @@ public class Application {
         return filterRegistrationBean;
     }
 
+    // 注册Listener
     @Bean
     public ServletListenerRegistrationBean<?> testListener01() {
         return new ServletListenerRegistrationBean<>(new ServletContextListener() {
 
+            // 环境初始化
             @Override
             public void contextInitialized(ServletContextEvent sce) {
                 logger.info("[contextInitialized]");
             }
 
+            // 环境销毁
             @Override
             public void contextDestroyed(ServletContextEvent sce) {
 

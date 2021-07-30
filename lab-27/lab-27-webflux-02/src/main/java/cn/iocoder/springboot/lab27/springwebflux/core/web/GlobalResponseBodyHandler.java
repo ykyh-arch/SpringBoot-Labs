@@ -16,6 +16,11 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 import java.util.function.Function;
 
+/**
+ * 全局响应处理器，对比spring mvc 实现方式
+ * @author Jaquez
+ * @date 2021/07/29 09:36
+ */
 public class GlobalResponseBodyHandler extends ResponseBodyResultHandler {
 
     private static Logger LOGGER = LoggerFactory.getLogger(GlobalResponseBodyHandler.class);
@@ -28,9 +33,10 @@ public class GlobalResponseBodyHandler extends ResponseBodyResultHandler {
         try {
             // 获得 METHOD_PARAMETER_MONO_COMMON_RESULT 。其中 -1 表示 `#methodForParams()` 方法的返回值
             METHOD_PARAMETER_MONO_COMMON_RESULT = new MethodParameter(
+                    // 获取本类声明的所有方法
                     GlobalResponseBodyHandler.class.getDeclaredMethod("methodForParams"), -1);
         } catch (NoSuchMethodException e) {
-            LOGGER.error("[static][获取 METHOD_PARAMETER_MONO_COMMON_RESULT 时，找不都方法");
+            LOGGER.error("[static][获取 METHOD_PARAMETER_MONO_COMMON_RESULT 时，找不到方法");
             throw new RuntimeException(e);
         }
     }
@@ -56,6 +62,7 @@ public class GlobalResponseBodyHandler extends ResponseBodyResultHandler {
         // 处理返回结果为 Flux 的情况
         } else if (returnValue instanceof Flux) {
             body = ((Flux<Object>) result.getReturnValue())
+                    // 返回值类型Mono<List<T>>
                     .collectList()
                     .map((Function<Object, Object>) GlobalResponseBodyHandler::wrapCommonResult)
                     .defaultIfEmpty(COMMON_RESULT_SUCCESS);
@@ -63,9 +70,11 @@ public class GlobalResponseBodyHandler extends ResponseBodyResultHandler {
         } else {
             body = wrapCommonResult(returnValue);
         }
+        // 写给前端
         return writeBody(body, METHOD_PARAMETER_MONO_COMMON_RESULT, exchange);
     }
 
+    //
     private static Mono<CommonResult> methodForParams() {
         return null;
     }

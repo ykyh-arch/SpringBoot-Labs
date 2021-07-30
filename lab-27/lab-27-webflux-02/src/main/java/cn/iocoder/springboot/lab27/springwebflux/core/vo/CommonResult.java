@@ -8,6 +8,21 @@ import java.io.Serializable;
 
 /**
  * 通用返回结果
+ * 参考示例
+ * // 成功响应
+ * {
+ *     code: 0,
+ *     data: {
+ *         id: 1,
+ *         username: "yudaoyuanma"
+ *     }
+ * }
+ *
+ * // 失败响应
+ * {
+ *     code: 233666,
+ *     message: "徐妈太丑了"
+ * }
  *
  * @param <T> 结果泛型
  */

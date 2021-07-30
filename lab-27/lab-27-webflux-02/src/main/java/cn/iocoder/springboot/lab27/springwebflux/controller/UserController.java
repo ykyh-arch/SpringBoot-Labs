@@ -34,6 +34,7 @@ public class UserController {
         result.add(new UserVO().setId(3).setUsername("chifanshuijiao"));
         // 返回列表
         return Flux.fromIterable(result);
+        // data:{"code":2001001000,"message":"服务端发生异常","data":null}
     }
 
     /**
@@ -42,13 +43,14 @@ public class UserController {
      * @param id 用户编号
      * @return 用户
      */
-    @GetMapping("/get")
-//    @PostMapping("/get")
+    @GetMapping("/get1")
+//    @PostMapping("/get1")
     public Mono<UserVO> get(@RequestParam("id") Integer id) {
         // 查询用户
         UserVO user = new UserVO().setId(id).setUsername("username:" + id);
         // 返回
         return Mono.just(user);
+        // data:{"code":2001001000,"message":"服务端发生异常","data":null}
     }
 
     /**
@@ -63,6 +65,7 @@ public class UserController {
         UserVO user = new UserVO().setId(id).setUsername("username:" + id);
         // 返回
         return Mono.just(CommonResult.success(user));
+        // data:{"code":2001001000,"message":"服务端发生异常","data":null}
     }
 
     /**
@@ -77,6 +80,7 @@ public class UserController {
         UserVO user = new UserVO().setId(id).setUsername("username:" + id);
         // 返回
         return user;
+        // 正常
     }
 
     /**
@@ -91,6 +95,7 @@ public class UserController {
         UserVO user = new UserVO().setId(id).setUsername("username:" + id);
         // 返回
         return CommonResult.success(user);
+        // 正常
     }
 
     /**
