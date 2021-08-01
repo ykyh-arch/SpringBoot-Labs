@@ -36,9 +36,7 @@ public class UserDaoTest {
         userDao.insert(user);
     }
 
-    // 这里要注意，如果使用 save 方法来更新的话，必须是全量字段，否则其它字段会被覆盖。
-    // 所以，这里仅仅是作为一个示例。
-    @Test // 更新一条记录
+    @Test // 更新一条记录，注意与xxxRepository.save()区别，save（）是全量更新
     public void testUpdate() {
         // 创建 UserDO 对象
         UserDO updateUser = new UserDO();

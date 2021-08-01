@@ -13,6 +13,11 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Optional;
 
+/**
+ * 测试类
+ * @author Jaquez
+ * @date 2021/07/31 21:02
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class UserRepositoryTest {
@@ -24,7 +29,7 @@ public class UserRepositoryTest {
     public void testInsert() {
         // 创建 UserDO 对象
         UserDO user = new UserDO();
-        user.setId(1); // 这里先临时写死一个 ID 编号，后面演示自增 ID 的时候，在修改这块
+        user.setId(4); // 这里先临时写死一个 ID 编号，后面演示自增 ID 的时候，在修改这块
         user.setUsername("yudaoyuanma");
         user.setPassword("buzhidao");
         user.setCreateTime(new Date());

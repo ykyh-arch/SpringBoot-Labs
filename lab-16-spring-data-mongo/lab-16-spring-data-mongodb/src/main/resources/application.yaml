@@ -2,13 +2,16 @@ spring:
   data:
     # MongoDB 配置项，对应 MongoProperties 类
     mongodb:
-      host: 127.0.0.1
-      port: 27017
-      database: yourdatabase
-      username: test01
-      password: password01
+#      host: 192.168.177.4
+#      port: 27017
+#      database: lab-16-spring-data-mongo
+#      username: test
+#      password: 123456
       # 上述属性，也可以只配置 uri
+      uri: mongodb://test:123456@192.168.177.4:27017/lab-16-spring-data-mongo
+      authentication-database: lab-16-spring-data-mongo
 
+# 日志级别
 logging:
   level:
     org:

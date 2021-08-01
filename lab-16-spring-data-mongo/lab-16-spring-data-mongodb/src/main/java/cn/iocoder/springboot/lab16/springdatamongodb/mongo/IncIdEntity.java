@@ -9,6 +9,7 @@ import org.springframework.data.annotation.Id;
  */
 public abstract class IncIdEntity<T extends Number> {
 
+    // 标记主键
     @Id
     private T id;
 

@@ -14,20 +14,26 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.List;
 
+/**
+ * 使用MongoTemplate模板操作Mongo
+ */
 @Repository
 public class UserDao {
 
     @Autowired
     private MongoTemplate mongoTemplate;
 
+    // 新增
     public void insert(UserDO entity) {
         mongoTemplate.insert(entity);
     }
 
+    // 条件更新
     public void updateById(UserDO entity) {
         // 生成 Update 条件
         final Update update = new Update();
         // 反射遍历 entity 对象，将非空字段设置到 Update 中
+        // 处理字段，字段赋值
         ReflectionUtils.doWithFields(entity.getClass(), new ReflectionUtils.FieldCallback() {
 
             @Override
@@ -59,20 +65,25 @@ public class UserDao {
         mongoTemplate.updateFirst(new Query(Criteria.where("_id").is(entity.getId())), update, UserDO.class);
     }
 
+    // 删除
     public void deleteById(Integer id) {
         mongoTemplate.remove(new Query(Criteria.where("_id").is(id)), UserDO.class);
     }
 
+    // 查询
     public UserDO findById(Integer id) {
         return mongoTemplate.findOne(new Query(Criteria.where("_id").is(id)), UserDO.class);
     }
 
+    // 查询
     public UserDO findByUsername(String username) {
         return mongoTemplate.findOne(new Query(Criteria.where("username").is(username)), UserDO.class);
     }
 
+    // 查询集合
     public List<UserDO> findAllById(List<Integer> ids) {
         return mongoTemplate.find(new Query(Criteria.where("_id").in(ids)), UserDO.class);
     }
 
+    //  findAndModify/findAndRemove/count/upsert
 }

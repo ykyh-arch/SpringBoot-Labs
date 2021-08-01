@@ -33,9 +33,10 @@ public class UserRepository02Test {
         Pageable pageable = PageRequest.of(0, 10, sort);
         // 执行分页操作
         Page<UserDO> page = userRepository.findByUsernameLike("yu", pageable);
-        // 打印
+        // 打印 总数/当前页
         System.out.println(page.getTotalElements());
         System.out.println(page.getTotalPages());
+        page.getContent().forEach(x-> System.out.println(x));
     }
 
 }

@@ -12,6 +12,13 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 
+/**
+ * MongoInsertEventListener Mongo 新增事件监听器，自定义Mongo主键ID并设置自增属性
+ * 实现方式一：创建 IncIdEntity 抽象基类，这样需要自增的实体继承它。
+ * @author Jaquez
+ * @date 2021/08/01 18:07
+ * @return
+ */
 @Component
 public class MongoInsertEventListener extends AbstractMongoEventListener<IncIdEntity> {
 
@@ -27,8 +34,13 @@ public class MongoInsertEventListener extends AbstractMongoEventListener<IncIdEn
     @Autowired
     private MongoTemplate mongoTemplate;
 
+    // MongoDB 实体对象在插入之前，会发布 BeforeConvertEvent 事件。所以，我们可以通过创建 MongoInsertEventListener 监听器，监听该事件，生成自增主键 ID 主键，设置到实体对象中。
     @Override
     public void onBeforeConvert(BeforeConvertEvent<IncIdEntity> event) {
+
+        // _id
+        System.out.println(String.format("[集合 sequence 对应类名：%s]", event.getCollectionName()));
+
         IncIdEntity entity = event.getSource();
         // 判断 id 为空
         if (entity.getId() == null) {
@@ -58,7 +70,7 @@ public class MongoInsertEventListener extends AbstractMongoEventListener<IncIdEn
         FindAndModifyOptions options = new FindAndModifyOptions();
         options.upsert(true); // 如果不存在时，则进行插入
         options.returnNew(true); // 返回新值
-        // 执行操作
+        // 执行操作，从集合中拿到最新的value值（+1后）
         @SuppressWarnings("unchecked")
         HashMap<String, Object> result = mongoTemplate.findAndModify(query, update, options,
                 HashMap.class, SEQUENCE_COLLECTION_NAME);

@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+/**
+ * 单元测试
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class UserRepository03Test {
@@ -21,6 +24,7 @@ public class UserRepository03Test {
         System.out.println(user);
     }
 
+    // 查询符合条件的一条数据
     @Test
     public void testFindByUsernameLike01() {
         UserDO user = userRepository.findByUsernameLike01("yu");
