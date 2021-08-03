@@ -10,14 +10,19 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>lab-03-kafka-native</artifactId>
+    <artifactId>lab-03-kafka-client-demo</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
 
     <dependencies>
-        <!-- 引入 Kafka 客户端依赖 -->
+        <!--kafka客户端-->
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
-            <version>2.3.1</version>
+            <version>0.11.0.1</version>
         </dependency>
 
         <!-- 引入 log -->
