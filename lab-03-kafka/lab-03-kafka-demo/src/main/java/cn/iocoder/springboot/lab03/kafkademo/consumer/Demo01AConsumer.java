@@ -14,6 +14,7 @@ public class Demo01AConsumer {
 
     @KafkaListener(topics = Demo01Message.TOPIC,
             groupId = "demo01-A-consumer-group-" + Demo01Message.TOPIC)
+    // ConsumerRecord 获取更全面消息，但内容需要自己反序列化
     public void onMessage(ConsumerRecord<Integer, String> record) {
         logger.info("[onMessage][线程编号:{} 消息内容：{}]", Thread.currentThread().getId(), record);
     }

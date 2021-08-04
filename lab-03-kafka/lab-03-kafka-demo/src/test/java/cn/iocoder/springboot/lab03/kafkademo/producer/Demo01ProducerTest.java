@@ -23,6 +23,7 @@ public class Demo01ProducerTest {
     @Autowired
     private Demo01Producer producer;
 
+    // 测试同步
     @Test
     public void testSyncSend() throws ExecutionException, InterruptedException {
         int id = (int) (System.currentTimeMillis() / 1000);
@@ -33,6 +34,7 @@ public class Demo01ProducerTest {
         new CountDownLatch(1).await();
     }
 
+    // 测试异步
     @Test
     public void testASyncSend() throws InterruptedException {
         int id = (int) (System.currentTimeMillis() / 1000);
@@ -64,18 +66,18 @@ public class Demo01ProducerTest {
 //        new CountDownLatch(1).await();
 //    }
 
-//    @Test
-//    public void testSyncSendMore() throws ExecutionException, InterruptedException {
-//        for (int i = 0; i < 1000; i++) {
-//            int id = (int) (System.currentTimeMillis() / 1000);
-//            SendResult result = producer.syncSend(id);
-//            logger.info("[testSyncSend][发送编号：[{}] 发送结果：[{}]]", id, result);
-//            Thread.sleep(10);
-//        }
-//
-//        // 阻塞等待，保证消费
-//        new CountDownLatch(1).await();
-//    }
+    @Test
+    public void testSyncSendMore() throws ExecutionException, InterruptedException {
+        for (int i = 0; i < 1000; i++) {
+            int id = (int) (System.currentTimeMillis() / 1000);
+            SendResult result = producer.syncSend(id);
+            logger.info("[testSyncSend][发送编号：[{}] 发送结果：[{}]]", id, result);
+            Thread.sleep(10);
+        }
+
+        // 阻塞等待，保证消费
+        new CountDownLatch(1).await();
+    }
 //
 //    @Test
 //    public void block() throws InterruptedException {
