@@ -28,6 +28,7 @@ public class Demo05ProducerTest {
         new CountDownLatch(1).await();
     }
 
+    // 同步发布消息
     @Test
     public void testSyncSend() throws ExecutionException, InterruptedException {
         int id = (int) (System.currentTimeMillis() / 1000);

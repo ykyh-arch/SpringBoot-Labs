@@ -11,6 +11,7 @@ public class Demo05Consumer {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
+    // 这里使用了 Spring EL 表达式，在每个消费者分组的名字上，使用 UUID 生成其后缀。保证每个项目启动的消费者分组不同，以达到广播消费的目的。
     @KafkaListener(topics = Demo05Message.TOPIC,
             groupId = "demo05-consumer-group-" + Demo05Message.TOPIC + "-" + "#{T(java.util.UUID).randomUUID()}")
     public void onMessage(Demo05Message message) {
