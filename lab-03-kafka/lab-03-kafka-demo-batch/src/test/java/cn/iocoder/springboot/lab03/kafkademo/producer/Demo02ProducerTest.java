@@ -22,12 +22,14 @@ public class Demo02ProducerTest {
     @Autowired
     private Demo02Producer producer;
 
+    // 异步发送消息
     @Test
     public void testASyncSend() throws InterruptedException {
         logger.info("[testASyncSend][开始执行]");
 
         for (int i = 0; i < 3; i++) {
             int id = (int) (System.currentTimeMillis() / 1000);
+            // 回调执行时机依据配置项（acks）的值
             producer.asyncSend(id).addCallback(new ListenableFutureCallback<SendResult<Object, Object>>() {
 
                 @Override

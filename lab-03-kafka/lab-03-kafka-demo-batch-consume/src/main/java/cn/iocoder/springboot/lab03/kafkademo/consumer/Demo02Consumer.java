@@ -13,6 +13,7 @@ public class Demo02Consumer {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
+    // 消费消息
     @KafkaListener(topics = Demo02Message.TOPIC,
             groupId = "demo02-consumer-group-" + Demo02Message.TOPIC)
     public void onMessage(List<Demo02Message> messages) {

@@ -19,7 +19,7 @@ public class Demo04Consumer {
             groupId = "demo04-consumer-group-" + Demo04Message.TOPIC)
     public void onMessage(Demo04Message message) {
         logger.info("[onMessage][线程编号:{} 消息内容：{}]", Thread.currentThread().getId(), message);
-        // 注意，此处抛出一个 RuntimeException 异常，模拟消费失败
+        // 注意，此处抛出一个 RuntimeException 异常，模拟消费失败，检测消费重试机制
         throw new RuntimeException("我就是故意抛出一个异常");
     }
 

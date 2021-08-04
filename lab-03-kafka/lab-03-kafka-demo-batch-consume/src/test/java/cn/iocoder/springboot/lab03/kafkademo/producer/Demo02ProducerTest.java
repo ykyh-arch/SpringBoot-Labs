@@ -22,6 +22,7 @@ public class Demo02ProducerTest {
     @Autowired
     private Demo02Producer producer;
 
+    // 测试异步消息
     @Test
     public void testASyncSend() throws InterruptedException {
         logger.info("[testASyncSend][开始执行]");

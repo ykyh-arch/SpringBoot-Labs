@@ -22,6 +22,7 @@ public class Demo04ProducerTest {
     @Autowired
     private Demo04Producer producer;
 
+    // 测试同步消息
     @Test
     public void testSyncSend() throws ExecutionException, InterruptedException {
         int id = (int) (System.currentTimeMillis() / 1000);
@@ -32,6 +33,7 @@ public class Demo04ProducerTest {
         new CountDownLatch(1).await();
     }
 
+    // 连续发送100条消息
     @Test
     public void testSyncSendX() throws ExecutionException, InterruptedException {
         for (int i = 0; i < 100; i++) {

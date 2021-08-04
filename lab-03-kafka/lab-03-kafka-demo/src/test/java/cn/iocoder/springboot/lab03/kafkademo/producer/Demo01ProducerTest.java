@@ -34,7 +34,7 @@ public class Demo01ProducerTest {
         new CountDownLatch(1).await();
     }
 
-    // 测试异步
+    // 测试异步，这里保持#testSyncSend（）运行中，得到结论：集群消费模式下，相同 Consumer Group 的每个 Consumer 实例平均分摊消息。
     @Test
     public void testASyncSend() throws InterruptedException {
         int id = (int) (System.currentTimeMillis() / 1000);
@@ -55,7 +55,7 @@ public class Demo01ProducerTest {
         // 阻塞等待，保证消费
         new CountDownLatch(1).await();
     }
-//
+      // 第三种发送消息方式，忽略
 //    @Test
 //    public void testOnewaySend() throws InterruptedException {
 //        int id = (int) (System.currentTimeMillis() / 1000);
@@ -66,6 +66,7 @@ public class Demo01ProducerTest {
 //        new CountDownLatch(1).await();
 //    }
 
+    // 连续发送1000条消息，测试消费消息
     @Test
     public void testSyncSendMore() throws ExecutionException, InterruptedException {
         for (int i = 0; i < 1000; i++) {
@@ -79,10 +80,11 @@ public class Demo01ProducerTest {
         new CountDownLatch(1).await();
     }
 //
-//    @Test
-//    public void block() throws InterruptedException {
-//        // 阻塞等待，保证消费
-//        new CountDownLatch(1).await();
-//    }
+    // 阻塞等待
+    @Test
+    public void block() throws InterruptedException {
+        // 阻塞等待，保证消费
+        new CountDownLatch(1).await();
+    }
 
 }
