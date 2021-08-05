@@ -24,6 +24,7 @@ public class Demo06ProducerTest {
 
     @Test
     public void testSyncSend() throws ExecutionException, InterruptedException {
+        // 发送 10 条消息，观察并发消费情况。
         for (int i = 0; i < 10; i++) {
             int id = (int) (System.currentTimeMillis() / 1000);
             SendResult result = producer.syncSend(id);
@@ -34,6 +35,7 @@ public class Demo06ProducerTest {
         new CountDownLatch(1).await();
     }
 
+    // 测试顺序消费
     @Test
     public void testSyncSendOrderly() throws ExecutionException, InterruptedException {
         for (int i = 0; i < 10; i++) {
