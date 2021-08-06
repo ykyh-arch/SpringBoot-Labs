@@ -1,9 +1,9 @@
 spring:
   # Kafka 配置项，对应 KafkaProperties 配置类
   kafka:
-    bootstrap-servers: 127.0.0.1:9092 # 指定 Kafka Broker 地址，可以设置多个，以逗号分隔
+    bootstrap-servers: 192.168.177.4:9092 # 指定 Kafka Broker 地址，可以设置多个，以逗号分隔
     # Kafka Producer 配置项
-    producer:
+    producer: # Kafka 的事务消息需要基于幂等性来实现，所以必须保证所有节点都写入成功。
       acks: all # 0-不应答。1-leader 应答。all-所有 leader 和 follower 应答。
       retries: 3 # 发送失败时，重试发送的次数
       key-serializer: org.apache.kafka.common.serialization.StringSerializer # 消息的 key 的序列化
@@ -19,7 +19,7 @@ spring:
           json:
             trusted:
               packages: cn.iocoder.springboot.lab03.kafkademo.message
-        isolation:
+        isolation: # 隔离级别
           level: read_committed # 读取已提交的消息
     # Kafka Consumer Listener 监听器配置
     listener:

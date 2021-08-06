@@ -22,6 +22,7 @@
         <module>lab-03-kafka-demo-transaction</module>
         <module>lab-03-kafka-demo-ack</module>
         <module>lab-03-kafka-client-demo</module>
+        <module>lab-03-kafka-demo-transaction-2</module>
     </modules>
 
 </project>

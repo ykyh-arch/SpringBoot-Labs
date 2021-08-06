@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * 参考：https://www.iocoder.cn/Fight/longyb-transaction_mq/?self，
  *      https://www.jianshu.com/p/59891ede5f90
- * 事务示例
+ * 事务
  * @author Jaquez
  * @date 2021/08/05 17:28
  */

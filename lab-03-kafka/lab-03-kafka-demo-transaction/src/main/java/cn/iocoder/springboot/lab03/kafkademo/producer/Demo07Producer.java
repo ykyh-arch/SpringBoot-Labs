@@ -20,6 +20,7 @@ public class Demo07Producer {
     @Resource
     private KafkaTemplate<Object, Object> kafkaTemplate;
 
+    // 同步发送消息
     public SendResult syncSend(Integer id) throws ExecutionException, InterruptedException {
         // 创建 Demo07Message 消息
         Demo07Message message = new Demo07Message();
@@ -28,7 +29,9 @@ public class Demo07Producer {
         return kafkaTemplate.send(Demo07Message.TOPIC, message).get();
     }
 
+    // 同步发送事务
     public String syncSendInTransaction(Integer id, Runnable runner) throws ExecutionException, InterruptedException {
+        // 模板工具类
         return kafkaTemplate.executeInTransaction(new KafkaOperations.OperationsCallback<Object, Object, String>() {
 
             @Override
@@ -43,7 +46,7 @@ public class Demo07Producer {
                     throw new RuntimeException(e);
                 }
 
-                // 本地业务逻辑... biubiubiu
+                // 本地业务逻辑执行... biubiubiu
                 runner.run();
 
                 // 返回结果
