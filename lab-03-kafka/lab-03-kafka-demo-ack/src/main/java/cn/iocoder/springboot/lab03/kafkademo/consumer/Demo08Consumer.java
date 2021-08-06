@@ -17,7 +17,8 @@ public class Demo08Consumer {
     public void onMessage(Demo08Message message, Acknowledgment acknowledgment) {
         logger.info("[onMessage][线程编号:{} 消息内容：{}]", Thread.currentThread().getId(), message);
         // 提交消费进度
-        if (message.getId() % 2 == 1) {
+        if (message.getId() % 2 == 1) { // 奇数
+            // 提交当前消息的 Topic 的 Partition 的消费进度。
             acknowledgment.acknowledge();
         }
     }

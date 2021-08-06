@@ -23,6 +23,7 @@ public class Demo08ProducerTest {
     @Autowired
     private Demo08Producer producer;
 
+    // 测试
     @Test
     public void testSyncSend() throws ExecutionException, InterruptedException {
         for (int id = 1; id <= 2; id++) {
