@@ -28,6 +28,7 @@ public class SelfRandomAssignor extends AbstractPartitionAssignor {
         return res;
     }
 
+    //  partitionsPerTopic表示topic和分区关系，key是topic，value是分区数量
     @Override
     public Map<String, List<TopicPartition>> assign(Map<String, Integer> partitionsPerTopic, Map<String, Subscription> subscriptions) {
         // 得到topic和订阅该topic的消费者集合（参考RangeAssignor中的consumersPerTopic()方法）
