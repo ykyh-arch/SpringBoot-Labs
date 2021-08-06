@@ -18,6 +18,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application {
 
+    /**
+     * 发送消息分区选择策略
+     * 如果不手动指定分区选择策略类，则会使用默认的分区策略类。
+     * 如果不指定消息的key，则消息发送到的分区是随着时间不停变换的（随机的）。
+     * 如果指定了消息的key，则会根据消息的hash值和topic的分区数取模来获取分区的。
+     * 如果应用有消息顺序性的需要，则可以通过指定消息的key和自定义分区类来将符合某种规则的消息发送到同一个分区。同一个分区消息是有序的，同一个分区只有一个消费者就可以保证消息的顺序性消费。
+     */
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }

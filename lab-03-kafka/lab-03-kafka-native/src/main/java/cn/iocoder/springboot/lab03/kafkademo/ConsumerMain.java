@@ -1,9 +1,6 @@
 package cn.iocoder.springboot.lab03.kafkademo;
 
-import org.apache.kafka.clients.consumer.Consumer;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.clients.consumer.ConsumerRecords;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.clients.consumer.*;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
 import java.time.Duration;
@@ -22,6 +19,9 @@ public class ConsumerMain {
         properties.put("auto.commit.interval.ms", "1000"); // 自动提交消费进度频率
         properties.put("key.deserializer", StringDeserializer.class.getName()); // 消息的 key 的反序列化方式
         properties.put("value.deserializer", StringDeserializer.class.getName()); // 消息的 value 的反序列化方式
+        // 指定消费消息分区策略，内置策略：org.apache.kafka.clients.consumer.RoundRobinAssignor 和 org.apache.kafka.clients.consumer.RangeAssignor
+        // properties.put("partition.assignment.strategy", "org.apache.kafka.clients.consumer.RangeAssignor");
+        properties.put("partition.assignment.strategy", SelfRandomAssignor.class.getName());
 
         // 创建 KafkaProducer 对象
         // 因为我们消息的 key 和 value 都使用 String 类型，所以创建的 Producer 是 <String, String> 的泛型。

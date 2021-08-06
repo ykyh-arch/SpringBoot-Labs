@@ -38,7 +38,7 @@ public class ProducerMain {
         Producer<String, String> producer = createProducer();
 
         // 创建消息。传入的三个参数，分别是 Topic ，消息的 key ，消息的 message 。
-        ProducerRecord<String, String> message = new ProducerRecord<>("TestTopic", "key", "yudaoyuanma");
+        ProducerRecord<String, String> message = new ProducerRecord<>("TestTopic", null, "yudaoyuanma");
 
         // 同步发送消息
         Future<RecordMetadata> sendResultFuture = producer.send(message);
