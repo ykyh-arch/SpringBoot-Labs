@@ -1,12 +1,12 @@
 spring:
   # datasource 数据源配置内容
   datasource:
-    url: jdbc:mysql://47.112.193.81:3306/testb5f4?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/lab-12-mybaits?useSSL=false&useUnicode=true&characterEncoding=UTF-8
     driver-class-name: com.mysql.jdbc.Driver
-    username: testb5f4
-    password: F4df4db0ed86@11
+    username: root
+    password: 123456
 
-# mybatis-plus 配置内容
+# mybatis-plus 配置内容，更多配置参考：https://mybatis.plus/config/#mapperlocations
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true # 虽然默认为 true ，但是还是显示去指定下。

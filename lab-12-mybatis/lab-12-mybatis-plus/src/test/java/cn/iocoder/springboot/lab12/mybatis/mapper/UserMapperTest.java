@@ -23,25 +23,28 @@ public class UserMapperTest {
     public void testInsert() {
         UserDO user = new UserDO().setUsername(UUID.randomUUID().toString())
                 .setPassword("nicai").setCreateTime(new Date())
-                .setDeleted(0); // 一般情况下，是否删除，可以全局枚举下。
+                // 一般情况下，是否删除，可以全局枚举下。
+                .setDeleted(0);
         userMapper.insert(user);
     }
 
     @Test
     public void testUpdateById() {
-        UserDO updateUser = new UserDO().setId(1)
-                .setPassword("wobucai");
+        UserDO updateUser = new UserDO().setId(10)
+                .setPassword("wobucaishagua");
         userMapper.updateById(updateUser);
     }
 
     @Test
     public void testDeleteById() {
-        userMapper.deleteById(2);
+        // Mybatis 查询如果配置了逻辑删除的字段，删除的是逻辑删除
+        userMapper.deleteById(10);
     }
 
     @Test
     public void testSelectById() {
-        userMapper.selectById(1);
+        // Mybatis 查询如果配置了逻辑删除的字段，查询出来的是正常的数据
+        userMapper.selectById(10);
     }
 
     @Test
@@ -51,7 +54,7 @@ public class UserMapperTest {
 
     @Test
     public void testSelectByIds() {
-        List<UserDO> users = userMapper.selectByIds(Arrays.asList(1, 3));
+        List<UserDO> users = userMapper.selectByIds(Arrays.asList(7, 10));
         System.out.println("users：" + users.size());
     }
 

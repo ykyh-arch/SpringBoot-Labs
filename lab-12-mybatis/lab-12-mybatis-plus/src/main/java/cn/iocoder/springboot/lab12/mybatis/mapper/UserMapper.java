@@ -14,6 +14,7 @@ import java.util.List;
 @Repository
 public interface UserMapper extends BaseMapper<UserDO> {
 
+    // 条件构造器，参考：https://mybatis.plus/guide/wrapper.html#abstractwrapper
     default UserDO selectByUsername(@Param("username") String username) {
         return selectOne(new QueryWrapper<UserDO>().eq("username", username));
     }
