@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Collection;
 import java.util.List;
 
+// @Repository 注解，用于标记是数据访问 Bean 对象。在 MyBatis 的接口，实际非必须，只是为了避免在 Service 中，@Autowired 注入时无需报警。
 @Repository
 public interface UserMapper {
 
@@ -14,7 +15,8 @@ public interface UserMapper {
 
     int updateById(UserDO user);
 
-    int deleteById(@Param("id") Integer id); // 生产请使用标记删除，除非有点想不开，嘿嘿。
+    // 生产请使用标记删除，除非有点想不开，嘿嘿。
+    int deleteById(@Param("id") Integer id);
 
     UserDO selectById(@Param("id") Integer id);
 

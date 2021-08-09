@@ -23,14 +23,14 @@ public class UserMapperTest {
     @Test
     public void testInsert() {
         UserDO user = new UserDO().setUsername(UUID.randomUUID().toString())
-                .setPassword("nicai").setCreateTime(new Date());
+                .setPassword("nicaibaba").setCreateTime(new Date());
         userMapper.insert(user);
         System.out.println(user.getId());
     }
 
     @Test
     public void testUpdateById() {
-        UserDO updateUser = new UserDO().setId(1)
+        UserDO updateUser = new UserDO().setId(9)
                 .setPassword("wobucai");
         userMapper.updateById(updateUser);
     }
@@ -42,7 +42,7 @@ public class UserMapperTest {
 
     @Test
     public void testSelectById() {
-        userMapper.selectById(1);
+        userMapper.selectById(9);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class UserMapperTest {
 
     @Test
     public void testSelectByIds() {
-        List<UserDO> users = userMapper.selectByIds(Arrays.asList(1, 3));
+        List<UserDO> users = userMapper.selectByIds(Arrays.asList(7, 9));
         System.out.println("users：" + users.size());
     }
 

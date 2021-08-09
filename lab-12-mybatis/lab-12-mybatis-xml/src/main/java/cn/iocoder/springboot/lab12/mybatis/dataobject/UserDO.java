@@ -16,7 +16,7 @@ public class UserDO {
      */
     private String username;
     /**
-     * 密码（明文）
+     * 密码（明文plaintext）
      *
      * ps：生产环境下，千万不要明文噢
      */

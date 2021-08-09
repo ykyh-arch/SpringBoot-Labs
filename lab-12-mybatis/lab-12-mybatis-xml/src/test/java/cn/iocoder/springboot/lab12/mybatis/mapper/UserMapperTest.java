@@ -29,7 +29,7 @@ public class UserMapperTest {
 
     @Test
     public void testUpdateById() {
-        UserDO updateUser = new UserDO().setId(1)
+        UserDO updateUser = new UserDO().setId(7)
                 .setPassword("wobucai");
         userMapper.updateById(updateUser);
     }
@@ -41,17 +41,17 @@ public class UserMapperTest {
 
     @Test
     public void testSelectById() {
-        userMapper.selectById(1);
+        userMapper.selectById(8);
     }
 
     @Test
     public void testSelectByUsername() {
-        userMapper.selectByUsername("yunai");
+        userMapper.selectByUsername("a95111f8-e37a-4702-abcb-308bf7d64be0");
     }
 
     @Test
     public void testSelectByIds() {
-        List<UserDO> users = userMapper.selectByIds(Arrays.asList(1, 3));
+        List<UserDO> users = userMapper.selectByIds(Arrays.asList(7, 8));
         System.out.println("users：" + users.size());
     }
 
