@@ -29,7 +29,7 @@ public class UserMapperTest {
 
     @Test
     public void testUpdateById() {
-        UserDO updateUser = new UserDO().setId(1)
+        UserDO updateUser = new UserDO().setId(11)
                 .setPassword("wobucai");
         userMapper.updateByPrimaryKey(updateUser);
     }
@@ -41,7 +41,7 @@ public class UserMapperTest {
 
     @Test
     public void testSelectById() {
-        userMapper.selectByPrimaryKey(1);
+        userMapper.selectByPrimaryKey(11);
     }
 
     @Test
