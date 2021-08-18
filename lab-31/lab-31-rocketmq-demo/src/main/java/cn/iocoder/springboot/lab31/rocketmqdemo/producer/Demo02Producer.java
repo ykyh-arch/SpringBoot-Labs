@@ -12,6 +12,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * 批量发送消息
+ * @author Jaquez
+ * @date 2021/08/16 14:35
+ */
 @Component
 public class Demo02Producer {
 

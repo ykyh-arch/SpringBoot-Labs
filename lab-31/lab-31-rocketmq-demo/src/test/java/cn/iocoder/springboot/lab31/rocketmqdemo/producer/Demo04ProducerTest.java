@@ -12,6 +12,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * 测试消费重试
+ * @author Jaquez
+ * @date 2021/08/16 16:02
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class Demo04ProducerTest {
@@ -21,6 +26,7 @@ public class Demo04ProducerTest {
     @Autowired
     private Demo04Producer producer;
 
+    // 测试同步发送消息
     @Test
     public void testSyncSend() throws InterruptedException {
         int id = (int) (System.currentTimeMillis() / 1000);

@@ -6,12 +6,19 @@ import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * 消费重试测试
+ * @author Jaquez
+ * @date 2021/08/17 17:10
+ * @return
+ */
 @Component
 public class Demo04Producer {
 
     @Autowired
     private RocketMQTemplate rocketMQTemplate;
 
+    // 同步发送消息
     public SendResult syncSend(Integer id) {
         // 创建 Demo04Message 消息
         Demo04Message message = new Demo04Message();

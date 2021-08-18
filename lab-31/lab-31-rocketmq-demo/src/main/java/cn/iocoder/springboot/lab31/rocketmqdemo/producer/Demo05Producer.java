@@ -12,6 +12,7 @@ public class Demo05Producer {
     @Autowired
     private RocketMQTemplate rocketMQTemplate;
 
+    // 同步发送消息
     public SendResult syncSend(Integer id) {
         // 创建 Demo05Message 消息
         Demo05Message message = new Demo05Message();

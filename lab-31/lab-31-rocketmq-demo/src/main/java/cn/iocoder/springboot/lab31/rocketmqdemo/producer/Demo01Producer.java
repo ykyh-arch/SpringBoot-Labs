@@ -13,6 +13,7 @@ public class Demo01Producer {
     @Autowired
     private RocketMQTemplate rocketMQTemplate;
 
+    // 同步发送消息
     public SendResult syncSend(Integer id) {
         // 创建 Demo01Message 消息
         Demo01Message message = new Demo01Message();
@@ -21,6 +22,7 @@ public class Demo01Producer {
         return rocketMQTemplate.syncSend(Demo01Message.TOPIC, message);
     }
 
+    // 异步发送消息
     public void asyncSend(Integer id, SendCallback callback) {
         // 创建 Demo01Message 消息
         Demo01Message message = new Demo01Message();
@@ -29,6 +31,7 @@ public class Demo01Producer {
         rocketMQTemplate.asyncSend(Demo01Message.TOPIC, message, callback);
     }
 
+    // oneWay方式发送消息
     public void onewaySend(Integer id) {
         // 创建 Demo01Message 消息
         Demo01Message message = new Demo01Message();

@@ -5,7 +5,7 @@ package cn.iocoder.springboot.lab31.rocketmqdemo.message;
  */
 public class Demo01Message {
 
-    public static final String TOPIC = "TOPIC_YUNAI_TEST";
+    public static final String TOPIC = "TOPIC_JAQUEZ_TEST";
 
     /**
      * 编号

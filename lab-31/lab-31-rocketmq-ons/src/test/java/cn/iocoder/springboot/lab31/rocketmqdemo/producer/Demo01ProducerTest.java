@@ -22,6 +22,7 @@ public class Demo01ProducerTest {
     @Autowired
     private Demo01Producer producer;
 
+    // 测试同步发送消息，通过原生客户端的方式测试成功，这里消费测试未成功
     @Test
     public void testSyncSend() throws InterruptedException {
         int id = (int) (System.currentTimeMillis() / 1000);
@@ -32,6 +33,7 @@ public class Demo01ProducerTest {
         new CountDownLatch(1).await();
     }
 
+    // 测试异步消息
     @Test
     public void testASyncSend() throws InterruptedException {
         int id = (int) (System.currentTimeMillis() / 1000);
@@ -53,6 +55,7 @@ public class Demo01ProducerTest {
         new CountDownLatch(1).await();
     }
 
+    // 测试oneway发送消息，单向发送消息
     @Test
     public void testOnewaySend() throws InterruptedException {
         int id = (int) (System.currentTimeMillis() / 1000);

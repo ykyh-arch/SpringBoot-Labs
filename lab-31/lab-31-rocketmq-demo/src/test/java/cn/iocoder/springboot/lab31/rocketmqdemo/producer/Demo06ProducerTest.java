@@ -13,6 +13,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * 顺序消息示例
+ * @author Jaquez
+ * @date 2021/08/17 17:12
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class Demo06ProducerTest {
@@ -22,6 +27,7 @@ public class Demo06ProducerTest {
     @Autowired
     private Demo06Producer producer;
 
+    // 测试同步发送顺序消息，单线程顺序消费每条消息。
     @Test
     public void testSyncSendOrderly() throws InterruptedException {
         // 发送多条消息
@@ -35,6 +41,7 @@ public class Demo06ProducerTest {
         new CountDownLatch(1).await();
     }
 
+    // 测试异步发送顺序消息，单线程顺序消费每条消息
     @Test
     public void testASyncSendOrderly() throws InterruptedException {
         for (int i = 0; i < 3; i++) {
@@ -58,6 +65,7 @@ public class Demo06ProducerTest {
         new CountDownLatch(1).await();
     }
 
+    // 测试oneWay发送顺序消息，单线程消费每条消息
     @Test
     public void testOnewaySendOrderly() throws InterruptedException {
         for (int i = 0; i < 3; i++) {

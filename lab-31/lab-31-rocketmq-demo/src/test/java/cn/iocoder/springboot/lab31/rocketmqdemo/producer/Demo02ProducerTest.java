@@ -23,6 +23,7 @@ public class Demo02ProducerTest {
     @Autowired
     private Demo02Producer producer;
 
+    // 测试批量发送消息
     @Test
     public void testSendBatch() throws InterruptedException {
         List<Integer> ids = Arrays.asList(1, 2, 3);

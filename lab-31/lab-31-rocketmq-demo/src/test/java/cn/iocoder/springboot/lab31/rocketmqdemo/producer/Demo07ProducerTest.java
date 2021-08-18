@@ -12,6 +12,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * 事务消息测试
+ * 在分布式消息队列中，目前唯一提供完整的事务消息的，只有 RocketMQ 。因为提供了事务回查机制。
+ * @author Jaquez
+ * @date 2021/08/18 09:55
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class Demo07ProducerTest {
@@ -21,6 +27,7 @@ public class Demo07ProducerTest {
     @Autowired
     private Demo07Producer producer;
 
+    // 测试以事务的方式发送消息
     @Test
     public void testSendMessageInTransaction() throws InterruptedException {
         int id = (int) (System.currentTimeMillis() / 1000);

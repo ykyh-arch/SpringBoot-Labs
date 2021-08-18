@@ -22,6 +22,7 @@ public class Demo01ProducerTest {
     @Autowired
     private Demo01Producer producer;
 
+    // 测试同步
     @Test
     public void testSyncSend() throws InterruptedException {
         int id = (int) (System.currentTimeMillis() / 1000);
@@ -32,6 +33,7 @@ public class Demo01ProducerTest {
         new CountDownLatch(1).await();
     }
 
+    // 测试异步
     @Test
     public void testASyncSend() throws InterruptedException {
         int id = (int) (System.currentTimeMillis() / 1000);

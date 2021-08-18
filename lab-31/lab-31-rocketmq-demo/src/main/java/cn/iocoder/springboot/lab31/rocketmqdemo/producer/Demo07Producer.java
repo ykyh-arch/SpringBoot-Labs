@@ -21,6 +21,7 @@ public class Demo07Producer {
     @Autowired
     private RocketMQTemplate rocketMQTemplate;
 
+    // 以事务方式发送消息
     public TransactionSendResult sendMessageInTransaction(Integer id) {
         // 创建 Demo07Message 消息
         Message<Demo07Message> message = MessageBuilder.withPayload(new Demo07Message().setId(id))
@@ -30,11 +31,13 @@ public class Demo07Producer {
                 id);
     }
 
+    // 内部类
     @RocketMQTransactionListener(txProducerGroup = TX_PRODUCER_GROUP)
     public class TransactionListenerImpl implements RocketMQLocalTransactionListener {
 
         private Logger logger = LoggerFactory.getLogger(getClass());
 
+        // 执行本地事务
         @Override
         public RocketMQLocalTransactionState executeLocalTransaction(Message msg, Object arg) {
             // ... local transaction process, return rollback, commit or unknown
@@ -42,6 +45,7 @@ public class Demo07Producer {
             return RocketMQLocalTransactionState.UNKNOWN;
         }
 
+        // RocketMq回查机制
         @Override
         public RocketMQLocalTransactionState checkLocalTransaction(Message msg) {
             // ... check transaction status and return rollback, commit or unknown

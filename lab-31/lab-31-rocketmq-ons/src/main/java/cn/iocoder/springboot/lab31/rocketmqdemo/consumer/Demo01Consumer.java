@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RocketMQMessageListener(
         topic = Demo01Message.TOPIC,
-        consumerGroup = "GID_CONSUMER_GROUP_YUNAI_TEST"
+        consumerGroup = "GID_CONSUMER_GROUP_JAQUEZ_TEST"
 )
 public class Demo01Consumer implements RocketMQListener<Demo01Message> {
 
