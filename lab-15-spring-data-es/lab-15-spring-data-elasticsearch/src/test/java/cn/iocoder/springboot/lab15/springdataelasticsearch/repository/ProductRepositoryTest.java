@@ -21,12 +21,12 @@ public class ProductRepositoryTest {
     @Test // 插入一条记录
     public void testInsert() {
         ESProductDO product = new ESProductDO();
-        product.setId(1); // 一般 ES 的 ID 编号，使用 DB 数据对应的编号。这里，先写死
+        product.setId(2); // 一般 ES 的 ID 编号，使用 DB 数据对应的编号。这里，先写死
         product.setName("芋道源码");
         product.setSellPoint("愿半生编码，如一生老友");
         product.setDescription("我只是一个描述");
         product.setCid(2);
-        product.setCategoryName("技术");
+        product.setCategoryName("技术-Java");
         productRepository.save(product);
     }
 
@@ -35,7 +35,7 @@ public class ProductRepositoryTest {
     @Test // 更新一条记录
     public void testUpdate() {
         ESProductDO product = new ESProductDO();
-        product.setId(1);
+        product.setId(2);
         product.setCid(2);
         product.setCategoryName("技术-Java");
         productRepository.save(product);

@@ -3,7 +3,7 @@ package cn.iocoder.springboot.lab15.springdataelasticsearch.bo;
 import java.util.List;
 
 /**
- * 商品搜索条件返回 BO
+ * 商品搜索条件返回 BO（业务对象层对象）
  */
 public class ProductConditionBO {
 
@@ -41,6 +41,13 @@ public class ProductConditionBO {
             return this;
         }
 
+        @Override
+        public String toString() {
+            return "Category{" +
+                    "id=" + id +
+                    ", name='" + name + '\'' +
+                    '}';
+        }
     }
 
     public List<Category> getCategories() {

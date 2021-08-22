@@ -18,6 +18,15 @@ import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 
 public interface ProductRepository03 extends ElasticsearchRepository<ESProductDO, Integer> {
 
+    /**
+     * 实现复杂的搜索查询
+     * @author Jaquez
+     * @date 2021/08/19 17:50
+     * @param cid 分类ID
+     * @param keyword 关键字
+     * @param pageable 分页对象
+     * @return org.springframework.data.domain.Page<cn.iocoder.springboot.lab15.springdatajest.dataobject.ESProductDO>
+     */
     default Page<ESProductDO> search(Integer cid, String keyword, Pageable pageable) {
         NativeSearchQueryBuilder nativeSearchQueryBuilder = new NativeSearchQueryBuilder();
         // 筛选条件 cid
@@ -33,8 +42,8 @@ public interface ProductRepository03 extends ElasticsearchRepository<ESProductDO
                             ScoreFunctionBuilders.weightFactorFunction(2)),
                     new FunctionScoreQueryBuilder.FilterFunctionBuilder(matchQuery("categoryName", keyword),
                             ScoreFunctionBuilders.weightFactorFunction(3)),
-//                    new FunctionScoreQueryBuilder.FilterFunctionBuilder(matchQuery("description", keyword),
-//                            ScoreFunctionBuilders.weightFactorFunction(2)), // TODO 芋艿，目前这么做，如果商品描述很长，在按照价格降序，会命中超级多的关键字。
+                    new FunctionScoreQueryBuilder.FilterFunctionBuilder(matchQuery("description", keyword),
+                            ScoreFunctionBuilders.weightFactorFunction(2)), // TODO 芋艿，目前这么做，如果商品描述很长，在按照价格降序，会命中超级多的关键字。
             };
             FunctionScoreQueryBuilder functionScoreQueryBuilder = QueryBuilders.functionScoreQuery(functions)
                     .scoreMode(FunctionScoreQuery.ScoreMode.SUM)

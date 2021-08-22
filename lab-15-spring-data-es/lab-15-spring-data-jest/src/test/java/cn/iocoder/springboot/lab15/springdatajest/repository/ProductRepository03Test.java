@@ -11,6 +11,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
+/**
+ * 测试复杂查询
+ * @author Jaquez
+ * @date 2021/08/19 17:43
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class ProductRepository03Test {

@@ -3,4 +3,4 @@ spring:
     # Elasticsearch 配置项
     elasticsearch:
       cluster-name: elasticsearch # 集群名
-      cluster-nodes: 127.0.0.1:9300 # 集群节点
+      cluster-nodes: 192.168.177.4:9300 # 集群节点，transport对外暴露的端点，踩坑：spring data elasticsearch 对外以TCP方式暴露

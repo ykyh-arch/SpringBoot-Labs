@@ -16,6 +16,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 
+/**
+ * 测试 ElasticsearchTemplate
+ * @author Jaquez
+ * @date 2021/08/19 18:57
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class ProductRepository04Test {
@@ -48,6 +53,7 @@ public class ProductRepository04Test {
             return result;
         });
         // 后续遍历 condition.categories 数组，查询商品分类，设置商品分类名。
+        condition.getCategories().forEach( System.out::println);
         System.out.println();
     }
 

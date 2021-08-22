@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Iterator;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class ProductRepository02Test {
@@ -21,14 +23,19 @@ public class ProductRepository02Test {
 
     @Test // 根据名字获得一条记录
     public void testFindByName() {
-        ESProductDO product = productRepository.findByName("芋道源码");
+        ESProductDO product = productRepository.findByName("芋道源码3");
         System.out.println(product);
+    }
+
+    @Test // 清空数据
+    public void testDeleteAll() {
+        productRepository.deleteAll();
     }
 
     @Test // 使用 name 模糊查询，分页返回结果
     public void testFindByNameLike() {
         // 根据情况，是否要制造测试数据
-        if (true) {
+        if (false) {
             testInsert();
         }
 
@@ -41,6 +48,9 @@ public class ProductRepository02Test {
         // 打印
         System.out.println(page.getTotalElements());
         System.out.println(page.getTotalPages());
+
+        Iterator<ESProductDO> iterator = page.iterator();
+        iterator.forEachRemaining(System.out::println);
     }
 
     /**
