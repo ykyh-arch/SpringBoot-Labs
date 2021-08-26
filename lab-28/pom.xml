@@ -18,6 +18,7 @@
         <module>lab-28-task-xxl-job</module>
         <module>lab-28-task-quartz-dynamic</module>
         <module>lab-28-task-demo-dynamic</module>
+        <module>lab-28-task-demo-dynamic-two</module>
     </modules>
 
 

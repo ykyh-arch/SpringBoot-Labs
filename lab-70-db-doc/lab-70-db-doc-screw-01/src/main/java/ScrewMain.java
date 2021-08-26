@@ -16,16 +16,16 @@ public class ScrewMain {
 
     private static final String DRIVER_CLASS_NAME = "org.postgresql.Driver";
 
-    private static final String DB_NAME = "homestead_dongzhi";
+    private static final String DB_NAME = "homestead_chuzhou";
     private static final String DB_USERNAME = "postgres";
     private static final String DB_PASSWORD = "postgres";
 
     private static final String FILE_OUTPUT_DIR = "C:/Users/fw001/Desktop/";
     // 可以设置 Word 或者 Markdown 格式
-    private static final EngineFileType FILE_OUTPUT_TYPE = EngineFileType.HTML;
+    private static final EngineFileType FILE_OUTPUT_TYPE = EngineFileType.MD;
     private static final String DOC_FILE_NAME = "数据库文档";
     private static final String DOC_VERSION = "1.0.0";
-    private static final String DOC_DESCRIPTION = "文档描述";
+    private static final String DOC_DESCRIPTION = "档案管理数据库表结构设计";
 
     public static void main(String[] args) {
         // 创建 screw 的配置
@@ -79,7 +79,8 @@ public class ScrewMain {
     private static ProcessConfig buildProcessConfig() {
         return ProcessConfig.builder()
                 .designatedTableName(Collections.<String>emptyList())  // 根据名称指定表生成
-                .designatedTablePrefix(Collections.<String>emptyList()) //根据表前缀生成
+               // .designatedTablePrefix(Collections.<String>emptyList()) //根据表前缀生成
+                .designatedTablePrefix(Arrays.asList("zjd_dagl"))
                 .designatedTableSuffix(Collections.<String>emptyList()) // 根据表后缀生成
                 .ignoreTableName(Arrays.asList("test_user", "test_group")) // 忽略表名
                 .ignoreTablePrefix(Collections.singletonList("test_")) // 忽略表前缀

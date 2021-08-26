@@ -1,11 +1,8 @@
 spring:
   application:
-    name: demo-application # 应用名
+    name: lab-38-elk-demo # 应用名
 
-
-logging:
-  # 日志文件配置
-  file:
-    name: /soft/work/project/logs/${spring.application.name}.log # 日志文件名。
-server:
-  port: 8888
+#logging:
+#  # 日志文件配置
+#  file:
+#    name: /soft/work/project/logs/${spring.application.name}.log # 日志文件名。

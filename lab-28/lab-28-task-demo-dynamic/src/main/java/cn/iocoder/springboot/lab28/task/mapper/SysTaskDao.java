@@ -1,4 +1,4 @@
-package cn.iocoder.springboot.lab28.task.dao;
+package cn.iocoder.springboot.lab28.task.mapper;
 
 import cn.iocoder.springboot.lab28.task.entity.SysTask;
 import org.springframework.beans.factory.annotation.Autowired;

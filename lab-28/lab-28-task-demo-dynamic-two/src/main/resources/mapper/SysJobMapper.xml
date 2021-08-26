@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.iocoder.springboot.lab28.task.mapper.SysJobMapper">
+  <resultMap id="BaseResultMap" type="cn.iocoder.springboot.lab28.task.entity.SysJob">
+    <id column="job_id" jdbcType="INTEGER" property="jobId" />
+    <result column="bean_name" jdbcType="VARCHAR" property="beanName" />
+    <result column="method_name" jdbcType="VARCHAR" property="methodName" />
+    <result column="method_params" jdbcType="VARCHAR" property="methodParams" />
+    <result column="cron_expression" jdbcType="VARCHAR" property="cronExpression" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="job_status" jdbcType="TINYINT" property="jobStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    job_id, bean_name, method_name, method_params, cron_expression, remark, job_status, 
+    create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_job
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </select>
+  <select id="getSysJobListByStatus" resultType="cn.iocoder.springboot.lab28.task.entity.SysJob">
+    select
+    <include refid="Base_Column_List" />
+    from sys_job
+    where job_status = #{jobStatus,jdbcType=TINYINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_job
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="job_id" keyProperty="jobId" parameterType="cn.iocoder.springboot.lab28.task.entity.SysJob" useGeneratedKeys="true">
+    insert into sys_job (bean_name, method_name, method_params, 
+      cron_expression, remark, job_status, 
+      create_time, update_time)
+    values (#{beanName,jdbcType=VARCHAR}, #{methodName,jdbcType=VARCHAR}, #{methodParams,jdbcType=VARCHAR}, 
+      #{cronExpression,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{jobStatus,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="job_id" keyProperty="jobId" parameterType="cn.iocoder.springboot.lab28.task.entity.SysJob" useGeneratedKeys="true">
+    insert into sys_job
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="beanName != null">
+        bean_name,
+      </if>
+      <if test="methodName != null">
+        method_name,
+      </if>
+      <if test="methodParams != null">
+        method_params,
+      </if>
+      <if test="cronExpression != null">
+        cron_expression,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="jobStatus != null">
+        job_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="beanName != null">
+        #{beanName,jdbcType=VARCHAR},
+      </if>
+      <if test="methodName != null">
+        #{methodName,jdbcType=VARCHAR},
+      </if>
+      <if test="methodParams != null">
+        #{methodParams,jdbcType=VARCHAR},
+      </if>
+      <if test="cronExpression != null">
+        #{cronExpression,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="jobStatus != null">
+        #{jobStatus,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.iocoder.springboot.lab28.task.entity.SysJob">
+    update sys_job
+    <set>
+      <if test="beanName != null">
+        bean_name = #{beanName,jdbcType=VARCHAR},
+      </if>
+      <if test="methodName != null">
+        method_name = #{methodName,jdbcType=VARCHAR},
+      </if>
+      <if test="methodParams != null">
+        method_params = #{methodParams,jdbcType=VARCHAR},
+      </if>
+      <if test="cronExpression != null">
+        cron_expression = #{cronExpression,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="jobStatus != null">
+        job_status = #{jobStatus,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.iocoder.springboot.lab28.task.entity.SysJob">
+    update sys_job
+    set bean_name = #{beanName,jdbcType=VARCHAR},
+      method_name = #{methodName,jdbcType=VARCHAR},
+      method_params = #{methodParams,jdbcType=VARCHAR},
+      cron_expression = #{cronExpression,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      job_status = #{jobStatus,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </update>
+</mapper>

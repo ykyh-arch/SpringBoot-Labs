@@ -1,6 +1,6 @@
 package cn.iocoder.springboot.lab28.task.service;
 
-import cn.iocoder.springboot.lab28.task.dao.SysTaskDao;
+import cn.iocoder.springboot.lab28.task.mapper.SysTaskDao;
 import cn.iocoder.springboot.lab28.task.entity.SysTask;
 import cn.iocoder.springboot.lab28.task.enums.JobStatusEnum;
 import cn.iocoder.springboot.lab28.task.utils.QuartzManagerUtil;

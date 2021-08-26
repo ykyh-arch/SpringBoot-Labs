@@ -1,19 +1,23 @@
 package cn.iocoder.springboot.lab28.task;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 
 /**
- * 动态定时任务事例，实现步骤：Spring Task
- * 缺点：此种方式不能动态启动、删除、暂停定时任务，只是实现了cron表达式动态化
+ * 动态定时任务事例，重写 org.springframework.scheduling.ScheduledTaskRegistrar 类
+ * 实现动态执行定时任务，包括启动、添加、删除、暂停等定时任务
  * @author Jaquez
  * @date 2021/07/08 15:15
  */
 @SpringBootApplication
+@MapperScan("cn.iocoder.springboot.lab28.task.mapper")
 public class Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
+
     }
 
 }
