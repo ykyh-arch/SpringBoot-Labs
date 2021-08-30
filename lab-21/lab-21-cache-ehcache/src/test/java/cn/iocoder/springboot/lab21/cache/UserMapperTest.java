@@ -25,9 +25,10 @@ public class UserMapperTest {
     @Autowired
     private CacheManager cacheManager;
 
+    // 查看缓存管理器，证明是 ehcache
     @Test
     public void testCacheManager() {
-        System.out.println(cacheManager);
+        System.out.println(cacheManager); // org.springframework.cache.ehcache.EhCacheCacheManager@3e28fee1
     }
 
     @Test

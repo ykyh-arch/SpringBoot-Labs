@@ -9,12 +9,15 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 @Repository
+// 统一配置 UserMapper 的缓存名称为 users
 @CacheConfig(cacheNames = "users")
 public interface UserMapper extends BaseMapper<UserDO> {
 
+    // 被动写 优先读缓存
     @Cacheable(key = "#id")
     UserDO selectById(Integer id);
 
+    // 主动写 写缓存
     @CachePut(key = "#user.id")
     default UserDO insert0(UserDO user) {
         // 插入记录
