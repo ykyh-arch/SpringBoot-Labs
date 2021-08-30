@@ -20,9 +20,10 @@ public class UserMapperTest {
 
     @Test
     public void testSelectById() {
-        UserDO user = userMapper.selectById(2);
+        // sql 只执行了一次，缓存起作用
+        UserDO user = userMapper.selectById(1);
         System.out.println("user：" + user);
-        user = userMapper.selectById(2);
+        user = userMapper.selectById(1);
         System.out.println("user：" + user);
     }
 
@@ -30,7 +31,8 @@ public class UserMapperTest {
     public void testInsert () {
         // 插入记录
         UserDO user = new UserDO();
-        user.setUsername(UUID.randomUUID().toString()); // 随机账号，因为唯一索引
+        // 随机账号，因为唯一索引
+        user.setUsername(UUID.randomUUID().toString());
         user.setPassword("nicai");
         user.setCreateTime(new Date());
         user.setDeleted(0);
