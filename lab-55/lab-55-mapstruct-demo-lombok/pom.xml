@@ -43,6 +43,7 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <!--注解处理器-->
                     <annotationProcessorPaths>
                         <!-- 引入 mapstruct-processor -->
                         <path>
