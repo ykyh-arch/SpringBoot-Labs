@@ -1,1 +1,1 @@
-<https://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&mid=2650166487&idx=1&sn=e3bc6a2d9c12dab64f581db33364ce51&chksm=f36849f6c41fc0e018ab201201c469eed049cbeb828de9126393b1567d55334b6143d0c6e5a8&scene=132#wechat_redirect>
+<https://www.iocoder.cn/Spring-Boot/ShowDoc/>
