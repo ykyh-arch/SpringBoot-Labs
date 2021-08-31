@@ -27,7 +27,7 @@ public class UserMapperTest {
 
     @Test
     public void testCacheManager() {
-        System.out.println(cacheManager);
+        System.out.println(cacheManager); // org.springframework.data.redis.cache.RedisCacheManager@322e49ee
     }
 
     @Test

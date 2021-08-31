@@ -10,7 +10,7 @@ import java.util.Date;
  * 用户 DO
  */
 @TableName(value = "users")
-public class UserDO implements Serializable {
+public class UserDO implements Serializable { // 存储在 redis 需要对对象进行序列化
 
     /**
      * 用户编号

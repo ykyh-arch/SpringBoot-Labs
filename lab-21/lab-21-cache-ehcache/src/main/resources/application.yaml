@@ -8,6 +8,8 @@ spring:
   # cache 缓存配置内容
   cache:
     type: ehcache
+#    redis:
+#      time-to-live: 1000 # 过期策略
 
 # mybatis-plus 配置内容
 mybatis-plus:

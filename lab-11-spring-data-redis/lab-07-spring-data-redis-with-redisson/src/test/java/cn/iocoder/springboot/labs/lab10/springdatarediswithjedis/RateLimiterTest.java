@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * 限流测试
+ * 限流测试，参考：https://www.iocoder.cn/Spring-Boot/battcn/v2-cache-redislimter//
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
