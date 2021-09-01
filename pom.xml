@@ -120,6 +120,7 @@
         <module>lab-77-ratelimiter</module>
         <module>lab-78-lock</module>
         <module>lab-78-lock/lab-78-lock-local</module>
+        <module>lab-78-lock/lab-78-lock-redis</module>
     </modules>
 
 </project>
