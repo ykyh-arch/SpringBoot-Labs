@@ -18,7 +18,7 @@ public class ProductController {
 
     @PostMapping("/reduce-stock")
     public Boolean reduceStock(@RequestBody ProductReduceStockDTO productReduceStockDTO) {
-        logger.info("[reduceStock] 收到减少库存请求, 商品:{}, 价格:{}", productReduceStockDTO.getProductId(),
+        logger.info("[reduceStock] 收到减少库存请求, 商品:{}, 数量:{}", productReduceStockDTO.getProductId(),
                 productReduceStockDTO.getAmount());
         try {
             productService.reduceStock(productReduceStockDTO.getProductId(), productReduceStockDTO.getAmount());

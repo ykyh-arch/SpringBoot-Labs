@@ -27,11 +27,12 @@ public class AccountServiceImpl implements AccountService {
         logger.info("[reduceBalance] 开始扣减用户 {} 余额", userId);
         // 扣除余额
         int updateCount = accountDao.reduceBalance(price);
-        // 扣除成功
+        // 扣除失败
         if (updateCount == 0) {
             logger.warn("[reduceBalance] 扣除用户 {} 余额失败", userId);
             throw new Exception("余额不足");
         }
+        // 扣除成功
         logger.info("[reduceBalance] 扣除用户 {} 余额成功", userId);
     }
 

@@ -1,6 +1,6 @@
 package cn.iocoder.springboot.lab52.orderservice.dao;
 
-import cn.iocoder.springboot.lab53.orderservice.entity.OrderDO;
+import cn.iocoder.springboot.lab52.orderservice.entity.OrderDO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;

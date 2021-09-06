@@ -43,7 +43,7 @@
             <artifactId>seata-spring-boot-starter</artifactId>
             <version>1.1.0</version>
         </dependency>
-        <!-- 实现 Seata 对 HttpClient 的集成支持  -->
+        <!-- 实现 Seata 对 Apache HttpClient 的集成支持  -->
         <dependency>
             <groupId>io.seata</groupId>
             <artifactId>seata-http</artifactId>

@@ -1,4 +1,4 @@
-package cn.iocoder.springboot.lab53.orderservice.entity;
+package cn.iocoder.springboot.lab52.orderservice.entity;
 
 /**
  * 订单实体

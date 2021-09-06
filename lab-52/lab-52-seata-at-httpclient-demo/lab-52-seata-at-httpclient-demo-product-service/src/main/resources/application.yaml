@@ -9,7 +9,7 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/seata_product?useSSL=false&useUnicode=true&characterEncoding=UTF-8
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password:
+    password: 123456
 
 # Seata 配置项，对应 SeataProperties 类
 seata:
@@ -22,4 +22,4 @@ seata:
       product-service-group: default
     # 分组和 Seata 服务的映射
     grouplist:
-      default: 127.0.0.1:8091
+      default: 192.168.177.4:8091

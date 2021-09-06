@@ -1,7 +1,7 @@
 package cn.iocoder.springboot.lab52.orderservice.service;
 
 import cn.iocoder.springboot.lab52.orderservice.dao.OrderDao;
-import cn.iocoder.springboot.lab53.orderservice.entity.OrderDO;
+import cn.iocoder.springboot.lab52.orderservice.entity.OrderDO;
 import com.alibaba.fastjson.JSONObject;
 import io.seata.core.context.RootContext;
 import io.seata.integration.http.DefaultHttpExecutor;
@@ -24,7 +24,7 @@ public class OrderServiceImpl implements OrderService {
     private OrderDao orderDao;
 
     @Override
-    @GlobalTransactional
+    @GlobalTransactional // 声明全局事务
     public Integer createOrder(Long userId, Long productId, Integer price) throws Exception {
         Integer amount = 1; // 购买数量，暂时设置为 1。
 
@@ -34,7 +34,7 @@ public class OrderServiceImpl implements OrderService {
         this.reduceStock(productId, amount);
 
         // 扣减余额
-        this.reduceBalance(userId, price);
+        this.reduceBalance(userId, price * amount);
 
         // 保存订单
         OrderDO order = new OrderDO().setUserId(userId).setProductId(productId).setPayAmount(amount * price);
@@ -45,6 +45,7 @@ public class OrderServiceImpl implements OrderService {
         return order.getId();
     }
 
+    // 扣减库存
     private void reduceStock(Long productId, Integer amount) throws IOException {
         // 参数拼接
         JSONObject params = new JSONObject().fluentPut("productId", String.valueOf(productId))
@@ -59,6 +60,7 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
+    // 扣减余额
     private void reduceBalance(Long userId, Integer price) throws IOException {
         // 参数拼接
         JSONObject params = new JSONObject().fluentPut("userId", String.valueOf(userId))
