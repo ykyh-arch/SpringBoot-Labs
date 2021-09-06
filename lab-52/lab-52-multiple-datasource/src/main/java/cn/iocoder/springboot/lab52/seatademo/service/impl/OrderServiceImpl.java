@@ -29,7 +29,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @DS(value = "order-ds")
-    @GlobalTransactional
+    @GlobalTransactional // 申明全局事务
     public Integer createOrder(Long userId, Long productId, Integer price) throws Exception {
         Integer amount = 1; // 购买数量，暂时设置为 1。
 
@@ -39,7 +39,7 @@ public class OrderServiceImpl implements OrderService {
         productService.reduceStock(productId, amount);
 
         // 扣减余额
-        accountService.reduceBalance(userId, price);
+        accountService.reduceBalance(userId, price * amount);
 
         // 保存订单
         OrderDO order = new OrderDO().setUserId(userId).setProductId(productId).setPayAmount(amount * price);

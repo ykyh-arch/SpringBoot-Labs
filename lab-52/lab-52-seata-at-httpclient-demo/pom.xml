@@ -11,6 +11,8 @@
 
     <artifactId>lab-52-seata-at-httpclient-demo</artifactId>
 
+    <packaging>pom</packaging>
+
     <modules>
         <module>lab-52-seata-at-httpclient-demo-order-service</module>
         <module>lab-52-seata-at-httpclient-demo-product-service</module>

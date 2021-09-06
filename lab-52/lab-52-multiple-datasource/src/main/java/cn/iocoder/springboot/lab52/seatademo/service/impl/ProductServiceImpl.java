@@ -21,7 +21,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @DS(value = "product-ds")
-    @Transactional(propagation = Propagation.REQUIRES_NEW) // 开启新事物
+    @Transactional(propagation = Propagation.REQUIRES_NEW) // 开启新事物，本地事务
     public void reduceStock(Long productId, Integer amount) throws Exception {
         logger.info("[reduceStock] 当前 XID: {}", RootContext.getXID());
 
@@ -31,12 +31,12 @@ public class ProductServiceImpl implements ProductService {
         logger.info("[reduceStock] 开始扣减 {} 库存", productId);
         // 扣减库存
         int updateCount = productDao.reduceStock(productId, amount);
-        // 扣除成功
+        // 扣除失败
         if (updateCount == 0) {
             logger.warn("[reduceStock] 扣除 {} 库存失败", productId);
             throw new Exception("库存不足");
         }
-        // 扣除失败
+        // 扣除成功
         logger.info("[reduceStock] 扣除 {} 库存成功", productId);
     }
 

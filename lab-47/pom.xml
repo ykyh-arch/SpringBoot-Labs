@@ -17,7 +17,7 @@
         <module>jaquez-swagger-spring-boot-starter</module>
         <module>lab-47-java-spi-demo</module>
         <module>lab-47-java-spi-demo/spi-interface</module>
-        <module>lab-47-java-spi-demo/spi-manufacturer</module>
+        <!--<module>lab-47-java-spi-demo/spi-manufacturer</module>-->
         <module>lab-47-java-spi-demo/spi-manufacturer-2</module>
         <module>lab-47-java-spi-demo/spi-invoker</module>
     </modules>
