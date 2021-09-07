@@ -47,7 +47,7 @@
         <dependency>
             <groupId>io.seata</groupId>
             <artifactId>seata-spring-boot-starter</artifactId>
-            <version>1.1.0</version>
+            <version>1.4.1</version>
         </dependency>
 
         <!-- 实现对 Dubbo 的自动化配置 -->

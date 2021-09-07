@@ -13,6 +13,7 @@
     <artifactId>lab-53-seata-at-dubbo-demo-order-service</artifactId>
 
     <dependencies>
+        <!--引入订单、商品、账户接口服务-->
         <dependency>
             <groupId>cn.iocoder.springboot.labs</groupId>
             <artifactId>lab-53-seata-at-dubbo-demo-order-service-api</artifactId>
@@ -57,7 +58,7 @@
         <dependency>
             <groupId>io.seata</groupId>
             <artifactId>seata-spring-boot-starter</artifactId>
-            <version>1.1.0</version>
+            <version>1.4.1</version>
         </dependency>
 
         <!-- 引入 Dubbo 的依赖 -->

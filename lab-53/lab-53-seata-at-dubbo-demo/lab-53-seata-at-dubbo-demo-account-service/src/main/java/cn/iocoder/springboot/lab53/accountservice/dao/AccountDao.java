@@ -26,7 +26,7 @@ public interface AccountDao {
      * @param price 需要扣减的数目
      * @return 影响记录行数
      */
-    @Update("UPDATE account SET balance = balance - #{price} WHERE id = 1 AND balance >= ${price}")
+    @Update("UPDATE account SET balance = balance - #{price} WHERE id = 1 AND balance >= #{price}")
     int reduceBalance(@Param("price") Integer price);
 
 }
