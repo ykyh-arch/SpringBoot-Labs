@@ -2,13 +2,13 @@
 dubbo:
   # Dubbo 应用配置
   application:
-    name: user-service-provider # 应用名
+    name: user-service-provider # 应用名称
   # Dubbo 注册中心配置
   registry:
-    address: zookeeper://127.0.0.1:2181 # 注册中心地址。配置多注册中心，可见 http://dubbo.apache.org/zh-cn/docs/user/references/registry/introduction.html 文档。
+    address: zookeeper://192.168.177.4:2181 # 注册中心地址。配置多注册中心，可见 http://dubbo.apache.org/zh-cn/docs/user/references/registry/introduction.html 文档。
   # Dubbo 元数据中心配置
   metadata-report:
-    address: zookeeper://127.0.0.1:2181 # 元数据中心地址。元数据中心的说明，可见 http://dubbo.apache.org/zh-cn/docs/user/references/metadata/introduction.html
+    address: zookeeper://192.168.177.4:2181 # 元数据中心地址。元数据中心的说明，可见 http://dubbo.apache.org/zh-cn/docs/user/references/metadata/introduction.html
   # Dubbo 服务提供者协议配置
   protocol:
     port: -1 # 协议端口。使用 -1 表示随机端口。

@@ -55,7 +55,7 @@ public class ConsumerApplication {
                 UserDTO user = userRpcService.get(null); // 故意传入空的编号，为了校验编号不通过
                 logger.info("[run][发起一次 Dubbo RPC 请求，获得用户为({})]", user);
             } catch (Exception e) {
-                logger.error("[run][获得用户发生异常，信息为:[{}]", e.getMessage());
+                logger.error("[run][获得用户发生异常({})，信息为:[{}]", e.getClass().getSimpleName(), e.getMessage());
             }
 
             // 添加用户
@@ -68,7 +68,7 @@ public class ConsumerApplication {
                 userRpcService.add(addDTO);
                 logger.info("[run][发起一次 Dubbo RPC 请求，添加用户为({})]", addDTO);
             } catch (Exception e) {
-                logger.error("[run][添加用户发生异常，信息为:[{}]", e.getMessage());
+                logger.error("[run][添加用户发生异常({})，信息为:[{}]", e.getClass().getSimpleName(),e.getMessage());
             }
         }
 

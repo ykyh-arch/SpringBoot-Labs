@@ -12,7 +12,7 @@
     <artifactId>user-rpc-service-api</artifactId>
 
     <dependencies>
-        <!-- 参数校验相关依赖 -->
+        <!-- 参数校验相关依赖，基于 JSR303 规范 -->
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId> <!-- JSR 参数校验规范 API -->

@@ -19,12 +19,9 @@ spring:
 
 # dubbo 配置项，对应 DubboConfigurationProperties 配置类
 dubbo:
-  # Dubbo 应用配置
-#  application:
-#    name: ${spring.application.name} # 应用名
   # Dubbo 服务注册中心配置，对应 RegistryConfig 类
   registry:
-    address: nacos://192.168.177.4:8848 # 指定 Dubbo 服务注册中心的地址
+    address: spring-cloud://192.168.177.4:8848 # 指定 Dubbo 服务注册中心的地址
   # Dubbo 服务提供者协议配置
   protocol:
     port: -1 # 协议端口。使用 -1 表示随机端口。

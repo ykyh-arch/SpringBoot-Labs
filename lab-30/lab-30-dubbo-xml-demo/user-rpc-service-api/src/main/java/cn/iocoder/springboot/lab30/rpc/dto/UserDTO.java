@@ -3,7 +3,7 @@ package cn.iocoder.springboot.lab30.rpc.dto;
 import java.io.Serializable;
 
 /**
- * 用户信息 DTO
+ * 用户信息 DTO，实现序列化接口，因为，Dubbo RPC 会涉及远程通信
  */
 public class UserDTO implements Serializable {
 

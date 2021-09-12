@@ -8,7 +8,7 @@ import cn.iocoder.springboot.lab30.rpc.dto.UserAddDTO;
 import cn.iocoder.springboot.lab30.rpc.dto.UserDTO;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service // spring 注解对象，暴露的是 bean 对象
 public class UserRpcServiceImpl implements UserRpcService {
 
     @Override
