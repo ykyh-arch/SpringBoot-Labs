@@ -38,7 +38,7 @@
             <version>2.7.4.1</version>
         </dependency>
 
-        <!-- 使用 Zookeeper 作为注册中心 -->
+        <!-- 使用 Zookeeper 作为注册中心，推荐是使用 curator 作为客户端 -->
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-framework</artifactId>
