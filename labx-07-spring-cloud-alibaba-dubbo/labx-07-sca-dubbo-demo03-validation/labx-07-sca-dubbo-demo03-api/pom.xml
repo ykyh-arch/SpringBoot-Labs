@@ -15,7 +15,7 @@
         <!-- 参数校验相关依赖 -->
         <dependency>
             <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId> <!-- JSR 参数校验规范 API -->
+            <artifactId>validation-api</artifactId> <!-- JSR303规范 参数校验规范 API -->
             <version>2.0.1.Final</version>
         </dependency>
         <dependency>

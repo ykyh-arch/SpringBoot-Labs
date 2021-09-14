@@ -9,12 +9,18 @@ import org.apache.dubbo.common.logger.LoggerFactory;
 import org.apache.dubbo.common.utils.ReflectUtils;
 import org.apache.dubbo.common.utils.StringUtils;
 import org.apache.dubbo.rpc.*;
+import org.apache.dubbo.rpc.filter.ExceptionFilter;
 import org.apache.dubbo.rpc.service.GenericService;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.lang.reflect.Method;
 
+/**
+ * DubboExceptionFilter 是 ExceptionFilter 增强异常过滤器
+ * @author Jaquez
+ * @date 2021/09/14 16:31
+ */
 @Activate(group = CommonConstants.PROVIDER)
 public class DubboExceptionFilter extends ListenableFilter {
 
@@ -66,21 +72,25 @@ public class DubboExceptionFilter extends ListenableFilter {
 
     }
 
+    // ExceptionFilter 里面核心代码
     static class ExceptionListener implements Listener {
 
         private Logger logger = LoggerFactory.getLogger(ExceptionListener.class);
 
         @Override
         public void onResponse(Result appResponse, Invoker<?> invoker, Invocation invocation) {
+            // 发生异常，并且非泛化调用，即调用类没有实现 GenericService 接口，泛化接口，主要用于服务器端没有API接口及模型类元的情况，参数及返回值中的所有POJO均用Map表示
             if (appResponse.hasException() && GenericService.class != invoker.getInterface()) {
                 try {
                     Throwable exception = appResponse.getException();
 
                     // directly throw if it's checked exception
+                    // 如果是 checked 异常，直接返回
                     if (!(exception instanceof RuntimeException) && (exception instanceof Exception)) {
                         return;
                     }
                     // directly throw if the exception appears in the signature
+                    // 在方法签名上有声明，直接返回
                     try {
                         Method method = invoker.getInterface().getMethod(invocation.getMethodName(), invocation.getParameterTypes());
                         Class<?>[] exceptionClassses = method.getExceptionTypes();
@@ -94,25 +104,30 @@ public class DubboExceptionFilter extends ListenableFilter {
                     }
 
                     // for the exception not found in method's signature, print ERROR message in server's log.
+                    // 未在方法签名上定义的异常，在服务器端打印ERROR日志
                     logger.error("Got unchecked and undeclared exception which called by " + RpcContext.getContext().getRemoteHost() + ". service: " + invoker.getInterface().getName() + ", method: " + invocation.getMethodName() + ", exception: " + exception.getClass().getName() + ": " + exception.getMessage(), exception);
 
                     // directly throw if exception class and interface class are in the same jar file.
+                    // 异常类和接口类在同一jar包里，直接返回
                     String serviceFile = ReflectUtils.getCodeBase(invoker.getInterface());
                     String exceptionFile = ReflectUtils.getCodeBase(exception.getClass());
                     if (serviceFile == null || exceptionFile == null || serviceFile.equals(exceptionFile)) {
                         return;
                     }
                     // directly throw if it's JDK exception
+                    // 是JDK自带的异常，直接返回
                     String className = exception.getClass().getName();
                     if (className.startsWith("java.") || className.startsWith("javax.")) {
                         return;
                     }
                     // directly throw if it's dubbo exception
+                    // 是Dubbo本身的异常，直接返回
                     if (exception instanceof RpcException) {
                         return;
                     }
 
                     // otherwise, wrap with RuntimeException and throw back to the client
+                    // 否则，包装成RuntimeException抛给客户端
                     appResponse.setException(new RuntimeException(StringUtils.toString(exception)));
                     return;
                 } catch (Throwable e) {

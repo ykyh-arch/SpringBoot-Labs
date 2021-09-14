@@ -18,7 +18,7 @@ public interface UserService {
      * @return 用户信息
      */
     UserDTO get(@NotNull(message = "用户编号不能为空") Integer id)
-            throws ConstraintViolationException;;
+            throws ConstraintViolationException;
 
     /**
      * 添加新用户，返回新添加的用户编号
