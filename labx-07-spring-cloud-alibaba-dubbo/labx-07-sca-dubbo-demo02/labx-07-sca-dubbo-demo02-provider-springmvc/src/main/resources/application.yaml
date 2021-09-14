@@ -26,7 +26,7 @@ dubbo:
   cloud:
     subscribed-services: '' # 设置订阅的应用列表，默认为 * 订阅所有应用。
 
-# 管理端点
+# 管理端点，增加 Spring Boot Actuator 配置项
 management:
   endpoints:
     web:
