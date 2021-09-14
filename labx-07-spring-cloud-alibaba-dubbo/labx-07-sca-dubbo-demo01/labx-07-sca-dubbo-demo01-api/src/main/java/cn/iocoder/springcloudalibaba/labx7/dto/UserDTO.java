@@ -3,7 +3,7 @@ package cn.iocoder.springcloudalibaba.labx7.dto;
 import java.io.Serializable;
 
 /**
- * 用户信息 DTO
+ * 用户信息 DTO，序列化是因为 Dubbo RPC 会涉及远程通信，需要序列化和反序列化。
  */
 public class UserDTO implements Serializable {
 
