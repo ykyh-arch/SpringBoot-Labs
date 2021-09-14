@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * 使用 Feign + Ribbon 调用服务
+ * @author Jaquez
+ * @date 2021/09/14 13:59
+ */
 @FeignClient(name = "demo-provider")
 public interface UserFeignClient02 {
 

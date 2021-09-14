@@ -10,6 +10,11 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * RestTemplate + Dubbo 测试
+ * @author Jaquez
+ * @date 2021/09/14 14:12
+ */
 @RestController
 @RequestMapping("/user03")
 public class User03Controller {

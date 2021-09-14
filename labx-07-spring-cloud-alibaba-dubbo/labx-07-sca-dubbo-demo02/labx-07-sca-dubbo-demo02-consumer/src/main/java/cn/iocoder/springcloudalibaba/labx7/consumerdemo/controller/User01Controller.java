@@ -6,6 +6,11 @@ import cn.iocoder.springcloudalibaba.labx7.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Feign + Dubbo/Rest 调用测试
+ * @author Jaquez
+ * @date 2021/09/14 14:13
+ */
 @RestController
 @RequestMapping("/user01")
 public class User01Controller {

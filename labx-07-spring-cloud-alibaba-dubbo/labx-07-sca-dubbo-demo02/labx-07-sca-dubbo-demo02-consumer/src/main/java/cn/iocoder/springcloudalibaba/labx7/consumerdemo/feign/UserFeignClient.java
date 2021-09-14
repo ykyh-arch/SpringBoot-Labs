@@ -9,9 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * Feign + Dubbo/Rest 调用方式
+ * @author Jaquez
+ * @date 2021/09/14 11:56
+ */
 @FeignClient(name = "demo-provider")
-@DubboTransported(protocol = "dubbo")
-// @DubboTransported(protocol = "rest")
+// @DubboTransported(protocol = "dubbo")
+@DubboTransported(protocol = "rest")
 public interface UserFeignClient {
 
     /**
