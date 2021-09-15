@@ -8,6 +8,11 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import javax.validation.Validator;
 
+/**
+ * 校验配置类
+ * @author Jaquez
+ * @date 2021/09/15 14:14
+ */
 @Configuration
 public class ValidationConfiguration {
 

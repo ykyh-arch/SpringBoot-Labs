@@ -49,9 +49,10 @@ public class UserServiceTest {
         userService.add02(addDTO);
     }
 
+    // 手动校验测试
     @Test
     public void testValidator() {
-        // 打印，查看 validator 的类型
+        // 打印，查看 validator 的类型，org.springframework.validation.beanvalidation.LocalValidatorFactoryBean@58f4b31a
         System.out.println(validator);
 
         // 创建 UserAddDTO 对象
