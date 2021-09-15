@@ -24,6 +24,7 @@ public class UserService {
         logger.info("[add][addDTO: {}]", addDTO);
     }
 
+    // 演示方法内部调用
     public void add01(UserAddDTO addDTO) {
         this.add(addDTO);
     }

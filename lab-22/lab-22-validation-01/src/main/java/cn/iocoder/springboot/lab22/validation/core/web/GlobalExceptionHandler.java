@@ -46,6 +46,7 @@ public class GlobalExceptionHandler {
                 ServiceExceptionEnum.MISSING_REQUEST_PARAM_ERROR.getMessage());
     }
 
+    // 参数不合法异常，MethodValidationInterceptor 抛出来的异常处理
     @ResponseBody
     @ExceptionHandler(value = ConstraintViolationException.class)
     public CommonResult constraintViolationExceptionHandler(HttpServletRequest req, ConstraintViolationException ex) {
@@ -65,6 +66,7 @@ public class GlobalExceptionHandler {
                 ServiceExceptionEnum.INVALID_REQUEST_PARAM_ERROR.getMessage() + ":" + detailMessage.toString());
     }
 
+    // 参数不合法异常，SpringMVC 的 DataBinder 机制抛出的异常处理
     @ResponseBody
     @ExceptionHandler(value = BindException.class)
     public CommonResult bindExceptionHandler(HttpServletRequest req, BindException ex) {

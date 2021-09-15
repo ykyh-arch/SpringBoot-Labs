@@ -9,11 +9,11 @@ import static java.lang.annotation.ElementType.*;
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Constraint(validatedBy = InEnumValidator.class)
+@Constraint(validatedBy = InEnumValidator.class) // 设置使用的自定义约束的校验器
 public @interface InEnum {
 
     /**
-     * @return 实现 IntArrayValuable 接口的
+     * @return 实现 IntArrayValuable 接口的类。这样，就能获得参数需要校验的值数组。
      */
     Class<? extends IntArrayValuable> value();
 

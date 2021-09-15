@@ -24,23 +24,27 @@ public class UserServiceTest {
 
     @Test
     public void testGet() {
+        // 报错：javax.validation.ConstraintViolationException: get.id: 编号必须大于 0
         userService.get(-1);
     }
 
     @Test
     public void testAdd() {
+        // 报错：javax.validation.ConstraintViolationException: add.addDTO.username: 登陆账号不能为空, add.addDTO.password: 密码不能为空
         UserAddDTO addDTO = new UserAddDTO();
         userService.add(addDTO);
     }
 
     @Test
     public void testAdd01() {
+        // 正常执行完成，因为没有走 AOP 代理
         UserAddDTO addDTO = new UserAddDTO();
         userService.add01(addDTO);
     }
 
     @Test
     public void testAdd02() {
+        // 报错：java.lang.IllegalStateException: Cannot find current proxy: Set 'exposeProxy' property on Advised to 'true' to make it available.
         UserAddDTO addDTO = new UserAddDTO();
         userService.add02(addDTO);
     }

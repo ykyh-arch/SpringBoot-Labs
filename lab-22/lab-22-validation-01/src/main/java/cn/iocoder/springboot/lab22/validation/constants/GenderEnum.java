@@ -4,6 +4,11 @@ import cn.iocoder.springboot.lab22.validation.core.validator.IntArrayValuable;
 
 import java.util.Arrays;
 
+/**
+ * 枚举性别类
+ * @author Jaquez
+ * @date 2021/09/15 10:59
+ */
 public enum GenderEnum implements IntArrayValuable {
 
     MALE(1, "男"),
