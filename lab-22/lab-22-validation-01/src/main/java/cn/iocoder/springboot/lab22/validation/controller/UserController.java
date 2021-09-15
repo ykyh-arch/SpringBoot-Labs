@@ -6,6 +6,7 @@ import cn.iocoder.springboot.lab22.validation.dto.UserUpdateGenderDTO;
 import cn.iocoder.springboot.lab22.validation.dto.UserUpdateStatusDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver;
