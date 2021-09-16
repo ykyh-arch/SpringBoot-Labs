@@ -3,4 +3,4 @@ server:
 
 spring:
   application:
-    name: demo-application
+    name: demo-application # 应用名称

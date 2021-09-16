@@ -9,6 +9,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.config.ConfigFileApplicationListener;
 import org.springframework.stereotype.Component;
 
+/**
+ * 自定义配置文件
+ * @author Jaquez
+ * @date 2021/09/16 11:02
+ */
 @SpringBootApplication
 public class Application {
 

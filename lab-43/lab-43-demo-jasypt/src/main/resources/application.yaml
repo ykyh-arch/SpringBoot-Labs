@@ -1,13 +1,12 @@
 spring:
   application:
-    name: ENC(eyMA43nuXyN8pKUaTZebhhEnAEZkHTiP3EKCSYFG1v+PKuiEI8cQbw==)
-#    name: ENC(KoaHnIhRGiCdWh0T2lby899Cov6MyiAXrW5PadJ3XFY=)
+    name: ENC(WSePAbWyWO5ir5jlaLI6ab4fptMrTp0q7ThjOvYCx5zFn9g2mXcaQQ==)
 #    name: demo-application
 
 jasypt:
   # jasypt 配置项，对应 JasyptEncryptorConfigurationProperties 配置类
   encryptor:
-    algorithm: PBEWithMD5AndDES # 加密算法
+    algorithm: PBEWithMD5AndDES # 加密算法，这里不采用默认的 PBEWITHHMACSHA512ANDAES_256 的原因是，会报错
     password: ${JASYPT_PASSWORD} # 加密秘钥
 
 server:

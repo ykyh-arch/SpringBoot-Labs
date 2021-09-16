@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.env.RandomValuePropertySource;
 import org.springframework.stereotype.Component;
 
 @SpringBootApplication
@@ -43,13 +44,14 @@ public class Application {
         @Value("${order.create-frequency-seconds}")
         private Integer createFrequencySeconds;
 
-//        @Value("${order.desc}")
-//        private String desc;
+        @Value("${order.desc}")
+        private String desc;
 
         @Override
         public void run(String... args) {
             logger.info("payTimeoutSeconds:" + payTimeoutSeconds);
             logger.info("createFrequencySeconds:" + createFrequencySeconds);
+            logger.info("desc:" + desc);
         }
 
     }
