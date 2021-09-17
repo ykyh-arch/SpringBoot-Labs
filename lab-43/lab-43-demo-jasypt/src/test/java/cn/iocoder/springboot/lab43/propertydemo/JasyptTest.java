@@ -17,6 +17,7 @@ public class JasyptTest {
 
     @Test
     public void encode() {
+        // FTdp5IRrFuaQ4VQIvIF2bwJGw5lvg20+5Z+0Dnyr28FoWuyl5g6b1A==
         String applicationName = "demo-application";
         System.out.println(encryptor.encrypt(applicationName));
     }

@@ -21,9 +21,9 @@ public class JasyptTest {
         String applicationName = "demo-application";
         System.out.println(encryptor.encrypt(applicationName));
 
-//        // 第二个加密
-//        applicationName = "demo-app";
-//        System.out.println(encryptor.encrypt(applicationName));
+        // 第二个加密，问题：在将 Jasypt 集成进来时，Apollo 的自动配置刷新功能，竟然失效了。
+        applicationName = "demo-app";
+        System.out.println(encryptor.encrypt(applicationName));
     }
 
     @Value("${spring.application.name}")

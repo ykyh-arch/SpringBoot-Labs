@@ -11,6 +11,11 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.util.Set;
 
+/**
+ * 利用 Apollo 动态调整线上日志级别，参考：http://www.kailing.pub/article/index/arcid/189.html
+ * @author Jaquez
+ * @date 2021/09/17 15:45
+ */
 @Component
 public class LoggingSystemConfigListener {
 
@@ -19,9 +24,11 @@ public class LoggingSystemConfigListener {
      */
     private static final String LOGGER_TAG = "logging.level.";
 
+    // springboot 提供的日志系统，方便动态控制日志相关信息
     @Resource
     private LoggingSystem loggingSystem;
 
+    // 获取本地缓存的 Apollo 配置
     @ApolloConfig
     private Config config;
 
