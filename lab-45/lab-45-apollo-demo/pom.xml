@@ -12,7 +12,6 @@
 
     <artifactId>lab-45-apollo-demo</artifactId>
 
-
     <dependencies>
         <!-- Spring Boot Starter 基础依赖 -->
         <dependency>
