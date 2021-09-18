@@ -17,6 +17,7 @@
         <module>lab-45-apollo-demo-auto-refresh</module>
         <module>lab-45-apollo-demo-jasypt</module>
         <module>lab-45-apollo-demo-multi</module>
+        <module>lab-45-apollo-dynamic-datasource</module>
     </modules>
 
 

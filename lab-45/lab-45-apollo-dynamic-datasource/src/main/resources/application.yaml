@@ -1,0 +1,21 @@
+server:
+  port: 7070 # 避免和本地的 Apollo Portal 端口冲突
+
+app:
+  id: demo-application-dynamic-datasource # 使用的 Apollo 的项目（应用）编号
+apollo:
+  meta: http://192.168.177.4:8080 # Apollo Meta Server 地址
+  bootstrap:
+    enabled: true # 是否开启 Apollo 配置预加载功能。默认为 false。
+    eagerLoad:
+      enable: true # 是否开启 Apollo 支持日志级别的加载时机。默认为 false。
+    namespaces: application # 使用的 Apollo 的命名空间，默认为 application。
+
+# HikariCP 数据源的配置
+#spring:
+#  datasource:
+#    hikari:
+#      maximumPoolSize: 100
+#    password: 123456
+#    url: jdbc:mysql://127.0.0.1:3306/lab-45-apollo-demo-1?autoReconnect=true&useUnicode=true&characterEncoding=utf-8
+#    username: root
