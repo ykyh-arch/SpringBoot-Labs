@@ -1,3 +1,4 @@
+# 监控端点配置
 management:
   endpoints:
     # Actuator HTTP 配置项，对应 WebEndpointProperties 配置类
