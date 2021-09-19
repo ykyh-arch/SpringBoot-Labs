@@ -2,8 +2,14 @@ package cn.iocoder.springboot.lab34.actuatordemo.actuate;
 
 import org.springframework.boot.actuate.health.AbstractHealthIndicator;
 import org.springframework.boot.actuate.health.Health;
+import org.springframework.boot.actuate.health.SimpleStatusAggregator;
 import org.springframework.stereotype.Component;
 
+/**
+ * 自定义健康指示器指标
+ * @author Jaquez
+ * @date 2021/09/19 09:55
+ */
 @Component
 public class DemoHealthIndicator extends AbstractHealthIndicator {
 
@@ -23,7 +29,7 @@ public class DemoHealthIndicator extends AbstractHealthIndicator {
     }
 
     private boolean checkSuccess() {
-        return false;
+        return true;
     }
 
 }

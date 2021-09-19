@@ -1,3 +1,4 @@
+# 端点监控配置
 management:
   endpoint:
     # Health 端点配置项，对应 HealthProperties 配置类
@@ -6,7 +7,7 @@ management:
       show-details: ALWAYS # 何时显示完整的健康信息。默认为 NEVER 都不展示。可选 WHEN_AUTHORIZED 当经过授权的用户；可选 ALWAYS 总是展示。
       status:
         http-mapping: # 设置不同健康状态对应的响应状态码
-          DOWN: 503
+          DOWN: 503 # 配合 Tengine 检查应用是否健康并进行相应移除操作
         order: DOWN, OUT_OF_SERVICE, UP, UNKNOWN # 状态排序。
   health:
     # DiskSpaceHealthIndicator 配置项，对应 DiskSpaceHealthIndicatorProperties
@@ -19,6 +20,6 @@ management:
     web:
       base-path: /actuator # Actuator 提供的 API 接口的根目录。默认为 /actuator
       exposure:
-        include: '*' # 需要开放的端点。默认值只打开 health 和 info 两个端点。通过设置 * ，可以开放所有端点。
+        include: '*' # 需要开放的端点。默认值只打开 health 和 info 两个端点。通过设置 * ，可以开放所有端点。开启了 http 方式
         exclude: # 在 include 的基础上，需要排除的端点。通过设置 * ，可以排除所有端点。
 

@@ -1,3 +1,4 @@
+# 监控端点配置项
 management:
   endpoint:
     # Info 端点配置项
@@ -23,7 +24,7 @@ management:
         include: '*' # 需要开放的端点。默认值只打开 health 和 info 两个端点。通过设置 * ，可以开放所有端点。
         exclude: # 在 include 的基础上，需要排除的端点。通过设置 * ，可以排除所有端点。
 
-# info 配置项
+# info 配置项，通过 @...@ 获取 maven 里属性信息
 info:
   app:
     java:
