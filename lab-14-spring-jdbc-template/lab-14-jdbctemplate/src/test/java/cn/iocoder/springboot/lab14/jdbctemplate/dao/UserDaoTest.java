@@ -13,6 +13,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * 测试 jdbcTemplate 操作数据库
+ * @author Jaquez
+ * @date 2021/09/22 17:59
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class UserDaoTest {
@@ -38,8 +43,8 @@ public class UserDaoTest {
 
     @Test
     public void testUpdateById() {
-        UserDO updateUser = new UserDO().setId(1)
-                .setPassword("wobucai");
+        UserDO updateUser = new UserDO().setId(4)
+                .setPassword("nicai");
         userDao.updateById(updateUser);
     }
 
