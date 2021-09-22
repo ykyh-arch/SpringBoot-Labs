@@ -13,7 +13,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // 访问 EndPoint 地址，需要经过认证，并且拥有 ADMIN 角色
         http.requestMatcher(EndpointRequest.toAnyEndpoint()).authorizeRequests((requests) ->
                 requests.anyRequest().hasRole("ADMIN"));
-        // 开启 Basic Auth
+        // 开启 Basic Auth，设置使用 HTTP Basic Authentication。
         http.httpBasic();
     }
 
