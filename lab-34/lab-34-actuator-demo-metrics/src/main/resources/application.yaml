@@ -1,15 +1,16 @@
 #spring:
 #  application:
-#    name: demo-application
+#    name: demo-application # 应用名称
 
+# 监控端点
 management:
   endpoint:
-    # Metrics 端点配置项
+    # Metrics 指标端点配置项
     metrics:
       enabled: true # 是否开启。默认为 true 开启。
   # Metrics 的具体配置项，对应 MetricsProperties 配置类
   metrics:
-    # 设置指定前缀的指标是否开启
+    # 设置指定前缀的指标是否开启，默认都是开启的，例如说，胖友不希望 JVM 相关的指标被提供查出来，则可以将这里的 xxx 改成 jvm 即可。
     enable:
       xxx: false
     # 通用 tag

@@ -25,7 +25,9 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <!-- 实现对 Spring Security 的自动化配置 -->
+        <!-- 实现对 Spring Security 的自动化配置
+         在 Spring Security 中，认证成功或失败时，AuthenticationAuditListener 会监听 AuthenticationSuccessEvent 或 AbstractAuthenticationFailureEvent 事件，从而发布 AuditEvent 事件。
+         -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
