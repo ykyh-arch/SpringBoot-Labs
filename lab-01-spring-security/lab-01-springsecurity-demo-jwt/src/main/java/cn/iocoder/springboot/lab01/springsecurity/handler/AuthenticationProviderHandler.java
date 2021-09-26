@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 /**
- * 自定义认证处理器
+ * 自定义认证处理器，参考：https://blog.csdn.net/z69183787/article/details/113717614?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-10.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-10.no_search_link
  *
  * @author jaquez
  * @date 2021/09/26 16:44
