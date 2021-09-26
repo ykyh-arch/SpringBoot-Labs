@@ -1,5 +1,8 @@
 package cn.iocoder.springboot.lab01.springsecurity.userdetails;
 
+import cn.iocoder.springboot.lab01.springsecurity.dataobject.UserDO;
+import cn.iocoder.springboot.lab01.springsecurity.mapper.UserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,22 +23,23 @@ import java.util.Set;
 @Component
 public class SelfUserDetailsService implements UserDetailsService {
 
+    @Autowired
+    private UserMapper userMapper;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        // 构建用户信息的逻辑(数据库/LDAP)
-
+        // 构建用户信息
+        UserDO userDO = userMapper.selectByUsername(username);
         SelfUserDetails userInfo = new SelfUserDetails();
         userInfo.setUsername(username);
-        // 从数据库中取出密码
-        userInfo.setPassword(new BCryptPasswordEncoder().encode("123456"));
-
-        // 权限-角色信息
-        Set authoritiesSet = new HashSet();
-        GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_ADMIN");
-        authoritiesSet.add(authority);
-        userInfo.setAuthorities(authoritiesSet);
-
+        // 密码加密的话，需要重写 AuthenticationProvider#authenticate（）方法
+        userInfo.setPassword(new BCryptPasswordEncoder().encode(userDO.getPassword()));
+        // 权限信息，用户拥有哪些角色，真实环境从数据库取，这里先注释掉不考虑用户的权限
+        // Set authoritiesSet = new HashSet();
+        // GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_ADMIN");
+        // authoritiesSet.add(authority);
+        // userInfo.setAuthorities(authoritiesSet);
         return userInfo;
     }
 }

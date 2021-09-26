@@ -1,8 +1,12 @@
 package cn.iocoder.springboot.lab01.springsecurity.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import cn.iocoder.springboot.lab01.springsecurity.service.UserService;
+import cn.iocoder.springboot.lab01.springsecurity.utils.CommonResponseBodyWrapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 测试类
@@ -11,16 +15,27 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2021/09/25 21:38
  **/
 @RestController
-@RequestMapping("/api/common")
+@RequestMapping("/api/test")
 public class TestController {
 
+    @Autowired
+    private UserService userService;
+
+
     @GetMapping("/index")
-    public String index(){
-        return "index";
+    public CommonResponseBodyWrapper<String> index(){
+        return CommonResponseBodyWrapper.success("index");
     }
 
     @GetMapping("/inner")
-    public String inner(){
-        return "inner";
+    public CommonResponseBodyWrapper<String> inner(){
+        return CommonResponseBodyWrapper.success("inner");
+    }
+
+    @PostMapping("/login")
+    public CommonResponseBodyWrapper<String> login(@RequestParam("username") String username, String password,
+                                                   HttpServletRequest request, HttpServletResponse response){
+
+        return CommonResponseBodyWrapper.success(userService.login(username,password,request,response));
     }
 }

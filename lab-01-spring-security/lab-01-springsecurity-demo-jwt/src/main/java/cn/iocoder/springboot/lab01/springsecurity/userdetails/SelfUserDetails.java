@@ -17,6 +17,7 @@ public class SelfUserDetails implements UserDetails, Serializable {
 
     private String username;
     private String password;
+
     private Set<? extends GrantedAuthority> authorities;
 
     @Override

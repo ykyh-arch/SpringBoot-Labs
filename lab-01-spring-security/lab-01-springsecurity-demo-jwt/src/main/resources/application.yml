@@ -4,13 +4,47 @@ server:
     context-path: /
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/lab-01-springsecurity
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/lab-01-springsecurity?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: 123456
+  # 消息转化器过滤掉 null 值，即响应数据为 null 不显示
+  jackson:
+    default-property-inclusion: non_null
+
+# mybatis-plus 配置
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: cn.iocoder.springboot.lab01.springsecurity.dataobject
+
+# logging 配置
+logging:
+  level:
+    cn:
+      iocoder:
+        springboot:
+          lab01:
+            springsecurity:
+              mapper: debug
 
 # token 配置
 token:
-  expiration-seconds: 300
+  expiration-seconds: 300 # 5分钟
   salt: _secret
 
+# md5 配置
+md5:
+  salt: _secret
+
+# jwt 证书中用来配置公钥、私钥
+key-store:
+  type: JKS
+  alias: jwt
+  password: 123456

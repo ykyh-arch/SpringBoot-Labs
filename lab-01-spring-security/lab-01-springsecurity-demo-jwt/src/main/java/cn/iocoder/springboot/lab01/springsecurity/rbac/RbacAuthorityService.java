@@ -33,7 +33,7 @@ public class RbacAuthorityService {
             String username = ((UserDetails) userInfo).getUsername();
             // 获取资源，这些 url 都是要登录后才能访问，且其他的 url 都不能访问！
             Set<String> urls = new HashSet();
-            urls.add("/api/common/**");
+            urls.add("/api/test/**");
             AntPathMatcher antPathMatcher = new AntPathMatcher();
             for (String url : urls) {
                 if (antPathMatcher.match(url, request.getRequestURI())) {

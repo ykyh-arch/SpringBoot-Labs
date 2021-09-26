@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * 认证失成功处理类
+ * 认证成功处理类
  *
  * @author jaquez
  * @date 2021/09/25 19:30
@@ -36,7 +36,7 @@ public class AjaxAuthenticationSuccessHandler implements AuthenticationSuccessHa
 
         responseBody.setCode(String.valueOf(SysResponseCodeAndMsgEnum.LOGIN_SUCCESS.getCode()));
         responseBody.setMsg(SysResponseCodeAndMsgEnum.LOGIN_SUCCESS.getMsg());
-
+        // 登录成功处理，生成 token 信息，在 JwtAuthenticationTokenFilter#doFilterInternal() 存储了用户信息
         SelfUserDetails userDetails = (SelfUserDetails) authentication.getPrincipal();
         // 过期时间 5 分钟
         String token = JwtTokenUtil.generateToken(userDetails.getUsername(), expirationSeconds, salt);

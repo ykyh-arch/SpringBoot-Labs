@@ -12,6 +12,7 @@ public enum SysResponseCodeAndMsgEnum {
     NOT_AUTHORITIES(300, "Need Authorities!"),
     LOGIN_FAILURE(400, "Login Failure!"),
 
+    ERROR(401, "ERROR!"),
     ;
 
     private final int code;

@@ -26,13 +26,21 @@ import java.io.IOException;
 @Component
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
-    // 取从数据库拿到的用户信息
+    // 从数据库拿到的用户信息
     @Autowired
     SelfUserDetailsService userDetailsService;
 
     @Value("${token.salt}")
     private String salt;
 
+    /**
+     * 从请求头中的 token 解析得的用户账户，回表查询用户信息存储到 spring secruity 环境里
+     * @param request
+     * @param response
+     * @param chain
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
 
@@ -48,7 +56,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
                 if (userDetails != null) {
                     UsernamePasswordAuthenticationToken authentication =
-                            new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                            new UsernamePasswordAuthenticationToken(userDetails, userDetails.getPassword(), userDetails.getAuthorities());
                     authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }

@@ -6,6 +6,7 @@ import cn.iocoder.springboot.lab01.springsecurity.userdetails.SelfUserDetailsSer
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -45,7 +46,7 @@ public class SpringSecurityConf extends WebSecurityConfigurerAdapter {
     @Autowired
     AjaxAccessDeniedHandler accessDeniedHandler;
 
-    // 自定义 user 对象
+    // 自定义 user 对象服务类
     @Autowired
     SelfUserDetailsService userDetailsService;
 
@@ -53,18 +54,29 @@ public class SpringSecurityConf extends WebSecurityConfigurerAdapter {
     @Autowired
     JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
 
+    // 自定义认证提供类
+    @Autowired
+    AuthenticationProviderHandler authenticationProviderHandler;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
         // 加入自定义的安全认证
-        auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
+        auth
+        .authenticationProvider(authenticationProviderHandler)
+        .userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
 
+    // 对 http api 进行配置
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         // 去掉 CSRF
         http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/api/test/login").permitAll() // 放行部分接口
+                .and()
+
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 使用 JWT，关闭 session
                 .and()
 
