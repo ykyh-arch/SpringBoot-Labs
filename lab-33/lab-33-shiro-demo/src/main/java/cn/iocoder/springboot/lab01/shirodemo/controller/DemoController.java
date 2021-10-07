@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/demo")
 public class DemoController {
 
+    // 匿名登录
     @RequiresGuest
-    @GetMapping("/echo")
+    @GetMapping("/demo")
     public String demo() {
         return "示例返回";
     }

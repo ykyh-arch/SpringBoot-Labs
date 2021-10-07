@@ -28,6 +28,13 @@ public class SecurityController {
         return "login.html";
     }
 
+    /**
+     * 执行 shiro 默认的登录后会再次执行 /login 方法，可以实现自定义业务逻辑处理
+     * @author Jaquez
+     * @date 2021/10/04 17:49
+     * @param request
+     * @return java.lang.String
+     */
     @ResponseBody
     @PostMapping("/login")
     public String login(HttpServletRequest request) {

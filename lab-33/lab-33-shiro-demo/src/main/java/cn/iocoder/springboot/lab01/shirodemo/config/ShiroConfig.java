@@ -3,13 +3,20 @@ package cn.iocoder.springboot.lab01.shirodemo.config;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.realm.SimpleAccountRealm;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.web.filter.mgt.DefaultFilter;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.servlet.AbstractShiroFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * shiro 配置文件，{@link AbstractShiroFilter }{@link DefaultFilter}
+ * @author Jaquez
+ * @date 2021/10/04 13:20
+ */
 @Configuration
 public class ShiroConfig {
 
@@ -32,6 +39,7 @@ public class ShiroConfig {
         return securityManager;
     }
 
+    // shiro Filter
     @Bean
     public ShiroFilterFactoryBean shiroFilterFactoryBean() {
         // 创建 ShiroFilterFactoryBean 对象，用于创建 ShiroFilter 过滤器
@@ -41,7 +49,7 @@ public class ShiroConfig {
         filterFactoryBean.setSecurityManager(this.securityManager());
 
         // 设置 URL 们
-        filterFactoryBean.setLoginUrl("/login"); // 登陆 URL
+        filterFactoryBean.setLoginUrl("/login"); // 登陆 URL，在 Shiro 中，约定 GET loginUrl 为登录页面，POST loginUrl 为登录请求。
         filterFactoryBean.setSuccessUrl("/login_success"); // 登陆成功 URL
         filterFactoryBean.setUnauthorizedUrl("/unauthorized"); // 无权限 URL
 
@@ -51,9 +59,11 @@ public class ShiroConfig {
         return filterFactoryBean;
     }
 
+    // filterChain 配置
     private Map<String, String> filterChainDefinitionMap() {
         Map<String, String> filterMap = new LinkedHashMap<>(); // 注意要使用有序的 LinkedHashMap ，顺序匹配
-        filterMap.put("/test/echo", "anon"); // 允许匿名访问
+        // 参考自：{@link DefaultFilter}
+        filterMap.put("/test/demo", "anon"); // 允许匿名访问
         filterMap.put("/test/admin", "roles[ADMIN]"); // 需要 ADMIN 角色
         filterMap.put("/test/normal", "roles[NORMAL]"); // 需要 NORMAL 角色
         filterMap.put("/logout", "logout"); // 退出

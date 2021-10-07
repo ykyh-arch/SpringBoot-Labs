@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>lab-33-shiro-demo</module>
+        <module>lab-33-shiro-demo-2</module>
     </modules>
 
 
