@@ -47,7 +47,7 @@ public class OAuth2Filter extends AuthenticatingFilter {
      */
     @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
-        return ((HttpServletRequest) request).getMethod().equals(RequestMethod.OPTIONS.name());
+        return ((HttpServletRequest) request).getMethod().toUpperCase().equals(RequestMethod.OPTIONS.name());
     }
 
     /**
@@ -66,6 +66,7 @@ public class OAuth2Filter extends AuthenticatingFilter {
             // 设置响应 Header
             HttpServletResponse httpResponse = (HttpServletResponse) response;
             httpResponse.setContentType("application/json;charset=utf-8");
+            httpResponse.setStatus(HttpStatus.SC_OK);
             // httpResponse.setHeader("Content-Type","application/json;charset=utf-8");
             httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
             httpResponse.setHeader("Access-Control-Allow-Origin", HttpContextUtils.getOrigin());
@@ -86,6 +87,7 @@ public class OAuth2Filter extends AuthenticatingFilter {
         // 设置响应 Header
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         httpResponse.setContentType("application/json;charset=utf-8");
+        httpResponse.setStatus(HttpStatus.SC_OK);
         httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
         httpResponse.setHeader("Access-Control-Allow-Origin", HttpContextUtils.getOrigin());
         try {

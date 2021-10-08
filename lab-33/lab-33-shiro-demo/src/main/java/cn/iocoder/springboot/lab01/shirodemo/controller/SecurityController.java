@@ -43,7 +43,6 @@ public class SecurityController {
         if (subject.getPrincipal() != null) {
             return "你已经登陆账号：" + subject.getPrincipal();
         }
-
         // 获得登陆失败的原因
         String shiroLoginFailure = (String) request.getAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME);
         // 翻译成人类看的懂的提示

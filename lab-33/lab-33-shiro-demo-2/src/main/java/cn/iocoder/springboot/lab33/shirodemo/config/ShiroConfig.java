@@ -9,8 +9,10 @@ import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.mgt.SecurityManager;
 
+import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 
 import javax.servlet.Filter;
 import java.util.HashMap;
@@ -18,7 +20,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * shiro 配置类
+ * shiro 配置类，参考：https://www.iocoder.cn/Fight/Spring-Boot-+-Vue-+-Shiro-realizes-front-and-rear-end-separation-and-permission-control/?self
  *
  * @author jaquez
  * @date 2021/10/05 12:18
@@ -68,9 +70,31 @@ public class ShiroConfig {
         return shiroFilter;
     }
 
+    /**
+     * Shiro 生命周期处理器
+     * @author Jaquez
+     * @date 2021/10/07 14:38
+     * @return org.apache.shiro.spring.LifecycleBeanPostProcessor
+     */
     @Bean("lifecycleBeanPostProcessor")
     public LifecycleBeanPostProcessor lifecycleBeanPostProcessor() {
         return new LifecycleBeanPostProcessor();
+    }
+
+    /**
+     * 开启 Shiro 的注解（如：@RequiresRoles，@RequiresPermissions）
+     * 需借助 SpringAOP 扫描使用 Shiro 注解的类，并在必要时进行安全逻辑验证
+     * 配置以下两个 bean（DefaultAdvisorAutoProxyCreator(可选)和 AuthorizationAttributeSourceAdvisor）即可实现此功能
+     * @author Jaquez
+     * @date 2021/10/07 14:39
+     * @return org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator
+     */
+    @Bean
+    @DependsOn({"lifecycleBeanPostProcessor"})
+    public DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator() {
+        DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator = new DefaultAdvisorAutoProxyCreator();
+        advisorAutoProxyCreator.setProxyTargetClass(true);
+        return advisorAutoProxyCreator;
     }
 
     @Bean
