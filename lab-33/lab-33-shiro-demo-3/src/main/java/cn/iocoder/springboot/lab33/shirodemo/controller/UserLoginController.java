@@ -14,11 +14,12 @@ import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Description 用户登录，这里都是匿名访问
@@ -40,13 +41,18 @@ public class UserLoginController {
      * @CreateTime 2019/6/20 9:21
      */
     @RequestMapping("/login")
-    public Map<String,Object> login(SysUserEntity sysUserEntity){
+    public Map<String,Object> login(SysUserEntity sysUserEntity, HttpServletRequest request){
         Map<String,Object> map = new HashMap<>();
         // 进行身份验证
         try{
             // 验证身份和登陆
             Subject subject = SecurityUtils.getSubject();
             UsernamePasswordToken token = new UsernamePasswordToken(sysUserEntity.getUsername(), sysUserEntity.getPassword());
+            String rememberMe = request.getParameter("rememberMe");
+            // rememberMe 功能
+            if("true".toLowerCase().equals(rememberMe)){
+                token.setRememberMe(true);
+            }
             // 进行登录操作
             subject.login(token);
         }catch (IncorrectCredentialsException e) {
@@ -72,7 +78,7 @@ public class UserLoginController {
         return map;
     }
     /**
-     * 未登录
+     * 未登录，返回前端 json 数据，或在 FormAuthenticationFilter#onAccessDenied（）拦截器处理
      * @Author Sans
      * @CreateTime 2019/6/20 9:22
      */

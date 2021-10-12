@@ -26,7 +26,7 @@ public class SpringSecurityConf extends WebSecurityConfigurerAdapter {
     @Value("${token.expiration-seconds}")
     private Integer expirationSeconds;
 
-    // 未登陆时返回 JSON 格式的数据给前端（否则为 html）
+    // 未认证时返回 JSON 格式的数据给前端（否则为 html）
     @Autowired
     AjaxAuthenticationEntryPointHanlder authenticationEntryPointHanlder;
 

@@ -121,6 +121,7 @@
         <module>lab-78-lock</module>
         <module>lab-78-lock/lab-78-lock-local</module>
         <module>lab-78-lock/lab-78-lock-redis</module>
+        <module>lab-01-spring-security/lab-01-springsecurity-demo-practice</module>
     </modules>
 
 </project>

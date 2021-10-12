@@ -1,0 +1,39 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 800        # tomcat 最大线程数，默认为200
+    min-spare-threads: 30   # tomcat 启动初始化的线程数，默认值25
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/lab-01-springsecurity-practice?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+  messages:
+    basename: i18n/messages
+  jackson:
+    default-property-inclusion: non_null
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 10s
+      lettuce:
+        pool:
+          min-idle: 0
+          max-idle: 8
+          max-active: 8
+          max-wait: -1ms
+mybatis:
+  typeAliasesPackage: cn.iocoder.springboot.lab01.springsecurity.dataobject
+  mapperLocations: classpath*:mapper/*Mapper.xml
+  configLocation: classpath:mybatis/mybatis-config.xml
+token:
+  header: Authorization
+  secret: abcdefghijklmnopqrstuvwxyz
+  expireTime: 30
+logging:
+  level:
+    cn.iocoder.springboot.lab01.springsecurity.mapper: debug

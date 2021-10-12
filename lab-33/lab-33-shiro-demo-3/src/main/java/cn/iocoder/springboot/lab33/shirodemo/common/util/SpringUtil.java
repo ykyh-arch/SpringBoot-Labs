@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class SpringUtil implements ApplicationContextAware {
+
     private static ApplicationContext context;
     /**
      * Spring在bean初始化后会判断是不是ApplicationContextAware的子类
