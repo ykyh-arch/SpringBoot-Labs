@@ -34,6 +34,9 @@ token:
   header: Authorization
   secret: abcdefghijklmnopqrstuvwxyz
   expireTime: 30
+remember-me:
+  key: remember-me
+  expireTime: 7
 logging:
   level:
     cn.iocoder.springboot.lab01.springsecurity.mapper: debug

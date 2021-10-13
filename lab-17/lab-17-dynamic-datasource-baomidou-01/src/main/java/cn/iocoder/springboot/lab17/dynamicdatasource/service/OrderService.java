@@ -21,7 +21,7 @@ public class OrderService {
     private UserMapper userMapper;
 
     /**
-     * 当前类 Bean已经被AOP代理
+     * 当前类 Bean 已经被 AOP 代理
      * @author Jaquez
      * @date 2021/06/12 18:52
      * @return cn.iocoder.springboot.lab17.dynamicdatasource.service.OrderService
@@ -40,6 +40,7 @@ public class OrderService {
     }
 
     /**
+     * 参考自：https://blog.csdn.net/weixin_30537451/article/details/97870413
      * 事务-》AOP-》代理-》拦截器（transactionInterceptor）-》委托使用DataSourceTransactionManager-》
      * DynamicRoutingDataSource（维护多个实现类，如果通过@DS方式指定，则使用对应数据源，如果未指定则使用默认数据源
      * 则DS信息则通过上下文ThreadLocal绑定）=》DataSource-》Collection

@@ -51,6 +51,11 @@ public class Constants
     public static final String LOGIN_TOKEN_KEY = "login_tokens:";
 
     /**
+     * 记住我 redis key
+     */
+    public static final String REMEMBER_ME_KEY = "remember_me:tokens:";
+
+    /**
      * 验证码有效期（分钟）
      */
     public static final Integer CAPTCHA_EXPIRATION = 2;

@@ -1,10 +1,10 @@
 package cn.iocoder.springboot.lab01.springsecurity.components.security.config;
 
-import cn.iocoder.springboot.lab01.springsecurity.components.security.handler.AuthenticationEntryPointImpl;
-import cn.iocoder.springboot.lab01.springsecurity.components.security.handler.JwtAuthenticationTokenFilter;
-import cn.iocoder.springboot.lab01.springsecurity.components.security.handler.LogoutSuccessHandlerImpl;
+import cn.iocoder.springboot.lab01.springsecurity.components.security.handler.*;
+import cn.iocoder.springboot.lab01.springsecurity.components.security.rememberme.RedisTokenRepositoryImpl;
 import cn.iocoder.springboot.lab01.springsecurity.components.security.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -15,7 +15,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 /**
  * spring security配置
@@ -26,6 +29,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Value("${remember-me.key}")
+    private String rememberMe;
 
     /**
      * 自定义用户认证逻辑（实现类似于 shiro 的 realm 操作）
@@ -50,6 +56,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Autowired
     private JwtAuthenticationTokenFilter authenticationTokenFilter;
+
+    @Bean
+    public PersistentTokenRepository persistentTokenRepository() {
+
+        return new RedisTokenRepositoryImpl();
+    }
+
+    @Bean
+    public RememberMeServices rememberMeServices() {
+        PersistentTokenBasedRememberMeServices rememberMeServices = new PersistentTokenBasedRememberMeServices(rememberMe, userDetailsServiceImpl, persistentTokenRepository());
+        rememberMeServices.setParameter(rememberMe);
+        rememberMeServices.setTokenValiditySeconds(7 * 24 * 60 * 60);
+        return rememberMeServices;
+    }
 
     /**
      * 解决无法直接注入 AuthenticationManager
@@ -110,6 +130,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .headers().frameOptions().disable();
         httpSecurity.logout().logoutUrl("/logout").logoutSuccessHandler(logoutSuccessHandler);
+        // 记住我
+        httpSecurity.rememberMe()
+                // .alwaysRemember(true)
+                .rememberMeServices(rememberMeServices())
+                .rememberMeParameter(rememberMe)
+                .userDetailsService(userDetailsServiceImpl)
+                // .tokenValiditySeconds(12 * 60 * 60);
+                .tokenRepository(persistentTokenRepository());
         // 添加 JWT filter
         httpSecurity.addFilterBefore(authenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
     }

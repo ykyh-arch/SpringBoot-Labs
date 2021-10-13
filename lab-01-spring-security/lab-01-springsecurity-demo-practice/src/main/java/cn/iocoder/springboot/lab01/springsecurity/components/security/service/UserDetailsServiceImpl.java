@@ -12,10 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Service;
 
 /**
- * 用户验证处理，相当于 shiro 中的 realm 中的认证逻辑
+ * 用户验证处理，相当于 shiro 中的 realm 中的认证逻辑，{@link UsernamePasswordAuthenticationFilter }
  *
  * @author Jaquez
  * @date 2021/10/10 13:49
