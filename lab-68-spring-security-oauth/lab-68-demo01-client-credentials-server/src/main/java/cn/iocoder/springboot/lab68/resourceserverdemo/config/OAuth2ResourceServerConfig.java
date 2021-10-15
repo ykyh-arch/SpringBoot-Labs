@@ -7,9 +7,12 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 
 /**
  * 资源服务器配置
+ *
+ * @author Jaquez
+ * @date 2021/10/15 16:48
  */
 @Configuration
-@EnableResourceServer
+@EnableResourceServer // 开启资源服务器
 public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Override

@@ -7,6 +7,9 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 
 /**
  * 资源服务器配置
+ *
+ * @author Jaquez
+ * @date 2021/10/15 17:29
  */
 @Configuration
 @EnableResourceServer

@@ -11,6 +11,9 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 
 /**
  * 授权服务器配置
+ *
+ * @author Jaquez
+ * @date 2021/10/14 15:49
  */
 @Configuration
 @EnableAuthorizationServer
@@ -22,6 +25,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    // 用户认证端点配置
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.authenticationManager(authenticationManager);

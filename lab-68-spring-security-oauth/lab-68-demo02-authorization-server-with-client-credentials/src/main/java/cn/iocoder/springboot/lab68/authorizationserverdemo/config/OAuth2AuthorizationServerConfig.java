@@ -9,14 +9,17 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 
 /**
- * 授权服务器配置
+ * 授权服务器配置，客户端模式下，无需 Spring Security 提供用户的认证功能
+ *
+ * @author Jaquez
+ * @date 2021/10/14 17:42
  */
 @Configuration
-@EnableAuthorizationServer
+@EnableAuthorizationServer // 开启授权服务支持
 public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     /**
-     * 创建 PasswordEncoder Bean
+     * 创建 PasswordEncoder Bean，不配置则报错
      */
     @Bean
     public static NoOpPasswordEncoder passwordEncoder() {

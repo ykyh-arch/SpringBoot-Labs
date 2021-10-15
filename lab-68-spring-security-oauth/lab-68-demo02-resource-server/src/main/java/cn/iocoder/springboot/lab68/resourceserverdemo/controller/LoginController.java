@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 登录控制器
+ *
+ * @author Jaquez
+ * @date 2021/10/14 15:19
+ */
 @RestController
 @RequestMapping("/")
 public class LoginController {
@@ -22,6 +28,7 @@ public class LoginController {
     @Value("${security.oauth2.access-token-uri}")
     private String accessTokenUri;
 
+    // 资源服务器扮演的是一个 OAuth 客户端的角色，调用授权服务器的 /oauth/token 接口，使用密码模式进行授权，获得访问令牌。
     @PostMapping("/login")
     public OAuth2AccessToken login(@RequestParam("username") String username,
                                    @RequestParam("password") String password) {
@@ -32,7 +39,7 @@ public class LoginController {
         resourceDetails.setClientSecret(oauth2ClientProperties.getClientSecret());
         resourceDetails.setUsername(username);
         resourceDetails.setPassword(password);
-        // 创建 OAuth2RestTemplate 对象
+        // 创建 OAuth2RestTemplate 对象，用于请求授权服务器
         OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(resourceDetails);
         restTemplate.setAccessTokenProvider(new ResourceOwnerPasswordAccessTokenProvider());
         // 获取访问令牌

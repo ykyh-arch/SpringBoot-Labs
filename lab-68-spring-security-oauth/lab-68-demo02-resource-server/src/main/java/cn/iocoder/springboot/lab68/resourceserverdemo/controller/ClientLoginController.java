@@ -28,7 +28,7 @@ public class ClientLoginController {
         resourceDetails.setAccessTokenUri(accessTokenUri);
         resourceDetails.setClientId(oauth2ClientProperties.getClientId());
         resourceDetails.setClientSecret(oauth2ClientProperties.getClientSecret());
-        // 创建 OAuth2RestTemplate 对象
+        // 创建 OAuth2RestTemplate 对象，远程调用授权服务器
         OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(resourceDetails);
         restTemplate.setAccessTokenProvider(new ClientCredentialsAccessTokenProvider());
         // 获取访问令牌

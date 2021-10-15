@@ -9,9 +9,12 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 
 /**
  * 授权服务器配置
+ *
+ * @author Jaquez
+ * @date 2021/10/15 16:43
  */
 @Configuration
-@EnableAuthorizationServer
+@EnableAuthorizationServer // 开启授权服务器
 public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Bean

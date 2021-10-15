@@ -11,9 +11,12 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 
 /**
  * 授权服务器配置
+ *
+ * @author Jaquez
+ * @date 2021/10/14 10:20
  */
 @Configuration
-@EnableAuthorizationServer
+@EnableAuthorizationServer // 开启 OAuth 授权服务器的功能
 public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     /**
@@ -22,6 +25,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    // 认证服务器端点配置
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.authenticationManager(authenticationManager);
@@ -29,16 +33,18 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+        // 端点：/oauth/check_token
         oauthServer.checkTokenAccess("isAuthenticated()");
 //        oauthServer.tokenKeyAccess("isAuthenticated()")
 //                .checkTokenAccess("isAuthenticated()");
-//        oauthServer.tokenKeyAccess("permitAll()")
+//        oauthServer
+//                .allowFormAuthenticationForClients()
 //                .checkTokenAccess("permitAll()");
     }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory()
+        clients.inMemory() // 基于内存
                 .withClient("clientapp").secret("112233") // Client 账号、密码。
                 .authorizedGrantTypes("password") // 密码模式
                 .scopes("read_userinfo", "read_contacts") // 可授权的 Scope

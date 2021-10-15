@@ -10,6 +10,9 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 
 /**
  * 授权服务器配置
+ *
+ * @author Jaquez
+ * @date 2021/10/15 17:05
  */
 @Configuration
 @EnableAuthorizationServer
@@ -28,7 +31,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
                 .withClient("clientapp").secret("112233") // Client 账号、密码。
-                .authorizedGrantTypes("implicit") // 授权码模式
+                .authorizedGrantTypes("implicit") // 简化模式
                 .redirectUris("http://127.0.0.1:9090/callback02") // 配置回调地址，选填。
                 .scopes("read_userinfo", "read_contacts") // 可授权的 Scope
 //                .and().withClient() // 可以继续配置新的 Client

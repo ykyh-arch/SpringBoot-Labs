@@ -6,10 +6,13 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 
 /**
- * 资源服务器配置
+ * 资源服务器配置类
+ *
+ * @author Jaquez
+ * @date 2021/10/14 15:10
  */
 @Configuration
-@EnableResourceServer
+@EnableResourceServer // 开启资源服务器的配置类
 public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Override
