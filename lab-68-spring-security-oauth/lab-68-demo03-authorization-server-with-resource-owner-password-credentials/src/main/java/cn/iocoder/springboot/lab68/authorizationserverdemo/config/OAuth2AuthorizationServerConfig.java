@@ -12,9 +12,12 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 
 /**
  * 授权服务器配置
+ *
+ * @author Jaquez
+ * @date 2021/10/18 15:37
  */
 @Configuration
-@EnableAuthorizationServer
+@EnableAuthorizationServer // 开启授权
 public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     /**
@@ -29,6 +32,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     @Autowired
     private UserDetailsService userDetailsService;
 
+    // 端点配置
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.authenticationManager(authenticationManager)
@@ -49,7 +53,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
                 .withClient("clientapp").secret("112233") // Client 账号、密码。
-                .authorizedGrantTypes("password", "refresh_token") // 密码模式
+                .authorizedGrantTypes("password", "refresh_token") // 密码模式，刷新 token
                 .scopes("read_userinfo", "read_contacts") // 可授权的 Scope
                 .accessTokenValiditySeconds(3600) // 访问令牌的有效期为 3600 秒 = 2 小时
                 .refreshTokenValiditySeconds(864000) // 刷新令牌的有效期为 864000 秒 = 10 天
