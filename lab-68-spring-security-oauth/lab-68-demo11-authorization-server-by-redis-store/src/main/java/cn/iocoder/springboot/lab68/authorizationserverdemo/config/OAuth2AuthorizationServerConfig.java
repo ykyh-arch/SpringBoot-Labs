@@ -15,6 +15,9 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
 
 /**
  * 授权服务器配置
+ *
+ * @author Jaquez
+ * @date 2021/10/18 17:41
  */
 @Configuration
 @EnableAuthorizationServer

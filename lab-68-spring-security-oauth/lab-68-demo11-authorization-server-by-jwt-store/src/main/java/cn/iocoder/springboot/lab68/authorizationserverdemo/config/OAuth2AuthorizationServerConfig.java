@@ -14,6 +14,9 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 /**
  * 授权服务器配置
+ *
+ * @author Jaquez
+ * @date 2021/10/18 17:54
  */
 @Configuration
 @EnableAuthorizationServer

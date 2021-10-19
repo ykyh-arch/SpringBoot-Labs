@@ -18,9 +18,12 @@ import javax.sql.DataSource;
 
 /**
  * 授权服务器配置
+ *
+ * @author Jaquez
+ * @date 2021/10/19 16:25
  */
 @Configuration
-@EnableAuthorizationServer
+@EnableAuthorizationServer // 开启授权服务器功能
 public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     /**

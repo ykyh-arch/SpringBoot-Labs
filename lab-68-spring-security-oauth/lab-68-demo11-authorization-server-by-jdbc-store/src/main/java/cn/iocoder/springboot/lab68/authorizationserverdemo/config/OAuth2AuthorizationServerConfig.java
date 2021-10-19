@@ -18,6 +18,9 @@ import javax.sql.DataSource;
 
 /**
  * 授权服务器配置
+ *
+ * @author Jaquez
+ * @date 2021/10/18 17:19
  */
 @Configuration
 @EnableAuthorizationServer
@@ -35,6 +38,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     @Autowired
     private DataSource dataSource;
 
+    // 使用 JDBC 存储
     @Bean
     public TokenStore jdbcTokenStore() {
         return new JdbcTokenStore(dataSource);
@@ -55,6 +59,8 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
 //                .checkTokenAccess("permitAll()");
     }
 
+
+    // 使用 JDBC 对客户端进行读写
     @Bean
     public ClientDetailsService jdbcClientDetailsService() {
         return new JdbcClientDetailsService(dataSource);

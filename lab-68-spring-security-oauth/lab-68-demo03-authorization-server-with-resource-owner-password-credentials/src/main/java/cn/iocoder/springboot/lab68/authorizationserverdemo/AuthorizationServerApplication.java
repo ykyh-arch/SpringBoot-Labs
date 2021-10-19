@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * 授权服务器刷新 token 演示示例
+ * 授权服务器刷新 token，删除 token 演示示例
  * @author Jaquez
  * @date 2021/10/18 15:35
  */

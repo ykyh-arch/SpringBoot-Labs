@@ -12,6 +12,11 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
 import javax.sql.DataSource;
 
+/**
+ * SecurityConfig 配置，提供用户认证的功能
+ * @author Jaquez
+ * @date 2021/10/19 16:00
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
