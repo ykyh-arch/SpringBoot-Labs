@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>labs-parent</artifactId>
+        <groupId>cn.iocoder.springboot.labs</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>lab-79-xxl-sso</artifactId>
+    <packaging>pom</packaging>
+    <name>${project.artifactId}</name>
+    <description>a distributed single-sign-on framework.</description>
+    <!--modules-->
+    <modules>
+        <module>xxl-sso-core</module>
+        <module>xxl-sso-server</module>
+        <module>xxl-sso-samples</module>
+    </modules>
+    <!--properties-->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.test.skip>true</maven.test.skip>
+        <slf4j-api.version>1.7.30</slf4j-api.version>
+        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+        <jedis.version>3.2.0</jedis.version>
+        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
+        <fastjson.version>1.2.62</fastjson.version>
+    </properties>
+
+</project>
