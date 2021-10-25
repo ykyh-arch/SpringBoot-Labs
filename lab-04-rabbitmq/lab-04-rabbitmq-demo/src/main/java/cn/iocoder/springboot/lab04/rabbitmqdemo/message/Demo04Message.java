@@ -2,6 +2,9 @@ package cn.iocoder.springboot.lab04.rabbitmqdemo.message;
 
 import java.io.Serializable;
 
+/**
+ * Headers Exchange，这里不需要 routing key 与 binding key
+ */
 public class Demo04Message implements Serializable {
 
     public static final String QUEUE = "QUEUE_DEMO_04_A";

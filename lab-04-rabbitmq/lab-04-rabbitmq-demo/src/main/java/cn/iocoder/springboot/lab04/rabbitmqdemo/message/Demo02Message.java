@@ -2,6 +2,9 @@ package cn.iocoder.springboot.lab04.rabbitmqdemo.message;
 
 import java.io.Serializable;
 
+/**
+ *  Topic Exchange
+ */
 public class Demo02Message implements Serializable {
 
     public static final String QUEUE = "QUEUE_DEMO_02";

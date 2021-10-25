@@ -2,6 +2,9 @@ package cn.iocoder.springboot.lab04.rabbitmqdemo.message;
 
 import java.io.Serializable;
 
+/**
+ * Fanout Exchange，这里未定意思 RoutingKey 的名字
+ */
 public class Demo03Message implements Serializable {
 
     public static final String QUEUE_A = "QUEUE_DEMO_03_A";
