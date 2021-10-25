@@ -20,6 +20,7 @@ public class Demo05ProducerTest {
     @Autowired
     private Demo05Producer producer;
 
+    // 测试批量发送消息的效果
     @Test
     public void testSyncSend() throws InterruptedException {
         for (int i = 0; i < 3; i++) {

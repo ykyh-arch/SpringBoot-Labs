@@ -14,6 +14,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.concurrent.ConcurrentTaskScheduler;
 
+/**
+ * RabbitConfig 配置
+ *
+ * @author Jaquez
+ * @date 2021/10/25 17:06
+ */
 @Configuration
 public class RabbitConfig {
 
@@ -36,7 +42,7 @@ public class RabbitConfig {
         public DirectExchange demo05Exchange() {
             return new DirectExchange(Demo05Message.EXCHANGE,
                     true,  // durable: 是否持久化
-                    false);  // exclusive: 是否排它
+                    false);  // autoDelete: 是否自动删除
         }
 
         // 创建 Binding
@@ -50,6 +56,7 @@ public class RabbitConfig {
 
     }
 
+    // 创建 BatchingRabbitTemplate Bean 对象
     @Bean
     public BatchingRabbitTemplate batchRabbitTemplate(ConnectionFactory connectionFactory) {
         // 创建 BatchingStrategy 对象，代表批量策略
