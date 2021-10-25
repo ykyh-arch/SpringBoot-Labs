@@ -20,12 +20,14 @@ public class Demo06ProducerTest {
     @Autowired
     private Demo06Producer producer;
 
+    // 测试超时30s后自动消费拉取消息
     @Test
     public void testSyncSend01() throws InterruptedException {
         // 发送 3 条消息
         this.testSyncSend(3);
     }
 
+    // 测试未超时（30s以内）达到 BatchSize 大小，直接消费消息
     @Test
     public void testSyncSen02() throws InterruptedException {
         // 发送 10 条消息

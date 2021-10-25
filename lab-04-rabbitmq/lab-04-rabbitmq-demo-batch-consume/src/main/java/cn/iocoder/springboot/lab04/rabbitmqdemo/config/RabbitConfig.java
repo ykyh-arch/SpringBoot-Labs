@@ -77,7 +77,7 @@ public class RabbitConfig {
         return batchTemplate;
     }
 
-    //
+    // 第一种，批量消费消息，在 SimpleBatchingStrategy 将一条“批量”消息拆开，变成多条消息后，直接批量交给 Consumer 进行消费处理。
     @Bean(name = "consumerBatchContainerFactory")
     public SimpleRabbitListenerContainerFactory consumerBatchContainerFactory(
             SimpleRabbitListenerContainerFactoryConfigurer configurer, ConnectionFactory connectionFactory) {

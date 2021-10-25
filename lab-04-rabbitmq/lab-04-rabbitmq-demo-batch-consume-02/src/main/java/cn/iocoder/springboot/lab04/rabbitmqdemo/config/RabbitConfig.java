@@ -11,6 +11,12 @@ import org.springframework.boot.autoconfigure.amqp.SimpleRabbitListenerContainer
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * RabbitConfig 配置类
+ *
+ * @author Jaquez
+ * @date 2021/10/25 18:07
+ */
 @Configuration
 public class RabbitConfig {
 
@@ -47,14 +53,16 @@ public class RabbitConfig {
 
     }
 
+    // 批量消费的 SimpleRabbitListenerContainerFactory 工厂类
     @Bean(name = "consumerBatchContainerFactory")
     public SimpleRabbitListenerContainerFactory consumerBatchContainerFactory(
             SimpleRabbitListenerContainerFactoryConfigurer configurer, ConnectionFactory connectionFactory) {
         // 创建 SimpleRabbitListenerContainerFactory 对象
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
-        // 额外添加批量消费的属性
+        // 额外添加批量消费的属性，针对批量发送消息的
         factory.setBatchListener(true);
+        // 批量消费消息配置，超时30s
         factory.setBatchSize(10);
         factory.setReceiveTimeout(30 * 1000L);
         factory.setConsumerBatchEnabled(true);
