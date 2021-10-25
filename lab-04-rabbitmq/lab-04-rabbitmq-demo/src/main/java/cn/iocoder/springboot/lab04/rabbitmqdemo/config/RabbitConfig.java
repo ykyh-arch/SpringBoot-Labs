@@ -5,9 +5,16 @@ import cn.iocoder.springboot.lab04.rabbitmqdemo.message.Demo02Message;
 import cn.iocoder.springboot.lab04.rabbitmqdemo.message.Demo03Message;
 import cn.iocoder.springboot.lab04.rabbitmqdemo.message.Demo04Message;
 import org.springframework.amqp.core.*;
+import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * RabbitConfig 配置类，{@link RabbitAdmin}
+ *
+ * @author Jaquez
+ * @date 2021/10/25 11:17
+ */
 @Configuration
 public class RabbitConfig {
 
@@ -16,7 +23,7 @@ public class RabbitConfig {
      */
     public static class DirectExchangeDemoConfiguration {
 
-        // 创建 Queue
+        // 创建 Queue，设置队列的基本属性
         @Bean
         public Queue demo01Queue() {
             return new Queue(Demo01Message.QUEUE, // Queue 名字

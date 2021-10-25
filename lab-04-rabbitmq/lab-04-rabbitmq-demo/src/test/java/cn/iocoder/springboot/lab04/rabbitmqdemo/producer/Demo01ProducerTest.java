@@ -12,6 +12,11 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * 单元测试类
+ * @author Jaquez
+ * @date 2021/10/25 11:41
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class Demo01ProducerTest {
@@ -44,6 +49,7 @@ public class Demo01ProducerTest {
     @Test
     public void testAsyncSend() throws InterruptedException {
         int id = (int) (System.currentTimeMillis() / 1000);
+        // 异步发送消息
         producer.asyncSend(id).addCallback(new ListenableFutureCallback<Void>() {
 
             @Override

@@ -41,7 +41,7 @@ public class RabbitMQProducer {
         // 初始化测试用的 Exchange 和 Queue
         initExchangeAndQueue(channel);
 
-        // 发送 3 条消息
+        // 发送 3 条消息，指定交换机与路由键
         for (int i = 0; i < 3; i++) {
             String message = "Hello World" + i;
             channel.basicPublish(EXCHANGE_NAME, ROUTING_KEY, MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes());

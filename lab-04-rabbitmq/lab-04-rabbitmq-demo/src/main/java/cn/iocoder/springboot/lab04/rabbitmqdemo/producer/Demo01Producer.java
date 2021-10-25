@@ -1,6 +1,7 @@
 package cn.iocoder.springboot.lab04.rabbitmqdemo.producer;
 
 import cn.iocoder.springboot.lab04.rabbitmqdemo.message.Demo01Message;
+import org.springframework.amqp.rabbit.AsyncRabbitTemplate;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
@@ -14,6 +15,7 @@ public class Demo01Producer {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
+    // 同步发送消息
     public void syncSend(Integer id) {
         // 创建 Demo01Message 消息
         Demo01Message message = new Demo01Message();
@@ -26,10 +28,11 @@ public class Demo01Producer {
         // 创建 Demo01Message 消息
         Demo01Message message = new Demo01Message();
         message.setId(id);
-        // 同步发送消息
+        // 同步发送消息，默认交换器，隐式地绑定到每个队列，路由键等于队列名称。
         rabbitTemplate.convertAndSend(Demo01Message.QUEUE, message);
     }
 
+    // 异步发送消息
     @Async
     public ListenableFuture<Void> asyncSend(Integer id) {
         try {
