@@ -6,6 +6,12 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+/**
+ * 消费者示例
+ *
+ * @author Jaquez
+ * @date 2021/10/25 10:35
+ */
 public class RabbitMQConsumer {
 
     public static void main(String[] args) throws IOException, TimeoutException {
@@ -25,6 +31,7 @@ public class RabbitMQConsumer {
                 System.out.println(String.format("[线程：%s][路由键：%s][消息内容：%s]",
                         Thread.currentThread(), envelope.getRoutingKey(), new String(body)));
                 // ack 消息已经消费
+                // Channel#basicAck(long deliveryTag, boolean multiple)
                 channel.basicAck(envelope.getDeliveryTag(), false);
             }
 
