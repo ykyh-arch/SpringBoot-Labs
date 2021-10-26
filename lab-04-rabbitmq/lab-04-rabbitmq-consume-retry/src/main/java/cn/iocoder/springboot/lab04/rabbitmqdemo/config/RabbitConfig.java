@@ -5,6 +5,12 @@ import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * RabbitConfig 配置类
+ *
+ * @author Jaquez
+ * @date 2021/10/26 18:37
+ */
 @Configuration
 public class RabbitConfig {
 
@@ -13,7 +19,7 @@ public class RabbitConfig {
      */
     public static class DirectExchangeDemoConfiguration {
 
-        // 创建 Queue
+        // 创建 Queue，绑定了死信交换机
         @Bean
         public Queue demo07Queue() {
             return QueueBuilder.durable(Demo07Message.QUEUE) // durable: 是否持久化
@@ -38,7 +44,7 @@ public class RabbitConfig {
         public DirectExchange demo07Exchange() {
             return new DirectExchange(Demo07Message.EXCHANGE,
                     true,  // durable: 是否持久化
-                    false);  // exclusive: 是否排它
+                    false);  // autoDelete: 是否自动删除
         }
 
         // 创建 Binding

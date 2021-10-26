@@ -20,6 +20,7 @@ public class Demo07ProducerTest {
     @Autowired
     private Demo07Producer producer;
 
+    // 测试同步发送消息
     @Test
     public void testSyncSend() throws InterruptedException {
         int id = (int) (System.currentTimeMillis() / 1000);

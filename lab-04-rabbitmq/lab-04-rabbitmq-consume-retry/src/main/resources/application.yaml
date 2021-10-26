@@ -1,15 +1,15 @@
 spring:
   # RabbitMQ 配置项，对应 RabbitProperties 配置类
   rabbitmq:
-    host: 127.0.0.1 # RabbitMQ 服务的地址
+    host: 192.168.177.4 # RabbitMQ 服务的地址
     port: 5672 # RabbitMQ 服务的端口
-    username: guest # RabbitMQ 服务的账号
-    password: guest # RabbitMQ 服务的密码
+    username: mqadmin # RabbitMQ 服务的账号
+    password: mqadmin # RabbitMQ 服务的密码
     template:
       # 对应 RabbitProperties.Retry 类
       retry:
         enabled: true # 开启发送机制
-        max-attempts: 3 # 最大重试次数。默认为 3 。
+        max-attempts: 3 # 最大重试次数。默认为 3 。包括首次正常消费
         initial-interval: 1000 # 重试间隔，单位为毫秒。默认为 1000 。
     listener:
       simple:
