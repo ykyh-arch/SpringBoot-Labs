@@ -4,7 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * 利用的是死信队列实现发送定时消息示例
+ * 点对点、发布与订阅参考：https://www.iocoder.cn/Fight/There-are-two-modes-of-message-queuing-point-to-point-and-publish-subscription/?self
+ * 利用插件 rabbitmq_delayed_message_exchange 实现延时消息发送示例
  * @author Jaquez
  * @date 2021/10/27 14:41
  */

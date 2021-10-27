@@ -1,6 +1,6 @@
 package cn.iocoder.springboot.lab04.rabbitmqdemo.producer;
 
-import cn.iocoder.springboot.lab04.rabbitmqdemo.message.Demo08Message;
+import cn.iocoder.springboot.lab04.rabbitmqdemo.message.Demo082Message;
 import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessagePostProcessor;
@@ -9,25 +9,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Demo08Producer {
+public class Demo082Producer {
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
     // 同步发送消息
-    public void syncSend(Integer id, Integer delay) {
-        // 创建 Demo07Message 消息
-        Demo08Message message = new Demo08Message();
+    public void syncSend(Integer id) {
+        // 创建 Demo082Message 消息
+        Demo082Message message = new Demo082Message();
         message.setId(id);
         // 同步发送消息
-        rabbitTemplate.convertAndSend(Demo08Message.EXCHANGE, Demo08Message.ROUTING_KEY, message, new MessagePostProcessor() {
+        rabbitTemplate.convertAndSend(Demo082Message.EXCHANGE, Demo082Message.ROUTING_KEY, message, new MessagePostProcessor() {
 
             @Override
             public Message postProcessMessage(Message message) throws AmqpException {
-                // 设置消息的 TTL 过期时间
-                if (delay != null && delay > 0) {
-                    message.getMessageProperties().setExpiration(String.valueOf(delay)); // Spring-AMQP API 设计有问题，所以传入了 String = =
-                }
+                // 设置消息 Header 过期时间
+                message.getMessageProperties().setHeader("x-delay",3000);
                 return message;
             }
 
