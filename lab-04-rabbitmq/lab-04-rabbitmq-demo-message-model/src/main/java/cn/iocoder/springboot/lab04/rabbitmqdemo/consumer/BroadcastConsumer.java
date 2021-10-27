@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
         bindings = @QueueBinding(
                 value = @Queue(
                         name = BroadcastMessage.QUEUE + "-" + "#{T(java.util.UUID).randomUUID()}",
-                        autoDelete = "true"
+                        autoDelete = "true" // 自动删除，在 Consumer 关闭时，该队列就可以被自动删除了
                 ),
                 exchange = @Exchange(
                         name = BroadcastMessage.EXCHANGE,
