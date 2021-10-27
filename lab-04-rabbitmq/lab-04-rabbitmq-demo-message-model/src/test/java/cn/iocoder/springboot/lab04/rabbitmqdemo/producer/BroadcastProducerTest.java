@@ -11,6 +11,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * 广播消费测试
+ * @author Jaquez
+ * @date 2021/10/27 16:56
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class BroadcastProducerTest {
