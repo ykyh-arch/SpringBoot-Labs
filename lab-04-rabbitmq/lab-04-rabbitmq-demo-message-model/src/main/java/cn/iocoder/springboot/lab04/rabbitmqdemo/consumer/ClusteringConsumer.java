@@ -16,8 +16,10 @@ import org.springframework.stereotype.Component;
                 exchange = @Exchange(
                         name = ClusteringMessage.EXCHANGE,
                         type = ExchangeTypes.TOPIC,
+                        // 是否需要声明
                         declare = "false"
                 ),
+                // routeKey 匹配所有
                 key = "#"
         )
 )

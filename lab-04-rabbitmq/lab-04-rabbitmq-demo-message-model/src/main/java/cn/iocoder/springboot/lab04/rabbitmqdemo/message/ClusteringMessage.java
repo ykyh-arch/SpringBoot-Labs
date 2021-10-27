@@ -3,7 +3,7 @@ package cn.iocoder.springboot.lab04.rabbitmqdemo.message;
 import java.io.Serializable;
 
 /**
- * 广播消费的消息示例
+ * 集群消费的消息示例
  */
 public class ClusteringMessage implements Serializable {
 

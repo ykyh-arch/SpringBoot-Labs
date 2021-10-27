@@ -6,6 +6,12 @@ import org.springframework.amqp.core.TopicExchange;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * RabbitConfig 配置类
+ *
+ * @author Jaquez
+ * @date 2021/10/27 15:55
+ */
 @Configuration
 public class RabbitConfig {
 

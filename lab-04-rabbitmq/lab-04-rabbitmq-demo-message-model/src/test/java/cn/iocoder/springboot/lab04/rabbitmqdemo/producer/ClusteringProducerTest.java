@@ -11,6 +11,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * 测试集群消费
+ * @author Jaquez
+ * @date 2021/10/27 16:41
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class ClusteringProducerTest {
@@ -20,6 +25,7 @@ public class ClusteringProducerTest {
     @Autowired
     private ClusteringProducer producer;
 
+    // 模拟启动一个消费者
     @Test
     public void mock() throws InterruptedException {
         // 阻塞等待，保证消费
