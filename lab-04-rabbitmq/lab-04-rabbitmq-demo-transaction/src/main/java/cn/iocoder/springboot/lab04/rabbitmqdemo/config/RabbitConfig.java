@@ -12,8 +12,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+/**
+ * RabbitConfig 配置类
+ *
+ * @author Jaquez
+ * @date 2021/10/28 16:04
+ */
 @Configuration
-@EnableTransactionManagement
+@EnableTransactionManagement // 开启 spring 事务支持
 public class RabbitConfig {
 
     /**
@@ -49,6 +55,7 @@ public class RabbitConfig {
 
     }
 
+    // 配置 RabbitTransactionManager bean 对象
     @Bean
     public RabbitTransactionManager rabbitTransactionManager(ConnectionFactory connectionFactory, RabbitTemplate rabbitTemplate) {
         // 设置 RabbitTemplate 支持事务

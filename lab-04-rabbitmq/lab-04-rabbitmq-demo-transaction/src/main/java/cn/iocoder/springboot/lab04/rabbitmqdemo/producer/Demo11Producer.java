@@ -16,6 +16,7 @@ public class Demo11Producer {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
+    // 同步发送消息
     @Transactional
     public void syncSend(Integer id) throws InterruptedException {
         // 创建 Demo11Message 消息
