@@ -14,6 +14,8 @@ public class Demo10Message implements Serializable {
 
     public static final String EXCHANGE = "EXCHANGE_DEMO_10";
 
+    // 暂未定义 RoutingKey 的名字，我们会使用“队列编号”作为 RoutingKey ，然后路由消息到每个子 Queue 中。
+
     /**
      * 编号
      */

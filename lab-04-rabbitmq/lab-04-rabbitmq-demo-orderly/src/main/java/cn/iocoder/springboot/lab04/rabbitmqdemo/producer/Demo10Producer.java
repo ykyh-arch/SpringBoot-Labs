@@ -11,6 +11,7 @@ public class Demo10Producer {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
+    // 发布同步消息
     public void syncSend(Integer id) {
         // 创建 Demo10Message 消息
         Demo10Message message = new Demo10Message();
