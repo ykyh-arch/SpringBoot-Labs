@@ -20,6 +20,7 @@ public class Demo09ProducerTest {
     @Autowired
     private Demo09Producer producer;
 
+    // 测试同步发送消息
     @Test
     public void testSyncSend() throws InterruptedException {
         for (int i = 0; i < 10; i++) {
