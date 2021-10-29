@@ -8,11 +8,17 @@ import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * RabbitConfig 配置类
+ *
+ * @author Jaquez
+ * @date 2021/10/29 11:33
+ */
 @Configuration
 public class RabbitConfig {
 
     /**
-     * Direct Exchange 示例的配置类
+     * Direct Exchange 示例的配置类，是否持久化设置成 false，因为 RPC 是个瞬态操作
      */
     public static class DirectExchangeDemoConfiguration {
 

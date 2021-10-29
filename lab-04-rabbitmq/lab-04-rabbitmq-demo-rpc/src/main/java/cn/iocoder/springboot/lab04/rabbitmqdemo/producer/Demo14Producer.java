@@ -14,6 +14,7 @@ public class Demo14Producer {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
+    // 同步发送消息，测试 RPC 操作
     public String syncSend(Integer id) {
         // 创建 Demo01Message 消息
         Demo14Message message = new Demo14Message();
