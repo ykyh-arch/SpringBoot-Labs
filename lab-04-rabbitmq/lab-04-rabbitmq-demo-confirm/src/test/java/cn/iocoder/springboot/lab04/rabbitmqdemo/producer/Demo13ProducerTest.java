@@ -20,6 +20,7 @@ public class Demo13ProducerTest {
     @Autowired
     private Demo13Producer producer;
 
+    // 测试同步 confirm 模式
     @Test
     public void testSyncSend() throws InterruptedException {
         int id = (int) (System.currentTimeMillis() / 1000);

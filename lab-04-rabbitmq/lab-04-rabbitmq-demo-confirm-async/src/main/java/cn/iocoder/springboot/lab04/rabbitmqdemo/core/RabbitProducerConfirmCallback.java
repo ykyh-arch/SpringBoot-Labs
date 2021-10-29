@@ -6,6 +6,12 @@ import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
 
+/**
+ * 生成者确认 ack 回调处理类
+ *
+ * @author Jaquez
+ * @date 2021/10/29 11:00
+ */
 @Component
 public class RabbitProducerConfirmCallback implements RabbitTemplate.ConfirmCallback {
 

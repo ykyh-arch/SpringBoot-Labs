@@ -8,6 +8,12 @@ import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * RabbitConfig 配置类
+ *
+ * @author Jaquez
+ * @date 2021/10/29 10:34
+ */
 @Configuration
 public class RabbitConfig {
 
@@ -30,7 +36,7 @@ public class RabbitConfig {
         public DirectExchange demo13Exchange() {
             return new DirectExchange(Demo13Message.EXCHANGE,
                     true,  // durable: 是否持久化
-                    false);  // exclusive: 是否排它
+                    false);  // autoDelete: 是否自动删除
         }
 
         // 创建 Binding

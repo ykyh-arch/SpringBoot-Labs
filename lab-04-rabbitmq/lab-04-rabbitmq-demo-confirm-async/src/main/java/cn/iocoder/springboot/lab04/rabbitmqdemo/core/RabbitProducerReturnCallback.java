@@ -6,6 +6,12 @@ import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
 
+/**
+ * ReturnCallback 回调处理类，
+ *
+ * @author Jaquez
+ * @date 2021/10/29 11:14
+ */
 @Component
 public class RabbitProducerReturnCallback implements RabbitTemplate.ReturnCallback {
 

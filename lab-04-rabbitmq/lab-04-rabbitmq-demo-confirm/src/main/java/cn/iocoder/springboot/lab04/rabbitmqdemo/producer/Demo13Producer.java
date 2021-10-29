@@ -19,11 +19,12 @@ public class Demo13Producer {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
+    // 同步发送消息
     public void syncSend(Integer id) {
         // 创建 Demo13Message 消息
         Demo13Message message = new Demo13Message();
         message.setId(id);
-        // 同步发送消息
+        // 同步发送消息，同步确认模式
         rabbitTemplate.invoke(new RabbitOperations.OperationsCallback<Object>() {
 
             @Override

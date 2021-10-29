@@ -22,7 +22,7 @@ public class Demo12Consumer {
     public void onMessage(Demo12Message message, Channel channel,
                           @Header(AmqpHeaders.DELIVERY_TAG) long deliveryTag) throws IOException {
         logger.info("[onMessage][线程编号:{} 消息内容：{}]", Thread.currentThread().getId(), message);
-        // 提交消费进度
+        // 提交消费进度，奇数时手动提交
         if (message.getId() % 2 == 1) {
             // ack 确认消息
             // 第二个参数 multiple ，用于批量确认消息，为了减少网络流量，手动确认可以被批处。
