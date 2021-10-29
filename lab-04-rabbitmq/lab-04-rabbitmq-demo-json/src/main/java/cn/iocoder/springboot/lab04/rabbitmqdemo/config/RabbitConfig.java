@@ -10,6 +10,12 @@ import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * RabbitConfig 配置类
+ *
+ * @author Jaquez
+ * @date 2021/10/29 11:56
+ */
 @Configuration
 public class RabbitConfig {
 
@@ -46,6 +52,7 @@ public class RabbitConfig {
 
     }
 
+    // 容器中注入自定义的 MessageConverter bean 对象
     @Bean
     public MessageConverter messageConverter() {
         return new Jackson2JsonMessageConverter();
