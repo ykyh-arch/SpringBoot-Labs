@@ -6,6 +6,12 @@ import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFacto
 import org.springframework.stereotype.Component;
 import org.springframework.util.ErrorHandler;
 
+/**
+ * 异常处理类
+ *
+ * @author Jaquez
+ * @date 2021/10/29 14:47
+ */
 @Component
 public class RabbitLoggingErrorHandler implements ErrorHandler {
 

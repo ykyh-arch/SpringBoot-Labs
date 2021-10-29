@@ -7,6 +7,12 @@ import org.springframework.amqp.rabbit.listener.api.RabbitListenerErrorHandler;
 import org.springframework.amqp.rabbit.support.ListenerExecutionFailedException;
 import org.springframework.stereotype.Component;
 
+/**
+ * 消费异常处理类
+ *
+ * @author Jaquez
+ * @date 2021/10/29 14:45
+ */
 @Component("rabbitListenerErrorHandler")
 public class RabbitListenerErrorHandlerImpl implements RabbitListenerErrorHandler {
 
@@ -18,7 +24,7 @@ public class RabbitListenerErrorHandlerImpl implements RabbitListenerErrorHandle
         // 打印异常日志
         logger.error("[handleError][amqpMessage:[{}] message:[{}]]", amqpMessage, message, exception);
 
-        // 直接继续抛出异常
+        // 直接继续抛出异常，一定要继续抛出该异常，否则消费重试机制将失效。
         throw exception;
     }
 
