@@ -124,7 +124,8 @@
         <module>lab-01-spring-security/lab-01-springsecurity-demo-practice</module>
         <module>lab-79-xxl-sso</module>
         <module>lab-04-rabbitmq/lab-04-rabbitmq-demo-delay-2</module>
-        <module>lab-80-sso</module>
+        <module>lab-80-oss</module>
+        <module>lab-80-oss</module>
     </modules>
 
 </project>

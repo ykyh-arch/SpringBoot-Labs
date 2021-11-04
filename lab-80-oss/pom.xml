@@ -9,10 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>lab-80-sso</artifactId>
+    <artifactId>lab-80-oss</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>lab-80-sso-demo-minio</module>
+        <module>lab-80-oss-demo-minio</module>
     </modules>
 
     <properties>
