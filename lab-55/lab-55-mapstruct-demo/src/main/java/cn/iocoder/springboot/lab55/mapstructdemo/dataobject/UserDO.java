@@ -1,5 +1,7 @@
 package cn.iocoder.springboot.lab55.mapstructdemo.dataobject;
 
+import java.util.Date;
+
 /**
  * 用户 DO
  */
@@ -11,6 +13,8 @@ public class UserDO {
     private String username;
     /** 密码 **/
     private String password;
+    /** 生日 **/
+    private Date birthday;
 
     public Integer getId() {
         return id;
@@ -36,6 +40,15 @@ public class UserDO {
 
     public UserDO setPassword(String password) {
         this.password = password;
+        return this;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public UserDO setBirthday(Date birthday) {
+        this.birthday = birthday;
         return this;
     }
 }
