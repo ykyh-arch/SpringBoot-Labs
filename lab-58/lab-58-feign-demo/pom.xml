@@ -54,11 +54,13 @@
             <artifactId>feign-spring4</artifactId>
             <version>11.0</version>
         </dependency>
+        <!-- 方便等会写单元测试 -->
         <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>3.14.4</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
+
     </dependencies>
 
 </project>

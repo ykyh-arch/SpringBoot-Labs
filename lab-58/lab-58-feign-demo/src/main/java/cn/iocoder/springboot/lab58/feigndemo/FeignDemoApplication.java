@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Feign 调用演示示例
+ * Feign 调用演示示例，使用 Feign 是为了降低使用成本
  *
  * @author Jaquez
  * @date 2021/11/07 15:49
