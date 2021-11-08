@@ -36,7 +36,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- 引入 Feign 相关依赖 -->
+        <!-- 引入 Feign Core 相关依赖 -->
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-core</artifactId>
@@ -48,11 +48,16 @@
             <artifactId>feign-gson</artifactId>
             <version>11.0</version>
         </dependency>
-        <!-- 引入 Feign SpringMVC 拓展的依赖 -->
+        <!-- 引入 Feign SpringMVC 拓展的依赖，使用 SpringMVC 契约 -->
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-spring4</artifactId>
             <version>11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>3.14.4</version>
         </dependency>
     </dependencies>
 

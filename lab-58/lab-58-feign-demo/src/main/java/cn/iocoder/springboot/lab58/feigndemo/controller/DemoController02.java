@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * 使用 SpringMVC 契约演示示例
+ * @author Jaquez
+ * @date 2021/11/08 11:33
+ */
 @RestController
 @RequestMapping("/demo02")
 public class DemoController02 {

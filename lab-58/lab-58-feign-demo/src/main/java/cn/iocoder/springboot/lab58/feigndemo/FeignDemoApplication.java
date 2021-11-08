@@ -3,6 +3,12 @@ package cn.iocoder.springboot.lab58.feigndemo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * Feign 调用演示示例
+ *
+ * @author Jaquez
+ * @date 2021/11/07 15:49
+ */
 @SpringBootApplication
 public class FeignDemoApplication {
 

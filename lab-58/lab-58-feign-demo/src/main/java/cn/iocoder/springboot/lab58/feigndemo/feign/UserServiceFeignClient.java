@@ -12,10 +12,11 @@ import java.util.Map;
  */
 public interface UserServiceFeignClient {
 
-    // 获得用户详情
+    // 获得用户详情，请求方法 请求地址
     @RequestLine("GET /user/get?id={id}")
     UserResponse get(@Param("id") Integer id);
 
+    // {param} 占位符，参数必传，不传会报错
     @RequestLine("GET /user/list?name={name}&gender={gender}")
     List<UserResponse> list(@Param("name") String name,
                             @Param("gender") Integer gender);
