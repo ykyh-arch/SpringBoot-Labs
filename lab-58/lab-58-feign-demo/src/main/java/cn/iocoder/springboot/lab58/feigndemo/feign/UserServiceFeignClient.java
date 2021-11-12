@@ -3,6 +3,7 @@ package cn.iocoder.springboot.lab58.feigndemo.feign;
 import cn.iocoder.springboot.lab58.feigndemo.feign.request.UserAddRequest;
 import cn.iocoder.springboot.lab58.feigndemo.feign.response.UserResponse;
 import feign.*;
+import feign.querymap.BeanQueryMapEncoder;
 
 import java.util.List;
 import java.util.Map;
@@ -27,5 +28,7 @@ public interface UserServiceFeignClient {
     @RequestLine("POST /user/add")
     @Headers("Content-Type: application/json")
     Integer add(UserAddRequest request);
+
+    // BeanQueryMapEncoder
 
 }
