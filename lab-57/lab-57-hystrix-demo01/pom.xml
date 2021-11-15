@@ -42,6 +42,7 @@
             <artifactId>hystrix-core</artifactId>
             <version>1.5.18</version>
         </dependency>
+        <!--提供 @HystrixCommand 等注解，搭配 AOP 切面功能，简化我们使用 Hystrix 实现服务容错的功能。-->
         <dependency>
             <groupId>com.netflix.hystrix</groupId>
             <artifactId>hystrix-javanica</artifactId>

@@ -5,6 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * 入口类
+ *
+ * @author Jaquez
+ * @date 2021/11/15 11:03
+ */
 @SpringBootApplication
 public class DemoApplication {
 
