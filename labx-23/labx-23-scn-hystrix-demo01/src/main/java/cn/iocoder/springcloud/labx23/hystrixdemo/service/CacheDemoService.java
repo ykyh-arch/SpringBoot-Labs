@@ -10,6 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * CacheDemoService 服务层
+ *
+ * @author Jaquez
+ * @date 2021/11/16 10:27
+ */
 @Service
 public class CacheDemoService {
 

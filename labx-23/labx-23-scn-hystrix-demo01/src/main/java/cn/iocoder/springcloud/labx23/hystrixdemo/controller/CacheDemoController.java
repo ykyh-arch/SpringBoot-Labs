@@ -7,6 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 缓存测试类
+ *
+ * @author Jaquez
+ * @date 2021/11/16 10:39
+ */
 @RestController
 @RequestMapping("/cache-demo")
 public class CacheDemoController {

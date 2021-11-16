@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 用户服务演示类
+ *
+ * @author Jaquez
+ * @date 2021/11/15 18:36
+ */
 @SpringBootApplication
 public class UserServiceApplication {
 

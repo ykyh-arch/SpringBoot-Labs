@@ -7,6 +7,12 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
+/**
+ * HystrixRequestContextFilter 请求上下文过滤器
+ *
+ * @author Jaquez
+ * @date 2021/11/16 10:18
+ */
 @Component
 @WebFilter(urlPatterns = "/")
 public class HystrixRequestContextFilter implements Filter {

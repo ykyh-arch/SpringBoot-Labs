@@ -15,6 +15,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.Future;
 
+/**
+ * CollapserDemoService 服务层
+ *
+ * @author Jaquez
+ * @date 2021/11/16 10:56
+ */
 @Service
 public class CollapserDemoService {
 
@@ -23,6 +29,7 @@ public class CollapserDemoService {
     @Autowired
     private RestTemplate restTemplate;
 
+    // 合并请求
     @HystrixCollapser(
             batchMethod = "getUsers",
             collapserProperties = {
