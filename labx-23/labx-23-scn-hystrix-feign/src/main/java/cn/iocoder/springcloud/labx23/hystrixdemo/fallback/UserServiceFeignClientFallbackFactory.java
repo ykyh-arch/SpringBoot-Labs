@@ -7,6 +7,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+/**
+ * 回调处理
+ *
+ * @author Jaquez
+ * @date 2021/11/16 15:42
+ */
 @Component
 public class UserServiceFeignClientFallbackFactory implements FallbackFactory<UserServiceFeignClient> {
 

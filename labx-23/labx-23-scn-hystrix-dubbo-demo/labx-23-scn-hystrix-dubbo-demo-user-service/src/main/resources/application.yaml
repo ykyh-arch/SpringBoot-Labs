@@ -1,6 +1,6 @@
 spring:
   application:
-    name: user-service
+    name: user-service # 应用名
   cloud:
     # Nacos 作为注册中心的配置项
     nacos:

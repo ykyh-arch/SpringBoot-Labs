@@ -11,6 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * dubbo 调用演示示例
+ *
+ * @author Jaquez
+ * @date 2021/11/16 16:43
+ */
 @RestController
 @RequestMapping("/demo")
 public class DemoController {
