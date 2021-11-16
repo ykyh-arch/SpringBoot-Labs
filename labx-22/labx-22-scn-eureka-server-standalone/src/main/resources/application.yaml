@@ -3,8 +3,9 @@ server:
 
 spring:
   application:
-    name: eureka-server
+    name: eureka-server # 应用名称
 
+# 配置
 eureka:
   client:
     register-with-eureka: false # 不注册到 Eureka-Server，默认为 true

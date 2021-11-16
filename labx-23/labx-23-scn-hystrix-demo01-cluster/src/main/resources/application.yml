@@ -1,3 +1,4 @@
+# 端点配置
 management:
   endpoints:
     web:
