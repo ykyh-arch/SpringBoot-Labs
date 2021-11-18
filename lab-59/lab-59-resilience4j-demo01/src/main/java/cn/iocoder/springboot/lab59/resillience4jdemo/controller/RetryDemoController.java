@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * Retry 重试演示示例
+ *
+ * @author Jaquez
+ * @date 2021/11/18 14:26
+ */
 @RestController
 @RequestMapping("/retry-demo")
 public class RetryDemoController {
