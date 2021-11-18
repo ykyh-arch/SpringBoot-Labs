@@ -1,7 +1,7 @@
 resilience4j:
   # Resilience4j 的断路器配置项，对应 CircuitBreakerProperties 属性类
   circuitbreaker:
-    instances:
+    instances: # Resilience4j 的断路器实例配置，配置 Ring Bit Buffer（环形缓冲区）参数设置
       backendA:
         failure-rate-threshold: 50 # 熔断器关闭状态和半开状态使用的同一个失败率阈值，单位：百分比。默认为 50
         ring-buffer-size-in-closed-state: 5 # 熔断器关闭状态的缓冲区大小，不会限制线程的并发量，在熔断器发生状态转换前所有请求都会调用后端服务。默认为 100
@@ -12,7 +12,7 @@ resilience4j:
 
   # Resilience4j 的限流器配置项，对应 RateLimiterProperties 属性类
   ratelimiter:
-    instances:
+    instances: # Resilience4j 的限流器实例配置
       backendB:
         limit-for-period: 1 # 每个周期内，允许的请求数。默认为 50
         limit-refresh-period: 10s # 每个周期的时长，单位：微秒。默认为 500

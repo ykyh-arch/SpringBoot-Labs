@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * 降级 fallback 演示
+ *
+ * @author Jaquez
+ * @date 2021/11/18 11:16
+ */
 @RestController
 @RequestMapping("/demo")
 public class DemoController {

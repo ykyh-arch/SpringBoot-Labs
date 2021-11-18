@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 限流测试演示
+ *
+ * @author Jaquez
+ * @date 2021/11/18 11:16
+ */
 @RestController
 @RequestMapping("/rate-limiter-demo")
 public class RateLimiterDemoController {
@@ -15,7 +21,7 @@ public class RateLimiterDemoController {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     @GetMapping("/get_user")
-    @RateLimiter(name = "backendB", fallbackMethod = "getUserFallback")
+    @RateLimiter(name = "backendB", fallbackMethod = "getUserFallback") // 限流处理
     public String getUser(@RequestParam("id") Integer id) {
         return "User:" + id;
     }
