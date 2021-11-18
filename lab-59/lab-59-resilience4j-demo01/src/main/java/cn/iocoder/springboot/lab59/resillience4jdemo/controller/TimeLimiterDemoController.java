@@ -14,12 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * 限时器演示示例
+ *
+ * @author Jaquez
+ * @date 2021/11/18 14:45
+ */
 @RestController
 @RequestMapping("/time-limiter-demo")
 public class TimeLimiterDemoController {
 
     @Autowired
-    private TimeLimiterService timeLimiterService;
+    private TimeLimiterService timeLimiterService; // 注入 TimeLimiterService
 
     @GetMapping("/get_user")
     public String getUser(@RequestParam("id") Integer id) throws ExecutionException, InterruptedException {
