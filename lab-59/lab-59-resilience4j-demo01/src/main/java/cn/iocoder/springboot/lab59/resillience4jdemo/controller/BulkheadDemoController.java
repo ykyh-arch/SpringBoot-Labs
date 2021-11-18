@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 基于信号量（Semaphore）流控隔离演示示例
+ *
+ * @author Jaquez
+ * @date 2021/11/18 13:59
+ */
 @RestController
 @RequestMapping("/bulkhead-demo")
 public class BulkheadDemoController {

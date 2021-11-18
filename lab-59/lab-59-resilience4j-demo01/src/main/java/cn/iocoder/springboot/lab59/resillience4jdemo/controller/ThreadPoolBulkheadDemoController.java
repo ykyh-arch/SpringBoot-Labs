@@ -13,12 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * 基于线程池（ ThreadPool）的流控隔离
+ *
+ * @author Jaquez
+ * @date 2021/11/18 14:10
+ */
 @RestController
 @RequestMapping("/thread-pool-bulkhead-demo")
 public class ThreadPoolBulkheadDemoController {
 
     @Autowired
-    private ThreadPoolBulkheadService threadPoolBulkheadService;
+    private ThreadPoolBulkheadService threadPoolBulkheadService; // 为了使 Resilience4j 生效
 
     @GetMapping("/get_user")
     public String getUser(@RequestParam("id") Integer id) throws ExecutionException, InterruptedException {

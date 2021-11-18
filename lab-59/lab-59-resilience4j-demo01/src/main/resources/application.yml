@@ -20,7 +20,7 @@ resilience4j:
         register-health-indicator: true # 是否注册到健康监测
 
   # Resilience4j 的信号量 Bulkhead 配置项，对应 BulkheadConfigurationProperties 属性类
-  bulkhead:
+  bulkhead: # 基于信号量（Semaphore）隔离
     instances:
       backendC:
         max-concurrent-calls: 1 # 并发调用数。默认为 25
