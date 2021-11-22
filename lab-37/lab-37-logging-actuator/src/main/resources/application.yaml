@@ -19,7 +19,7 @@ logging:
             loggingdemo:
               controller: DEBUG
 
-management:
+management: # 管理端点配置
   endpoints:
     # Actuator HTTP 配置项，对应 WebEndpointProperties 配置类
     web:

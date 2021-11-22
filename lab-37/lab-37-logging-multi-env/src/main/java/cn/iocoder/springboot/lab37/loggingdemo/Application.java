@@ -5,6 +5,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * 多环境的日志配置演示示例
+ *
+ * @author Jaquez
+ * @date 2021/11/19 18:03
+ */
 @SpringBootApplication
 public class Application {
 

@@ -12,3 +12,9 @@ logging:
 
 # 调试模式
 debug: true
+
+# 分组
+  group:
+    tomcat: org.apache.catalina, org.apache.coyote, org.apache.tomcat
+  level:
+    tomcat: DEBUG

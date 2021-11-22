@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <configuration>
 
     <!-- 引入 Spring Boot 默认的 logback XML 配置文件  -->
@@ -17,7 +16,8 @@
     <!-- 从 Spring Boot 配置文件中，读取 spring.application.name 应用名 -->
     <springProperty name="applicationName" scope="context" source="spring.application.name" />
     <!-- 日志文件的路径 -->
-    <property name="LOG_FILE" value="/Users/yunai/logs/${applicationName}.log"/>​
+    <property name="LOG_FILE" value="C:\Logs\${applicationName}.log"/>​
+
     <!-- 日志文件 Appender -->
     <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_FILE}</file>
