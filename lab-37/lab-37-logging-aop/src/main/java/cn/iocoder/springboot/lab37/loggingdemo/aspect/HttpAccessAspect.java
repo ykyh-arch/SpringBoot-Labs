@@ -7,6 +7,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+/**
+ * 完整参考：https://github.com/chillzhuang/blade-tool/blob/master/blade-core-boot/src/main/java/org/springblade/core/boot/logger/RequestLogAspect.java
+ * @author Jaquez
+ * @date 2021/11/22 15:23
+ */
 @Component
 @Aspect
 public class HttpAccessAspect {

@@ -126,6 +126,8 @@
         <module>lab-04-rabbitmq/lab-04-rabbitmq-demo-delay-2</module>
         <module>lab-80-oss</module>
         <module>lab-80-oss</module>
+        <module>lab-81-arthas</module>
+        <module>lab-81-arthas/lab-81-arthas-demo</module>
     </modules>
 
 </project>
