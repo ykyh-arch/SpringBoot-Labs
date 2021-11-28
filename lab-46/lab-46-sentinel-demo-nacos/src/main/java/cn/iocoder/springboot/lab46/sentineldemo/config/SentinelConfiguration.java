@@ -15,14 +15,22 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * SentinelConfiguration 配置类
+ *
+ * @author Jaquez
+ * @date 2021/11/26 14:38
+ */
 @Configuration
 public class SentinelConfiguration {
 
+    // 注入 SentinelResourceAspect bean 对象
     @Bean
     public SentinelResourceAspect sentinelResourceAspect() {
         return new SentinelResourceAspect();
     }
 
+    // 注入 NacosDataSource 数据源
     @Bean
     public NacosDataSource nacosDataSource(ObjectMapper objectMapper) {
         // Nacos 配置。这里先写死，推荐后面写到 application.yaml 配置文件中。

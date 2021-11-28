@@ -49,6 +49,11 @@
             <artifactId>sentinel-annotation-aspectj</artifactId>
             <version>1.7.1</version>
         </dependency>
+        <!--YML配置文件提示-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

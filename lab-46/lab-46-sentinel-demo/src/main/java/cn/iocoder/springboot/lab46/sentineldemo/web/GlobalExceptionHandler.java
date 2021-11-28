@@ -5,6 +5,12 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * 全局异常处理类，针对自定义 sentinel-spring-webmvc-adapter 提供的拦截器
+ *
+ * @author Jaquez
+ * @date `2021/11/25` 11:04
+ */
 @ControllerAdvice(basePackages = "cn.iocoder.springboot.lab46.sentineldemo.controller")
 public class GlobalExceptionHandler {
 

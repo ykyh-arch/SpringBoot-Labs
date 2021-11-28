@@ -20,16 +20,18 @@ public class SentinelConfiguration {
     @Value("${spring.application.name}")
     private String applicationName;
 
+    // 注入 SentinelResourceAspect bean 对象
     @Bean
     public SentinelResourceAspect sentinelResourceAspect() {
         return new SentinelResourceAspect();
     }
 
+    // 注入 ApolloDataSource 数据源
     @Bean
     public ApolloDataSource apolloDataSource(ObjectMapper objectMapper) {
         // Apollo 配置。这里先写死，推荐后面写到 application.yaml 配置文件中。
         String appId = applicationName; // Apollo 项目编号。一般情况下，推荐和 spring.application.name 保持一致
-        String serverAddress = "http://localhost:8080"; // Apollo Meta 服务器地址
+        String serverAddress = "http://192.168.177.4:8080"; // Apollo Meta 服务器地址
         String namespace = "application"; // Apollo 命名空间
         String flowRuleKey = "sentinel.flow-rule"; // Apollo 配置项的 KEY
 

@@ -9,10 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 示例控制器
+ *
+ * @author Jaquez
+ * @date 2021/11/25 11:07
+ */
 @RestController
 @RequestMapping("/demo")
 public class DemoController {
 
+    // 测试流控
     @GetMapping("/echo")
     public String echo() {
         return "echo";
@@ -23,6 +30,7 @@ public class DemoController {
         return "test";
     }
 
+    // 测试降级
     @GetMapping("/sleep")
     public String sleep() throws InterruptedException {
         Thread.sleep(100L);
@@ -42,7 +50,7 @@ public class DemoController {
         Entry entry = null;
         try {
             // 访问资源
-            entry = SphU.entry("entry_demo");
+            entry = SphU.entry("entry_demo"); // 资源名称
 
             // ... 执行业务逻辑
 
@@ -69,12 +77,12 @@ public class DemoController {
         return "success...";
     }
 
-    // BlockHandler 处理函数，参数最后多一个 BlockException，其余与原函数一致.
+    // BlockHandler 处理函数，参数最后多一个 BlockException，其余与原函数一致.只针对 BlockException 异常处理
     public String blockHandler(Integer id, BlockException ex) {
         return "block：" + ex.getClass().getSimpleName();
     }
 
-    // Fallback 处理函数，函数签名与原函数一致或加一个 Throwable 类型的参数.
+    // Fallback 处理函数，函数签名与原函数一致或加一个 Throwable 类型的参数. 1.6.0 之前的版本只对 DegradeException 处理，之后对所有异常处理
     public String fallback(Integer id, Throwable throwable) {
         return "fallback：" + throwable.getMessage();
     }

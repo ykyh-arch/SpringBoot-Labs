@@ -3,6 +3,12 @@ package cn.iocoder.springboot.lab46.sentineldemo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * 程序入口类
+ *
+ * @author Jaquez
+ * @date 2021/11/25 11:05
+ */
 @SpringBootApplication
 public class Application {
 
