@@ -9,6 +9,12 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
+/**
+ * SecurityConfig 配置类
+ *
+ * @author Jaquez
+ * @date 2021/11/30 15:39
+ */
 @Configuration
 @EnableWebFluxSecurity // 开启 Security 对 WebFlux 的安全功能
 public class SecurityConfig {
@@ -34,7 +40,7 @@ public class SecurityConfig {
                 exchanges
                         .pathMatchers("/assets/**").permitAll() // 静态资源，允许匿名访问
                         .pathMatchers("/login").permitAll() // 登陆接口，允许匿名访问
-                        .anyExchange().authenticated() //
+                        .anyExchange().authenticated() // 除此之外，所有请求需要认证
         )
         .formLogin().loginPage("/login") // 登陆页面
         .and().logout().logoutUrl("/logout") // 登出界面
