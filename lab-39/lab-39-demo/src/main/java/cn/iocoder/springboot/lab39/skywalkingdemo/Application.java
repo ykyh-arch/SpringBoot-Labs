@@ -6,6 +6,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+/**
+ * 入口类
+ *
+ * @author Jaquez
+ * @date 2021/12/08 17:05
+ */
 @SpringBootApplication
 public class Application {
 

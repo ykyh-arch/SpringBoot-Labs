@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>lab-80-oss-demo-minio</module>
+        <module>lab-80-oss-demo-fastdfs</module>
     </modules>
 
     <properties>
