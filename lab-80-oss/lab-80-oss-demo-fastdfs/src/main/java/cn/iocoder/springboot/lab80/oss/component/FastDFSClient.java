@@ -7,6 +7,7 @@ import com.github.tobato.fastdfs.domain.ThumbImageConfig;
 import com.github.tobato.fastdfs.proto.storage.DownloadByteArray;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.util.Map;
+import java.util.UUID;
 
 /**
  * FastDFSClient 类
@@ -148,19 +150,24 @@ public class FastDFSClient<T> {
 
     /**
      * @param fileUrl 文件访问地址
-     * @param file 文件保存路径
      * @author jaquez
      * @description 下载文件
      */
-    public static boolean downloadFile(String fileUrl, File file) {
+    public static boolean downloadFile(String fileUrl,HttpServletResponse response) throws IOException {
+        InputStream fis = null;
         try {
             StorePath storePath = StorePath.praseFromUrl(fileUrl);
             byte[] bytes = fastFileStorageClient.downloadFile(storePath.getGroup(), storePath.getPath(), new DownloadByteArray());
-            FileOutputStream stream = new FileOutputStream(file);
-            stream.write(bytes);
+            fis = new BufferedInputStream(new ByteArrayInputStream(bytes));
+            response.setContentType("application/octet-stream");
+            String fileName = new String(FilenameUtils.getName(fileUrl).getBytes("UTF-8"),"ISO8859-1");
+            response.setHeader("Content-Disposition", "attachment;filename=" + fileName);
+            IOUtils.copy(fis, response.getOutputStream());
         } catch (Exception e) {
             log.error(e.getMessage());
             return false;
+        }finally {
+            fis.close();
         }
         return true;
     }

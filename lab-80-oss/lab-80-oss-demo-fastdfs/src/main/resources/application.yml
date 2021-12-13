@@ -24,3 +24,11 @@ fdfs:
       multipart:
         max-file-size: 100MB # 最大支持文件大小
         max-request-size: 100MB # 最大支持请求大小
+spring:
+  application:
+    name: filesystem
+
+server:
+  servlet:
+    context-path: /filesystem
+  port: 8080
