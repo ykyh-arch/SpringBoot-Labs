@@ -4,6 +4,12 @@ import javax.jms.*; // 使用 JMS API
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 消费者消费消息示例
+ *
+ * @author Jaquez
+ * @date 2021/12/15 11:16
+ */
 public class ActiveMQConsumer {
 
     public static void main(String[] args) throws JMSException {
@@ -18,6 +24,7 @@ public class ActiveMQConsumer {
 
         // 创建 Consumer
         MessageConsumer consumer = session.createConsumer(queue);
+        // 消息监听器
         consumer.setMessageListener(new MessageListener() {
 
             public void onMessage(Message message) {

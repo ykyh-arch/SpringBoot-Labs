@@ -4,9 +4,15 @@ import org.apache.activemq.ActiveMQConnectionFactory; // 使用 ActiveMQ 的客�
 
 import javax.jms.*; // 使用 JMS API
 
+/**
+ * 生产者生产消息示例
+ *
+ * @author Jaquez
+ * @date 2021/12/15 11:03
+ */
 public class ActiveMQProducer {
 
-    private static final String BROKER_URL = "tcp://127.0.0.1:61616";
+    private static final String BROKER_URL = "tcp://192.168.177.4:61616";
     private static final String USERNAME = "admin";
     private static final String PASSWORD = "admin";
 
@@ -36,6 +42,7 @@ public class ActiveMQProducer {
         connection.close();
     }
 
+    // 创建连接
     public static Connection getConnection() throws JMSException {
         // 创建连接
         ConnectionFactory factory = new ActiveMQConnectionFactory(USERNAME, PASSWORD, BROKER_URL);
@@ -45,12 +52,14 @@ public class ActiveMQProducer {
         return connection;
     }
 
+    // 创建会话
     public static Session getSession(Connection connection) throws JMSException {
         // 第一个方法参数 transacted ，是否开启事务。这里设置为 false ，无需开启
         // 第二个方法参数 acknowledgeMode ，确认模式。这里设置为 AUTO_ACKNOWLEDGE ，自动确认。推荐阅读 https://my.oschina.net/thinwonton/blog/995291
         return connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
     }
 
+    // 创建队列
     public static Queue getQueue(Session session) throws JMSException {
         return session.createQueue(QUEUE_NAME);
     }
