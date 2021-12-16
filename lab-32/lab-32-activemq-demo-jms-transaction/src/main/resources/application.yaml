@@ -1,0 +1,8 @@
+spring:
+  # ActiveMQ 配置项，对应 ActiveMQProperties 配置类
+  activemq:
+    broker-url: tcp://192.168.177.4:61616 # ActiveMQ Broker 的地址
+    user: admin # 账号
+    password: admin # 密码
+    packages:
+      trust-all: true # 与序列化相关

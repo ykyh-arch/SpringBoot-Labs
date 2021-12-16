@@ -20,6 +20,7 @@ public class ActiveMQConfig implements ActiveMQConnectionFactoryCustomizer {
 
     @Override
     public void customize(ActiveMQConnectionFactory factory) {
+
         factory.setRedeliveryPolicy(new RedeliveryPolicy());
         // 打印重试策略
         logger.info("[customize][默认重试策略: {}]", factory.getRedeliveryPolicy());
