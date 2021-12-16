@@ -1,11 +1,12 @@
-package cn.iocoder.springboot.lab32.activemqdemo;
+package cn.iocoder.springboot.lab32.activemqdemo.pointtoPoint;
 
 import org.apache.activemq.ActiveMQConnectionFactory; // 使用 ActiveMQ 的客户端实现
+import org.apache.activemq.ScheduledMessage;
 
 import javax.jms.*; // 使用 JMS API
 
 /**
- * 生产者生产消息示例
+ * 生产者生产消息示例，点对点方式
  *
  * @author Jaquez
  * @date 2021/12/15 11:03
@@ -34,6 +35,12 @@ public class ActiveMQProducer {
         // 发送 3 条消息
         for (int i = 0; i < 3; i++) {
             Message message = session.createTextMessage("Hello World" + i);
+            // 支持定时消息，每小时都会发生消息被投递10次，延迟1秒开始，每次间隔1秒
+//            message.setStringProperty(ScheduledMessage.AMQ_SCHEDULED_CRON, "0 * * * *");
+//            message.setLongProperty(ScheduledMessage.AMQ_SCHEDULED_DELAY, 1000);
+//            message.setLongProperty(ScheduledMessage.AMQ_SCHEDULED_PERIOD, 1000);
+//            message.setIntProperty(ScheduledMessage.AMQ_SCHEDULED_REPEAT, 9);
+
             producer.send(message);
         }
 

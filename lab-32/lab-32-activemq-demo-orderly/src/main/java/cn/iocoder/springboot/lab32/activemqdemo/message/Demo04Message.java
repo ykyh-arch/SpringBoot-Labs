@@ -2,9 +2,12 @@ package cn.iocoder.springboot.lab32.activemqdemo.message;
 
 import java.io.Serializable;
 
+/**
+ * 顺序消息消息类
+ */
 public class Demo04Message implements Serializable {
 
-    public static final String QUEUE_BASE = "QUEUE_DEMO_04-";
+    public static final String QUEUE_BASE = "QUEUE_DEMO_04_";
     public static final String QUEUE_0 = QUEUE_BASE + "0";
     public static final String QUEUE_1 = QUEUE_BASE + "1";
     public static final String QUEUE_2 = QUEUE_BASE + "2";

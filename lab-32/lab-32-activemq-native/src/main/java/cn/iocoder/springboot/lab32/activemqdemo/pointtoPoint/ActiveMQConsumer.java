@@ -1,4 +1,4 @@
-package cn.iocoder.springboot.lab32.activemqdemo;
+package cn.iocoder.springboot.lab32.activemqdemo.pointtoPoint;
 
 import javax.jms.*; // 使用 JMS API
 

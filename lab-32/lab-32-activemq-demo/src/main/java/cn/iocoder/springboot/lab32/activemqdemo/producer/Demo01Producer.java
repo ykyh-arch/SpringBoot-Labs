@@ -8,12 +8,19 @@ import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFuture;
 
+/**
+ * 生产者生产消息示例
+ *
+ * @author Jaquez
+ * @date 2021/12/15 15:39
+ */
 @Component
 public class Demo01Producer {
 
     @Autowired
     private JmsMessagingTemplate jmsTemplate;
 
+    // 同步发送消息
     public void syncSend(Integer id) {
         // 创建 ClusteringMessage 消息
         Demo01Message message = new Demo01Message();
@@ -22,6 +29,7 @@ public class Demo01Producer {
         jmsTemplate.convertAndSend(Demo01Message.QUEUE, message);
     }
 
+    // 异步发送消息，因为 JmsMessagingTemplate 并未像 KafkaTemplate 或 RocketMQTemplate 直接提供了异步发送消息的方法，所以我们需要结合 Spring 异步调用来实现。
     @Async
     public ListenableFuture<Void> asyncSend(Integer id) {
         try {

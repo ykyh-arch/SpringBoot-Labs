@@ -9,6 +9,12 @@ import org.springframework.jms.core.JmsTemplate;
 
 import javax.jms.ConnectionFactory;
 
+/**
+ * ActiveMQConfig 配置类
+ *
+ * @author Jaquez
+ * @date 2021/12/16 10:30
+ */
 @Configuration
 public class ActiveMQConfig {
 
@@ -25,7 +31,7 @@ public class ActiveMQConfig {
             DefaultJmsListenerContainerFactoryConfigurer configurer, ConnectionFactory connectionFactory) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
-        factory.setPubSubDomain(false);
+        factory.setPubSubDomain(false);// 对应 spring.jms.pub-sub-domain 控制着是集群消费还是广播消费
         return factory;
     }
 

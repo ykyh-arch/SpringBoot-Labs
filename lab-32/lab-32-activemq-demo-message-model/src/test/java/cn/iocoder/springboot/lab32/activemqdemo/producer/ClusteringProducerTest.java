@@ -26,6 +26,7 @@ public class ClusteringProducerTest {
         new CountDownLatch(1).await();
     }
 
+    // 测试同步发送消息
     @Test
     public void testSyncSend() throws InterruptedException {
         // 发送 3 条消息

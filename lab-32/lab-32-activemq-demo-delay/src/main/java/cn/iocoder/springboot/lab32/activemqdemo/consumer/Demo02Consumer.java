@@ -6,6 +6,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
+/**
+ * 消费者消费消息示例
+ *
+ * @author Jaquez
+ * @date 2021/12/16 11:42
+ */
 @Component
 public class Demo02Consumer {
 

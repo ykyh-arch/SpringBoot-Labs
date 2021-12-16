@@ -7,11 +7,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
+/**
+ * 集群消费消费者消费消息示例
+ *
+ * @author Jaquez
+ * @date 2021/12/16 10:45
+ */
 @Component
 public class ClusteringConsumer {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
+    // 指定集群消费模式
     @JmsListener(destination = ClusteringMessage.QUEUE,
             containerFactory = ActiveMQConfig.CLUSTERING_JMS_LISTENER_CONTAINER_FACTORY_BEAN_NAME)
     public void onMessage(ClusteringMessage message) {

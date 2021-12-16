@@ -32,6 +32,7 @@ public class Demo02ProducerTest {
         this.testSyncSendDelay(5000);
     }
 
+    // 测试延时发送消息
     private void testSyncSendDelay(Integer delay) throws InterruptedException {
         int id = (int) (System.currentTimeMillis() / 1000);
         producer.syncSend(id, delay);

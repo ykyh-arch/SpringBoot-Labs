@@ -20,6 +20,7 @@ public class Demo04ProducerTest {
     @Autowired
     private Demo04Producer producer;
 
+    // 测试发送同步消息，测试相同编号的消息，被投递到相同的子 Queue ，被相同的线程所消费。
     @Test
     public void testSyncSend() throws InterruptedException {
         for (int i = 0; i < 2; i++) {

@@ -2,6 +2,9 @@ package cn.iocoder.springboot.lab32.activemqdemo.message;
 
 import java.io.Serializable;
 
+/**
+ * 定时消息类
+ */
 public class Demo02Message implements Serializable {
 
     public static final String QUEUE = "QUEUE_DEMO_02";

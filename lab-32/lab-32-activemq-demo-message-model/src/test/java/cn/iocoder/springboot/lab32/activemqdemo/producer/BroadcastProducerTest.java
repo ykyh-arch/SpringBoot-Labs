@@ -26,6 +26,7 @@ public class BroadcastProducerTest {
         new CountDownLatch(1).await();
     }
 
+    // 测试同步发送消息
     @Test
     public void testSyncSend() throws InterruptedException {
         for (int i = 0; i < 3; i++) {
