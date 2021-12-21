@@ -128,6 +128,7 @@
         <module>lab-80-oss</module>
         <module>lab-81-arthas</module>
         <module>lab-81-arthas/lab-81-arthas-demo</module>
+        <module>lab-82-design-mode</module>
     </modules>
 
 </project>

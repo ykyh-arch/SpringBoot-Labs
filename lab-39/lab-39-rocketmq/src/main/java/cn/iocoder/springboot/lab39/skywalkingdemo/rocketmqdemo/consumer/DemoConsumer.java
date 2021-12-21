@@ -7,6 +7,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+/**
+ * 消息监听器
+ *
+ * @author Jaquez
+ * @date 2021/12/21 17:01
+ */
 @Component
 @RocketMQMessageListener(
         topic = DemoMessage.TOPIC,

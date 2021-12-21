@@ -14,6 +14,7 @@ public class DemoProducer {
     @Resource
     private KafkaTemplate<Object, Object> kafkaTemplate;
 
+    // 同步发送消息
     public SendResult syncSend(Integer id) throws ExecutionException, InterruptedException {
         // 创建 DemoMessage 消息
         DemoMessage message = new DemoMessage();

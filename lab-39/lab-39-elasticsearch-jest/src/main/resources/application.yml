@@ -1,9 +1,9 @@
 server:
-  port: 8079
+  port: 9093
 
 spring:
   data:
     # Jest 配置项
     jest:
-      uri: http://127.0.0.1:9400
+      uri: http://192.168.177.4:9200
 
