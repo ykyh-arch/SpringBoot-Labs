@@ -2,6 +2,9 @@ package cn.iocoder.springboot.lab39.skywalkingdemo.message;
 
 import java.io.Serializable;
 
+/**
+ * 消息类
+ */
 public class DemoMessage implements Serializable {
 
     public static final String QUEUE = "QUEUE_DEMO_";

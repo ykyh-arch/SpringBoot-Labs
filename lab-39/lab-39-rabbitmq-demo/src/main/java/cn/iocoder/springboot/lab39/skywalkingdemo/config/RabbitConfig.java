@@ -8,6 +8,12 @@ import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * 配置类
+ *
+ * @author Jaquez
+ * @date 2021/12/22 10:05
+ */
 @Configuration
 public class RabbitConfig {
 

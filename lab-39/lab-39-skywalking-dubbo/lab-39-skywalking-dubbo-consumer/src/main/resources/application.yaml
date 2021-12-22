@@ -1,5 +1,5 @@
 server:
-  port: 8079
+  port: 9093
 
 spring:
   application:
@@ -12,4 +12,4 @@ dubbo:
     name: ${spring.application.name} # 应用名
   # Dubbo 注册中心配置
   registry:
-    address: zookeeper://127.0.0.1:2181 # 注册中心地址。个鞥多注册中心，可见 http://dubbo.apache.org/zh-cn/docs/user/references/registry/introduction.html 文档。
+    address: zookeeper://192.168.177.4:2181 # 注册中心地址。个鞥多注册中心，可见 http://dubbo.apache.org/zh-cn/docs/user/references/registry/introduction.html 文档。
