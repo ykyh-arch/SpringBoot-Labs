@@ -1,11 +1,15 @@
 package cn.iocoder.springboot.lab12.mybatis.mapper;
 
 import cn.iocoder.springboot.lab12.mybatis.dataobject.UserDO;
+import cn.iocoder.springboot.lab12.mybatis.mapper.provider.UserProvider;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Param;
+import org.mybatis.dynamic.sql.insert.render.InsertStatementProvider;
 import org.springframework.stereotype.Repository;
+
 
 import java.util.Collection;
 import java.util.Date;
@@ -13,6 +17,9 @@ import java.util.List;
 
 @Repository
 public interface UserMapper extends BaseMapper<UserDO> {
+
+    @InsertProvider(type = UserProvider.class, method = "insertListSql")
+    public void sqlInsert(List<UserDO> list);
 
     // 条件构造器，参考：https://mybatis.plus/guide/wrapper.html#abstractwrapper
     default UserDO selectByUsername(@Param("username") String username) {
@@ -28,4 +35,7 @@ public interface UserMapper extends BaseMapper<UserDO> {
         );
     }
 
+    public void xmlBatchInsert(List<UserDO> list);
+
+    void insert(InsertStatementProvider<UserDO> userDOInsertStatementProvider);
 }

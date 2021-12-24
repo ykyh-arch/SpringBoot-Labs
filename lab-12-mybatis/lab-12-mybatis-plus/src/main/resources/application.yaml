@@ -27,4 +27,4 @@ logging:
         springboot:
           lab12:
             mybatis:
-              mapper: debug
+              mapper: error

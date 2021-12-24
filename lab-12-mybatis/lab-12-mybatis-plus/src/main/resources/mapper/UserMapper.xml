@@ -16,4 +16,13 @@
             </foreach>
     </select>
 
+    <insert id="xmlBatchInsert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO users (
+            username, password, create_time
+        ) VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.username}, #{item.password}, #{item.createTime})
+        </foreach>
+    </insert>
+
 </mapper>
