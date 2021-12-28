@@ -14,40 +14,6 @@ public class DemoService {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-//    public void task01() {
-//        long now = System.currentTimeMillis();
-//        logger.info("[task01][开始执行]");
-//
-//        execute01();
-//        execute02();
-//
-//        logger.info("[task01][结束执行，消耗时长 {} 毫秒]", System.currentTimeMillis() - now);
-//    }
-//
-//    public void task02() {
-//        long now = System.currentTimeMillis();
-//        logger.info("[task02][开始执行]");
-//
-//        execute01Async();
-//        execute02Async();
-//
-//        logger.info("[task02][结束执行，消耗时长 {} 毫秒]", System.currentTimeMillis() - now);
-//    }
-//
-//    public void task03() throws ExecutionException, InterruptedException {
-//        long now = System.currentTimeMillis();
-//        logger.info("[task03][开始执行]");
-//
-//        // 执行任务
-//        Future<Integer> execute01Result = execute01AsyncWithFuture();
-//        Future<Integer> execute02Result = execute02AsyncWithFuture();
-//        // 阻塞等待结果
-//        execute01Result.get();
-//        execute02Result.get();
-//
-//        logger.info("[task03][结束执行，消耗时长 {} 毫秒]", System.currentTimeMillis() - now);
-//    }
-
     @Async
     public Integer execute01Async() {
         return this.execute01();

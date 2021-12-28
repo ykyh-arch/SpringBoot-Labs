@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 /**
- * callable执行测试类
+ * callable 执行测试类
  *
  * @author jaquez
  * @date 2021/07/05 10:56

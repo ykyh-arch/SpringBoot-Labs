@@ -5,31 +5,23 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
 /**
- * 使用Callable+FutureTask获取执行结果
+ * 使用 Callable + FutureTask 获取执行结果
  *
  * @author jaquez
  * @date 2021/07/05 10:59
  **/
 public class CallableTest1 {
     public static void main(String[] args) {
-//		//创建线程池
-//		ExecutorService es = Executors.newSingleThreadExecutor();
-//		//创建Callable对象任务
-//		CallableDemo calTask=new CallableDemo();
-//		//提交任务并获取执行结果
-//		Future<Integer> future =es.submit(calTask);
-//		//关闭线程池
-//		es.shutdown();
 
-        //创建线程池
+        // 创建线程池
         ExecutorService es = Executors.newSingleThreadExecutor();
-        //创建Callable对象任务
+        // 创建 Callable 对象任务
         CallableDemo calTask=new CallableDemo();
-        //创建FutureTask
+        // 创建 FutureTask
         FutureTask<Integer> futureTask=new FutureTask<>(calTask);
-        //执行任务
+        // 执行任务
         es.submit(futureTask);
-        //关闭线程池
+        // 关闭线程池
         es.shutdown();
         try {
             Thread.sleep(2000);
