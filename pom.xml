@@ -129,6 +129,7 @@
         <module>lab-81-arthas</module>
         <module>lab-81-arthas/lab-81-arthas-demo</module>
         <module>lab-82-design-mode</module>
+        <module>lab-29/lab-29-async-demo-02</module>
     </modules>
 
 </project>
