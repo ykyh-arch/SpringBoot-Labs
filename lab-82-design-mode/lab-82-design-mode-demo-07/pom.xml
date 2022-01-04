@@ -3,23 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>labs-parent</artifactId>
+        <artifactId>lab-82-design-mode</artifactId>
         <groupId>cn.iocoder.springboot.labs</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>lab-82-design-mode</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>lab-82-design-mode-demo-01</module>
-        <module>lab-82-design-mode-demo-02</module>
-        <module>lab-82-design-mode-demo-03</module>
-        <module>lab-82-design-mode-demo-04</module>
-        <module>lab-82-design-mode-demo-05</module>
-        <module>lab-82-design-mode-demo-06</module>
-        <module>lab-82-design-mode-demo-07</module>
-    </modules>
+    <artifactId>lab-82-design-mode-demo-07</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
