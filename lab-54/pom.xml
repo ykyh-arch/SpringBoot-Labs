@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>lab-54-demo</module>
+        <module>lab-54-demo-02</module>
     </modules>
 
 

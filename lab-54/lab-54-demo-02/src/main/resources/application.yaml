@@ -1,0 +1,10 @@
+server:
+  servlet:
+    context-path: /
+spring:
+  application:
+    name: demo
+context:
+  listener:
+    classes: cn.iocoder.springboot.lab54.eventdemo.listener.MyListener3
+
