@@ -132,6 +132,7 @@
         <module>lab-29/lab-29-async-demo-02</module>
         <module>lab-12-mybatis/lab-12-mybatis-encrypt</module>
         <module>lab-83-spring-bean</module>
+        <module>lab-12-mybatis/lab-12-mybatis-tenant</module>
     </modules>
 
 </project>
