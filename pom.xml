@@ -133,6 +133,7 @@
         <module>lab-12-mybatis/lab-12-mybatis-encrypt</module>
         <module>lab-83-spring-bean</module>
         <module>lab-12-mybatis/lab-12-mybatis-tenant</module>
+        <module>lab-60/lab-60-shenyu-dubbo-demo</module>
     </modules>
 
 </project>

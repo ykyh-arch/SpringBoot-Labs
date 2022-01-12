@@ -1,0 +1,38 @@
+# dubbo 配置项，对应 DubboConfigurationProperties 配置类
+dubbo:
+  # Dubbo 应用配置
+  application:
+    name: user-service # 应用名
+  # Dubbo 注册中心配
+  registry:
+      address: zookeeper://192.168.177.4:2181 # 注册中心地址。个鞥多注册中心，可见 http://dubbo.apache.org/zh-cn/docs/user/references/registry/introduction.html 文档。
+  # Dubbo 服务提供者协议配置
+  protocol:
+    port: 20880 # 协议端口。使用 -1 表示随机端口。
+    name: dubbo # 使用 `dubbo://` 协议。更多协议，可见 http://dubbo.apache.org/zh-cn/docs/user/references/protocol/introduction.html 文档
+  # Dubbo 服务提供者配置
+  provider:
+    timeout: 1000 # 【重要】远程服务调用超时时间，单位：毫秒。默认为 1000 毫秒，胖友可以根据自己业务修改
+  # 配置扫描 Dubbo 自定义的 @Service 注解，暴露成 Dubbo 服务提供者
+  scan:
+    base-packages: cn.iocoder.springboot.lab60.userservice.service
+
+server:
+  port: 8011
+  address: 0.0.0.0
+  servlet:
+    context-path: /
+#
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+shenyu:
+  client:
+    registerType: http #zookeeper #etcd #nacos #consul
+    serverLists: http://192.168.177.4:9095 #localhost:2181 #http://localhost:2379 #localhost:8848
+    props:
+      contextPath: /user-api
+      appName: user-service
+      # nacosNameSpace: ShenyuRegisterCenter
+      # port: 20888
