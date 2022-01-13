@@ -16,6 +16,8 @@
         <module>lab-60-soul-dubbo-demo</module>
         <module>lab-60-soul-spring-boot-demo</module>
         <module>lab-60-soul-spring-cloud-demo</module>
+        <module>lab-60-shenyu-spring-boot-demo</module>
+        <module>lab-60-shenyu-spring-cloud-demo</module>
     </modules>
 
 </project>

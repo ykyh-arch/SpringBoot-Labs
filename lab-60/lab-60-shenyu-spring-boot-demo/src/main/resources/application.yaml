@@ -1,0 +1,13 @@
+shenyu:
+  client:
+    registerType: http
+    serverLists: http://192.168.177.4:9095
+    props:
+      contextPath: /sb-demo-api
+      appName: sb-demo-service
+      port: 8189 # 本项目的启动端口，目前 springmvc/tars/grpc 需要进行填写
+      isFull: false # 设置 true 代表代理你的整个服务
+
+server:
+  port: 8189
+  address: 0.0.0.0

@@ -1,0 +1,28 @@
+server:
+  port: 8884
+  address: 0.0.0.0
+
+spring:
+  application:
+    name: sc-user-service # Spring 应用名
+  cloud:
+    nacos:
+      # Nacos 作为注册中心的配置项，对应 NacosDiscoveryProperties 配置类
+      discovery:
+        server-addr: 192.168.177.4:8848 # Nacos 服务器地址
+
+shenyu:
+  client:
+    registerType: http #zookeeper #etcd #nacos #consul
+    serverLists: http://192.168.177.4:9095 #localhost:2181 #http://localhost:2379 #localhost:8848
+    props:
+      contextPath: /sc-user-service-api
+      appName: sc-user-service
+      port: 8884
+      nacosNameSpace: ShenyuRegisterCenter
+      isFull: false # true 整个服务都会被网关层代理
+
+logging:
+  level:
+    root: info
+    org.apache.shenyu: debug
