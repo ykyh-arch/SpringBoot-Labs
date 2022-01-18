@@ -8,7 +8,7 @@
     <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
     <include resource="org/springframework/boot/logging/logback/file-appender.xml" />
 
-    <!-- 定义 Sentry Appender -->
+    <!-- 定义 Cat Appender，这里 append（ILoggingEvent event）将错误的日志信息上传到 Cat 服务器-->
     <appender name="CatAppender" class="com.dianping.cat.logback.CatLogbackAppender" />
 
     <!-- 日志输出级别 -->

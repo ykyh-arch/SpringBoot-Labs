@@ -5,9 +5,21 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * 配置类
+ *
+ * @author Jaquez
+ * @date 2022/01/18 15:32
+ */
 @Configuration
 public class CatFilterConfigure {
 
+    /**
+     * 向容器中注册 filter bean
+     * @author Jaquez
+     * @date 2022/01/18 15:34
+     * @return org.springframework.boot.web.servlet.FilterRegistrationBean<com.dianping.cat.servlet.CatFilter>
+     */
     @Bean
     public FilterRegistrationBean<CatFilter> catFilter() {
         // 创建 CatFilter 对象

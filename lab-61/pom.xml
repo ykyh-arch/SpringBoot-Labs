@@ -12,11 +12,36 @@
     <artifactId>lab-61</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>lab-61-demo</module>
+        <!--<module>lab-61-demo</module>-->
         <module>lab-61-logback</module>
         <module>lab-61-springmvc</module>
-        <module>lab-61-cat-opentracing</module>
-        <module>lab-61-cat-opentracing-demo</module>
+        <!--<module>lab-61-cat-opentracing</module>-->
+        <!--<module>lab-61-cat-opentracing-demo</module>-->
     </modules>
 
+    <!--解决 Xxx.Jar 中没有主清单属性报错，参考自：https://blog.51cto.com/u_15196075/2765634-->
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>2.2.2.RELEASE</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

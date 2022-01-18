@@ -7,6 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 测试示例，通过手动调用 Cat API 实现监控管理
+ *
+ * @author Jaquez
+ * @date 2022/01/18 10:33
+ */
 @RestController
 @RequestMapping("/demo")
 public class DemoController {
@@ -20,7 +26,7 @@ public class DemoController {
         Transaction t = Cat.newTransaction("URL", "/demo/transaction");
         try {
             // ... yourBusiness(); 业务逻辑
-
+            System.out.println("我开始执行了业务逻辑代码！");
             // 设置 Transaction 的状态为成功
             t.setStatus(Transaction.SUCCESS);
         } catch (Exception e) {
@@ -85,6 +91,7 @@ public class DemoController {
      */
     @GetMapping("/metric-02")
     public String metric02() {
+        // 带时长的业务指标
         Cat.logMetricForDuration("visit.duration", 10L);
         return "success";
     }
