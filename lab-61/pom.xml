@@ -15,8 +15,9 @@
         <!--<module>lab-61-demo</module>-->
         <module>lab-61-logback</module>
         <module>lab-61-springmvc</module>
-        <!--<module>lab-61-cat-opentracing</module>-->
-        <!--<module>lab-61-cat-opentracing-demo</module>-->
+        <module>lab-61-spring-aop</module>
+       <!-- <module>lab-61-cat-opentracing</module>
+        <module>lab-61-cat-opentracing-demo</module>-->
     </modules>
 
     <!--解决 Xxx.Jar 中没有主清单属性报错，参考自：https://blog.51cto.com/u_15196075/2765634-->
