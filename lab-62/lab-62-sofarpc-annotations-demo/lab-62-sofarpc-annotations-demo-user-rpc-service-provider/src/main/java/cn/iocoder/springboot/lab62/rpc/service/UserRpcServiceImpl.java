@@ -9,7 +9,7 @@ import com.alipay.sofa.runtime.api.annotation.SofaServiceBinding;
 import org.springframework.stereotype.Service;
 
 @Service
-@SofaService(bindings = @SofaServiceBinding(bindingType = "bolt"))
+@SofaService(bindings = @SofaServiceBinding(bindingType = "bolt")) // 声明发布一个 SOFARPC Service 服务
 public class UserRpcServiceImpl implements UserRpcService {
 
     @Override

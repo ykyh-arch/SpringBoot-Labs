@@ -4,6 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 
+/**
+ * 服务提供者演示示例
+ *
+ * @author Jaquez
+ * @date 2022/01/19 15:15
+ */
 @SpringBootApplication
 @ImportResource("classpath:sofarpc.xml")
 public class ProviderApplication {

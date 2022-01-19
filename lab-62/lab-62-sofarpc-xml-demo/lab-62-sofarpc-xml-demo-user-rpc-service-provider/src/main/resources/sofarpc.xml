@@ -4,9 +4,11 @@
        xmlns:sofa="http://sofastack.io/schema/sofaboot"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
             http://sofastack.io/schema/sofaboot http://sofastack.io/schema/sofaboot.xsd">
-
+    <!--申明 sofarpc 服务发布-->
     <sofa:service ref="userRpcServiceImpl" interface="cn.iocoder.springboot.lab62.rpc.api.UserRpcService">
         <sofa:binding.bolt/>
+        <!-- <sofa:binding.dubbo/> --><!-- Dubbo 协议 -->
+        <!-- <sofa:binding.rest/> --><!-- Rest 协议 -->
     </sofa:service>
 
 </beans>

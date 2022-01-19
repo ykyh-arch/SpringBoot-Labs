@@ -3,8 +3,13 @@ package cn.iocoder.springboot.lab62.rpc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * 入口类
+ *
+ * @author Jaquez
+ * @date 2022/01/19 15:56
+ */
 @SpringBootApplication
-//@ImportResource("classpath:sofarpc.xml")
 public class ProviderApplication {
 
     public static void main(String[] args) {
