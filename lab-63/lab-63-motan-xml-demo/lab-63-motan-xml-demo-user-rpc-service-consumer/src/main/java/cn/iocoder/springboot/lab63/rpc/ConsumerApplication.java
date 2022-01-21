@@ -4,6 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 
+/**
+ * 服务消费者演示示例
+ *
+ * @author Jaquez
+ * @date 2022/01/21 14:07
+ */
 @SpringBootApplication
 @ImportResource("classpath:motan.xml")
 public class ConsumerApplication {

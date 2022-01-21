@@ -2,6 +2,7 @@ package cn.iocoder.springboot.lab28.task.enums;
 
 /**
  * 操作Job枚举类
+ *
  * @author Jaquez
  * @date 2021/07/08 15:44
  */

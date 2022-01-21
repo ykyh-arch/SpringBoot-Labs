@@ -5,7 +5,7 @@
        http://api.weibo.com/schema/motan http://api.weibo.com/schema/motan.xsd">
 
     <!-- 注册中心配置。 -->
-    <motan:registry name="registry" regProtocol="zookeeper" address="127.0.0.1:2181" connectTimeout="2000"/>
+    <motan:registry name="registry" regProtocol="zookeeper" address="192.168.177.4:2181" connectTimeout="2000000"/>
 
     <!-- Motan 协议配置。-->
     <motan:protocol name="motan2" default="true"
@@ -15,6 +15,7 @@
     <!-- Motan 服务调用方配置。 -->
 <!--    <motan:referer id="userRpcService" interface="cn.iocoder.springboot.lab63.rpc.api.UserRpcService" />-->
 
+    <!--开启注解扫描功能-->
     <motan:annotation />
 
 </beans>

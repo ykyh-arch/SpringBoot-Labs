@@ -52,7 +52,7 @@
         </dependency>
         <dependency>
             <groupId>com.weibo</groupId>
-            <artifactId>motan-transport-netty4</artifactId>
+            <artifactId>motan-transport-netty</artifactId>
             <version>${moton.version}</version>
         </dependency>
         <dependency>

@@ -10,6 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * ②读取数据库，将开启的任务job和trigger加载到scheduler调度器
  * ③根据任务调度运行job类
  * ④每次运行利用AdaptableJobFactory实例化job类，以便注入要运行的service
+ * <p>
+ * SpringBoot + SpringBatch + Quartz整合定时批量任务参考：https://mp.weixin.qq.com/s/IwkgluQ4jiGBGlvKRomwGg
+ *
  * @author Jaquez
  * @date 2021/07/08 15:15
  */

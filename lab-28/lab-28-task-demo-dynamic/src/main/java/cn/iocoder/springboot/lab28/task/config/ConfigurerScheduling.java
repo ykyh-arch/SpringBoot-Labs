@@ -14,6 +14,7 @@ import org.springframework.scheduling.Trigger;
 import org.springframework.scheduling.TriggerContext;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
+import org.springframework.scheduling.concurrent.CustomizableThreadFactory;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.scheduling.support.CronTrigger;
 
@@ -21,6 +22,8 @@ import javax.swing.*;
 import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 /**
  * 配置类
@@ -39,7 +42,10 @@ public class ConfigurerScheduling  implements SchedulingConfigurer {
 
     @Override
     public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
-
+        // 默认单线程的，建议使用多线程的方式可以达到线程复用效果
+        ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(10,
+                new CustomizableThreadFactory("pikaqiu-demo-"));
+        taskRegistrar.setScheduler(executorService);
         List<SysTask> tasks = getAllTasks();
         if (tasks.size() > 0) {
             for (SysTask sysTask:tasks) {
