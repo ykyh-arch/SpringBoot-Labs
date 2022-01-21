@@ -5,6 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * 服务提供者演示示例
+ *
+ * @author Jaquez
+ * @date 2022/01/21 15:32
+ */
 @SpringBootApplication
 public class UserServiceApplication {
 

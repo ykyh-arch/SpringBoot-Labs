@@ -6,6 +6,12 @@ import io.grpc.ManagedChannelBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * GrpcConfig 配置类
+ *
+ * @author Jaquez
+ * @date 2022/01/21 15:50
+ */
 @Configuration
 public class GrpcConfig {
 

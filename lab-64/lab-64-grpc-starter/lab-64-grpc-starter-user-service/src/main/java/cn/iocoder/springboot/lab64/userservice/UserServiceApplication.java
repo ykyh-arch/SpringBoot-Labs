@@ -3,6 +3,12 @@ package cn.iocoder.springboot.lab64.userservice;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * 服务提供者演示示例
+ *
+ * @author Jaquez
+ * @date 2022/01/21 16:13
+ */
 @SpringBootApplication
 public class UserServiceApplication {
 
