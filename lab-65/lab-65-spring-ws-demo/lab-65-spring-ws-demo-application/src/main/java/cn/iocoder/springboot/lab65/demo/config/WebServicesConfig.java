@@ -5,6 +5,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
+/**
+ * WebServicesConfig 配置类
+ *
+ * @author Jaquez
+ * @date 2022/01/25 14:19
+ */
 @Configuration
 public class WebServicesConfig {
 

@@ -8,11 +8,18 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.xml.ws.Endpoint;
 
+/**
+ * CXFConfig 配置类
+ *
+ * @author Jaquez
+ * @date 2022/01/25 15:41
+ */
 @Configuration
 public class CXFConfig {
 
-    public static final String NAMESPACE_URI = "https://github.com/YunaiV/SpringBoot-Labs/tree/master/lab-65/lab-65-cxf-ws-demo";
+    public static final String NAMESPACE_URI = "https://github.com/ykyh-arch/SpringBoot-Labs/tree/Jaquez/lab-65/lab-65-cxf-ws-demo";
 
+    // 用于 Web Services 服务的发布。
     @Bean(name = Bus.DEFAULT_BUS_ID)
     public SpringBus springBus() {
         return new SpringBus();

@@ -31,7 +31,6 @@
         </dependencies>
     </dependencyManagement>
 
-
     <dependencies>
         <!-- 引入 SpringMVC 相关依赖，并实现对其的自动配置 -->
         <dependency>

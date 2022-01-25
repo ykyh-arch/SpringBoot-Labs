@@ -15,12 +15,19 @@ import org.springframework.xml.xsd.XsdSchema;
 
 import java.util.List;
 
+/**
+ * 配置类
+ *
+ * @author Jaquez
+ * @date 2022/01/25 11:19
+ */
 @Configuration
 @EnableWs // 开启 Web Services 服务
 public class WebServicesConfig extends WsConfigurerAdapter {
 
-    public static final String NAMESPACE_URI = "https://github.com/YunaiV/SpringBoot-Labs/tree/master/lab-65/lab-65-spring-ws-demo";
+    public static final String NAMESPACE_URI = "https://github.com/ykyh-arch/SpringBoot-Labs/tree/Jaquez/lab-65/lab-65-spring-ws-demo";
 
+    // 注册消息转发 bean 对象
     @Bean
 	public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
 		MessageDispatcherServlet servlet = new MessageDispatcherServlet();

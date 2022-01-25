@@ -1,5 +1,5 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="https://github.com/YunaiV/SpringBoot-Labs/tree/master/lab-65/lab-65-spring-ws-demo"
+           targetNamespace="https://github.com/ykyh-arch/SpringBoot-Labs/tree/Jaquez/lab-65/lab-65-spring-ws-demo"
            elementFormDefault="qualified">
 
     <!-- 获得用户请求 -->

@@ -3,6 +3,12 @@ package cn.iocoder.springboot.lab65.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * 入口类
+ *
+ * @author Jaquez
+ * @date 2022/01/25 14:23
+ */
 @SpringBootApplication
 public class DemoApplication {
 

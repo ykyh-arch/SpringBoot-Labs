@@ -8,6 +8,12 @@ import feign.soap.SOAPEncoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Feign 配置类
+ *
+ * @author Jaquez
+ * @date 2022/01/25 15:27
+ */
 @Configuration
 public class FeignConfig {
 
