@@ -6,8 +6,18 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
+/**
+ * 单元测试类
+ *
+ * @author Jaquez
+ * @date 2022/01/26 15:09
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class ProductRepository02Test {
@@ -21,37 +31,37 @@ public class ProductRepository02Test {
         System.out.println(product);
     }
 
-//    @Test // 使用 name 模糊查询，分页返回结果
-//    public void testFindByNameLike() {
-//        // 根据情况，是否要制造测试数据
-//        if (false) {
-//            testInsert();
-//        }
-//
-//        // 创建排序条件
-//        Sort sort = Sort.by(Sort.Direction.DESC, "id");  // ID 倒序
-//        // 创建分页条件。
-//        Pageable pageable = PageRequest.of(0, 10, sort);
-//        // 执行分页操作
-//        Page<SolrProductDO> page = productRepository.findByNameLike("芋道", pageable);
-//        // 打印
-//        System.out.println(page.getTotalElements());
-//        System.out.println(page.getTotalPages());
-//    }
-//
-//    /**
-//     * 为了给分页制造一点数据
-//     */
-//    private void testInsert() {
-//        for (int i = 1; i <= 100; i++) {
-//            SolrProductDO product = new SolrProductDO();
-//            product.setId(i); // 一般 ES 的 ID 编号，使用 DB 数据对应的编号。这里，先写死
-//            product.setName("芋道源码：" + i);
-//            product.setDescription("我只是一个描述");
-//            product.setCid(1);
-//            product.setCategoryName("技术");
-//            productRepository.save(product);
-//        }
-//    }
+    @Test // 使用 name 模糊查询，分页返回结果
+    public void testFindByNameLike() {
+        // 根据情况，是否要制造测试数据
+        if (false) {
+            testInsert();
+        }
+
+        // 创建排序条件
+        Sort sort = Sort.by(Sort.Direction.DESC, "id");  // ID 倒序
+        // 创建分页条件。
+        Pageable pageable = PageRequest.of(0, 10, sort);
+        // 执行分页操作
+        Page<SolrProductDO> page = productRepository.findByNameLike("芋道", pageable);
+        // 打印，这里有点小问题，没有查询到预期的结果
+        System.out.println(page.getTotalElements());
+        System.out.println(page.getTotalPages());
+    }
+
+    /**
+     * 为了给分页制造一点数据
+     */
+    private void testInsert() {
+        for (int i = 1; i <= 100; i++) {
+            SolrProductDO product = new SolrProductDO();
+            product.setId(i); // 一般 ES 的 ID 编号，使用 DB 数据对应的编号。这里，先写死
+            product.setName("芋道源码：" + i);
+            product.setDescription("我只是一个描述");
+            product.setCid(1);
+            product.setCategoryName("技术");
+            productRepository.save(product);
+        }
+    }
 
 }

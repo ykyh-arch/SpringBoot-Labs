@@ -4,7 +4,13 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.solr.core.mapping.Indexed;
 import org.springframework.data.solr.core.mapping.SolrDocument;
 
-@SolrDocument(collection = "new_core")
+/**
+ * 数据对象 DO
+ *
+ * @author Jaquez
+ * @date 2022/01/26 14:26
+ */
+@SolrDocument(collection = "new_core") // 设置使用的 Solr Core 的名字
 public class SolrProductDO {
 
     /**

@@ -6,6 +6,12 @@ import org.springframework.data.solr.repository.SolrCrudRepository;
 
 import java.util.List;
 
+/**
+ * @Query 自定义查询
+ *
+ * @author Jaquez
+ * @date 2022/01/26 15:15
+ */
 public interface ProductRepository03 extends SolrCrudRepository<SolrProductDO, Integer> {
 
     /**

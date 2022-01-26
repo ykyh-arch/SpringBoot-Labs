@@ -2,4 +2,4 @@ spring:
   data:
     # Spring Data Solr 配置项，对应 SolrProperties 配置类
     solr:
-      host: 'http://127.0.0.1:8983/solr' # Solr 服务器地址
+      host: 'http://192.168.177.4:8983/solr' # Solr 服务器地址

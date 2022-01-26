@@ -11,6 +11,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Arrays;
 import java.util.Optional;
 
+/**
+ * 单元测试类
+ *
+ * @author Jaquez
+ * @date 2022/01/26 14:41
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class ProductRepositoryTest {
@@ -26,7 +32,8 @@ public class ProductRepositoryTest {
         product.setDescription("我只是一个描述");
         product.setCid(2);
         product.setCategoryName("技术");
-        productRepository.save(product);
+        SolrProductDO save = productRepository.save(product);
+        System.out.println(save);
     }
 
     // 这里要注意，如果使用 save 方法来更新的话，必须是全量字段，否则其它字段会被覆盖。
