@@ -38,7 +38,7 @@ public class NettyChannelManager {
     private ConcurrentMap<String, Channel> userChannels = new ConcurrentHashMap<>();
 
     /**
-     * 添加 Channel 到 {@link #channels} 中
+     * 添加 Channel 到 {@link #channels} 中，一个客户端连接会对应一个 Channel
      *
      * @param channel Channel
      */

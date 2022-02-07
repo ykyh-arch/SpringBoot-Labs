@@ -9,6 +9,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+/**
+ * 心跳请求处理器类
+ *
+ * @author Jaquez
+ * @date 2022/02/07 15:43
+ */
 @Component
 public class HeartbeatRequestHandler implements MessageHandler<HeartbeatRequest> {
 

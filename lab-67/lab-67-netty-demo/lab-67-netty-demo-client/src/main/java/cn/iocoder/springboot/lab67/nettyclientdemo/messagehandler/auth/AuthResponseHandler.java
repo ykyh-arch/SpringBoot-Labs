@@ -7,6 +7,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+/**
+ * 认证响应处理器类，为客户端处理服务端的认证响应。
+ *
+ * @author Jaquez
+ * @date 2022/02/07 16:11
+ */
 @Component
 public class AuthResponseHandler implements MessageHandler<AuthResponse> {
 

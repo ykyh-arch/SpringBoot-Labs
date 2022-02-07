@@ -10,6 +10,12 @@ import io.netty.handler.timeout.ReadTimeoutHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * NettyClientHandlerInitializer 初始化自定义事件处理逻辑
+ *
+ * @author Jaquez
+ * @date 2022/01/27 11:47
+ */
 @Component
 public class NettyClientHandlerInitializer extends ChannelInitializer<Channel> {
 
@@ -27,8 +33,9 @@ public class NettyClientHandlerInitializer extends ChannelInitializer<Channel> {
     @Override
     protected void initChannel(Channel ch) {
         ch.pipeline()
-                // 空闲检测
+                // 心跳检测
                 .addLast(new IdleStateHandler(READ_TIMEOUT_SECONDS, 0, 0))
+                // 空闲检测
                 .addLast(new ReadTimeoutHandler(3 * READ_TIMEOUT_SECONDS))
                 // 编码器
                 .addLast(new InvocationEncoder())

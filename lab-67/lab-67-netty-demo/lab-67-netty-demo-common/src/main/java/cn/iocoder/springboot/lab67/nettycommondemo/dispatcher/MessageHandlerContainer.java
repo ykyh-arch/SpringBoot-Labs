@@ -13,12 +13,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * MessageHandlerContainer MessageHandler 容器
+ *
+ * @author Jaquez
+ * @date 2022/01/28 15:46
+ */
 public class MessageHandlerContainer implements InitializingBean {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     /**
-     * 消息类型与 MessageHandler 的映射
+     * 消息类型 type 与 MessageHandler 的映射
      */
     private final Map<String, MessageHandler> handlers = new HashMap<>();
 
@@ -48,7 +54,7 @@ public class MessageHandlerContainer implements InitializingBean {
     }
 
     /**
-     * 获得 MessageHandler 处理的消息类
+     * 获得 MessageHandler 处理的消息类，通过 MessageHandler 中，通过解析其类上的泛型，获得消息类型对应的 Class 类。
      *
      * @param handler 处理器
      * @return 消息类

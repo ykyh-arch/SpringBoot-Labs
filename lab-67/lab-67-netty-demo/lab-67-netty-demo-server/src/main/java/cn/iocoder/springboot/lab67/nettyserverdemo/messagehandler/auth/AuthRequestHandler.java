@@ -10,6 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+/**
+ * 认证请求处理器类，为服务端处理客户端的认证请求。
+ *
+ * @author Jaquez
+ * @date 2022/02/07 16:01
+ */
 @Component
 public class AuthRequestHandler implements MessageHandler<AuthRequest> {
 
@@ -25,7 +31,7 @@ public class AuthRequestHandler implements MessageHandler<AuthRequest> {
             return;
         }
 
-        // ... 此处应有一段
+        // ... 此处应有一段（校验 token 是否合法）
 
         // 将用户和 Channel 绑定
         // 考虑到代码简化，我们先直接使用 accessToken 作为 User

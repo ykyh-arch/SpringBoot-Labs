@@ -4,7 +4,7 @@ import cn.iocoder.springboot.lab67.nettycommondemo.dispatcher.Message;
 import com.alibaba.fastjson.JSON;
 
 /**
- * 通信协议的消息体
+ * 自定义通信协议的消息体
  */
 public class Invocation {
 

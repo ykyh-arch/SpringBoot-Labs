@@ -8,17 +8,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * 实现将 Invocation 序列化，并写入到 TCP Socket 中。
+ *
  * {@link Invocation} 编码器
  */
 public class InvocationEncoder extends MessageToByteEncoder<Invocation> {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
+    // 编码逻辑
     @Override
     protected void encode(ChannelHandlerContext ctx, Invocation invocation, ByteBuf out) {
         // 将 Invocation 转换成 byte[] 数组
         byte[] content = JSON.toJSONBytes(invocation);
-        // 写入 length
+        // 写入 length，写到 TCP Socket 中。
         out.writeInt(content.length);
         // 写入内容
         out.writeBytes(content);

@@ -10,6 +10,12 @@ import io.netty.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * 为服务端处理客户端的群聊请求。
+ *
+ * @author Jaquez
+ * @date 2022/02/07 17:09
+ */
 @Component
 public class ChatSendToAllHandler implements MessageHandler<ChatSendToAllRequest> {
 

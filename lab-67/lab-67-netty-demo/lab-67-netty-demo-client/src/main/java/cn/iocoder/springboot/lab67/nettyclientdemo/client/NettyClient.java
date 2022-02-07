@@ -16,6 +16,12 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * NettyClient 配置类
+ *
+ * @author Jaquez
+ * @date 2022/01/27 11:27
+ */
 @Component
 public class NettyClient {
 
@@ -35,7 +41,7 @@ public class NettyClient {
     private NettyClientHandlerInitializer nettyClientHandlerInitializer;
 
     /**
-     * 线程组，用于客户端对服务端的链接、数据读写
+     * 线程组，用于客户端对服务端的链接、数据读写（这里区别于具体的业务逻辑执行）
      */
     private EventLoopGroup eventGroup = new NioEventLoopGroup();
     /**
@@ -65,6 +71,7 @@ public class NettyClient {
                 // 连接失败
                 if (!future.isSuccess()) {
                     logger.error("[start][Netty Client 连接服务器({}:{}) 失败]", serverHost, serverPort);
+                    // 启动时，重连机制
                     reconnect();
                     return;
                 }
@@ -76,6 +83,7 @@ public class NettyClient {
         });
     }
 
+    // 重连机制
     public void reconnect() {
         eventGroup.schedule(new Runnable() {
             @Override

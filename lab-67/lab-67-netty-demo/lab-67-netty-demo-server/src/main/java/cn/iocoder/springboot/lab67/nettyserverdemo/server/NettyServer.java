@@ -18,6 +18,12 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.net.InetSocketAddress;
 
+/**
+ * NettyServer 配置类（启动、关闭配置）
+ *
+ * @author Jaquez
+ * @date 2022/01/26 15:50
+ */
 @Component
 public class NettyServer {
 

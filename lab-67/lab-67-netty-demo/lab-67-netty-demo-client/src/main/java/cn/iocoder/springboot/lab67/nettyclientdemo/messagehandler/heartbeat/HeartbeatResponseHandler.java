@@ -7,6 +7,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+/**
+ * 心跳响应控制器类
+ *
+ * @author Jaquez
+ * @date 2022/02/07 15:48
+ */
 @Component
 public class HeartbeatResponseHandler implements MessageHandler<HeartbeatResponse> {
 

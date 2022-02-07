@@ -7,6 +7,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 测试类
+ *
+ * @author Jaquez
+ * @date 2022/02/07 16:14
+ */
 @RestController
 @RequestMapping("/test")
 public class TestController {

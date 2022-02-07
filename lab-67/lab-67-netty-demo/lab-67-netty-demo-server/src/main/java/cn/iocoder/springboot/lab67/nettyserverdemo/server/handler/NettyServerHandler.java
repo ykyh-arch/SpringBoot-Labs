@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * 服务端 Channel 实现类，提供对客户端 Channel 建立连接、断开连接、异常时的处理
  */
 @Component
-@ChannelHandler.Sharable
+@ChannelHandler.Sharable // 标记可以被多个 Channel 所共享
 public class NettyServerHandler extends ChannelInboundHandlerAdapter {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
@@ -21,18 +21,21 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
     @Autowired
     private NettyChannelManager channelManager;
 
+    // 在客户端和服务端建立连接完成时
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
         // 从管理器中添加
         channelManager.add(ctx.channel());
     }
 
+    // 在客户端和服务端断开连接时
     @Override
     public void channelUnregistered(ChannelHandlerContext ctx) {
         // 从管理器中移除
         channelManager.remove(ctx.channel());
     }
 
+    // 在处理 Channel 的事件发生异常时
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         logger.error("[exceptionCaught][连接({}) 发生异常]", ctx.channel().id(), cause);
