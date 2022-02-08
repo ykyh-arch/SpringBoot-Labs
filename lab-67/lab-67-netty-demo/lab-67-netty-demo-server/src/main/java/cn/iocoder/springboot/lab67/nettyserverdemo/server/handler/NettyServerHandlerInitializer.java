@@ -36,14 +36,14 @@ public class NettyServerHandlerInitializer extends ChannelInitializer<Channel> {
     protected void initChannel(Channel ch) {
         // 获得 Channel 对应的 ChannelPipeline
         ChannelPipeline channelPipeline = ch.pipeline();
-        // 添加一堆 NettyServerHandler 到 ChannelPipeline 中
+        // 添加一堆 NettyServerHandler 到 ChannelPipeline 中，开始通道流水线装配，负责数据读写、处理业务逻辑的 handler。
         channelPipeline
                 // 空闲检测，实现服务端发现 180 秒未从客户端读取到消息，主动断开连接。
                 .addLast(new ReadTimeoutHandler(READ_TIMEOUT_SECONDS, TimeUnit.SECONDS))
                 // 编码器
-                .addLast(new InvocationEncoder())
+                .addLast(new InvocationEncoder())  // new ProtobufDecoder()
                 // 解码器
-                .addLast(new InvocationDecoder())
+                .addLast(new InvocationDecoder())  // new ProtobufDecoder()
                 // 消息分发器
                 .addLast(messageDispatcher)
                 // 服务端处理器

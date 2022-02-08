@@ -17,7 +17,7 @@ import java.util.concurrent.Executors;
  * @date 2022/01/28 16:28
  */
 @ChannelHandler.Sharable // 多个 channel 可以共享
-public class MessageDispatcher extends SimpleChannelInboundHandler<Invocation> {
+public class MessageDispatcher extends SimpleChannelInboundHandler<Invocation> { // Inbound 处理网络请求内容
 
     @Autowired
     private MessageHandlerContainer messageHandlerContainer;

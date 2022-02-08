@@ -59,7 +59,8 @@ public class NettyServer {
         bootstrap.group(bossGroup, workerGroup) // 设置两个 EventLoopGroup 对象
                 .channel(NioServerSocketChannel.class)  // 指定 Channel 为服务端 NioServerSocketChannel
                 .localAddress(new InetSocketAddress(port)) // 设置 Netty Server 的端口
-                .option(ChannelOption.SO_BACKLOG, 1024) // 服务端 accept 队列的大小
+                .option(ChannelOption.SO_BACKLOG, 1024) // 服务端 accept 队列的大小，服务端接受连接的队列长度
+                // .option(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT) // 根据池大小分配缓冲区
                 .childOption(ChannelOption.SO_KEEPALIVE, true) // TCP Keepalive 机制，实现 TCP 层级的心跳保活功能
                 .childOption(ChannelOption.TCP_NODELAY, true) // 允许较小的数据包的发送，降低延迟
                 .childHandler(nettyServerHandlerInitializer);
