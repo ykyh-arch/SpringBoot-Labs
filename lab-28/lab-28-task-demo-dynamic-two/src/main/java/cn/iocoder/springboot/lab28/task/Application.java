@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * <p>
  * 参考：https://mp.weixin.qq.com/s/0P0OMg_YY7bqvLfIkOGe5Q
  * <p>
- * 定时任务动态管理通用解决方案参考：https://mp.weixin.qq.com/s/fJAFvFTVlnuTVjTXlGNWRA
+ * @Scheduled 增强版使用，可实现动态维护，参考：https://mp.weixin.qq.com/s/fJAFvFTVlnuTVjTXlGNWRA
  *
  * @author Jaquez
  * @date 2021/07/08 15:15

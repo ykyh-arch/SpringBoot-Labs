@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
- * 通用版定时任务解决方案，参考自：https://mp.weixin.qq.com/s/fJAFvFTVlnuTVjTXlGNWRA
+ * @Scheduled 增强版使用，可实现动态维护，参考自：https://mp.weixin.qq.com/s/fJAFvFTVlnuTVjTXlGNWRA
  *
  * @author Jaquez
  * @date 2021/07/08 15:15
