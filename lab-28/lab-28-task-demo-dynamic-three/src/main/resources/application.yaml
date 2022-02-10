@@ -1,0 +1,28 @@
+spring:
+  # datasource 数据源配置内容，对应 DataSourceProperties 配置属性类
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/lab-28-task?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root # 数据库账号
+    password: 123456 # 数据库密码
+
+  # 默认配置参数
+  super:
+    scheduled:
+      thread-pool:
+        poolSize: 30 # 线程池大小
+        threadNamePrefix: super- # 线程名前缀
+        waitForTasksToCompleteOnShutdown: false # 设置是否关闭时等待执行中的任务执行完成
+        awaitTerminationSeconds: 0 # 设置此执行器被关闭时等待的最长时间，用于在其余容器继续关闭之前等待剩余任务执行完成，需要将 waitForTasksToCompleteOnShutdown设置为 true，此配置才起作用
+
+      zookeeper:
+        connectionTimeout: 60000 # 设置 zookeeper session 超时时间
+        sessionTimeout: 60000 # 设置 zookeeper 连接超时时间
+        url: 127.0.0.1:2181 # 设置 zookeeper 地址，zookeeper 集群多个地址用英文逗号隔开
+
+      plug-in:
+        colony: false # 开启基于 zookeeper 的集群模式
+        colonyName: test # zookeeper 集群模式的定时任务服务名，相同名称的定时任务名称服务会被统一管理
+        executionFlag: true # 开启执行标志
+        executionLog: false # 开启定时任务调度日志，日志文件是存在本地磁盘上的
+        logPath: C:/tmp/log-scheduled # 日志存放位置，不设置默认位置为程序同级目录下

@@ -19,6 +19,8 @@
         <module>lab-28-task-quartz-dynamic</module>
         <module>lab-28-task-demo-dynamic</module>
         <module>lab-28-task-demo-dynamic-two</module>
+        <module>lab-28-task-demo-dynamic-three</module>
+        <module>lab-28-task-demo-super-scheduled</module>
     </modules>
 
 

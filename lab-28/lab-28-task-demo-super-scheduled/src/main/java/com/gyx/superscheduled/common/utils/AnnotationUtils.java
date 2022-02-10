@@ -1,0 +1,62 @@
+package com.gyx.superscheduled.common.utils;
+
+import com.gyx.superscheduled.common.utils.proxy.Point;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Proxy;
+import java.util.List;
+import java.util.Map;
+
+public class AnnotationUtils {
+    /**
+     * 修改注解值，新值替换旧值
+     *
+     * @author Jaquez
+     * @date 2022/02/10 14:46
+     * @param annotation
+     * @param key
+     * @param newValue
+     * @return java.lang.Object
+     */
+    public static Object changeAnnotationValue(Annotation annotation, String key, Object newValue) throws Exception {
+        InvocationHandler handler = Proxy.getInvocationHandler(annotation);
+        Field f;
+        try {
+            f = handler.getClass().getDeclaredField("memberValues");
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new IllegalStateException(e);
+        }
+        f.setAccessible(true);
+        Map<String, Object> memberValues;
+        memberValues = (Map<String, Object>) f.get(handler);
+        Object oldValue = memberValues.get(key);
+        if (oldValue == null || oldValue.getClass() != newValue.getClass()) {
+            throw new IllegalArgumentException();
+        }
+        memberValues.put(key, newValue);
+        return oldValue;
+    }
+
+    /**
+     * 根据 SuperScheduledOrder 排序
+     */
+    public static void superScheduledOrderSort(List<Point> points) {
+        if (points == null || points.isEmpty()) {
+            return;
+        }
+        points.sort((o1, o2) -> {
+            if (o1.getInteriorOrder() == null && o2.getInteriorOrder() == null) {
+                return o2.getOrder().compareTo(o1.getOrder());
+            }else if (o1.getInteriorOrder() != null && o2.getInteriorOrder() != null){
+                return o2.getInteriorOrder().compareTo(o1.getInteriorOrder());
+            }else if (o1.getInteriorOrder() != null){
+                return -1;
+            }else{
+                return 1;
+            }
+        });
+    }
+}
