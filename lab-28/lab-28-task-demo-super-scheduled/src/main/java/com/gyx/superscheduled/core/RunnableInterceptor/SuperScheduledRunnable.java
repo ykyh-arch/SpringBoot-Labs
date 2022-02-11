@@ -11,7 +11,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
- * 定时任务执行器实现
+ * 定时任务执行器，负责执行定时任务
  *
  * @author Jaquez
  * @date 2022/02/10 18:02
@@ -38,6 +38,7 @@ public class SuperScheduledRunnable {
 
     /**
      * 方法执行
+     *
      * @author Jaquez
      * @date 2022/02/10 17:51
      * @return java.lang.Object

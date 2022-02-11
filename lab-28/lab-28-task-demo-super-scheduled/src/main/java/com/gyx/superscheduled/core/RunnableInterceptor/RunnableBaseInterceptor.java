@@ -29,7 +29,7 @@ public class RunnableBaseInterceptor implements MethodInterceptor {
     private BaseStrengthen strengthen;
 
     /**
-     * 增强的业务逻辑
+     * 增强的业务逻辑，目标对象方法执行会在这里统一增强处理
      *
      * @author Jaquez
      * @date 2022/02/10 16:22

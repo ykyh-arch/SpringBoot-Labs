@@ -50,7 +50,13 @@ public class ScheduledSource implements Serializable {
 
     private ScheduledType type;
 
-
+    /**
+     * 检查注解中属性是否合法
+     *
+     * @author Jaquez
+     * @date 2022/02/11 10:19
+     * @return java.lang.Boolean
+     */
     public Boolean check() {
         String sb = "1"
                 + (cron == null ? 0 : 1)
@@ -60,7 +66,7 @@ public class ScheduledSource implements Serializable {
                 + (fixedRateString == null ? 0 : 1)
                 + (initialDelay == null ? 0 : 1)
                 + (initialDelayString == null ? 0 : 1);
-        Integer flag = Integer.valueOf(sb, 2);
+        Integer flag = Integer.valueOf(sb, 2); // 将二进制转化为十进制
         List<Integer> probability = Arrays.asList(132, 133, 134, 136, 137, 138, 144, 145, 146, 160, 161, 162, 192);
         return probability.contains(flag);
     }

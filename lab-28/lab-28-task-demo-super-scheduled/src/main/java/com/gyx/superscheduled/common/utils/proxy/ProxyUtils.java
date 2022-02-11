@@ -12,7 +12,9 @@ import org.springframework.cglib.proxy.MethodInterceptor;
  */
 public class ProxyUtils {
     public static <T> T getInstance(Class<T> clazz, MethodInterceptor interceptor) {
+
         System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "C:\\tmp\\file");
+
         // 字节码加强器：用来创建动态代理类
         Enhancer enhancer = new Enhancer();
         // 代理的目标对象

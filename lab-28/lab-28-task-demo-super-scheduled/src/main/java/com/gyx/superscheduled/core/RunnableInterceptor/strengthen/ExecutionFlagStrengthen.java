@@ -8,6 +8,12 @@ import org.apache.commons.logging.LogFactory;
 
 import java.lang.reflect.Method;
 
+/**
+ * ExecutionFlagStrengthen 增强类
+ * 
+ * @author Jaquez
+ * @date 2022/02/11 11:10
+ */
 @SuperScheduledInteriorOrder
 public class ExecutionFlagStrengthen implements BaseStrengthen {
     protected final Log logger = LogFactory.getLog(getClass());

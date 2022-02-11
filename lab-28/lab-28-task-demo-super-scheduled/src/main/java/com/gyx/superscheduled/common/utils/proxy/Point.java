@@ -3,6 +3,12 @@ package com.gyx.superscheduled.common.utils.proxy;
 import com.gyx.superscheduled.core.RunnableInterceptor.SuperScheduledRunnable;
 import com.gyx.superscheduled.model.ScheduledSource;
 
+/**
+ * 代理抽象类
+ *
+ * @author Jaquez
+ * @date 2022/02/11 11:03
+ */
 public abstract class Point {
     /**
      * 定时任务名

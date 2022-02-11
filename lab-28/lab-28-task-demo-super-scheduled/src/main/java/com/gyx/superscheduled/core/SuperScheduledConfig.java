@@ -9,6 +9,12 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledFuture;
 
+/**
+ * SuperScheduledConfig 配置类
+ *
+ * @author Jaquez
+ * @date 2022/02/11 10:09
+ */
 @Component("superScheduledConfig")
 public class SuperScheduledConfig {
     /**

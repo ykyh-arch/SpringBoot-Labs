@@ -6,6 +6,12 @@ import org.springframework.core.annotation.Order;
 
 import java.lang.reflect.Method;
 
+/**
+ * 基础增强类接口
+ *
+ * @author Jaquez
+ * @date 2022/02/11 11:01
+ */
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public interface BaseStrengthen {
     /**

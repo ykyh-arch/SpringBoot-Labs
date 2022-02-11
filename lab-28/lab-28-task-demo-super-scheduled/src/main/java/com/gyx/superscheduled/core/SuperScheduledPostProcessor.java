@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 import static com.gyx.superscheduled.common.utils.AnnotationUtils.changeAnnotationValue;
 
 /**
- * SuperScheduledPostProcessor 自定义定时任务后置处理器
+ * SuperScheduledPostProcessor 自定义定时任务后置处理器（将 springboot 中的 @Scheduled 中的属性信息赋值给 ScheduledSource，并放入容器中并且停止 springboot 的定时任务）
  *
  * @author Jaquez
  * @date 2022/02/10 15:08
@@ -103,7 +103,7 @@ public class SuperScheduledPostProcessor implements BeanPostProcessor, Applicati
 
 
     /**
-     * 获取 SpringBoot 的上下文
+     * 获取 SpringBoot 的上下文环境
      * @param applicationContext SpringBoot 的上下文
      */
     @Override

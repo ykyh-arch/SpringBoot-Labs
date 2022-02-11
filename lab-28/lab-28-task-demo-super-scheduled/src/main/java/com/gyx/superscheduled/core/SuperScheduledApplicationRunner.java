@@ -58,7 +58,7 @@ public class SuperScheduledApplicationRunner implements ApplicationRunner, Appli
     public void run(ApplicationArguments args) {
         // 1.定时任务配置管理器中缓存定时任务执行线程
         superScheduledConfig.setTaskScheduler(threadPoolTaskScheduler);
-        // 2.获取所有定时任务源数据
+        // 2.获取所有定时任务源数据（在 SuperScheduledPostProcessor 已经存储过了）
         Map<String, ScheduledSource> nameToScheduledSource = superScheduledConfig.getNameToScheduledSource();
         // 逐一处理定时任务
         for (String name : nameToScheduledSource.keySet()) {
@@ -108,6 +108,14 @@ public class SuperScheduledApplicationRunner implements ApplicationRunner, Appli
         }
     }
 
+    /**
+     * 加载 springboot 上下文环境
+     *
+     * @author Jaquez
+     * @date 2022/02/11 10:56
+     * @param applicationContext
+     * @return void
+     */
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
