@@ -1,4 +1,4 @@
-package cn.iocoder.springboot.lab74.batchdemo.jdbc;
+package cn.iocoder.springboot.lab74.batchdemo.mapper;
 
 import cn.iocoder.springboot.lab74.batchdemo.entity.Article;
 import org.springframework.jdbc.core.RowMapper;

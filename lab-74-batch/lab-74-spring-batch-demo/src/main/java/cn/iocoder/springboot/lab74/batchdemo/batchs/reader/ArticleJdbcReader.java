@@ -1,7 +1,7 @@
-package cn.iocoder.springboot.lab74.batchdemo.Reader;
+package cn.iocoder.springboot.lab74.batchdemo.batchs.reader;
 
 import cn.iocoder.springboot.lab74.batchdemo.entity.Article;
-import cn.iocoder.springboot.lab74.batchdemo.jdbc.ArticleMapper;
+import cn.iocoder.springboot.lab74.batchdemo.mapper.ArticleMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.batch.item.database.JdbcCursorItemReader;
 import org.springframework.batch.item.database.JdbcPagingItemReader;
@@ -16,20 +16,21 @@ import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 读数据流，或自定义一个类 implements ItemReader<Object> 接口，重写read() 方法
- * 读的来源可以是数据库，也可以是文件或队列，最终要封装成读的对象
+ * 读数据流，或自定义一个类 implements ItemReader<Object> 接口，重写 read() 方法，读的来源可以是数据库，也可以是文件或队列，最终要封装成读的对象。
+ *
+ * @author Jaquez
+ * @date 2022/02/24 15:07
  */
 @Component
 public class ArticleJdbcReader {
 
-    //这里可以指定对应库的数据源，关于数据源设置参考lab-19
-//    @Resource(name = "articlesDataSource")
+    // 这里可以指定对应库的数据源，关于数据源设置参考 lab-19，可以是不同的业务数据源
+    // @Resource(name = "articlesDataSource")
     private final DataSource dataSource;
 
     public ArticleJdbcReader(DataSource dataSource) {
@@ -38,8 +39,7 @@ public class ArticleJdbcReader {
 
     /**
      * 普通读取模式
-     * - MySQL会将所有的纪录读到内存中
-     * - 数据量大的话内存占用会很高
+     * - 基于游标的方式，MySQL会将所有的纪录读到内存中，数据量大的话内存占用会很高
      */
     public JdbcCursorItemReader<Article> getArticle(String executedTime) {
         String lastExecutedTime = "";
@@ -52,6 +52,7 @@ public class ArticleJdbcReader {
                 .name("getArticle")
                 .beanRowMapper(Article.class)
                 .build();
+
     }
 
     /**
@@ -86,12 +87,12 @@ public class ArticleJdbcReader {
     }
 
     /**
-     * 读取csv示例，参考：https://blog.csdn.net/masson32/article/details/91347849
+     * 读取 csv 示例，参考：https://blog.csdn.net/masson32/article/details/91347849
      */
     public FlatFileItemReader<Article> readCsv() {
         return new FlatFileItemReaderBuilder<Article>()
                 .name("articleCsvReader")
-                .resource(new ClassPathResource("article.csv"))
+                .resource(new ClassPathResource("csv/article.csv"))
                 // 默认分割符，
                 .delimited()
                 .names(new String[] { "title", "content", "eventOccurredTime" })

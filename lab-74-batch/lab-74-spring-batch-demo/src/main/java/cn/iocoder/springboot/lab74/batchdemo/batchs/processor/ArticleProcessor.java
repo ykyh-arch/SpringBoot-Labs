@@ -1,14 +1,16 @@
-package cn.iocoder.springboot.lab74.batchdemo.processor;
+package cn.iocoder.springboot.lab74.batchdemo.batchs.processor;
 
 import cn.iocoder.springboot.lab74.batchdemo.entity.Article;
 import cn.iocoder.springboot.lab74.batchdemo.entity.ArticleDetail;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
 /**
  * batch 处理器，数据的业务逻辑处理
+ *
+ * @author Jaquez
+ * @date 2022/02/24 16:02
  */
 @Component
 public class ArticleProcessor implements ItemProcessor<Article, ArticleDetail> {

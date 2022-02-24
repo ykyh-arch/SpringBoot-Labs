@@ -1,4 +1,4 @@
-package cn.iocoder.springboot.lab74.batchdemo.job;
+package cn.iocoder.springboot.lab74.batchdemo.batchs.listener;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.BatchStatus;
@@ -7,12 +7,13 @@ import org.springframework.batch.core.listener.JobExecutionListenerSupport;
 import org.springframework.stereotype.Component;
 
 /**
- * batch 任务监听器
- * 如果不需要在任务成功或者失败后做一些操作的话可以不加监听器，
- * 因为Batch自身包含日志执行情况日志（info级别），包括执行结果、执行参数、执行耗费时间等
+ * batch 任务监听器，如果不需要在任务成功或者失败后做一些操作的话可以不加监听器，因为 Batch 自身包含日志执行情况日志（info级别），包括执行结果、执行参数、执行耗费时间等。
+ *
+ * @author Jaquez
+ * @date 2022/02/24 14:58
  */
-@Component
 @Slf4j
+@Component
 public class JobListener extends JobExecutionListenerSupport {
 
 	@Override
@@ -24,5 +25,10 @@ public class JobListener extends JobExecutionListenerSupport {
 			log.info("任务[{}]执行失败", jobExecution.getJobInstance().getJobName());
 			// TODO something，主要为日志记录
 		}
+	}
+
+	@Override
+	public void beforeJob(JobExecution jobExecution) {
+		// do something before job
 	}
 }

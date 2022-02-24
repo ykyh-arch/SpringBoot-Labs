@@ -1,4 +1,4 @@
-package cn.iocoder.springboot.lab74.batchdemo.job;
+package cn.iocoder.springboot.lab74.batchdemo.quartz;
 
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.DisallowConcurrentExecution;
@@ -16,10 +16,13 @@ import java.util.Date;
 
 /**
  * ArticleQuartzJob 配置
+ *
+ * @author Jaquez
+ * @date 2022/02/24 16:46
  */
-@Component
 @Slf4j
-@DisallowConcurrentExecution //定时调度分布式下同一时间只有一个执行
+@Component
+@DisallowConcurrentExecution // 定时调度分布式下同一时间只有一个执行
 public class ArticleQuartzJob extends QuartzJobBean {
 
     @Autowired
@@ -30,9 +33,9 @@ public class ArticleQuartzJob extends QuartzJobBean {
     @Override
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         try {
-            //获取指定Job
+            // 获取指定 Job
             Job job = jobLocator.getJob("articleJob");
-            //手动启动批处理，执行一个JobInstance
+            //手动启动批处理，执行一个 JobInstance
             jobLauncher.run(job, new JobParametersBuilder()
                     .addDate("startTime", new Date())
                     .addString("executedTime", "2021-11-11 16:21:01")

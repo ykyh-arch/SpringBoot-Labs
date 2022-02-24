@@ -1,4 +1,4 @@
-package cn.iocoder.springboot.lab74.batchdemo.writer;
+package cn.iocoder.springboot.lab74.batchdemo.batchs.writer;
 
 import cn.iocoder.springboot.lab74.batchdemo.entity.ArticleDetail;
 import lombok.extern.slf4j.Slf4j;
@@ -6,8 +6,12 @@ import org.springframework.batch.item.ItemWriter;
 
 import java.util.List;
 
+
 /**
- * 自定义writer格式
+ * 自定义 writer 格式
+ *
+ * @author Jaquez
+ * @date 2022/02/24 16:10
  */
 @Slf4j
 public class ArticleWriter implements ItemWriter<ArticleDetail> {

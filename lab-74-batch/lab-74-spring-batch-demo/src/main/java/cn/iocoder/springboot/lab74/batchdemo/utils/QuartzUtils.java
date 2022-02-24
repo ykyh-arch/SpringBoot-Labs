@@ -8,8 +8,11 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 /**
- * quartz任务管理工具类
- * - Group统一使用quartz默认的组
+ * quartz 任务管理工具类，
+ * - Group 统一使用 quartz 默认的组
+ *
+ * @author Jaquez
+ * @date 2022/02/24 16:54
  */
 @Component
 @Slf4j
@@ -19,9 +22,10 @@ public class QuartzUtils {
    private Scheduler scheduler;
 
    /**
-    * 添加任务--SimpleScheduler
+    * 添加任务，SimpleScheduler
+    *
     * @param jobClass jobClass
-    * @param taskName jobName、triggerName使用同一个name
+    * @param taskName jobName、triggerName 使用同一个 name
     * @param intervalTime 间隔时间, 单位：秒
     */
    public void addSingleJob(Class<? extends Job> jobClass, String taskName, int intervalTime) throws SchedulerException {
@@ -29,7 +33,7 @@ public class QuartzUtils {
             .withIdentity(taskName).build();
       SimpleScheduleBuilder simpleScheduler = SimpleScheduleBuilder.simpleSchedule()
             .withMisfireHandlingInstructionNextWithRemainingCount();
-      //触发器设置
+      // 触发器设置
       Trigger trigger = TriggerBuilder.newTrigger().startAt(new Date(System.currentTimeMillis() + 1000 * 10)).withIdentity(taskName)
             .withSchedule(
                   simpleScheduler.withIntervalInSeconds(intervalTime).repeatForever())
@@ -37,9 +41,8 @@ public class QuartzUtils {
       scheduler.scheduleJob(jobDetail, trigger);
    }
 
-
    /**
-    * 添加任务--cron
+    * 添加任务，cron
     * @param jobClass jobClass
     * @param taskName jobName、triggerName使用同一个name
     * @param cron cron定时任务规则
@@ -55,9 +58,14 @@ public class QuartzUtils {
       scheduler.scheduleJob(jobDetail, trigger);
    }
 
-
    /**
-    * 修改cron规则
+    * 修改 cron 规则
+    *
+    * @author Jaquez
+    * @date 2022/02/24 17:05
+    * @param taskName
+    * @param cron
+    * @return void
     */
    public void modifyCron(String taskName, String cron) throws SchedulerException {
       TriggerKey triggerKey = TriggerKey.triggerKey(taskName);
@@ -68,14 +76,18 @@ public class QuartzUtils {
          TriggerBuilder<Trigger> triggerBuilder = TriggerBuilder.newTrigger();
          triggerBuilder.withIdentity(taskName).startNow().withSchedule(cronBuilder);
          trigger = (CronTrigger) triggerBuilder.build();
-         //重启启动Job，使用新的cron规则
+         // 重启启动 Job，使用新的 cron 规则
          scheduler.rescheduleJob(triggerKey, trigger);
       }
    }
 
-
    /**
     * 删除任务
+    *
+    * @author Jaquez
+    * @date 2022/02/24 17:06
+    * @param taskName
+    * @return void
     */
    public void delJob(String taskName) throws SchedulerException {
       TriggerKey triggerKey = TriggerKey.triggerKey(taskName);
