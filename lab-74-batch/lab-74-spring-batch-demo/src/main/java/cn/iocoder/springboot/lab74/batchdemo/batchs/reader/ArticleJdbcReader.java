@@ -45,10 +45,11 @@ public class ArticleJdbcReader {
         String lastExecutedTime = "";
         String sql = StringUtils.join("SELECT * FROM article WHERE event_occurred_time >= '",
                 lastExecutedTime, "' AND event_occurred_time < '", executedTime, "'");
+        System.out.println("SQL:"+sql);
         return new JdbcCursorItemReaderBuilder<Article>()
                 .dataSource(dataSource)
                 .sql(sql)
-                .fetchSize(10)
+                .fetchSize(50)
                 .name("getArticle")
                 .beanRowMapper(Article.class)
                 .build();
@@ -67,7 +68,7 @@ public class ArticleJdbcReader {
         return new JdbcPagingItemReaderBuilder<Article>()
                 .dataSource(dataSource)
                 .name("getArticlePaging")
-                .fetchSize(10)
+                .fetchSize(50)
                 .parameterValues(parameterValues)
                 .pageSize(10)
                 .rowMapper(new ArticleMapper())
@@ -77,9 +78,10 @@ public class ArticleJdbcReader {
 
     private PagingQueryProvider articleProvider() {
         Map<String, Order> sortKeys = new HashMap<>(1);
+        sortKeys.put("id", Order.ASCENDING); // 排序键会影响分页，参考：http://cn.voidcc.com/question/p-ktiommrr-n.html
         sortKeys.put("event_occurred_time", Order.ASCENDING);
         MySqlPagingQueryProvider provider = new MySqlPagingQueryProvider();
-        provider.setSelectClause("title, content, event_occurred_time");
+        provider.setSelectClause("id, title, content, event_occurred_time");
         provider.setFromClause("article");
         provider.setWhereClause("event_occurred_time >= :startTime AND event_occurred_time < :stopTime");
         provider.setSortKeys(sortKeys);
@@ -88,6 +90,7 @@ public class ArticleJdbcReader {
 
     /**
      * 读取 csv 示例，参考：https://blog.csdn.net/masson32/article/details/91347849
+     * 或参考文章：https://blog.csdn.net/weixin_34160277/article/details/92237800
      */
     public FlatFileItemReader<Article> readCsv() {
         return new FlatFileItemReaderBuilder<Article>()
@@ -95,7 +98,7 @@ public class ArticleJdbcReader {
                 .resource(new ClassPathResource("csv/article.csv"))
                 // 默认分割符，
                 .delimited()
-                .names(new String[] { "title", "content", "eventOccurredTime" })
+                .names(new String[] {"id", "title", "content", "eventOccurredTime" })
                 //.linesToSkip(1) //是否跳过几行
                 .fieldSetMapper(new BeanWrapperFieldSetMapper<Article>() {
                     {

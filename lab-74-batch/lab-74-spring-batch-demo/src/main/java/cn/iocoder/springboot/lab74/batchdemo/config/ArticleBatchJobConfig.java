@@ -15,6 +15,7 @@ import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.database.JdbcCursorItemReader;
 import org.springframework.batch.item.database.JdbcPagingItemReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -76,7 +77,7 @@ public class ArticleBatchJobConfig {
 							 ItemReader<Article> articleReader, ItemWriter<ArticleDetail> articleWriter) {
 		return stepBuilderFactory.get("crossHistoryStep")
 				// 数据会累积到一定量再提交到 writer
-				.<Article, ArticleDetail>chunk(10)
+				.<Article, ArticleDetail>chunk(50)
 				.reader(articleReader)
 				.processor(articleProcessor)
 				.writer(articleWriter)

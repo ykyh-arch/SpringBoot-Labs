@@ -53,7 +53,7 @@ public class Application {
         @Override
         public void onApplicationEvent(ApplicationEvent event) {
             if (event instanceof ContextClosedEvent) {
-                this.sleep(10);
+                this.sleep(1);
             }
         }
 

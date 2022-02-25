@@ -19,6 +19,6 @@ public class QuartzJobInit implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        quartzUtils.addSingleJob(ArticleQuartzJob.class, "articleJob", 60);
+        quartzUtils.addSingleJob(ArticleQuartzJob.class, "articleJob", 5);
     }
 }

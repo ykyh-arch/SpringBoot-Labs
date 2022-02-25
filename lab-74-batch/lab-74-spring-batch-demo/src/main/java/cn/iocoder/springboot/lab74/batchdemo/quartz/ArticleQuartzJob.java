@@ -37,8 +37,8 @@ public class ArticleQuartzJob extends QuartzJobBean {
             Job job = jobLocator.getJob("articleJob");
             //手动启动批处理，执行一个 JobInstance
             jobLauncher.run(job, new JobParametersBuilder()
-                    .addDate("startTime", new Date())
-                    .addString("executedTime", "2021-11-11 16:21:01")
+                    .addDate("startTime", new Date()) // 防止任务执行完，再次执行时报错
+                    .addString("executedTime", "2022-11-11 16:21:01")
                     .toJobParameters());
         } catch (Exception e) {
             e.printStackTrace();

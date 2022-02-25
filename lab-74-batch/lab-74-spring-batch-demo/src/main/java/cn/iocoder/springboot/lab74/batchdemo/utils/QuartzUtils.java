@@ -50,7 +50,7 @@ public class QuartzUtils {
    public void addCronJob(Class<? extends Job> jobClass, String taskName, String cron) throws SchedulerException {
       JobDetail jobDetail = JobBuilder.newJob(jobClass)
             .withIdentity(taskName).build();
-      //基于Cron表达式的任务调度
+      // 基于Cron表达式的任务调度
       CronScheduleBuilder cronScheduler = CronScheduleBuilder.cronSchedule(cron).withMisfireHandlingInstructionDoNothing();
       Trigger trigger = TriggerBuilder.newTrigger().startNow().withIdentity(taskName)
             .withSchedule(cronScheduler)

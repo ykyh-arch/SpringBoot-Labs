@@ -26,9 +26,10 @@ public class ArticleJdbcWriter {
     }
 
     public JdbcBatchItemWriter<ArticleDetail> writer() {
+
         return new JdbcBatchItemWriterBuilder<ArticleDetail>()
                 .itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())
-                .sql("INSERT INTO article_detail (title, content, event_occurred_time, source, description) VALUES (:title, :content, :eventOccurredTime, :source, :description)")
+                .sql("INSERT INTO article_detail (article_id, title, content, event_occurred_time, source, description) VALUES (:articleId, :title, :content, :eventOccurredTime, :source, :description)")
                 .dataSource(dataSource)
                 .build();
     }

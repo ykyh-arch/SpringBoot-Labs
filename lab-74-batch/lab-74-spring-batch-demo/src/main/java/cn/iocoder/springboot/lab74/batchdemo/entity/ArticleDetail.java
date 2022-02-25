@@ -12,6 +12,8 @@ import lombok.Data;
 @Data
 public class ArticleDetail {
 
+    private String articleId;
+
     private String title;
 
     private String content;
