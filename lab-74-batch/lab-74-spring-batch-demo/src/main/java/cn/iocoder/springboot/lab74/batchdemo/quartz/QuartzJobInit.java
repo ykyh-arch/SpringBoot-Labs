@@ -1,6 +1,5 @@
 package cn.iocoder.springboot.lab74.batchdemo.quartz;
 
-import cn.iocoder.springboot.lab74.batchdemo.utils.QuartzUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
