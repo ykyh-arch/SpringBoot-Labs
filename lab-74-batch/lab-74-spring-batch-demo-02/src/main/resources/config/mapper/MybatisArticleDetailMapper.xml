@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.iocoder.springboot.lab74.batchdemo.mapper.MybatisArticleDetailMapper">
+  <resultMap id="BaseResultMap" type="cn.iocoder.springboot.lab74.batchdemo.entity.ArticleDetail">
+    <result column="article_id" jdbcType="VARCHAR" property="articleId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="event_occurred_time" jdbcType="VARCHAR" property="eventOccurredTime" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <insert id="insert" parameterType="cn.iocoder.springboot.lab74.batchdemo.entity.ArticleDetail">
+    insert into article_detail (article_id, title, content, 
+      event_occurred_time, `source`, description
+      )
+    values (#{articleId,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{eventOccurredTime,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.iocoder.springboot.lab74.batchdemo.entity.ArticleDetail">
+    insert into article_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        article_id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="eventOccurredTime != null">
+        event_occurred_time,
+      </if>
+      <if test="source != null">
+        `source`,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        #{articleId,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="eventOccurredTime != null">
+        #{eventOccurredTime,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

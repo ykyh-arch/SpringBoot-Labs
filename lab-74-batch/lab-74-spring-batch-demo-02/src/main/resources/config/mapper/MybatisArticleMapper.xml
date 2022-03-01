@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.iocoder.springboot.lab74.batchdemo.mapper.MybatisArticleMapper">
+  <resultMap id="BaseResultMap" type="cn.iocoder.springboot.lab74.batchdemo.entity.Article">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="event_occurred_time" jdbcType="VARCHAR" property="eventOccurredTime" />
+  </resultMap>
+  <insert id="insert" parameterType="cn.iocoder.springboot.lab74.batchdemo.entity.Article">
+    insert into article (id, title, content, 
+      event_occurred_time)
+    values (#{id,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{eventOccurredTime,jdbcType=VARCHAR})
+  </insert>
+  <select id="find" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select
+      id, title, content, event_occurred_time
+    from article
+    where event_occurred_time >= '' AND event_occurred_time &lt; #{eventOccurredTime}
+  </select>
+  <select id="selectList" parameterType="java.util.HashMap" resultType="cn.iocoder.springboot.lab74.batchdemo.entity.Article">
+    select
+      id, title, content, event_occurred_time
+    from article
+    where event_occurred_time >= '' AND event_occurred_time &lt; #{eventOccurredTime} limit #{_pagesize} OFFSET #{_skiprows}
+  </select>
+  <insert id="insertSelective" parameterType="cn.iocoder.springboot.lab74.batchdemo.entity.Article">
+    insert into article
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="eventOccurredTime != null">
+        event_occurred_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="eventOccurredTime != null">
+        #{eventOccurredTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

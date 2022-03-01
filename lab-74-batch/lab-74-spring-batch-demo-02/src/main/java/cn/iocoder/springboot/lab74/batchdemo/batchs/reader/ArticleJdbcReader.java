@@ -1,12 +1,15 @@
 package cn.iocoder.springboot.lab74.batchdemo.batchs.reader;
 
-import cn.hutool.core.date.DateUtil;
 import cn.iocoder.springboot.lab74.batchdemo.entity.Article;
 import cn.iocoder.springboot.lab74.batchdemo.mapper.ArticleMapper;
-import org.quartz.JobExecutionContext;
-import org.springframework.batch.core.JobExecution;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.batch.MyBatisBatchItemWriter;
+import org.mybatis.spring.batch.MyBatisCursorItemReader;
+import org.mybatis.spring.batch.MyBatisPagingItemReader;
+import org.mybatis.spring.batch.builder.MyBatisCursorItemReaderBuilder;
+import org.mybatis.spring.batch.builder.MyBatisPagingItemReaderBuilder;
 import org.springframework.batch.core.configuration.annotation.StepScope;
-import org.springframework.batch.core.repository.dao.JobExecutionDao;
 import org.springframework.batch.item.database.JdbcCursorItemReader;
 import org.springframework.batch.item.database.JdbcPagingItemReader;
 import org.springframework.batch.item.database.Order;
@@ -14,15 +17,13 @@ import org.springframework.batch.item.database.PagingQueryProvider;
 import org.springframework.batch.item.database.builder.JdbcCursorItemReaderBuilder;
 import org.springframework.batch.item.database.builder.JdbcPagingItemReaderBuilder;
 import org.springframework.batch.item.database.support.MySqlPagingQueryProvider;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Scope;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,6 +42,11 @@ public class ArticleJdbcReader {
 
     @Value("#{jobParameters['executedTime']}")
     String executedTime;
+
+    @Value("${mybatis.mapper-locations}")
+    String mapperLocations;
+
+    private static SqlSessionFactoryBean sessionFactory;
 
     public ArticleJdbcReader(DataSource dataSource) {
         this.dataSource = dataSource;
@@ -84,6 +90,7 @@ public class ArticleJdbcReader {
                 .rowMapper(new ArticleMapper())
                 .queryProvider(articleProvider())
                 .build();
+
     }
 
     private PagingQueryProvider articleProvider() {
@@ -96,6 +103,49 @@ public class ArticleJdbcReader {
         provider.setWhereClause("event_occurred_time >= :startTime AND event_occurred_time < :stopTime");
         provider.setSortKeys(sortKeys);
         return provider;
+    }
+
+    // 整合 mybatis 简单实现方式
+    public MyBatisCursorItemReader getArticleByMyBatisCursor() throws Exception {
+        Map<String,Object> parameters = new HashMap<>(2);
+        parameters.put("eventOccurredTime",executedTime);
+        return new MyBatisCursorItemReaderBuilder<Article>()
+            .parameterValues(parameters)
+            .sqlSessionFactory(sqlSessionFactory()) // 这里必配置，否则报：A SqlSessionFactory is required.
+            .queryId("cn.iocoder.springboot.lab74.batchdemo.mapper.MybatisArticleMapper.find")
+            .build();
+    }
+
+    // 整合 mybatis 分页实现方式
+    public MyBatisPagingItemReader getArticleByMyBatisPage() throws Exception {
+        Map<String,Object> parameters = new HashMap<>(2);
+        parameters.put("eventOccurredTime",executedTime);
+        return new MyBatisPagingItemReaderBuilder<Article>()
+                .pageSize(10)
+                .parameterValues(parameters)
+                .sqlSessionFactory(sqlSessionFactory())
+                .queryId("cn.iocoder.springboot.lab74.batchdemo.mapper.MybatisArticleMapper.selectList")
+                .build();
+    }
+
+    /**
+     * Mybatis SqlSessionFactory 工厂配置
+     *
+     * @author Jaquez
+     * @date 2022/03/01 12:34
+     * @return org.apache.ibatis.session.SqlSessionFactory
+     */
+    private SqlSessionFactory sqlSessionFactory() throws Exception {
+
+        if(sessionFactory == null){
+            sessionFactory = new SqlSessionFactoryBean();
+            sessionFactory.setDataSource(dataSource);
+            PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+            sessionFactory.setMapperLocations(resolver.getResources(mapperLocations));// 参考自：https://blog.csdn.net/universsky2015/article/details/83593318
+            return sessionFactory.getObject();
+        }
+        return sessionFactory.getObject();
+
     }
 
 }
