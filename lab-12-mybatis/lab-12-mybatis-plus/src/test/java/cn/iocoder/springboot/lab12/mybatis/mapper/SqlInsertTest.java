@@ -27,7 +27,7 @@ import static org.mybatis.dynamic.sql.SqlBuilder.insertBatch;
 /**
  * sql 插入测试
  *
- * 参考：https://mp.weixin.qq.com/s/M0v8h06P88xfeFZCbK8gBw
+ * 参考：https://mp.weixin.qq.com/s/M0v8h06P88xfeFZCbK8gBw，https://blog.csdn.net/D_19901719576/article/details/100559209
  *
  * @author Jaquez
  * @date 2021/12/23 17:13
