@@ -1,5 +1,5 @@
 server:
-  port: 9090 #指定一个端口，避免和 XXL-JOB 调度中心的端口冲突。仅仅测试之用
+  port: 9090 #指定一个端口
 
 # xxl-job
 xxl:

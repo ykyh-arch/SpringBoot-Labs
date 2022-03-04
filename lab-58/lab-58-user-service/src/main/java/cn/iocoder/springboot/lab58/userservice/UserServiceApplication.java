@@ -4,7 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * 用户服务，对外暴露端口为：18080
+ * 用户服务，对外暴露端口为：18080，扩展：https://mp.weixin.qq.com/s/MqDRih4jnY2DnSkczl38CA
+ *
  * @author Jaquez
  * @date 2021/11/07 15:41
  */
