@@ -13,6 +13,7 @@ public class UserController {
 
     @GetMapping("/get") // 获得指定用户
     public UserResponse get(@RequestParam("id") Integer id) {
+        // int i = 1/0; // 手动抛异常，模拟 retrofit 服务降级功能演示
         return new UserResponse().setId(id)
                 .setName("昵称：" + id).setGender(id % 2 == 0 ? 1 : 2);
     }
