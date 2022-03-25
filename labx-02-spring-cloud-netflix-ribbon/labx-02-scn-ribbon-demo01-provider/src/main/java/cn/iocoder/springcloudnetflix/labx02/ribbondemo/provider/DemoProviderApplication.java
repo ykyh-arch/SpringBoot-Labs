@@ -8,6 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 服务提供者演示示例
+ *
+ * @author Jaquez
+ * @date 2022/03/24 15:00
+ */
 @SpringBootApplication
 public class DemoProviderApplication {
 

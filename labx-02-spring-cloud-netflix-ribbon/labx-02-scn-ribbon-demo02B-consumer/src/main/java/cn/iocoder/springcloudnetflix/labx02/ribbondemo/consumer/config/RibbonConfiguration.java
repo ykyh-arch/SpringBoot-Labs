@@ -6,6 +6,12 @@ import org.springframework.context.annotation.Configuration;
 import ribbon.DefaultRibbonClientConfiguration;
 import ribbon.UserProviderRibbonClientConfiguration;
 
+/**
+ * 负载均衡配置文件
+ *
+ * @author Jaquez
+ * @date 2022/03/25 10:48
+ */
 @Configuration
 @RibbonClients(
         value = {

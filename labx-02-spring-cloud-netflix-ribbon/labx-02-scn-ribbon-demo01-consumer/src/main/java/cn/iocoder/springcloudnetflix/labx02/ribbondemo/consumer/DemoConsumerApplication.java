@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * 服务消费者演示示例
+ *
+ * @author Jaquez
+ * @date 2022/03/24 15:06
+ */
 @SpringBootApplication
 public class DemoConsumerApplication {
 
@@ -23,7 +29,7 @@ public class DemoConsumerApplication {
     public class RestTemplateConfiguration {
 
         @Bean
-        @LoadBalanced
+        @LoadBalanced // 声明 RestTemplate Bean 被配置使用 Spring Cloud LoadBalancerClient（负载均衡客户端），实现在请求目标服务时，能够进行负载均衡。
         public RestTemplate restTemplate() {
             return new RestTemplate();
         }
@@ -45,7 +51,7 @@ public class DemoConsumerApplication {
             // 发起调用
             String targetUrl = instance.getUri() + "/echo?name=" + name;
             String response = restTemplate.getForObject(targetUrl, String.class);
-            // 返回结果
+            // 返回结果，会报错 No instances available for 10.171.1.115
             return "consumer:" + response;
         }
 
@@ -54,7 +60,7 @@ public class DemoConsumerApplication {
             // 直接使用 RestTemplate 调用服务 `demo-provider`
             String targetUrl = "http://demo-provider/echo?name=" + name;
             String response = restTemplate.getForObject(targetUrl, String.class);
-            // 返回结果
+            // 返回结果，正常
             return "consumer:" + response;
         }
 

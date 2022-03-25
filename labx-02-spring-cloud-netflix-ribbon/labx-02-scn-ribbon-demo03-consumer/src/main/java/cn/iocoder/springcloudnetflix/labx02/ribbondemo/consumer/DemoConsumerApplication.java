@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * 服务消费者演示示例
+ *
+ * @author Jaquez
+ * @date 2022/03/25 11:54
+ */
 @SpringBootApplication
 public class DemoConsumerApplication {
 
