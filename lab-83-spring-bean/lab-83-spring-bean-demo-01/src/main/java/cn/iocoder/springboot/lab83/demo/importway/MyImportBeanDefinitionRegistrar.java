@@ -19,7 +19,7 @@ public class MyImportBeanDefinitionRegistrar implements ImportBeanDefinitionRegi
         // 构建一个 beanDefinition，BeanDefinition 可以简单理解为 bean 的定义（bean的元数据），也是需要放在 IOC 容器中进行管理的，先有 bean 的元数据，applicationContext 再根据 bean 的元数据去创建 Bean。
         AbstractBeanDefinition beanDefinition = BeanDefinitionBuilder.rootBeanDefinition(Person3.class).getBeanDefinition();
         // 将 beanDefinition 注册到Ioc容器中.
-        registry.registerBeanDefinition("person", beanDefinition);
+        registry.registerBeanDefinition("person3", beanDefinition);
     }
 
 }

@@ -15,7 +15,7 @@ public class ImportTest3 {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(ImportTest3.class);
         Person3 person31 = applicationContext.getBean(Person3.class);
-        Person3 person32 = applicationContext.getBean("person", Person3.class);
+        Person3 person32 = applicationContext.getBean("person3", Person3.class);
         System.out.println(person31.hashCode()+":"+ person32.hashCode());
         System.out.println(person31);
     }

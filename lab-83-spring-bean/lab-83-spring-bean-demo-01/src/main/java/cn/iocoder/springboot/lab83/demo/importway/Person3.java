@@ -10,7 +10,7 @@ public class Person3 {
 
     private Long id = 1L;
 
-    private String name = "person";
+    private String name = "person3";
 
     public Long getId() {
         return id;

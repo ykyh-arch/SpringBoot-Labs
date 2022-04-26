@@ -19,7 +19,7 @@ public class MyConfiguration1 {
     public Person1 person() {
         Person1 person1 = new Person1();
         person1.setId(1L);
-        person1.setName("person");
+        person1.setName("person1");
         return person1;
     }
 

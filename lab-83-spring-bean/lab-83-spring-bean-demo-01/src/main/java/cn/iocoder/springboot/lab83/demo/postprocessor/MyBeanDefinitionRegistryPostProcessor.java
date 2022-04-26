@@ -21,7 +21,7 @@ public class MyBeanDefinitionRegistryPostProcessor implements BeanDefinitionRegi
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
 
         AbstractBeanDefinition beanDefinition = BeanDefinitionBuilder.rootBeanDefinition(Person4.class).getBeanDefinition();
-        registry.registerBeanDefinition("person", beanDefinition);
+        registry.registerBeanDefinition("person4", beanDefinition);
     }
 
     @Override
