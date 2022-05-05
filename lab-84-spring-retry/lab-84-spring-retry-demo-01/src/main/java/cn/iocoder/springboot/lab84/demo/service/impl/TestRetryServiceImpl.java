@@ -5,8 +5,10 @@ import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.*;
 
 import java.time.LocalTime;
+import java.util.Arrays;
 
 /**
  * 测试重试服务类
@@ -21,6 +23,33 @@ public class TestRetryServiceImpl implements TestRetryService {
     @Retryable(value = Exception.class,maxAttempts = 3,backoff = @Backoff(delay = 2000,multiplier = 1.5))
     public int test(int code) throws Exception {
         System.out.println("test被调用，时间："+ LocalTime.now());
+
+        // Spring boot 内置工具类测试，参考：https://mp.weixin.qq.com/s/NjTVxIVrYCp33ebFjpsdbA
+
+        // String param = null;
+        // Assert.notNull(param,"param 没有赋值！");
+
+        // System.out.println(ObjectUtils.getDisplayString(new Object()));
+
+        // System.out.println(ObjectUtils.containsElement(new String[]{"hello","world"},"hello"));
+
+        // System.out.println(ObjectUtils.addObjectToArray(new String[]{"hello","world"},"jaquez"));
+
+        // System.out.println(ObjectUtils.toObjectArray(new String[]{"hello","world"}));
+
+        // System.out.println(StringUtils.substringMatch("jaquez",2,"que"));
+
+        // System.out.println(StringUtils.replace("j，a，quez","，",""));
+
+        // System.out.println(StringUtils.stripFilenameExtension("c:\\img/3.png"));
+
+        // System.out.println(CollectionUtils.containsInstance());
+
+        // System.out.println(CollectionUtils.hasUniqueObject(Arrays.asList("hello","world","hello")));
+        // System.out.println(CollectionUtils.findCommonElementType(Arrays.asList("hello","world","hello")));
+
+        System.out.println(ReflectionUtils.findMethod(Object.class,"hashCode"));
+
         if (code==0){
             throw new Exception("情况不对头！");
         }
