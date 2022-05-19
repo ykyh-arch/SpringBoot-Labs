@@ -5,6 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
 
+/**
+ * 启动类
+ *
+ * @author Jaquez
+ * @date 2022/05/19 10:29
+ */
 @SpringBootApplication
 public class DemoApplication {
 

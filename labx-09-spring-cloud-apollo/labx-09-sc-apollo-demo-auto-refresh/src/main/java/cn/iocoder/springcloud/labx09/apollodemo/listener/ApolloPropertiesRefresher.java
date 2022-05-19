@@ -21,6 +21,7 @@ public class ApolloPropertiesRefresher implements ApplicationContextAware {
 
     @ApolloConfigChangeListener(value = ConfigConsts.NAMESPACE_APPLICATION)
     public void onChange(ConfigChangeEvent changeEvent) {
+        // EnvironmentChangeEvent 变更值
         this.applicationContext.publishEvent(new EnvironmentChangeEvent(changeEvent.changedKeys()));
     }
 

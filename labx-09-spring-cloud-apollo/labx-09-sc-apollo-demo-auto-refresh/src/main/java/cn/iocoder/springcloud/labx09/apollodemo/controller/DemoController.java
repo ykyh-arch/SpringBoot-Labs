@@ -47,6 +47,7 @@ public class DemoController {
 
     @GetMapping("/logger")
     public void logger() {
+        // 日志级别 TRACE < DEBUG < INFO < WARN < ERROR < FATAL
         logger.debug("[logger][测试一下]");
     }
 
