@@ -19,6 +19,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Apollo 配置动态数据源演示，参考：https://github.com/ctripcorp/apollo-use-cases/tree/master/dynamic-datasource
  * 思路：spring已经有个抽象类{@link AbstractRoutingDataSource }很好的实现了。通过AbstractRoutingDataSource对DataSource的管理，使用apollo配置动态推送能力，动态修改AbstractRoutingDataSource中resolvedDataSources数据源实例，可以很好的实现动态变更线上数据源。
+ *
  * @author Jaquez
  * @date 2021/09/18 10:19
  */
