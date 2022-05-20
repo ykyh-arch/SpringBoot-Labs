@@ -10,6 +10,12 @@ import org.springframework.cloud.context.environment.EnvironmentManager;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
+/**
+ * JasyptEnvironmentChangeListener 监听器
+ *
+ * @author Jaquez
+ * @date 2022/05/20 11:46
+ */
 @Component
 public class JasyptEnvironmentChangeListener implements ApplicationListener<EnvironmentChangeEvent> {
 

@@ -15,7 +15,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/demo")
-@RefreshScope
+@RefreshScope // 自动刷新 bean
 public class DemoController {
 
     @Autowired
