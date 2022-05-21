@@ -15,6 +15,13 @@ public class UserRegisterEvent extends RemoteApplicationEvent {
     public UserRegisterEvent() { // 序列化
     }
 
+    /**
+     *
+     * @param source
+     * @param originService 来源服务
+     * @param destinationService 目标服务
+     * @param username 用户名
+     */
     public UserRegisterEvent(Object source, String originService, String destinationService, String username) {
         super(source, originService);
         this.username = username;

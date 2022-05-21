@@ -1,13 +1,13 @@
 spring:
   application:
-    name: publisher-demo
+    name: publisher-demo # 应用名称
 
   # RabbitMQ 相关配置项
   rabbitmq:
-    host: localhost
+    host: 192.168.177.4
     port: 5672
-    username: guest
-    password: guest
+    username: mqadmin
+    password: mqadmin
 
   # Bus 相关配置项，对应 BusProperties
   cloud:

@@ -27,7 +27,7 @@ public class DemoController {
         // ... 执行注册逻辑
         logger.info("[register][执行用户({}) 的注册逻辑]", username);
 
-        // ... 发布
+        // ... 发布事件
         applicationEventPublisher.publishEvent(new UserRegisterEvent(this, busServiceMatcher.getServiceId(),
                 null, username));
         return "success";
