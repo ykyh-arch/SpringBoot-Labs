@@ -19,7 +19,7 @@ public class GenerateProxyMain {
         // 生成字节码
         byte[] classFile = ProxyGenerator.generateProxyClass("$Proxy11", UserServiceImpl.class.getInterfaces());
         // 写入到磁盘
-        IOUtils.write(classFile, new FileOutputStream("/Users/yunai/ls/$Proxy11.class"));
+        IOUtils.write(classFile, new FileOutputStream(System.getProperty("user.home")+"/$Proxy11.class"));
     }
 
 }

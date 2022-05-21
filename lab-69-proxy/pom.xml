@@ -14,6 +14,7 @@
     <modules>
         <module>lab-69-proxy-jdk</module>
         <module>lab-69-proxy-cglib</module>
+        <module>lab-69-proxy-compare</module>
     </modules>
 
 
