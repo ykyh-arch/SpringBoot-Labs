@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: demo-config-server
+    name: demo-config-server # 应用名称
 
   profiles:
     active: git # 使用的 Spring Cloud Config Server 的存储器方案

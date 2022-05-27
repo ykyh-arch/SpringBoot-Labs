@@ -1,6 +1,6 @@
 spring:
   application:
-    name: user-application
+    name: user-application # 应用名称
 
   cloud:
     # Spring Cloud Config Client 配置项，对应 ConfigClientProperties 类
