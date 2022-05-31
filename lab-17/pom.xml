@@ -19,6 +19,8 @@
         <module>lab-17-dynamic-datasource-jdbctemplate</module>
         <module>lab-17-dynamic-datasource-sharding-jdbc-01</module>
         <module>lab-17-dynamic-datasource-sharding-jdbc-02</module>
+        <module>lab-17-dynamic-datasource-transaction</module>
+        <module>lab-17-dynamic-datasource-mybatis-plus</module>
     </modules>
 
 

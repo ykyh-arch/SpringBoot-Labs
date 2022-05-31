@@ -1,0 +1,28 @@
+spring:
+  jta:
+    enabled: true # 开启
+    atomikos:
+      datasource:
+        primary:
+          xa-properties:
+            url: jdbc:mysql://localhost:3306/lab-17-transaction-1?serverTimezone=UTC
+            user: root
+            password: 123456
+          xa-data-source-class-name: com.mysql.cj.jdbc.MysqlXADataSource # Mysql 8+ 驱动类，参考自：https://www.yht7.com/news/91413
+          unique-resource-name: lab-17-transaction-1
+          max-pool-size: 25
+          min-pool-size: 3
+          max-lifetime: 20000
+          borrow-connection-timeout: 10000
+        secondary:
+          xa-properties:
+            url: jdbc:mysql://localhost:3306/lab-17-transaction-2?serverTimezone=UTC
+            user: root
+            password: 123456
+          xa-data-source-class-name: com.mysql.cj.jdbc.MysqlXADataSource
+          unique-resource-name: lab-17-transaction-2
+          max-pool-size: 25
+          min-pool-size: 3
+          max-lifetime: 20000
+          borrow-connection-timeout: 10000
+

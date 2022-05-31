@@ -1,0 +1,32 @@
+# 数据源配置
+spring:
+  jta:
+    enabled: true # 开启
+    atomikos:
+      datasource:
+        # orders 数据源配置
+        orders:
+          xa-properties:
+            url: jdbc:postgresql://127.0.0.1:5432/lab-17-ds-1?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&pinGlobalTxToPhysicalConnection=true
+            username: postgres
+            password: 123456
+          xa-data-source-class-name: com.alibaba.druid.pool.xa.DruidXADataSource # pgsql org.postgresql.xa.PGXADataSource
+
+          unique-resource-name: lab-17-transaction-1
+          max-pool-size: 25
+          min-pool-size: 3
+          max-lifetime: 20000
+          borrow-connection-timeout: 10000
+        # stocks 数据源配置
+        stocks:
+          xa-properties:
+            url: jdbc:postgresql://127.0.0.1:5432/lab-17-ds-2?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&pinGlobalTxToPhysicalConnection=true
+            username: postgres
+            password: 123456
+          xa-data-source-class-name: com.alibaba.druid.pool.xa.DruidXADataSource # pgsql
+          unique-resource-name: lab-17-transaction-2
+          max-pool-size: 25
+          min-pool-size: 3
+          max-lifetime: 20000
+          borrow-connection-timeout: 10000
+
