@@ -11,7 +11,7 @@ public class DemoService {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    //指定执行器名称
+    // 指定执行器名称
     @Async(AsyncConfig.EXECUTOR_ONE_BEAN_NAME)
     public Integer execute01() {
         logger.info("[execute01]");
