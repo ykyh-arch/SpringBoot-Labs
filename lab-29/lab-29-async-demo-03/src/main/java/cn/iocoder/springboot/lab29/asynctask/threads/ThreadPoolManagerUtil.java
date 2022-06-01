@@ -1,12 +1,8 @@
 package cn.iocoder.springboot.lab29.asynctask.threads;
 
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.BeanFactoryAware;
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.annotation.Autowired;
+import cn.iocoder.springboot.lab29.asynctask.utils.SpringUtils;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.StringUtils;
 
 import java.util.Map;
@@ -19,13 +15,21 @@ import java.util.concurrent.*;
  * @author jaquez
  * @date 2022/05/31 16:15
  **/
-@Component
-public class ThreadPoolManager implements BeanFactoryAware, DisposableBean {
+public class ThreadPoolManagerUtil<T extends CommonThread> {
 
-    private BeanFactory factory;
+    /**
+     * 单例模式
+     */
+    private ThreadPoolManagerUtil(){}
 
-    @Autowired
-    private RedisTemplate redisTemplate;
+    private static ThreadPoolManagerUtil me = new ThreadPoolManagerUtil<>();
+
+    public static <T extends CommonThread> ThreadPoolManagerUtil me()
+    {
+        return me;
+    }
+
+    private RedisTemplate redisTemplate = SpringUtils.getBean(StringRedisTemplate.class);
 
     // 缓存时间，一天
     private final static long KEEP_CACHE_TIME = 24*60*60;
@@ -42,11 +46,6 @@ public class ThreadPoolManager implements BeanFactoryAware, DisposableBean {
     // 缓冲队列大小
     private final static int WORK_QUEUE_SIZE = 100;
 
-    @Override
-    public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-        this.factory = beanFactory;
-    }
-
     /**
      * 用于储存在队列中的订单，防止重复提交，在真实场景中，可用 redis 代替（过期策略），验证重复
      */
@@ -54,7 +53,7 @@ public class ThreadPoolManager implements BeanFactoryAware, DisposableBean {
     /**
      * 订单的缓冲队列，当线程池满了，则将订单存入到此缓冲队列
      */
-    Queue<CommonThread> msgQueue = new LinkedBlockingQueue<CommonThread>();
+    Queue<T> msgQueue = new LinkedBlockingQueue<T>();
 
     /**
      * 当线程池的容量满了，执行下面代码，将执行拒绝策略（将多余的任务缓存起来）
@@ -63,8 +62,8 @@ public class ThreadPoolManager implements BeanFactoryAware, DisposableBean {
         @Override
         public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
             //订单加入到缓冲队列
-            msgQueue.offer((CommonThread)r);
-            System.out.println("系统任务太忙了，把此任务交给(调度线程池)逐一处理，任务名称为：" + ((CommonThread)r).getTaskName());
+            msgQueue.offer((T)r);
+            System.out.println("系统任务太忙了，把此任务交给(调度线程池)逐一处理，任务名称为：" + ((T)r).getTaskName());
         }
     };
 
@@ -77,7 +76,7 @@ public class ThreadPoolManager implements BeanFactoryAware, DisposableBean {
      * 将任务加入订单线程池
      * @param task
      */
-    public void addTask(CommonThread task){
+    public void addTask(T task){
         System.out.println("此任务准备添加到线程池，任务名称为：" + task.getTaskName());
         // 验证当前进入的任务是否已经存在，cacheMap，防止重复提交
         if (!StringUtils.isEmpty(task.getTaskParam()) && redisTemplate.opsForValue().get(task.getTaskParam()) == null) {
@@ -105,9 +104,9 @@ public class ThreadPoolManager implements BeanFactoryAware, DisposableBean {
             if(!msgQueue.isEmpty()){
                 // 当线程池的队列容量少于 WORK_QUEUE_SIZE，则开始把缓冲队列的订单加入到线程池
                 if (threadPool.getQueue().size() < WORK_QUEUE_SIZE) {
-                    Runnable r = msgQueue.poll();
-                    threadPool.execute(r);
-                    System.out.println("(调度线程池)缓冲队列出现业务任务，重新添加到线程池，任务名称为："+((CommonThread)r).getTaskName());
+                    T t = msgQueue.poll();
+                    threadPool.execute(t);
+                    System.out.println("(调度线程池)缓冲队列出现业务任务，重新添加到线程池，任务名称为："+t.getTaskName());
                 }
             }
         }
@@ -118,7 +117,7 @@ public class ThreadPoolManager implements BeanFactoryAware, DisposableBean {
      * 获取消息缓冲队列
      * @return
      */
-    public Queue<CommonThread> getMsgQueue() {
+    public Queue<T> getMsgQueue() {
         return msgQueue;
     }
 
@@ -130,12 +129,6 @@ public class ThreadPoolManager implements BeanFactoryAware, DisposableBean {
         System.out.println("终止任务线程池+调度线程池："+scheduledFuture.cancel(false));
         scheduler.shutdown();
         threadPool.shutdown();
-    }
-
-    @Override
-    public void destroy() throws Exception {
-        // cacheMap.clear();
-        msgQueue.clear();
     }
 
 }

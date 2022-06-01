@@ -9,20 +9,15 @@ import org.springframework.stereotype.Component;
  * @date 2022/05/31 16:10
  **/
 @Component
-public abstract class CommonThread implements Runnable{
-
-    private String taskName = "default-thread-task";
+public abstract class CommonThread implements Runnable {
 
     public String getTaskName() {
-        return Thread.currentThread().getName() + "-" + taskName + "-" +System.currentTimeMillis();
-    }
-
-    public void setTaskName(String taskName) {
-        this.taskName = taskName;
+        return this.getClass().getTypeName()+"@"+this.hashCode();
     }
 
     @Override
     public void run() {
-
     }
+
+    public abstract String getTaskParam();
 }

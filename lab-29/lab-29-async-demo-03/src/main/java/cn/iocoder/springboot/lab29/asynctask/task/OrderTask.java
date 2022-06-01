@@ -1,7 +1,11 @@
-package cn.iocoder.springboot.lab29.asynctask.threads;
+package cn.iocoder.springboot.lab29.asynctask.task;
 
+import cn.iocoder.springboot.lab29.asynctask.threads.CommonThread;
+import com.alibaba.fastjson.JSON;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import java.io.Serializable;
 
 /**
  * 下单线程类
@@ -10,17 +14,14 @@ import org.springframework.stereotype.Component;
  * @date 2022/05/31 16:10
  **/
 @Component
-@Scope("prototype") //spring 多例
-public class OrderThread extends CommonThread{
+public class OrderTask extends CommonThread {
 
     private String orderNumber; // 订单号
 
-    private String taskName = "order-task";
-
-    public OrderThread() {
+    public OrderTask() {
     }
 
-    public OrderThread(String orderNumber) {
+    public OrderTask(String orderNumber) {
         this.orderNumber = orderNumber;
     }
 
@@ -33,15 +34,16 @@ public class OrderThread extends CommonThread{
     }
 
     @Override
-    public String getTaskName() {
-        return Thread.currentThread().getName() + "-" + taskName + "-" + System.currentTimeMillis();
-    }
-
-    @Override
     public void run() {
 
         // 业务操作
         System.out.println("多线程已经处理订单插入系统，订单号：" + orderNumber);
 
     }
+
+    @Override
+    public String getTaskParam() {
+        return JSON.toJSONString(this.orderNumber);
+    }
+
 }
