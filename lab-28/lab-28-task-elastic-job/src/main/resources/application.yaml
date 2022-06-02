@@ -1,0 +1,17 @@
+server:
+  port: ${random.int[10000,19999]} # 随机端口
+elasticjob:
+  reg-center:
+    server-lists: 127.0.0.1:2181 # 注册中心地址，多个以逗号隔开
+    namespace: zookeeper-elastic-job-lite-demo # 命名空间
+    base-sleep-time-milliseconds: 2000
+    max-sleep-time-milliseconds: 4000
+    max-retries: 3
+    session-timeout-milliseconds: 60000 #超时时间
+    connection-timeout-milliseconds: 60000
+  jobs:
+    my-simple-job:
+      elastic-job-class: cn.iocoder.springboot.lab28.task.service.MySimpleJob # job 类
+      cron: 0/5 * * * * ?
+      sharding-total-count: 1 # 分片数
+
