@@ -14,6 +14,12 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
+/**
+ * 启动类
+ *
+ * @author Jaquez
+ * @date 2022/06/07 17:22
+ */
 @SpringBootApplication
 // @EnableDiscoveryClient
 public class DemoConsumerApplication {

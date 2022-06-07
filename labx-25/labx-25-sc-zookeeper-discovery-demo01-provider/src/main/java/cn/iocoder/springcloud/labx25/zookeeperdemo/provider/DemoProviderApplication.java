@@ -6,6 +6,12 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 启动类
+ *
+ * @author Jaquez
+ * @date 2022/06/07 14:58
+ */
 @SpringBootApplication
 @EnableDiscoveryClient
 public class DemoProviderApplication {
