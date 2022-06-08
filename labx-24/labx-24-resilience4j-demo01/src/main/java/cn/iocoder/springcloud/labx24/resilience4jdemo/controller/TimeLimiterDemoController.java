@@ -14,6 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * TimeLimiter Demo，执行顺序：Retry > Bulkhead > RateLimiter > TimeLimiter > Bulkhead
+ *
+ * @author Jaquez
+ * @date 2022/06/08 16:02
+ */
 @RestController
 @RequestMapping("/time-limiter-demo")
 public class TimeLimiterDemoController {

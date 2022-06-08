@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * RateLimiter Demo
+ *
+ * @author Jaquez
+ * @date 2022/06/08 14:17
+ */
 @RestController
 @RequestMapping("/rate-limiter-demo")
 public class RateLimiterDemoController {
@@ -17,6 +23,7 @@ public class RateLimiterDemoController {
     @GetMapping("/get_user")
     @RateLimiter(name = "backendB", fallbackMethod = "getUserFallback")
     public String getUser(@RequestParam("id") Integer id) {
+        int i = 1/0;
         return "User:" + id;
     }
 

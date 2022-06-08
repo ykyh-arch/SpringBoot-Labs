@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * CircuitBreaker Demo
+ *
+ * @author Jaquez
+ * @date 2022/06/08 13:57
+ */
 @RestController
 @RequestMapping("/demo")
 public class DemoController {
@@ -23,6 +29,7 @@ public class DemoController {
     @CircuitBreaker(name = "backendA", fallbackMethod = "getUserFallback")
     public String getUser(@RequestParam("id") Integer id) {
         logger.info("[getUser][准备调用 user-service 获取用户({})详情]", id);
+        // int i = 1/0;
         return restTemplate.getForEntity("http://127.0.0.1:18080/user/get?id=" + id, String.class).getBody();
     }
 

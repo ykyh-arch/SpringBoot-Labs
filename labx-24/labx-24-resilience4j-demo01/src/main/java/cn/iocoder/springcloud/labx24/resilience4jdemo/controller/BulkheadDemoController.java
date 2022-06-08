@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Bulkhead Demo
+ *
+ * @author Jaquez
+ * @date 2022/06/08 14:51
+ */
 @RestController
 @RequestMapping("/bulkhead-demo")
 public class BulkheadDemoController {

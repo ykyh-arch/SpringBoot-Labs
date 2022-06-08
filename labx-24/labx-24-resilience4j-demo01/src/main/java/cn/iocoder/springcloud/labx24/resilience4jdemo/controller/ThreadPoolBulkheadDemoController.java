@@ -13,6 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * ThreadPoolBulkhead
+ *
+ * @author Jaquez
+ * @date 2022/06/08 15:18
+ */
 @RestController
 @RequestMapping("/thread-pool-bulkhead-demo")
 public class ThreadPoolBulkheadDemoController {
@@ -33,6 +39,7 @@ public class ThreadPoolBulkheadDemoController {
 
         @Bulkhead(name = "backendD", fallbackMethod = "getUserFallback", type = Bulkhead.Type.THREADPOOL)
         public CompletableFuture<String> getUser0(Integer id) throws InterruptedException {
+            // logger.info("[该系统的CPU情况][cpu核数({})]", Runtime.getRuntime().availableProcessors());
             logger.info("[getUser][id({})]", id);
             Thread.sleep(10 * 1000L); // sleep 10 秒
             return CompletableFuture.completedFuture("User:" + id);
