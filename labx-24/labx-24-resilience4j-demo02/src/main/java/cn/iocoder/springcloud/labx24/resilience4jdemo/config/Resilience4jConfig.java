@@ -12,6 +12,12 @@ import java.time.Duration;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
+/**
+ * Resilience4jConfig 配置类
+ *
+ * @author Jaquez
+ * @date 2022/06/08 16:52
+ */
 @Configuration
 public class Resilience4jConfig {
 

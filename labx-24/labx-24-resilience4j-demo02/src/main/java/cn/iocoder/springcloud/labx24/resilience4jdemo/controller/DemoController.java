@@ -13,6 +13,12 @@ import org.springframework.web.client.RestTemplate;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+/**
+ * 测试类
+ *
+ * @author Jaquez
+ * @date 2022/06/08 17:09
+ */
 @RestController
 @RequestMapping("/demo")
 public class DemoController {
