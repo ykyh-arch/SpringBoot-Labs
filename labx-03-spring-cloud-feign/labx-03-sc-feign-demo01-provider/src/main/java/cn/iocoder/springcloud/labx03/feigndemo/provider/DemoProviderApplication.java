@@ -3,6 +3,12 @@ package cn.iocoder.springcloud.labx03.feigndemo.provider;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * 启动类
+ *
+ * @author Jaquez
+ * @date 2022/06/09 10:45
+ */
 @SpringBootApplication
 public class DemoProviderApplication {
 

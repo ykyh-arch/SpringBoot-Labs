@@ -4,8 +4,10 @@ import cn.iocoder.springcloud.labx03.feigndemo.consumer.dto.DemoDTO;
 import cn.iocoder.springcloud.labx03.feigndemo.consumer.feign.DemoProviderFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,7 +35,7 @@ public class ConsumerController {
             return demoProviderFeignClient.getDemo(demoDTO.getUsername(), demoDTO.getPassword());
         } else {
             // 方式三
-            Map<String, Object> params = new HashMap<>();
+            Map<String, Object> params = new HashMap<String, Object>();
             params.put("username", demoDTO.getUsername());
             params.put("password", demoDTO.getPassword());
             return demoProviderFeignClient.getDemo(params);
@@ -43,6 +45,11 @@ public class ConsumerController {
     @GetMapping("/test_post_demo")
     public DemoDTO testPostDemo(DemoDTO demoDTO) {
        return demoProviderFeignClient.postDemo(demoDTO);
+    }
+
+    @PostMapping("/test_upload_demo")
+    public String testUploadDemo(MultipartFile file) {
+        return demoProviderFeignClient.uploadDemo(file);
     }
 
 }
