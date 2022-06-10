@@ -21,7 +21,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @DS(value = "product-ds")
-    @Transactional(propagation = Propagation.REQUIRES_NEW) // 开启新事物，本地事务
+    @Transactional(propagation = Propagation.REQUIRES_NEW) // 开启新事物，本地事务，分支事务
     public void reduceStock(Long productId, Integer amount) throws Exception {
         logger.info("[reduceStock] 当前 XID: {}", RootContext.getXID());
 

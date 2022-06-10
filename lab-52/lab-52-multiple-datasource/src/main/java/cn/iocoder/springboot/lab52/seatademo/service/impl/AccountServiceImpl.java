@@ -21,7 +21,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     @DS(value = "account-ds")
-    @Transactional(propagation = Propagation.REQUIRES_NEW) // 开启新事物
+    @Transactional(propagation = Propagation.REQUIRES_NEW) // 开启新事物，分支事务
     public void reduceBalance(Long userId, Integer price) throws Exception {
         logger.info("[reduceBalance] 当前 XID: {}", RootContext.getXID());
 
