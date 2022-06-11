@@ -22,7 +22,7 @@ public class ProductController {
     @PostMapping("/reduce-stock")
     public void reduceStock(@RequestBody ProductReduceStockDTO productReduceStockDTO)
             throws Exception {
-        logger.info("[reduceStock] 收到减少库存请求, 商品:{}, 价格:{}", productReduceStockDTO.getProductId(),
+        logger.info("[reduceStock] 收到减少库存请求, 商品:{}, 数量:{}", productReduceStockDTO.getProductId(),
                 productReduceStockDTO.getAmount());
         productService.reduceStock(productReduceStockDTO.getProductId(), productReduceStockDTO.getAmount());
     }

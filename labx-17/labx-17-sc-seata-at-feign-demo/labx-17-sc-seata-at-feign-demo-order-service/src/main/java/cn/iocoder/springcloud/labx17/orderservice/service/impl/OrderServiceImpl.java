@@ -26,7 +26,7 @@ public class OrderServiceImpl implements OrderService {
     private ProductServiceFeignClient productService;
 
     @Override
-    @GlobalTransactional
+    @GlobalTransactional // 全局事务
     public Integer createOrder(Long userId, Long productId, Integer price) {
         Integer amount = 1; // 购买数量，暂时设置为 1。
 
@@ -36,7 +36,7 @@ public class OrderServiceImpl implements OrderService {
         productService.reduceStock(new ProductReduceStockDTO().setProductId(productId).setAmount(amount));
 
         // 扣减余额
-        accountService.reduceBalance(new AccountReduceBalanceDTO().setUserId(userId).setPrice(price));
+        accountService.reduceBalance(new AccountReduceBalanceDTO().setUserId(userId).setPrice(price * amount));
 
         // 保存订单
         OrderDO order = new OrderDO().setUserId(userId).setProductId(productId).setPayAmount(amount * price);

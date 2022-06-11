@@ -18,7 +18,7 @@ public class ProductServiceImpl implements ProductService {
     private ProductDao productDao;
 
     @Override
-    @Transactional // 开启新事物
+    @Transactional // 开启新事务，分支事务
     public void reduceStock(Long productId, Integer amount) throws Exception {
         logger.info("[reduceStock] 当前 XID: {}", RootContext.getXID());
 
