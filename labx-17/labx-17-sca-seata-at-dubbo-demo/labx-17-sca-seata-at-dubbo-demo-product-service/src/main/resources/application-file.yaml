@@ -12,13 +12,13 @@ spring:
     # Nacos 作为注册中心的配置项
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: 192.168.177.4:8848
 
 # dubbo 配置项，对应 DubboConfigurationProperties 配置类
 dubbo:
   # Dubbo 服务注册中心配置，对应 RegistryConfig 类
   registry:
-    address: spring-cloud://127.0.0.1:8848 # 指定 Dubbo 服务注册中心的地址
+    address: spring-cloud://192.168.177.4:8848 # 指定 Dubbo 服务注册中心的地址
   # Dubbo 服务提供者协议配置
   protocol:
     port: -1 # 协议端口。使用 -1 表示随机端口。
@@ -41,4 +41,4 @@ seata:
       product-service-group: default
     # 分组和 Seata 服务的映射
     grouplist:
-      default: 127.0.0.1:8091
+      default: 192.168.177.4:8091

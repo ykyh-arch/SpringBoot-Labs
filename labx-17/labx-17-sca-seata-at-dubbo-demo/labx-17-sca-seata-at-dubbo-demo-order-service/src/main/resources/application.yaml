@@ -6,7 +6,7 @@ spring:
     name: order-service # 应用名称
 
   datasource:
-    url: jdbc:mysql://192.168.177.4:3306/seata_order?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/seata_order?useSSL=false&useUnicode=true&characterEncoding=UTF-8
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: 123456
