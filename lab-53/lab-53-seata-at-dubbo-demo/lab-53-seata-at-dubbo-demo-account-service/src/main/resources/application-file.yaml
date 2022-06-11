@@ -35,4 +35,4 @@ seata:
       account-service-group: default
     # 分组和 Seata 服务的映射
     grouplist:
-      default: 127.0.0.1:8091
+      default: 192.168.177.4:8091
