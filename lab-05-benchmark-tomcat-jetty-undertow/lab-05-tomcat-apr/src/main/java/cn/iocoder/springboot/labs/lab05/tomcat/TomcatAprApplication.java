@@ -7,6 +7,12 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 
+/**
+ * 启动类
+ *
+ * @author Jaquez
+ * @date 2022/06/12 13:39
+ */
 @SpringBootApplication
 public class TomcatAprApplication {
 
