@@ -1,0 +1,7 @@
+server:
+  tomcat: # 参考：https://mp.weixin.qq.com/s/tDbur3cH9Nck74lVgQu9rQ
+    min-spare-threads: 10 # 核心线程数，默认 10
+    max-threads: 200 # 最大线程数，默认 200
+    max-connections: 10000 # 最大连接数，默认 10000，参考 Acceptor 类
+#    accept-count: 100 # 默认 100
+  connection-timeout: 5000 # 超时时间
