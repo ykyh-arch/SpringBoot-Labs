@@ -23,6 +23,7 @@ public class Demo01Consumer {
         throw new RuntimeException("我就是故意抛出一个异常");
     }
 
+    // 订阅指定错误 Channel的错误消息
     @ServiceActivator(inputChannel = "DEMO-TOPIC-01.demo01-consumer-group-DEMO-TOPIC-01.errors")
     public void handleError(ErrorMessage errorMessage) {
         logger.error("[handleError][payload：{}]", ExceptionUtils.getRootCauseMessage(errorMessage.getPayload()));

@@ -9,7 +9,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.messaging.Message;
 
-@RocketMQTransactionListener(txProducerGroup = "test")
+/**
+ * 事务消息监听器类
+ *
+ * @author Jaquez
+ * @date 2022/06/20 14:40
+ */
+@RocketMQTransactionListener(txProducerGroup = "test") // RocketMQ 是回查（请求）指定指定生产分组下的 Producer，从而获得事务消息的状态，所以一定要正确设置
 public class TransactionListenerImpl implements RocketMQLocalTransactionListener {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
@@ -21,7 +27,7 @@ public class TransactionListenerImpl implements RocketMQLocalTransactionListener
                 Demo01Controller.Args.class);
         // ... local transaction process, return rollback, commit or unknown
         logger.info("[executeLocalTransaction][执行本地事务，消息：{} args：{}]", msg, args);
-        return RocketMQLocalTransactionState.UNKNOWN;
+        return RocketMQLocalTransactionState.UNKNOWN; // 模拟 RocketMQ 回查机制
     }
 
     @Override
