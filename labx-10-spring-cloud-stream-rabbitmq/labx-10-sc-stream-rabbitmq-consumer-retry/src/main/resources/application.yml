@@ -1,6 +1,6 @@
 spring:
   application:
-    name: demo-consumer-application
+    name: demo-consumer-application # 应用名称
   cloud:
     # Spring Cloud Stream 配置项，对应 BindingServiceProperties 类
     stream:
@@ -12,10 +12,10 @@ spring:
             # 如果是 RabbitMQ 类型的时候，则对应的是 RabbitProperties 类
             spring:
               rabbitmq:
-                host: 127.0.0.1 # RabbitMQ 服务的地址
+                host: 192.168.177.4 # RabbitMQ 服务的地址
                 port: 5672 # RabbitMQ 服务的端口
-                username: guest # RabbitMQ 服务的账号
-                password: guest # RabbitMQ 服务的密码
+                username: mqadmin # RabbitMQ 服务的账号
+                password: mqadmin # RabbitMQ 服务的密码
       # Binding 配置项，对应 BindingProperties Map
       bindings:
         demo01-input:
@@ -25,7 +25,7 @@ spring:
           binder: rabbit001  # 设置使用的 Binder 名字
           # Consumer 配置项，对应 ConsumerProperties 类
           consumer:
-            max-attempts: 3 # 重试次数，默认为 3 次。
+            max-attempts: 3 # 重试次数，默认为 3 次，禁用设置为 1。
             back-off-initial-interval: 3000 # 重试间隔的初始值，单位毫秒，默认为 1000
             back-off-multiplier: 2.0 # 重试间隔的递乘系数，默认为 2.0
             back-off-max-interval: 10000 # 重试间隔的最大值，单位毫秒，默认为 10000

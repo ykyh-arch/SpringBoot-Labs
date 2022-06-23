@@ -24,14 +24,20 @@ public class Demo01Controller {
 
     @GetMapping("/send_orderly")
     public boolean send() {
-        // 创建 Message
-        Demo01Message message = new Demo01Message()
-                .setId(new Random().nextInt());
-        // 创建 Spring Message 对象
-        Message<Demo01Message> springMessage = MessageBuilder.withPayload(message)
-                .build();
-        // 发送消息
-        return mySource.demo01Output().send(springMessage);
+
+        int id = new Random().nextInt();
+        for (int i = 0; i < 3; i++) {
+            // 创建 Message
+            Demo01Message message = new Demo01Message()
+                    .setId(id);
+            // 创建 Spring Message 对象
+            Message<Demo01Message> springMessage = MessageBuilder.withPayload(message)
+                    .build();
+            // 发送消息
+            mySource.demo01Output().send(springMessage);
+        }
+
+        return true;
     }
 
 }

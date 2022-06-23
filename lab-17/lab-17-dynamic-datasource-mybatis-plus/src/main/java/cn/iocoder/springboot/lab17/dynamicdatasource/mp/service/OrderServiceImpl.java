@@ -37,7 +37,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderDO> implemen
         stockMapper.updateById(stock);
 
         // 抛出异常，模拟事务失效，回滚策略
-        // int i = 1 / 0;
+        int i = 1 / 0;
 
     }
 }

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: demo-producer-application
+    name: demo-producer-application # 应用名称
   cloud:
     # Spring Cloud Stream 配置项，对应 BindingServiceProperties 类
     stream:
@@ -12,10 +12,10 @@ spring:
             # 如果是 RabbitMQ 类型的时候，则对应的是 RabbitProperties 类
             spring:
               rabbitmq:
-                host: 127.0.0.1 # RabbitMQ 服务的地址
+                host: 192.168.177.4 # RabbitMQ 服务的地址
                 port: 5672 # RabbitMQ 服务的端口
-                username: guest # RabbitMQ 服务的账号
-                password: guest # RabbitMQ 服务的密码
+                username: mqadmin # RabbitMQ 服务的账号
+                password: mqadmin # RabbitMQ 服务的密码
       # Binding 配置项，对应 BindingProperties Map
       bindings:
         demo01-output:
@@ -31,4 +31,4 @@ spring:
               delayed-exchange: true # 是否使用 x-delayed-message 类型的 Exchange，即延迟消息，默认为 false
 
 server:
-  port: 18080
+  port: 18080 # 端口

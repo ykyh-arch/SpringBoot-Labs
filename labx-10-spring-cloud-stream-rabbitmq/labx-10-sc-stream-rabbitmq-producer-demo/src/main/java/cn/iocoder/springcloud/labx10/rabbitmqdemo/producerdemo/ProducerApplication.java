@@ -5,6 +5,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 
+/**
+ * 启动类
+ *
+ * @author Jaquez
+ * @date 2022/06/21 11:55
+ */
 @SpringBootApplication
 @EnableBinding(MySource.class)
 public class ProducerApplication {
