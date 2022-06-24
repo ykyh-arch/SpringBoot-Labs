@@ -6,6 +6,12 @@ import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
 
+/**
+ * 监听 demo01-producer-confirm 这个 Channel，实现消息确认的监听
+ *
+ * @author Jaquez
+ * @date 2022/06/23 17:57
+ */
 @Component
 public class Demo01ProducerConfirmCallback {
 

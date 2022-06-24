@@ -37,7 +37,7 @@ public class Demo01Controller {
         mySource.demo01Output().send(springMessage);
         logger.info("[syncSend][发送编号：[{}] 发送成功]", id);
 
-        // <X> 等待
+        // <X> 等待，测试事务消息，消费者是否 10s 后收到消息
         Thread.sleep(10 * 1000L);
     }
 

@@ -29,7 +29,7 @@ public class Demo01Consumer {
 //        if (message.getId() % 2 == 1) {
         if (index.incrementAndGet() == 1) {
             // ack 确认消息
-            // 第二个参数 multiple ，用于批量确认消息，为了减少网络流量，手动确认可以被批处。
+            // 第二个参数 multiple ，用于批量确认消息，为了减少网络流量，手动确认可以被批量。
             // 1. 当 multiple 为 true 时，则可以一次性确认 deliveryTag 小于等于传入值的所有消息
             // 2. 当 multiple 为 false 时，则只确认当前 deliveryTag 对应的消息
             channel.basicAck(deliveryTag, false);

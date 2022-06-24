@@ -8,6 +8,12 @@ import org.springframework.integration.context.IntegrationContextUtils;
 import org.springframework.messaging.support.ErrorMessage;
 import org.springframework.stereotype.Component;
 
+/**
+ * 监听 DEMO-TOPIC-01.errors 这个 Channel，实现消息回退的监听。
+ *
+ * @author Jaquez
+ * @date 2022/06/23 18:02
+ */
 @Component
 public class Demo01ProducerReturnCallback {
 
