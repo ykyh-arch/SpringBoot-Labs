@@ -6,6 +6,7 @@ spring:
     username: root
     password: 123456
 
+
 # mybatis-plus 配置内容，更多配置参考：https://mybatis.plus/config/#mapperlocations
 mybatis-plus:
   configuration:
@@ -28,7 +29,7 @@ logging:
           lab81:
             arthas:
               mapper: debug
-
+# arthas 配置
 arthas:
   agent-id: hsehdfsfghhwertyfad
   tunnel-server: ws://192.168.177.4:7777/ws
@@ -45,3 +46,5 @@ management:
   endpoint:
     shutdown:
       enabled: false
+server:
+  port: 8888 # 端口
