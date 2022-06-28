@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @SpringBootApplication
-// 目的 使得Spring AOP 能将当前代理对象设置到 AopContext 中。
+// 目的 使得 Spring AOP 能将当前代理对象设置到 AopContext 中。
 @EnableAspectJAutoProxy(exposeProxy = true) // http://www.voidcn.com/article/p-zddcuyii-bpt.html
 public class Application {
 
