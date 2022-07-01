@@ -21,7 +21,7 @@ if [[ "$(docker inspect ${app_name} 2> /dev/null | grep '"Name": "'/$app_name'"'
 	else
 		echo '----> 服务处理请稍后... <----'
 fi
-# 删除服务镜像
+# 删除服务镜像，这里可以优化，使用 docker 镜像分层思想，缓存机制，直接构建镜像
 if [[ "$(docker images -q ${group_name}/${app_name}:${app_version} 2> /dev/null)" != "" ]]; 
 	then
 		docker rmi ${group_name}/${app_name}:${app_version}

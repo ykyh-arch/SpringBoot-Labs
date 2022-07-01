@@ -59,7 +59,7 @@
                     </includes>
                 </configuration>
             </plugin>
-
+            <!--Java SpringBoot 项目构建 Docker 镜像调优实践，参考：http://www.mydlq.club/article/16/-->
             <!--设置应用 Main 参数启动依赖查找的地址指向外部 lib 文件夹-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -92,7 +92,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--远程push到私服，踩坑：报错：\\.\pipe\docker_engine (系统找不到指定的文件。)，本地需要安装docker插件，
+            <!--远程 push 到私服，踩坑：报错：\\.\pipe\docker_engine (系统找不到指定的文件。)，本地需要安装 docker 插件，
             参考：https://blog.csdn.net/qq_43437874/article/details/107198498-->
             <!--<plugin>
                 <groupId>com.spotify</groupId>
@@ -118,7 +118,7 @@
                     <useMavenSettingsForAuth>false</useMavenSettingsForAuth>
                 </configuration>
             </plugin>-->
-            <!-- docker打包插件，推送到私服仓库，fabric8对K8S支持很友好 -->
+            <!-- docker 打包插件，推送到私服仓库，fabric8 对 K8S 支持很友好 -->
             <plugin>
                 <groupId>io.fabric8</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
