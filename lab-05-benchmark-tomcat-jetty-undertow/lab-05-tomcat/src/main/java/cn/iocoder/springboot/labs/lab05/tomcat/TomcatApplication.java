@@ -23,7 +23,7 @@ public class TomcatApplication {
         SpringApplication.run(TomcatApplication.class);
     }
 
-    /*远程调试，使用 IDEA 远程调试*/
+    /*远程调试，使用 IDEA 远程调试，参考：https://mp.weixin.qq.com/s/gkchYf5oBkfy6pfr4vCOxA*/
     /**
      *
      * java -Djavax.net.debug=
@@ -34,7 +34,7 @@ public class TomcatApplication {
      *     jar springboot-1.0.jar
      *
      */
-    /*远程调试，使用 jvm 工具远程调试*/
+    /*远程监控，使用 jvm 工具远程监控*/
     /**
      *
      * java -jar -Djava.rmi.server.hostname=192.168.44.128 -

@@ -26,6 +26,7 @@ public class TomcatConfig {
         return tomcatFactory;
     }
     class MyTomcatConnectorCustomizer implements TomcatConnectorCustomizer {
+        @Override
         public void customize(Connector connector) {
             Http11NioProtocol protocol = (Http11NioProtocol) connector.getProtocolHandler();
             // 设置最大连接数，参考 Acceptor 类
