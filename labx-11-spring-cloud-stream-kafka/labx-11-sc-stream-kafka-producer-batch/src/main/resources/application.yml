@@ -1,6 +1,6 @@
 spring:
   application:
-    name: demo-producer-application
+    name: demo-producer-application # 应用名称
   cloud:
     # Spring Cloud Stream 配置项，对应 BindingServiceProperties 类
     stream:
@@ -15,7 +15,7 @@ spring:
       kafka:
         # Kafka Binder 配置项，对应 KafkaBinderConfigurationProperties 类
         binder:
-          brokers: 127.0.0.1:9092 # 指定 Kafka Broker 地址，可以设置多个，以逗号分隔
+          brokers: 192.168.177.4:9092 # 指定 Kafka Broker 地址，可以设置多个，以逗号分隔
         # Kafka 自定义 Binding 配置项，对应 KafkaBindingProperties Map
         bindings:
           demo01-output:
@@ -25,4 +25,4 @@ spring:
               buffer-size: 33554432 # 每次批量发送消息的最大内存
 
 server:
-  port: 18080
+  port: 18080 # 端口

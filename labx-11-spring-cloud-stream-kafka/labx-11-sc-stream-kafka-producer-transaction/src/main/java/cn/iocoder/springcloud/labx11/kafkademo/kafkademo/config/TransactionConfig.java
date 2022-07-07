@@ -10,6 +10,12 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+/**
+ * 事务配置类
+ *
+ * @author Jaquez
+ * @date 2022/07/06 11:26
+ */
 @Configuration
 @EnableTransactionManagement
 public class TransactionConfig {

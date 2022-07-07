@@ -1,6 +1,6 @@
 spring:
   application:
-    name: demo-consumer-application
+    name: demo-consumer-application # 应用名称
   cloud:
     # Spring Cloud Stream 配置项，对应 BindingServiceProperties 类
     stream:
@@ -11,12 +11,12 @@ spring:
         demo01-input:
           destination: DEMO-TOPIC-01 # 目的地。这里使用 Kafka Topic
           content-type: application/json # 内容格式。这里使用 JSON
-#          group: demo01-consumer-group # 消费者分组
+#          group: demo01-consumer-group # 消费者分组，为空时，会为该 Consumer 生成一个独有的随机的消费者分组，从而实现广播消费的功能。
       # Spring Cloud Stream Kafka 配置项
       kafka:
         # Kafka Binder 配置项，对应 KafkaBinderConfigurationProperties 类
         binder:
-          brokers: 127.0.0.1:9092 # 指定 Kafka Broker 地址，可以设置多个，以逗号分隔
+          brokers: 192.168.177.4:9092 # 指定 Kafka Broker 地址，可以设置多个，以逗号分隔
 
 server:
   port: ${random.int[10000,19999]} # 随机端口，方便启动多个消费者
