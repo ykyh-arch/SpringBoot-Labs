@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>lab-77-ratelimiter-redis</module>
+        <module>lab-77-ratelimiter-local</module>
     </modules>
 
     <properties>
