@@ -9,7 +9,9 @@ import sun.tools.jar.resources.jar;
  *
  * 容器优化考虑点：线程数、超时时间、jvm 优化
  *
- * mysql 慢优化方案参考：https://mp.weixin.qq.com/s/sdqDWhBCPhEy06gh8yDV-Q
+ * mysql 慢优化方案参考：https://mp.weixin.qq.com/s/sdqDWhBCPhEy06gh8yDV-Q，
+ *                    https://mp.weixin.qq.com/s/sTHWKP0Ib4NSgLPXD-9uww，
+ *                    https://mp.weixin.qq.com/s/D2bLgcuCzBF_J_LU5hWiSg
  *
  * springboot 项目优化参考：https://mp.weixin.qq.com/s/TpcB9dsMv9Y6BL1lwANo4Q,https://mp.weixin.qq.com/s/RkaJD6RTHBPUzTx5HAT_NQ
  *
