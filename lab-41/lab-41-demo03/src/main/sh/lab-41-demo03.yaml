@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment #部署
+metadata:
+  name: lab-41-demo03
+spec:
+  replicas: 1 # 1个副本
+  selector:
+    matchLabels:
+      app: lab-41-demo03
+  template:
+    metadata:
+      labels:
+        app: lab-41-demo03
+    spec:
+      containers:
+      - name: lab-41-demo03
+        image: 192.168.177.6:5000/lab/lab-41-demo03:v1 # 刚刚 push 到镜像仓库地址
+        ports:
+        - containerPort: 8079 # lab-41-demo03 暴露端口 
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: lab-41-demo03
+spec:
+  selector:
+    app: lab-41-demo03 #选中上面的 Deployment
+  ports:
+  - port: 8079 # 对外 8079 端口
+    targetPort: 8079
+
+
+--- 
+# Ingress 
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: lab-41-demo03
+  labels:
+    name: lab-41-demo03
+spec:
+  # IngressClass: nginx
+  rules:
+  - host: lab.41.demo03.com #所有的 host 这个域名请求，转发到上面的 Service = lab-41-demo03
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          serviceName: lab-41-demo03 # 转发到 这个Service 
+          servicePort: 8079 

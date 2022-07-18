@@ -6,6 +6,7 @@ import sun.tools.jar.resources.jar;
 
 /**
  * 启动类，测试参数：java -jar lab-05-tomcat-1.0-SNAPSHOT.jar -Xms2g -Xmx2g -Xmn1g -XX:MaxMetaspaceSize=256m -Xss256k
+ *                -XX:MaxRAMPercentage=80.0 -Xmx2048M -Xms2048M -XX:MaxPermSize=1024m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/
  *
  * 容器优化考虑点：线程数、超时时间、jvm 优化
  *
