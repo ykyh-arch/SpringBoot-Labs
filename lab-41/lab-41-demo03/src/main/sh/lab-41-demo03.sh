@@ -3,8 +3,8 @@
 echo '----> 服务器远程同步文件成功 <----'
 
 # 定义应用组名
-group_name='lab'
-# 定义应用名称
+group_name='lab'# 定义应用名称
+
 app_name='lab-41-demo03'
 # 定义应用版本
 app_version='v1'

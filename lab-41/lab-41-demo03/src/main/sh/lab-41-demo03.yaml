@@ -26,7 +26,7 @@ metadata:
   name: lab-41-demo03
 spec:
   selector:
-    app: lab-41-demo03 #选中上面的 Deployment
+    app: lab-41-demo03 # 选中上面的 Deployment
   ports:
   - port: 8079 # 对外 8079 端口
     targetPort: 8079
@@ -43,11 +43,11 @@ metadata:
 spec:
   # IngressClass: nginx
   rules:
-  - host: lab.41.demo03.com #所有的 host 这个域名请求，转发到上面的 Service = lab-41-demo03
+  - host: lab.41.demo03.com # 所有的 host 这个域名请求，转发到上面的 Service = lab-41-demo03
     http:
       paths:
       - pathType: Prefix
         path: "/"
         backend:
-          serviceName: lab-41-demo03 # 转发到 这个Service 
+          serviceName: lab-41-demo03 # 转发到 这个 Service
           servicePort: 8079 

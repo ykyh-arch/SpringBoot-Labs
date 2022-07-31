@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab-41-demo04-deployment
+spec:
+  selector:
+    matchLabels:
+      app: lab-41-demo04
+  replicas: 2 # 1 个副本
+  template:
+    metadata:
+      labels:
+        app: lab-41-demo04
+      annotations:
+        prometheus.io/scrape: "true" # prometheus 监控
+        prometheus.io/scheme: "http"
+        prometheus.io/path: "/actuator/prometheus"
+        prometheus.io/port: "8079"
+    spec:
+      containers:
+        - name: lab-41-demo04
+          image: 192.168.177.5:5000/lab/lab-41-demo04:v1
+          ports:
+            - containerPort: 8079
+          env: # 环境变量配置，最终再执行 docker images 会传入进去，这里环境并未使用
+            - name: SERVER_PORT # 变量名
+              value: "8079" # 变量值
+            - name: eureka_client_service-url_defaultZone
+              value: "http://eureka-demo-com-svc.default.svc.cluster.local:8761/eureka/" # 通过服务名访问容器 pod
+            - name: JAVA_OPTS
+              value: "-Xms128m -Xmx128m -XX:MaxPermSize=50m -XX:MaxRAMPercentage=80.0 -Duser.timezone=Asia/Shanghai "
+          resources: # 资源管理
+            requests: # 容器运行时，最低资源需求，也就是说最少需要多少资源容器才能正常运行
+              cpu: 0.1 # CPU资源（核数），两种方式，浮点数或者是整数+m，0.1=100m，最少值为0.001核（1m）
+              memory: "128Mi" # 内存使用量
+            limits: # 资源限制
+              cpu: 0.5
+              memory: "256Mi"
+          livenessProbe: # pod 内容器健康检查的设置
+            httpGet: # 通过 httpget 检查健康，返回 200-399 之间，则认为容器正常
+              path: /hs # URI 地址
+              port: 8079
+              # host: 127.0.0.1 # 主机地址
+              scheme: HTTP
+            initialDelaySeconds: 180 # 表明第一次检测在容器启动后多长时间后开始
+            timeoutSeconds: 5 # 检测的超时时间
+            periodSeconds: 15  # 检查间隔时间
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lab-41-demo04-svc
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/scheme: "http"
+    prometheus.io/path: "/actuator/prometheus"
+    prometheus.io/port: "8079"
+  labels:
+    app: lab-41-demo04
+spec:
+  type: ClusterIP # 服务 type
+  ports:
+    - port: 8079
+      targetPort: 8079
+  selector:
+    app: lab-41-demo04
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: lab-41-demo04-ingress
+spec:
+  rules:
+    - host: lab.41.demo04.com # 所有的 host 这个域名请求，转发到上面的 Service = lab-41-demo04-svc
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: lab-41-demo04-svc
+              servicePort: 8079
