@@ -1,6 +1,6 @@
 spring:
   application:
-    name: demo-producer-application
+    name: demo-producer-application # 应用名称
   cloud:
     # Spring Cloud Stream 配置项，对应 BindingServiceProperties 类
     stream:

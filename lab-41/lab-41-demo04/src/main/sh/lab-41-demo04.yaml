@@ -38,7 +38,7 @@ spec:
               memory: "256Mi"
           livenessProbe: # pod 内容器健康检查的设置
             httpGet: # 通过 httpget 检查健康，返回 200-399 之间，则认为容器正常
-              path: /hs # URI 地址
+              path: /demo/hs # URI 地址
               port: 8079
               # host: 127.0.0.1 # 主机地址
               scheme: HTTP

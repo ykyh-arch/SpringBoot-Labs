@@ -12,19 +12,19 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class ScrewMain {
-    private static final String DB_URL = "jdbc:mysql://101.91.204.115:8383";
-    // private static final String DB_URL = "jdbc:postgresql://101.91.204.115:8384";
+    // private static final String DB_URL = "jdbc:mysql://101.91.204.115:8383";
+    private static final String DB_URL = "jdbc:postgresql://101.91.204.115:8384";
 
-    private static final String DRIVER_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
-    // private static final String DRIVER_CLASS_NAME = "org.postgresql.Driver";
-
-    private static final String DB_NAME = "lzgd_v2";
-    private static final String DB_USERNAME = "root";
-    private static final String DB_PASSWORD = "123!Feiwei";
+    // private static final String DRIVER_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
+    private static final String DRIVER_CLASS_NAME = "org.postgresql.Driver";
 
     // private static final String DB_NAME = "lzgd_v2";
-    // private static final String DB_USERNAME = "postgres";
+    // private static final String DB_USERNAME = "root";
     // private static final String DB_PASSWORD = "123!Feiwei";
+
+    private static final String DB_NAME = "lzgd";
+    private static final String DB_USERNAME = "postgres";
+    private static final String DB_PASSWORD = "123!Feiwei";
 
 
     private static final String FILE_OUTPUT_DIR = "C:/Users/fw001/Desktop/";
@@ -32,7 +32,7 @@ public class ScrewMain {
     private static final EngineFileType FILE_OUTPUT_TYPE = EngineFileType.WORD;
     private static final String DOC_FILE_NAME = "数据库文档";
     private static final String DOC_VERSION = "1.0.0";
-    private static final String DOC_DESCRIPTION = "乱占耕地数据库表结构设计";
+    private static final String DOC_DESCRIPTION = "乱占耕地数据库表结构设计文档";
 
     public static void main(String[] args) {
         // 创建 screw 的配置
