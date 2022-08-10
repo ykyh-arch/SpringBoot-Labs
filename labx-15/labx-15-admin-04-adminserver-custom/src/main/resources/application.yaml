@@ -7,3 +7,10 @@ spring:
       discovery:
         server-addr: 127.0.0.1:8848 # Nacos 服务器地址
         service: ${spring.application.name} # 注册到 Nacos 的服务名。默认值为 ${spring.application.name}。
+
+  boot:
+    admin:
+      notify:
+        dingtalk:
+          enabled: true # 钉钉机器人告警
+          webhook-token: https://oapi.dingtalk.com/robot/send?access_token=047146743535d469253c7a891b53abd9190f74323c7a23cd65bd90ce5e82d43b

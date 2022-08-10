@@ -10,6 +10,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
+/**
+ * 钉钉告警参考：https://github.com/luoyoubao/springboot-admin-demo
+ * @author Jaquez
+ * @date 2022/08/10 11:32
+ */
 @Component
 public class LoggerNotifier extends AbstractEventNotifier {
 

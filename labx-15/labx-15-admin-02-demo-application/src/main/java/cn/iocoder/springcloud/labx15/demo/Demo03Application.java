@@ -3,6 +3,12 @@ package cn.iocoder.springcloud.labx15.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * 入口类
+ *
+ * @author Jaquez
+ * @date 2022/08/10 10:18
+ */
 @SpringBootApplication
 public class Demo03Application {
 

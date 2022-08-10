@@ -9,9 +9,9 @@ spring:
         service: ${spring.application.name} # 注册到 Nacos 的服务名。默认值为 ${spring.application.name}。
 
   mail: # 配置发送告警的邮箱
-    host: smtp.126.com
-    username: wwbmlhh@126.com
-    password: '******'
+    host: smtp.163.com
+    username: lzgd_warning@163.com
+    password: 'AGPJJTKWSMHBWQCA'
     default-encoding: UTF-8
 
   boot:
@@ -19,4 +19,4 @@ spring:
       notify:
         mail:
           from: ${spring.mail.username} # 告警发件人
-          to: 7685413@qq.com # 告警收件人
+          to: 2317774857@qq.com # 告警收件人
