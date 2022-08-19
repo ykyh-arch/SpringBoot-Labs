@@ -25,7 +25,7 @@ public class ZipkinConfiguration {
      */
     @Bean
     public Sender sender() { // Sender 采用 HTTP 通信方式
-        return OkHttpSender.create("http://127.0.0.1:9411/api/v2/spans");
+        return OkHttpSender.create("http://192.168.177.4:9411/api/v2/spans");
     }
 
     /**

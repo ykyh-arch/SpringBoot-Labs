@@ -1,10 +1,10 @@
 spring:
   application:
-    name: demo-application-activemq
+    name: demo-application-activemq # 应用名称
 
   # ActiveMQ 配置项，对应 ActiveMQProperties 配置类
   activemq:
-    broker-url: tcp://127.0.0.1:61616 # Activemq Broker 的地址
+    broker-url: tcp://192.168.177.4:61616 # Activemq Broker 的地址
     user: admin # 账号
     password: admin # 密码
     packages:

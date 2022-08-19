@@ -29,7 +29,7 @@ public class ZipkinConfiguration {
      */
     @Bean
     public Sender sender() { // Sender 采用 HTTP 通信方式
-        return OkHttpSender.create("http://127.0.0.1:9411/api/v2/spans");
+        return OkHttpSender.create("http://192.168.177.4:9411/api/v2/spans");
     }
 
     /**
@@ -79,7 +79,7 @@ public class ZipkinConfiguration {
     // ==================== SpringMVC 相关 ====================
     // @see SpringMvcConfiguration 类上的，@Import(SpanCustomizingAsyncHandlerInterceptor.class) 。因为 SpanCustomizingAsyncHandlerInterceptor 未提供 public 构造方法
 
-    // ==================== RabbitMQ 相关 ====================
+    // ==================== Activemq 相关 ====================
 
     @Bean
     public JmsTracing jmsTracing(Tracing tracing) {

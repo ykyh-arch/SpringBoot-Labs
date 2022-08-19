@@ -7,6 +7,12 @@ import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * 配置文件
+ *
+ * @author Jaquez
+ * @date 2022/08/10 15:41
+ */
 @Configuration
 @Import(SpanCustomizingAsyncHandlerInterceptor.class)
 public class SpringMvcConfiguration implements WebMvcConfigurer {

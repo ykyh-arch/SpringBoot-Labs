@@ -20,6 +20,12 @@ import zipkin2.reporter.okhttp3.OkHttpSender;
 
 import javax.servlet.Filter;
 
+/**
+ * ZipkinConfiguration 配置类
+ *
+ * @author Jaquez
+ * @date 2022/08/10 15:43
+ */
 @Configuration
 public class ZipkinConfiguration {
 
@@ -30,7 +36,7 @@ public class ZipkinConfiguration {
      */
     @Bean
     public Sender sender() {
-        return OkHttpSender.create("http://127.0.0.1:9411/api/v2/spans");
+        return OkHttpSender.create("http://192.168.177.4:9411/api/v2/spans");
     }
 
     /**

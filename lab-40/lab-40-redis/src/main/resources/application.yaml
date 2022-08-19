@@ -1,6 +1,6 @@
 spring:
   application:
-    name: demo-application-redis
+    name: demo-application-redis # 应用名称
 
   # 对应 RedisProperties 类
   redis:

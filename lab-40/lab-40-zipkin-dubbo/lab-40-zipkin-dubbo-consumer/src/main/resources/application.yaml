@@ -1,6 +1,6 @@
 spring:
   application:
-    name: user-service-consumer
+    name: user-service-consumer # 应用名称
 
 # dubbo 配置项，对应 DubboConfigurationProperties 配置类
 dubbo:

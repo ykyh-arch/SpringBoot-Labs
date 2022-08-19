@@ -1,6 +1,6 @@
 spring:
   application:
-    name: demo-application-springmvc
+    name: demo-application-springmvc # 应用名称
 
 logging:
   pattern:
