@@ -29,6 +29,7 @@
         <module>lab-04-rabbitmq-demo-rpc</module>
         <module>lab-04-rabbitmq-demo-json</module>
         <module>lab-04-rabbitmq-demo-error-handler</module>
+        <module>lab-04-rabbitmq-mqtt</module>
     </modules>
 
     <dependencies>

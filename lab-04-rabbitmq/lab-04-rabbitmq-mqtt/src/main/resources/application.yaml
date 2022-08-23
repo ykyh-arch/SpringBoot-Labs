@@ -1,0 +1,10 @@
+demo:
+  mqtt:
+    clientId: client-id # 生产环境由发号器生成
+    defaultTopic: push_message_topic
+    serverClientId: demo-mqtt-id
+    servers: tcp://192.168.177.4:1883 # mqtt 协议端口
+    username: mqadmin
+    password: mqadmin
+server:
+  port: 8080
