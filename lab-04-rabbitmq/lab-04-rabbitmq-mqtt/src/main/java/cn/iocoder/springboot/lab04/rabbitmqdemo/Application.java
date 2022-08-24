@@ -4,7 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * 消息 mqtt 使用示例，参考：https://mp.weixin.qq.com/s/6ySV5lswBhwnZN0WsBNCxw
+ * 消息 mqtt 使用示例，参考：https://mp.weixin.qq.com/s/6ySV5lswBhwnZN0WsBNCxw，
+ * https://github.com/chengxy-nds/Springboot-Notebook
  *
  * @author Jaquez
  * @date 2021/10/28 17:53
