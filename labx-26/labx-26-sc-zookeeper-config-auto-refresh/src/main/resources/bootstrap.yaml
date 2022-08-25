@@ -1,10 +1,10 @@
 spring:
   application:
-    name: demo-application
+    name: demo-application # 应用名称
 
   cloud:
     zookeeper:
-      connect-string: 127.0.0.1:2181
+      connect-string: 192.168.177.4:2181
       # Zookeeper 作为配置中心的配置项，对应 ZookeeperConfigProperties 配置类
       config:
         root: /config # Zookeeper 数据存储的根节点，默认为 /config
