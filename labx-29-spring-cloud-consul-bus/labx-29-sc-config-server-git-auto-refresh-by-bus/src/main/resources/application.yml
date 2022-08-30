@@ -1,9 +1,9 @@
 server:
-  port: 8888
+  port: 8888 # 应用端口
 
 spring:
   application:
-    name: demo-config-server
+    name: demo-config-server # 应用名称
 
   profiles:
     active: git # 使用的 Spring Cloud Config Server 的存储器方案
@@ -21,5 +21,5 @@ spring:
 
     # Consul
     consul:
-      host: 127.0.0.1
+      host: 192.168.177.4
       port: 8500
