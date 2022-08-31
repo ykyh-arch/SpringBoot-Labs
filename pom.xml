@@ -135,6 +135,7 @@
         <module>lab-12-mybatis/lab-12-mybatis-tenant</module>
         <module>lab-60/lab-60-shenyu-dubbo-demo</module>
         <module>lab-84-spring-retry</module>
+        <module>lab-85-datamask</module>
     </modules>
 
 </project>
