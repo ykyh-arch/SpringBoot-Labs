@@ -44,7 +44,7 @@ public class UserMapperTest {
     @Test
     public void testSelectById() {
         // Mybatis 查询如果配置了逻辑删除的字段，查询出来的是正常的数据
-        userMapper.selectById(10);
+        System.out.println(userMapper.selectById(50004));
     }
 
     @Test
