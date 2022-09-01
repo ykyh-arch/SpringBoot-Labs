@@ -1,5 +1,6 @@
 package cn.iocoder.springboot.lab85.demo.dataobject;
 
+import cn.iocoder.springboot.lab85.demo.datamask.CustomEntityDesensitizationVerify;
 import cn.iocoder.springboot.lab85.demo.datamask.ReadableSensitiveTypeEnum;
 import cn.iocoder.springboot.lab85.demo.datamask.ReadableSensitiveVerify;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -17,7 +18,7 @@ import java.util.Date;
  **/
 @Data
 @EqualsAndHashCode()
-public class CustomerInfoListVo implements Serializable {
+public class CustomerInfoVo implements Serializable {
 
     // 记录id
     private Integer id;
@@ -38,34 +39,8 @@ public class CustomerInfoListVo implements Serializable {
     @ReadableSensitiveVerify(ReadableSensitiveTypeEnum.ID_CARD)
     private String idCarNumber;
 
-    // 性别
-    private String gender;
-
-    // 出生日期
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
-    private Date birthDate;
-
-    // 客户编号
-    private String customerCode;
-
-    // 邮箱
-    @ReadableSensitiveVerify(ReadableSensitiveTypeEnum.EMAIL)
-    private String email;
-
-    // 客户经理
-    private String customerManager;
-
-    // 微信号
-    private String weChat;
-
-    // 拉黑时间
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
-    private Date blockingTime;
-
-    // 拉黑说明
-    private String blockInstructions;
-
-    // 意向等级
-    private String interestingGrade;
+    // 扩展信息
+    @CustomEntityDesensitizationVerify
+    private CustomerExpandInfoVo customerExpandInfoVo;
 
 }
