@@ -37,6 +37,13 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- Sa-Token-Quick-Login 插件 -->
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-quick-login</artifactId>
+            <version>1.29.0</version>
+        </dependency>
+
         <!-- hutool工具类，利用信息脱敏工具-DesensitizedUtil 类-->
         <dependency>
             <groupId>cn.hutool</groupId>

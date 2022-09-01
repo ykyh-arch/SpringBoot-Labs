@@ -1,5 +1,7 @@
 package cn.iocoder.springboot.lab85.demo.datamask;
 
+import cn.dev33.satoken.stp.StpUtil;
+import cn.hutool.core.util.ObjectUtil;
 import cn.iocoder.springboot.lab85.demo.response.Page;
 import cn.iocoder.springboot.lab85.demo.response.R;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +14,8 @@ import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -46,6 +50,9 @@ public class DesensitizationAspect {
 
         // 可接入用户权限 typeEnums 表示用户拥有哪些字段的查看权限，没有的就脱敏处理
         List<ReadableSensitiveTypeEnum> typeEnums = new ArrayList<>();
+        if (StpUtil.isLogin()) {
+            typeEnums.addAll(Arrays.asList(ReadableSensitiveTypeEnum.values()));
+        }
         log.info("typeEnums: {}",typeEnums);
         Object obj = proceedingJoinPoint.proceed();
         if (obj == null || isPrimitive(obj.getClass())) {

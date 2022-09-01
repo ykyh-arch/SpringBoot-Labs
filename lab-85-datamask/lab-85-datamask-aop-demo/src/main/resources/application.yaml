@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+# Sa-Token-Quick-Login 配置，参考文档：https://sa-token.dev33.cn/doc/index.html
+sa:
+  # 登录账号
+  name: admin
+  # 登录密码
+  pwd: 123456
+  # 是否自动随机生成账号密码 (此项为 true 时, name 与 pwd 失效)
+  auto: false
+  # 是否开启全局认证(关闭后将不再强行拦截)
+  auth: true
+  # 登录页标题
+  title: 数据脱敏权限登录
+  # 是否显示底部版权信息
+  copr: true
+  # 指定拦截路径
+  include: /**
+  # 指定排除路径
+  # exclude: /test
