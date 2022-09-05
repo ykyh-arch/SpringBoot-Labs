@@ -1,9 +1,9 @@
 server:
-  port: 8888
+  port: 8888 # 应用端口
 
 spring:
   application:
-    name: gateway-application
+    name: gateway-application # 应用名称
 
   cloud:
     # Spring Cloud Gateway 配置项，全部配置在 Apollo 中
@@ -18,7 +18,7 @@ spring:
 app:
   id: ${spring.application.name} # 使用的 Apollo 的项目（应用）编号
 apollo:
-  meta: http://127.0.0.1:8080 # Apollo Meta Server 地址
+  meta: http://192.168.177.4:8080 # Apollo Meta Server 地址
   bootstrap:
     enabled: true # 是否开启 Apollo 配置预加载功能。默认为 false。
     eagerLoad:

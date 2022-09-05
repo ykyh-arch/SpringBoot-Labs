@@ -5,6 +5,12 @@ import com.alibaba.csp.sentinel.config.SentinelConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * 启动类
+ *
+ * @author Jaquez
+ * @date 2022/09/02 16:28
+ */
 @SpringBootApplication
 public class GatewayApplication {
 

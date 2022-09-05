@@ -1,9 +1,9 @@
 server:
-  port: 8888
+  port: 8888 # 应用端口
 
 spring:
   application:
-    name: gateway-application
+    name: gateway-application # 应用名称
 
   cloud:
     # Spring Cloud Gateway 配置项，对应 GatewayProperties 类
@@ -18,7 +18,7 @@ spring:
     sentinel:
       eager: true # 是否饥饿加载。默认为 false 关闭
       transport:
-        dashboard: localhost:7070 # 是否饥饿加载。默认为 false 关闭
+        dashboard: 192.168.177.4:7070 # 是否饥饿加载。默认为 false 关闭
 #      # 数据源的配置项
 #      datasource:
 #        ds1.file:
@@ -31,7 +31,7 @@ spring:
       scg:
         order: -2147483648 # 过滤器顺序，默认为 -2147483648 最高优先级
         fallback:
-          mode: # fallback 模式，目前有三种：response、redirect、空
+          mode: # fallback 模式，目前有三种：response、redirect、空，选择空时，使用 Sentinel 定义的 BlockRequestHandler 处理 fallback 的情况。
           # 专属 response 模式
           response-status: 429 # 响应状态码，默认为 429
           response-body: 你被 block 了... # 响应内容，默认为空

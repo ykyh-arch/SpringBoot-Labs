@@ -20,6 +20,7 @@ public class DubboFilter implements GlobalFilter, Ordered {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         URI url = exchange.getAttribute(GATEWAY_REQUEST_URL_ATTR);
         String schemePrefix = exchange.getAttribute(GATEWAY_SCHEME_PREFIX_ATTR);
@@ -35,6 +36,7 @@ public class DubboFilter implements GlobalFilter, Ordered {
         return null;
     }
 
+    @Override
     public int getOrder() {
         return 10100;
     }

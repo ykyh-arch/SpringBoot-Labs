@@ -3,6 +3,12 @@ package cn.iocoder.springcloud.labx08.gatewaydemo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * 启动类
+ *
+ * @author Jaquez
+ * @date 2022/09/02 16:12
+ */
 @SpringBootApplication
 public class GatewayApplication {
 
