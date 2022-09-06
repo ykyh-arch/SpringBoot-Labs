@@ -14,6 +14,7 @@
     <modules>
         <module>lab-85-datamask-jackson-demo</module>
         <module>lab-85-datamask-aop-demo</module>
+        <module>lab-85-datamask-plus</module>
     </modules>
 
     <properties>

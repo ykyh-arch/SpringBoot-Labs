@@ -1,11 +1,5 @@
 package cn.iocoder.springboot.lab85.demo.datamask;
 
-/**
- * 数据脱敏注解
- *
- * @Author Asurplus
- */
-
 import com.fasterxml.jackson.annotation.JacksonAnnotationsInside;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
