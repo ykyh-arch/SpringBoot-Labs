@@ -2,7 +2,11 @@ package cn.iocoder.springboot.lab85.demo.dataobject;
 
 import cn.iocoder.springboot.lab85.demo.datamask.Desensitize;
 import cn.iocoder.springboot.lab85.demo.datamask.DesensitizeRuleEnums;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+
+import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * UserInfo
@@ -31,5 +35,13 @@ public class UserInfo {
     // 地址
     @Desensitize(rule = DesensitizeRuleEnums.ADDRESS)
     private String addr;
+
+    // 创建时间
+    @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    private LocalDateTime createTime;
+
+    // 更新时间
+    @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date updateTime;
 
 }
