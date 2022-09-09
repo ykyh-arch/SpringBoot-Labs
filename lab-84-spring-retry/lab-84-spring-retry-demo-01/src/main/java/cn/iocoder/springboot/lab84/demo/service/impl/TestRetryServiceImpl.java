@@ -56,9 +56,10 @@ public class TestRetryServiceImpl implements TestRetryService {
         return 200;
     }
 
+    // 在重试失败的回调方法
     @Recover
     public int recover(Exception e, int code){
-        System.out.println("回调方法执行！！！！");
+        System.out.println("回调方法执行！！！！，已达到最大重试次数或抛出了不重试的异常~~~");
         // 记日志到数据库或者调用其余的方法
         return 400;
     }
