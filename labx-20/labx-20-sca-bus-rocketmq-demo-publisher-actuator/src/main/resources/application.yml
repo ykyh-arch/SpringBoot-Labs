@@ -1,13 +1,13 @@
 server:
-  port: 8081
+  port: 8081 # 应用端口
 
 spring:
   application:
-    name: publisher-demo
+    name: publisher-demo # 应用名称
 
 # rocketmq 配置项，对应 RocketMQProperties 配置类
 rocketmq:
-  name-server: 127.0.0.1:9876 # RocketMQ Namesrv
+  name-server: 192.168.177.4:9876 # RocketMQ Namesrv
 
 management:
   endpoints:

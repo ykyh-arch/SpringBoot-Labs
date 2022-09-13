@@ -56,7 +56,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- 引入基于 Kafka 的 Spring Cloud Bus 的实现的依赖，并实现对其的自动配置 -->
+        <!-- 引入基于 rocketmq 的 Spring Cloud Bus 的实现的依赖，并实现对其的自动配置 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-bus-rocketmq</artifactId>
