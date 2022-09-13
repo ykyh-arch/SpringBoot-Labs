@@ -31,6 +31,8 @@ public class BaseController
 
     /**
      * 将前台传递过来的日期格式的字符串，自动转化为 Date 类型
+     * spring 常用注解参考：https://mp.weixin.qq.com/s/Nn5gePR9ilUGv1fKOWikww
+     *
      */
     @InitBinder
     public void initBinder(WebDataBinder binder)
