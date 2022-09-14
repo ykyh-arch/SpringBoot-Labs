@@ -1,9 +1,9 @@
 server:
-  port: 8888
+  port: 8888 # 应用端口
 
 spring:
   application:
-    name: zuul-application
+    name: zuul-application # 应用名称
 
 # Zuul 配置项，对应 ZuulProperties 配置类
 zuul:

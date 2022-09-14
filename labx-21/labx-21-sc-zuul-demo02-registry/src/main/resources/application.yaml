@@ -1,9 +1,9 @@
 server:
-  port: 8888
+  port: 8888 # 应用端口
 
 spring:
   application:
-    name: zuul-application
+    name: zuul-application # 应用名称
 
   cloud:
     nacos:
@@ -21,7 +21,7 @@ zuul:
       url: http://www.iocoder.cn
     route_oschina:
       path: /oschina/**
-      url: https://www.oschina.net
+      url: https://www.oschina.net # 静态路由
     route_users:
       path: /users/**
-      service-id: user-service
+      service-id: user-service # 动态路由

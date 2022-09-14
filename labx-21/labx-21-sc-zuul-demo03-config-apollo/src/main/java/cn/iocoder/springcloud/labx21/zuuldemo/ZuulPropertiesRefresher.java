@@ -31,7 +31,7 @@ public class ZuulPropertiesRefresher {
     }
 
     private void refreshZuulProperties(ConfigChangeEvent changeEvent) {
-        logger.info("Refreshing zuul properties!");
+        logger.info("Refreshing zuul properties!"); // 刷新内存中的路由信息
 
         /*
          * rebind configuration beans, e.g. ZuulProperties

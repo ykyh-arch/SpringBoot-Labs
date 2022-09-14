@@ -1,9 +1,9 @@
 server:
-  port: 8888
+  port: 8888 # 应用端口
 
 spring:
   application:
-    name: zuul-application
+    name: zuul-application # 应用名称
 
   cloud:
     nacos:
@@ -14,7 +14,7 @@ spring:
     sentinel:
       eager: true # 是否饥饿加载。默认为 false 关闭
       transport:
-        dashboard: localhost:7070 # 是否饥饿加载。
+        dashboard: 192.168.177.4:7070 # 是否饥饿加载。
       #      # 数据源的配置项
       #      datasource:
       #        ds1.file:

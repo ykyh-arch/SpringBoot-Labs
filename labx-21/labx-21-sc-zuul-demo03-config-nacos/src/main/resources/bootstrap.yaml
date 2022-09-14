@@ -1,6 +1,6 @@
 spring:
   application:
-    name: zuul-application
+    name: zuul-application # 应用名称
 
   cloud:
     nacos:

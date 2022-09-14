@@ -12,6 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 自定义 AuthZuulFilter
+ *
+ * @author Jaquez
+ * @date 2022/09/14 11:19
+ */
 @Component
 public class AuthZuulFilter extends ZuulFilter {
 
@@ -33,10 +39,12 @@ public class AuthZuulFilter extends ZuulFilter {
         TOKENS.put("yunai", 1);
     }
 
+    @Override
     public String filterType() {
         return FilterConstants.PRE_TYPE; // 前置过滤器
     }
 
+    @Override
     public int filterOrder() {
         return 0;
     }

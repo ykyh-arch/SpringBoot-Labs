@@ -10,11 +10,17 @@ import org.springframework.stereotype.Component;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
+/**
+ * 服务降级策略
+ *
+ * @author Jaquez
+ * @date 2022/09/14 11:56
+ */
 @Component
 public class ApiFallbackProvider implements FallbackProvider {
 
     public String getRoute() {
-        return "*";
+        return "*"; // 表示所有的路由
     }
 
     public ClientHttpResponse fallbackResponse(String route, final Throwable cause) {

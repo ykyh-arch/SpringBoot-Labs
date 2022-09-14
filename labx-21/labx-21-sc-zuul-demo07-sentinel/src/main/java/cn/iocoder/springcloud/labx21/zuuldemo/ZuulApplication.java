@@ -6,6 +6,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
+/**
+ * 启动类
+ *
+ * @author Jaquez
+ * @date 2022/09/14 14:02
+ */
 @SpringBootApplication
 @EnableZuulProxy // 开启 Zuul 网关
 public class ZuulApplication {

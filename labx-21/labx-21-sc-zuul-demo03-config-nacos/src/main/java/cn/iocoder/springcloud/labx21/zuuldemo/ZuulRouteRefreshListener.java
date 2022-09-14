@@ -10,6 +10,12 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
+/**
+ * ZuulRouteRefreshListener 监听器
+ *
+ * @author Jaquez
+ * @date 2022/09/14 10:41
+ */
 @Component
 public class ZuulRouteRefreshListener implements ApplicationListener<EnvironmentChangeEvent> {
 

@@ -1,9 +1,9 @@
 server:
-  port: 8888
+  port: 8888 # 应用端口
 
 spring:
   application:
-    name: zuul-application
+    name: zuul-application # 应用名称
 
   cloud:
     nacos:
