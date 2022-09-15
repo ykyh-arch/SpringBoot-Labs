@@ -1,6 +1,6 @@
 spring:
   application:
-    name: demo-producer-application
+    name: demo-producer-application # 应用名称
   cloud:
     # Spring Cloud Stream 配置项，对应 BindingServiceProperties 类
     stream:
@@ -30,7 +30,7 @@ spring:
   # Spring Cloud Sleuth 配置项
   sleuth:
     messaging:
-      # Spring Cloud Sleuth 针对 RabbitMQ 组件的配置项
+      # Spring Cloud Sleuth 针对 RabbitMQ 组件的配置项，对应 SleuthMessagingProperties 类
       rabbit:
         enabled: true # 是否开启
         remote-service-name: rabbitmq # 远程服务名，默认为 rabbitmq

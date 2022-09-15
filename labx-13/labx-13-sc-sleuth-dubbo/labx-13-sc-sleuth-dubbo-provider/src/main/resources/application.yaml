@@ -1,6 +1,6 @@
 spring:
   application:
-    name: demo-provider
+    name: demo-provider # 应用名称
   cloud:
     # Nacos 作为注册中心的配置项
     nacos:

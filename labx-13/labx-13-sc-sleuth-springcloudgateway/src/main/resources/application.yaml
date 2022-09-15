@@ -1,9 +1,9 @@
 server:
-  port: 8888
+  port: 8888 # 应用端口
 
 spring:
   application:
-    name: gateway-application
+    name: gateway-application # 应用名称
 
   # Zipkin 配置项，对应 ZipkinProperties 类
   zipkin:

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: demo-application-activemq
+    name: demo-application-activemq # 应用名称
 
   # ActiveMQ 配置项，对应 ActiveMQProperties 配置类
   activemq:

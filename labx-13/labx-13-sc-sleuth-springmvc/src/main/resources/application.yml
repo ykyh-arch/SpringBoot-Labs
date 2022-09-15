@@ -9,5 +9,5 @@ spring:
   # Spring Cloud Sleuth 配置项
   sleuth:
     # Spring Cloud Sleuth 针对 Web 组件的配置项，例如说 SpringMVC
-    web:
+    web: # 对应 SleuthWebProperties 类
       enabled: true # 是否开启，默认为 true
