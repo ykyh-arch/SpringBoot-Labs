@@ -54,7 +54,7 @@ public class ThreadPoolManager implements BeanFactoryAware, DisposableBean {
     /**
      * 订单的缓冲队列，当线程池满了，则将订单存入到此缓冲队列
      */
-    Queue<CommonThread> msgQueue = new LinkedBlockingQueue<CommonThread>();
+    Queue<CommonThread> msgQueue = new LinkedBlockingQueue<CommonThread>(); // 可以使用 disruptior 替换，参考：https://www.cnblogs.com/JaxYoun/p/14088301.html
 
     /**
      * 当线程池的容量满了，执行下面代码，将执行拒绝策略（将多余的任务缓存起来）

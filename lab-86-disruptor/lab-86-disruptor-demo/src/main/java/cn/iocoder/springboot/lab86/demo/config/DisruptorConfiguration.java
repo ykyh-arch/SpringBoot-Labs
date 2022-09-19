@@ -13,6 +13,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
+ *
+ * 队列方案选择方式：ArrayBlcokingQueue、LinkedBlockingQueue、Disruptor，参考：https://www.cnblogs.com/JaxYoun/p/14088301.html
  * DisruptorConfiguration 经过测试，Disruptor 的速度比 LinkedBlockingQueue 提高了七倍。所以，当你在使用 LinkedBlockingQueue 出现性能瓶颈的时候，你就可以考虑采用 Disruptor 的代替。
  *
  * @author jaquez
@@ -39,6 +41,7 @@ public class DisruptorConfiguration {
 
         // 设置事件业务处理器 --- 消费者
         disruptor.handleEventsWith(new DemoMessageEventHandler());
+        // disruptor.handleEventsWithWorkerPool(new DemoMessageEventHandler());
 
         // 启动 disruptor 线程
         disruptor.start();

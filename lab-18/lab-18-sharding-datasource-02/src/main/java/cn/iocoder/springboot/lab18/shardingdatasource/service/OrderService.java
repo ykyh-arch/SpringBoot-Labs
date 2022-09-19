@@ -21,7 +21,7 @@ public class OrderService {
         // 插入订单
         orderMapper.insert(order);
 
-        // 这里先假模假样的读取一下。读取主库
+        // 这里先假模假样的读取一下。读取主库，在 Sharding-JDBC 中，读写分离约定：同一线程且同一数据库连接内，如有写入操作，以后的读操作均从主库读取，用于保证数据一致性。
         exists = orderMapper.selectById(1);
         System.out.println(exists);
     }

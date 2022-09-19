@@ -10,6 +10,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
+/**
+ * 单元测试类
+ *
+ * @author Jaquez
+ * @date 2022/09/19 16:04
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class OrderMapperTest {
