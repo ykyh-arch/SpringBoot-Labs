@@ -35,7 +35,7 @@ public class OrderService {
         System.out.println(user);
     }
 
-    //测试通过，DynamicRoutingConnection管理了整个请求（逻辑）过程中，使用的所有的 Connection
+    // 测试通过，DynamicRoutingConnection管理了整个请求（逻辑）过程中，使用的所有的 Connection
     @Transactional
     public void method02() {
         // 查询订单
