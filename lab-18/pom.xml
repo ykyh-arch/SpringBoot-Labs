@@ -14,6 +14,7 @@
     <modules>
         <module>lab-18-sharding-datasource-01</module>
         <module>lab-18-sharding-datasource-02</module>
+        <module>lab-18-sharding-datasource-03</module>
     </modules>
 
 

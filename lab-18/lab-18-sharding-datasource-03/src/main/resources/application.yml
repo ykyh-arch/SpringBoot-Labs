@@ -1,0 +1,32 @@
+# 配置2个数据源 ds0 和 ds1
+spring:
+  shardingsphere:
+    datasource:
+      names: ds0,ds1
+      ds0:
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/sj_ds0?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+        password: 123456
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      ds1:
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/sj_ds1?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+        password: 123456
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+    props:
+      sql:
+        show: true
+    sharding:
+      tables:
+        t_order:
+          actual-data-nodes: ds$->{0..1}.t_order_$->{0..1}
+          database-strategy:
+            inline:
+              algorithm-expression: ds$->{user_id % 2}
+              sharding-column: user_id
+          table-strategy:
+            inline:
+              algorithm-expression: t_order_$->{order_id % 2}
+              sharding-column: order_id
