@@ -33,7 +33,7 @@ public class Controller {
             } catch (InterruptedException ignored) {
             }
             return Mono.just("world");
-        }).subscribeOn(Schedulers.parallel());
+        }).subscribeOn(Schedulers.parallel()); // 调度到 Reactor 内置的用于并发执行的线程池，它的大小是 CPU 的线程数。
     }
 
     private Map<String, Boolean> MAP = new ConcurrentHashMap<>();
