@@ -29,7 +29,7 @@ public class ScrewMain {
 
     private static final String FILE_OUTPUT_DIR = "C:/Users/fw001/Desktop/";
     // 可以设置 Word 或者 Markdown 格式
-    private static final EngineFileType FILE_OUTPUT_TYPE = EngineFileType.WORD;
+    private static final EngineFileType FILE_OUTPUT_TYPE = EngineFileType.HTML;
     private static final String DOC_FILE_NAME = "数据库文档";
     private static final String DOC_VERSION = "1.0.0";
     private static final String DOC_DESCRIPTION = "乱占耕地数据库表结构设计文档";
