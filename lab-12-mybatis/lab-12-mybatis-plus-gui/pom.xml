@@ -14,11 +14,11 @@
 
     <dependencies>
         <!--交互式的Web UI用于生成兼容mybatis-plus框架的相关功能代码-->
-        <!--<dependency>
+        <dependency>
             <groupId>com.github.davidfantasy</groupId>
             <artifactId>mybatis-plus-generator-ui</artifactId>
             <version>2.0.0</version>
-        </dependency>-->
+        </dependency>
 
         <dependency>
             <groupId>org.postgresql</groupId>
