@@ -4,6 +4,11 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * MP 使用参考：https://mp.weixin.qq.com/s/n83IAXMDcgGWN9pDfTWlHA
+ * @author Jaquez
+ * @date 2023/02/28 15:27
+ */
 @SpringBootApplication
 @MapperScan(basePackages = "cn.iocoder.springboot.lab12.mybatis.mapper")
 public class Application {
