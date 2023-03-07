@@ -23,6 +23,7 @@
         <module>lab-28-task-demo-super-scheduled</module>
         <module>lab-28-task-elastic-job</module>
         <module>lab-28-task-xxl-job-plus</module>
+        <module>lab-28-task-powerjob</module>
     </modules>
 
 
