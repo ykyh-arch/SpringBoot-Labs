@@ -22,6 +22,7 @@
         <module>lab-28-task-demo-dynamic-three</module>
         <module>lab-28-task-demo-super-scheduled</module>
         <module>lab-28-task-elastic-job</module>
+        <module>lab-28-task-xxl-job-plus</module>
     </modules>
 
 

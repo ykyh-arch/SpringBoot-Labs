@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Component
+// @Component // 临时关闭
 // @JobHandler("demoJob")    // 对应版本：2.1.1，踩坑：在新版本2.3.0已经不识别
 public class DemoJob extends IJobHandler {
 
