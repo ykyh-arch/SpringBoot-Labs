@@ -10,11 +10,80 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>lab-28-task-powerjob</artifactId>
-    <description>新一代任务调度框架，powerJob ，支持分布式计算和工作流能力，参考：https://mp.weixin.qq.com/s/gb84c59cV-EnPXRUcOtJbA</description>
+    <description>新一代任务调度框架，powerJob ，支持分布式计算和工作流能力，参考：https://mp.weixin.qq.com/s/GeLdyeCq8mxMj0vAc8ToBA</description>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+
+        <springboot.version>2.2.4.RELEASE</springboot.version>
+        <powerjob.worker.starter.version>4.3.1-bugfix</powerjob.worker.starter.version>
+        <fastjson.version>1.2.83</fastjson.version>
+        <powerjob.official.processors.version>4.3.1-bugfix</powerjob.official.processors.version>
+        <lombok.version>1.18.12</lombok.version>
     </properties>
+
+    <dependencies>
+
+        <!-- SpringBoot 依赖相关-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${springboot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>${springboot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.powerjob</groupId>
+            <artifactId>powerjob-worker-spring-boot-starter</artifactId>
+            <version>${powerjob.worker.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.powerjob</groupId>
+            <artifactId>powerjob-official-processors</artifactId>
+            <version>${powerjob.official.processors.version}</version>
+        </dependency>
+        <!-- 高版本 JDK 移除了 JavaEE 的包，需要手动引入 -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    <!-- SpringBoot专用的打包插件 -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${springboot.version}</version>
+                <configuration>
+                    <mainClass>cn.iocoder.springboot.lab28.powerjob.SampleApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal><!--可以把依赖的包都打包到生成的Jar包中-->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
