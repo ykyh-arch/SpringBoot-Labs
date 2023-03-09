@@ -17,9 +17,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Map处理器 示例
- *
- * @author tjq
- * @since 2020/4/18
  */
 @Component
 public class MapProcessorDemo implements MapProcessor {
@@ -44,6 +41,7 @@ public class MapProcessorDemo implements MapProcessor {
         log.info("taskContext:{}", JsonUtils.toJSONString(context));
         log.info("{}", mysteryService.hasaki());
 
+        // 根任务
         if (isRootTask()) {
             log.info("==== MAP ====");
             List<SubTask> subTasks = Lists.newLinkedList();
@@ -56,6 +54,7 @@ public class MapProcessorDemo implements MapProcessor {
                     subTask.itemIds.add(i + j * 100);
                 }
             }
+            // 处理子任务
             map(subTasks, "MAP_TEST_TASK");
             return new ProcessResult(true, "map successfully");
         } else {
@@ -88,6 +87,7 @@ public class MapProcessorDemo implements MapProcessor {
         }
     }
 
+    // 自定义子任务
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor

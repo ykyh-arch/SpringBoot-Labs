@@ -9,13 +9,11 @@ import com.google.common.collect.Lists;
 import java.util.List;
 
 /**
- * 模拟 DAG 的处理器（在正式提供DAG支持前，可用该方法代替）
+ * 模拟 DAG 的处理器（在正式提供 DAG 支持前，可用该方法代替）
  *
  * ROOT -> A -> B  -> REDUCE
  *           -> C
  *
- * @author tjq
- * @since 2020/5/15
  */
 public class DAGSimulationProcessor implements MapReduceProcessor {
 

@@ -20,11 +20,9 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * MapReduce 处理器示例
+ * MapReduce 处理器 示例
  * 控制台参数：{"batchSize": 100, "batchNum": 2}
  *
- * @author tjq
- * @since 2020/4/17
  */
 @Slf4j
 @Component
@@ -39,7 +37,7 @@ public class MapReduceProcessorDemo implements MapReduceProcessor {
         log.info("isRootTask:{}", isRootTask());
         log.info("taskContext:{}", JsonUtils.toJSONString(context));
 
-        // 根据控制台参数获取MR批次及子任务大小
+        // 根据控制台参数获取 MR 批次及子任务大小
         final JSONObject jobParams = JSONObject.parseObject(context.getJobParams());
 
         Integer batchSize = (Integer) jobParams.getOrDefault("batchSize", 100);
@@ -49,11 +47,12 @@ public class MapReduceProcessorDemo implements MapReduceProcessor {
             log.info("==== MAP ====");
             omsLogger.info("[DemoMRProcessor] start root task~");
             List<TestSubTask> subTasks = Lists.newLinkedList();
-            for (int j = 0; j < batchNum; j++) {
-                for (int i = 0; i < batchSize; i++) {
+            for (int j = 0; j < batchNum; j++) { // 批次
+                for (int i = 0; i < batchSize; i++) { // 大小
                     int x = j * batchSize + i;
-                    subTasks.add(new TestSubTask("name" + x, x));
+                    subTasks.add(new TestSubTask("name_" + x, x));
                 }
+                // 处理子任务
                 map(subTasks, "MAP_TEST_TASK");
                 subTasks.clear();
             }
@@ -63,7 +62,7 @@ public class MapReduceProcessorDemo implements MapReduceProcessor {
             log.info("==== NORMAL_PROCESS ====");
             omsLogger.info("[DemoMRProcessor] process subTask: {}.", JSON.toJSONString(context.getSubTask()));
             log.info("subTask: {}", JsonUtils.toJSONString(context.getSubTask()));
-            Thread.sleep(1000);
+            // Thread.sleep(1000);
             if (context.getCurrentRetryTimes() == 0) {
                 return new ProcessResult(false, "FIRST_FAILED");
             } else {
@@ -83,6 +82,7 @@ public class MapReduceProcessorDemo implements MapReduceProcessor {
         return new ProcessResult(success, context + ": " + success);
     }
 
+    // 自定义子任务
     @Getter
     @ToString
     @NoArgsConstructor

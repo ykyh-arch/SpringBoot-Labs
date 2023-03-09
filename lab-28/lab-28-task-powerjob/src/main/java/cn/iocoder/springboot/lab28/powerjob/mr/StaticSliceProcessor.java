@@ -18,9 +18,6 @@ import java.util.Map;
 /**
  * MapReduce 模拟 静态分片
  * 典型的杀鸡焉用牛刀～
- *
- * @author tjq
- * @since 2020/5/21
  */
 @Component
 public class StaticSliceProcessor implements MapReduceProcessor {
@@ -31,12 +28,13 @@ public class StaticSliceProcessor implements MapReduceProcessor {
 
         // root task 负责分发任务
         if (isRootTask()) {
-            // 从控制台传递分片参数，假设格式为KV：1=a&2=b&3=c
+            // 从控制台传递分片参数，假设格式为 KV：1=a&2=b&3=c
             String jobParams = context.getJobParams();
             Map<String, String> paramsMap = Splitter.on("&").withKeyValueSeparator("=").split(jobParams);
 
             List<SubTask> subTasks = Lists.newLinkedList();
             paramsMap.forEach((k, v) -> subTasks.add(new SubTask(Integer.parseInt(k), v)));
+            // 执行子任务
             map(subTasks, "SLICE_TASK");
             return new ProcessResult(true, "map successfully");
         }
@@ -54,9 +52,10 @@ public class StaticSliceProcessor implements MapReduceProcessor {
     @Override
     public ProcessResult reduce(TaskContext context, List<TaskResult> taskResults) {
         // 按需求做一些统计工作... 不需要的话，直接使用 Map 处理器即可
-        return new ProcessResult(true, "xxxx");
+        return new ProcessResult(true, "successfully");
     }
 
+    // 自定义子任务
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
