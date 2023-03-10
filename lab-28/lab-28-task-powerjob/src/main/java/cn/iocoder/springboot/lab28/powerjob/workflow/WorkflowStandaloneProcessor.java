@@ -12,9 +12,6 @@ import java.util.Map;
 
 /**
  * 工作流测试
- *
- * @author tjq
- * @since 2020/6/2
  */
 @Component
 @Slf4j

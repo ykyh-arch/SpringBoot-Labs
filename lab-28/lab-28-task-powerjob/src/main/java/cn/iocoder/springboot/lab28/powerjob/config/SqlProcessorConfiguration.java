@@ -15,14 +15,17 @@ import tech.powerjob.worker.PowerJobWorker;
 import javax.sql.DataSource;
 
 /**
- * @author Echo009
- * @since 2021/3/10
+ * Sql Processor 配置类，
  */
 @Configuration
 @ConditionalOnBean(PowerJobWorker.class)
 public class SqlProcessorConfiguration {
 
 
+    /**
+     * sqlProcessorDataSource 数据源配置
+     * @return
+     */
     @Bean
     @DependsOn({"initPowerJob"})
     public DataSource sqlProcessorDataSource() {
@@ -39,7 +42,9 @@ public class SqlProcessorConfiguration {
         return new HikariDataSource(config);
     }
 
-
+    /**
+     * SpringDatasourceSqlProcessor 处理器
+     */
     @Bean
     public SpringDatasourceSqlProcessor simpleSpringSqlProcessor(@Qualifier("sqlProcessorDataSource") DataSource dataSource) {
         SpringDatasourceSqlProcessor springDatasourceSqlProcessor = new SpringDatasourceSqlProcessor(dataSource);

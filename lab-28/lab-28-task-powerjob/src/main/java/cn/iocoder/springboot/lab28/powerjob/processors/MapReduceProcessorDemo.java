@@ -43,6 +43,7 @@ public class MapReduceProcessorDemo implements MapReduceProcessor {
         Integer batchSize = (Integer) jobParams.getOrDefault("batchSize", 100);
         Integer batchNum = (Integer) jobParams.getOrDefault("batchNum", 10);
 
+        // 根任务
         if (isRootTask()) {
             log.info("==== MAP ====");
             omsLogger.info("[DemoMRProcessor] start root task~");
