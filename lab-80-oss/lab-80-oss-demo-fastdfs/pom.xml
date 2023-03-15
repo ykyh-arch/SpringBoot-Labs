@@ -73,4 +73,88 @@
 
     </dependencies>
 
+    <build>
+        <!--参考：https://www.cnblogs.com/codhome/p/13621169.html-->
+        <finalName>lab-80-oss-demo-fastdfs-2.2.1.RELEASE</finalName>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/java</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>**/application-*.yml</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <plugins>
+            <!--代码混淆插件-->
+            <plugin>
+                <groupId>com.github.wvengen</groupId>
+                <artifactId>proguard-maven-plugin</artifactId>
+                <version>2.6.0</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.sf.proguard</groupId>
+                        <artifactId>proguard-base</artifactId>
+                        <version>6.2.2</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <!-- 以下配置说明执行 mvn 的 package 命令时候，会执行 proguard-->
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>proguard</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!--<proguardVersion>6.2.2</proguardVersion>-->
+                    <!-- 就是输入 Jar 的名称，我们要知道，代码混淆其实是将一个原始的 jar，生成一个混淆后的 jar，那么就会有输入输出。 -->
+                    <injar>${project.build.finalName}.jar</injar>
+                    <!-- 输出 jar 名称，输入输出 jar 同名的时候就是覆盖，也是比较常用的配置。 -->
+                    <outjar>${project.build.finalName}_proguard.jar</outjar>
+                    <!-- 是否混淆默认是 true -->
+                    <obfuscate>true</obfuscate>
+                    <!-- 配置一个文件，通常叫做 proguard.cfg,该文件主要是配置 options 选项，也就是说使用 proguard.cfg 那么 options 下的所有内容都可以移到 proguard.cfg 中 -->
+                    <proguardInclude>${project.basedir}/proguard.cfg</proguardInclude>
+                    <!-- 额外的 jar 包，通常是项目编译所需要的 jar -->
+                    <libs>
+                        <lib>${java.home}/lib/rt.jar</lib>
+                        <lib>${java.home}/lib/jce.jar</lib>
+                        <lib>${java.home}/lib/jsse.jar</lib>
+                    </libs>
+                    <!-- 对输入 jar 进行过滤比如，如下配置就是对 META-INFO 文件不处理。 -->
+                    <inLibsFilter>!META-INF/**,!META-INF/versions/9/**.class</inLibsFilter>
+                    <!-- 这是输出路径配置，但是要注意这个路径必须要包括 injar 标签填写的 jar -->
+                    <outputDirectory>${project.basedir}/target</outputDirectory>
+                    <!--这里特别重要，此处主要是配置混淆的一些细节选项，比如哪些类不需要混淆，哪些需要混淆-->
+                    <options>
+                        <!-- 可以在此处写 option 标签配置，不过我上面使用了 proguardInclude，故而我更喜欢在 proguard.cfg 中配置 -->
+                        <option>-keep class cn.iocoder.springboot.lab80.oss.FileClientApplication { *; }</option>
+                    </options>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>cn.iocoder.springboot.lab80.oss.FileClientApplication</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
