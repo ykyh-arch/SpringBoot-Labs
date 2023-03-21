@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * MP 使用参考：https://mp.weixin.qq.com/s/n83IAXMDcgGWN9pDfTWlHA
+ * MPJ(MyBatis Plus Join) 使用参考：https://mp.weixin.qq.com/s/4OUsJYLcscmBo2VJJOL2sA
  * @author Jaquez
  * @date 2023/02/28 15:27
  */
