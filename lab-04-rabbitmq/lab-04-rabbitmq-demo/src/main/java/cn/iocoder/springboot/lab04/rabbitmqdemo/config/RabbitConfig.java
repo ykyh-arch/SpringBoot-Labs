@@ -1,11 +1,13 @@
 package cn.iocoder.springboot.lab04.rabbitmqdemo.config;
 
-import cn.iocoder.springboot.lab04.rabbitmqdemo.message.Demo01Message;
-import cn.iocoder.springboot.lab04.rabbitmqdemo.message.Demo02Message;
-import cn.iocoder.springboot.lab04.rabbitmqdemo.message.Demo03Message;
-import cn.iocoder.springboot.lab04.rabbitmqdemo.message.Demo04Message;
+import cn.iocoder.springboot.lab04.rabbitmqdemo.message.*;
 import org.springframework.amqp.core.*;
+import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,6 +19,37 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class RabbitConfig {
+
+//    // ==================== 测试 canal mq 数据同步相关配置 start ===============
+
+//    @Bean
+//    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
+//        RabbitTemplate template = new RabbitTemplate();
+//        template.setConnectionFactory(connectionFactory);
+//        template.setMessageConverter(new Jackson2JsonMessageConverter());
+//
+//        return template;
+//    }
+//
+//    /**
+//     * template.setMessageConverter(new Jackson2JsonMessageConverter());
+//     * 这段和上面这行代码解决 RabbitListener 循环报错的问题
+//     */
+//    @Bean
+//    public SimpleRabbitListenerContainerFactory rabbitListenerContainerFactory(ConnectionFactory connectionFactory) {
+//        SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
+//        factory.setConnectionFactory(connectionFactory);
+//        factory.setMessageConverter(new Jackson2JsonMessageConverter());
+//        return factory;
+//    }
+
+    // 使用以上方式或这种方式，容器中注入自定义的 MessageConverter bean 对象
+    @Bean
+    public MessageConverter messageConverter() {
+        return new Jackson2JsonMessageConverter();
+    }
+
+//    // ==================== 测试 canal mq 数据同步相关配置 end ===============
 
     /**
      * Direct Exchange 示例的配置类
@@ -163,6 +196,35 @@ public class RabbitConfig {
         public Binding demo4Binding() {
             return BindingBuilder.bind(demo04Queue()).to(demo04Exchange())
                     .where(Demo04Message.HEADER_KEY).matches(Demo04Message.HEADER_VALUE); // 配置 Headers 匹配
+        }
+
+    }
+
+    /**
+     * Canal 将消息同步到 MQ 的交换机的配置，参考自：https://mp.weixin.qq.com/s/BegnZulOEKlC013esf2k3A
+     */
+    public static class CanalExchangeDemoConfiguration {
+
+        // 创建 Queue
+        @Bean
+        public Queue canalDemoQueue() {
+            return new Queue(CanalDemoMessage.QUEUE, // Queue 名字
+                    true, // durable: 是否持久化
+                    false, // exclusive: 是否排它
+                    false); // autoDelete: 是否自动删除
+        }
+
+        @Bean
+        public TopicExchange canalDemoExchange() {
+            return new TopicExchange(CanalDemoMessage.EXCHANGE,
+                    true,  // durable: 是否持久化
+                    false);  // exclusive: 是否排它
+        }
+
+        // 创建 Binding
+        @Bean
+        public Binding canalDemoBinding() {
+            return BindingBuilder.bind(canalDemoQueue()).to(canalDemoExchange()).with(CanalDemoMessage.ROUTING_KEY);
         }
 
     }
