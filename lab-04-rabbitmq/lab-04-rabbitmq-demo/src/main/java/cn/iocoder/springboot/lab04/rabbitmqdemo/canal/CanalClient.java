@@ -11,9 +11,10 @@ import java.net.InetSocketAddress;
 import java.util.List;
 
 /**
- * CanalClient，需要将 canal.properties 中的 canal.serverMode = tcp
+ * CanalClient，需要将 canal.properties 中的 canal.serverMode = tcp 踩坑！！！
  * 注意：客户端的版本需要保持与服务端版本一致！！！
  * 数据同步神器 Canal 参考：https://blog.csdn.net/wxd772113786/article/details/119967306
+ * 另一种简单客户端实现方式，可参考：{@link SimpleCanalClientPermanceTest}
  *
  * @author jaquez
  * @date 2023/04/06 14:43
@@ -74,7 +75,7 @@ public class CanalClient {
     /**
      * 打印 canal server 解析 binlog 获得的实体类信息，控制台显示
      */
-    private static void printEntry(List<CanalEntry.Entry> entrys) {
+    public static void printEntry(List<CanalEntry.Entry> entrys) {
         for (CanalEntry.Entry entry : entrys) {
             if (entry.getEntryType() == CanalEntry.EntryType.TRANSACTIONBEGIN || entry.getEntryType() == CanalEntry.EntryType.TRANSACTIONEND) {
                 // 开启 OR 关闭事务的实体类型，跳过

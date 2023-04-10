@@ -2,6 +2,8 @@ package cn.iocoder.springboot.lab04.rabbitmqdemo.listener;
 
 import cn.hutool.log.StaticLog;
 import cn.iocoder.springboot.lab04.rabbitmqdemo.canal.CanalClient;
+import cn.iocoder.springboot.lab04.rabbitmqdemo.canal.SimpleCanalClient;
+import cn.iocoder.springboot.lab04.rabbitmqdemo.canal.SimpleCanalClientPermanceTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
@@ -23,5 +25,10 @@ public class ApplicationReadyListener implements ApplicationListener<Application
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
         StaticLog.info("应用启动完成，正在监听 canal bin-log 数据同步信息…… ");
         // canalClient.start();
+
+       // SimpleCanalClientPermanceTest test = new SimpleCanalClientPermanceTest();
+        // test.start();
+
+        SimpleCanalClient.connect();
     }
 }
