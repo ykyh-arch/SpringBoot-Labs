@@ -27,6 +27,7 @@ public class AbstractCanalClient extends BaseCanalClient {
         Assert.notNull(connector, "connector is null");
         thread = new Thread(this::process);
 
+        // 线程异常日志记录
         thread.setUncaughtExceptionHandler(handler);
         running = true;
         thread.start();

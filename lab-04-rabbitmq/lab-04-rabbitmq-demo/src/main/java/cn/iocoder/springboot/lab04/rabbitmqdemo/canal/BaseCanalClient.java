@@ -27,7 +27,7 @@ import com.google.protobuf.InvalidProtocolBufferException;
 
 public class BaseCanalClient {
 
-    protected final static Logger             logger             = LoggerFactory.getLogger(BaseCanalClient.class);
+    protected final static Logger             logger             = LoggerFactory.getLogger(AbstractCanalClient.class);
     protected static final String             SEP                = SystemUtils.LINE_SEPARATOR;
     protected static final String             DATE_FORMAT        = "yyyy-MM-dd HH:mm:ss";
     protected volatile boolean                running            = false;
@@ -57,6 +57,7 @@ public class BaseCanalClient {
 
     }
 
+    // 打印上下文信息
     protected void printSummary(Message message, long batchId, int size) {
         long memsize = 0;
         for (Entry entry : message.getEntries()) {
@@ -87,6 +88,7 @@ public class BaseCanalClient {
         return position;
     }
 
+    // 打印事务和 RowData 记录信息
     protected void printEntry(List<Entry> entrys) {
         for (Entry entry : entrys) {
             long executeTime = entry.getHeader().getExecuteTime();
