@@ -2,6 +2,7 @@ package cn.iocoder.springboot.lab37.loggingtlog;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * 入口类
@@ -12,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author Jaquez
  * @date 2021/11/19 14:49
  */
+@EnableAsync
 @SpringBootApplication
 public class Application {
 

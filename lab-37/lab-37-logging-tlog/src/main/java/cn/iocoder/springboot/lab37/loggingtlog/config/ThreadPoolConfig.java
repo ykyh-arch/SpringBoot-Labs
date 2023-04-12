@@ -4,6 +4,7 @@ import com.yomahub.tlog.core.thread.TLogInheritableTask;
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import javax.annotation.PostConstruct;
 import java.util.Queue;
@@ -67,6 +68,12 @@ public class ThreadPoolConfig
             }
         },INITDELAY, PERIOD, TimeUnit.MILLISECONDS);
 
+    }
+
+    // 解决报错：no bean of type TaskExecutor and no bean named 'taskExecutor' either，参考文章：https://www.jb51.net/article/137259.htm
+    @Bean(name = "taskExecutor")
+    public Executor taskExecutor() {
+        return new ThreadPoolTaskExecutor();
     }
 
     static final class TlogThreadPoolExecutor extends ThreadPoolExecutor {
