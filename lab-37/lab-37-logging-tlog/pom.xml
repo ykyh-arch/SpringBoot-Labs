@@ -58,6 +58,15 @@
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
+<!--                <includes>-->
+<!--                    &lt;!&ndash; 相关文件 &ndash;&gt;-->
+<!--                    <include>**/*.yaml</include>-->
+<!--                    <include>**/*.yml</include>-->
+<!--                    <include>**/*.xml</include>-->
+<!--                </includes>-->
+<!--                <filtering>true</filtering>-->
+                <!-- 放在项目构建的 target 的里面 -->
+                <targetPath>${project.build.directory}/config/</targetPath>
             </resource>
         </resources>
         <testResources>
@@ -83,6 +92,10 @@
                             <classpathPrefix>lib/</classpathPrefix>
                             <mainClass>cn.iocoder.springboot.lab37.loggingtlog.Application</mainClass>
                         </manifest>
+                        <manifestEntries>
+                            <!-- 将 config 也设置为 classpath 路径可访问的地方 -->
+                            <Class-Path>config/.</Class-Path>
+                        </manifestEntries>
                     </archive>
                 </configuration>
             </plugin>
