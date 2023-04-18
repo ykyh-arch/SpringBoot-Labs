@@ -11,7 +11,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>lab-37-logging-tlog</artifactId>
-    <description>测试轻量级的分布式日志标记追踪神器-Tlog</description>
+    <description>
+        测试轻量级的分布式日志标记追踪神器-Tlog
+        maven 打包插件参考：https://blog.csdn.net/huanghailiang_ws/article/details/127989436
+    </description>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
