@@ -21,6 +21,7 @@
         <module>lab-17-dynamic-datasource-sharding-jdbc-02</module>
         <module>lab-17-dynamic-datasource-transaction</module>
         <module>lab-17-dynamic-datasource-mybatis-plus</module>
+        <module>lab-17-dynamic-datasource-mtxn</module>
     </modules>
 
 

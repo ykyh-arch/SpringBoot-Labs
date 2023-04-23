@@ -1,0 +1,2 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=cn.iocoder.springboot.lab17.dynamicdatasource.mtxn.config.AutoDataSourceConfiguration
