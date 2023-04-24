@@ -16,10 +16,10 @@
 <https://blog.csdn.net/weixin_42873928/article/details/106945352>,<https://www.askajohnny.com/#/blog/242>，<https://cloud.tencent.com/developer/article/1818865>，<https://www.jianshu.com/p/f484ae6ee506>
 
 
-`k8s部署springboot项目`
+`k8s 部署 springboot 项目`
 <https://blog.csdn.net/qq_34285557/article/details/124460872>
 
-`k8s部署微服务项目`
+`k8s 部署微服务项目`
 <https://mp.weixin.qq.com/s/BxjfTBTzqIHfVlkdew1cMg>
 
 `参考`

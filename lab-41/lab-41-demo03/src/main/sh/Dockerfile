@@ -7,7 +7,7 @@ COPY target/lib/ ./lib/
 # 将当前目录下的 jar 包复制到 docker 容器的/目录下
 ADD target/lab-41-demo03.jar /lab-41-demo03.jar
 # RUN sh -c 'touch /lab-41-demo03.jar'
-# 声明服务运行在8079端口
+# 声明服务运行在 8079 端口
 EXPOSE 8079
 # 环境设置
 ENV JAVA_OPTS="-XX:MaxRAMPercentage=80.0 -Duser.timezone=Asia/Shanghai -Xmx500M -Xms500M -XX:MaxPermSize=102m"

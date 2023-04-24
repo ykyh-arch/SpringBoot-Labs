@@ -6,7 +6,7 @@ spring:
     name: lab-41-demo04 # 应用名
   metrics:
     servo:
-      enabled: false # 只展示 spring boot 和自己项目吐出的 metrics 了，默认在微服务中 Spring Cloud 因 Metrics 采集数据剧增导致CPU负载过高
+      enabled: false # 只展示 spring boot 和自己项目吐出的 metrics 了，默认在微服务中 Spring Cloud 因 Metrics 采集数据剧增导致 CPU 负载过高
 
 management:
   security:
