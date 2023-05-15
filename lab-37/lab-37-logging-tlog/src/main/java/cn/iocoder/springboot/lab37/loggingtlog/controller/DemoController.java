@@ -68,7 +68,7 @@ public class DemoController {
                 // .form(null) //表单内容
                 .timeout(5000) //超时，毫秒
                 .execute().body();
-        logger.info("手动测试 hutool-http 远程调用，调用结果：{} ", result);
+        // logger.info("手动测试 hutool-http 远程调用，调用结果：{} ", result);
 
     }
 

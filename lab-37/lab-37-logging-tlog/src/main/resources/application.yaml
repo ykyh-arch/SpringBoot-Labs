@@ -12,3 +12,6 @@ spring:
 # 不配默认为 false
 tlog:
   enable-invoke-time-print: true
+# log 日志配置
+logging:
+  config: classpath:logback.xml

@@ -14,6 +14,7 @@
     <modules>
         <module>lab-80-oss-demo-minio</module>
         <module>lab-80-oss-demo-fastdfs</module>
+        <module>lab-80-oss-demo-s3-springboot-starter</module>
     </modules>
 
     <properties>

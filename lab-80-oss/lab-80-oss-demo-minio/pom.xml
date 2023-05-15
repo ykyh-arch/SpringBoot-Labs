@@ -53,6 +53,13 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
+        <!-- 引入自定义的 oss 对象存储引擎 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>lab-80-oss-demo-s3-springboot-starter</artifactId>
+            <version>2.3.8.RELEASE</version>
+        </dependency>
+
     </dependencies>
 
 </project>

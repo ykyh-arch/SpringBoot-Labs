@@ -34,3 +34,9 @@ minio:
 #spring.thymeleaf.suffix = .html ＃构建URL时附加到查看名称的后缀。
 #spring.thymeleaf.template-resolver-order = ＃链中模板解析器的顺序。
 #spring.thymeleaf.view-names = ＃可以解析的视图名称的逗号分隔列表。
+
+# s3 oss 配置项
+oss:
+  endpoint: http://192.168.177.4:9000
+  accessKey: minioadmin
+  secretKey: minioadmin

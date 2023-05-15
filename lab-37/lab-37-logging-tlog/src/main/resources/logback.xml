@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false">
+    <!-- 增加如下的 TLog MDC Listener -->
+    <contextListener class="com.yomahub.tlog.core.enhance.logback.TLogLogbackTTLMdcListener"/>
     <property name="APP_NAME" value="lab-37-logging-tlog"/>
     <property name="LOG_HOME" value="./logs" />
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <!--这里替换成 AspectLogbackEncoder-->
         <encoder class="com.yomahub.tlog.core.enhance.logback.AspectLogbackEncoder">
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{tl} [%thread] %-5level %logger{50} - %msg%n</pattern>
         </encoder>
     </appender>
     <appender name="FILE"  class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -17,7 +19,7 @@
         </rollingPolicy>
         <!--这里替换成 AspectLogbackEncoder-->
         <encoder class="com.yomahub.tlog.core.enhance.logback.AspectLogbackEncoder">
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{tl} [%thread] %-5level %logger{50} - %msg%n</pattern>
         </encoder>
     </appender>
 
