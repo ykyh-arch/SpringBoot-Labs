@@ -7,13 +7,14 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * 将 bean 放入 spring 容器的几种方式演示，参考自：https://mp.weixin.qq.com/s/f1JMiNdZrrZvZra6fLiUMA
+ * 参考：https://gitee.com/javacode2018/spring-series 中对于 bean 的管理，推荐系统学习下 spring-series 系列下的博文
  * <p>
  * 向 spring 容器中加入 bean 的几种方式.
  * @Configuration + @Bean
  * @ComponentScan + @Component
  * @Import 配合接口进行导入
  * <p>
- * 使用FactoryBean。
+ * 使用 FactoryBean。
  * <p>
  * 实现 BeanDefinitionRegistryPostProcessor 进行后置处理。
  *
