@@ -12,6 +12,7 @@ import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProce
  *
  * 在 Spring 容器启动的时候会执行 BeanDefinitionRegistryPostProcessor 的 postProcessBeanDefinitionRegistry 方法，
  * 大概意思就是等 beanDefinition 加载完毕之后，对 beanDefinition 进行后置处理，可以在此进行调整 IOC 容器中的 beanDefinition，从而干扰到后面进行初始化 bean。
+ * spring bean 生命周期参考：http://c.biancheng.net/view/4261.html
  *
  * @author jaquez
  * @date 2022/01/07 16:07

@@ -21,6 +21,7 @@ import java.util.EventObject;
  * 观察者模式[事件处理系统]：观察者模式是软件设计模式的一种。在此种模式中，一个目标对象管理所有相依于它的观察者对象，并且在它本身的状态改变时主动发出通知。这通常透过呼叫各观察者所提供的方法来实现。
  *
  * 发布订阅模式：属于广义上的观察者模式，在观察者模式的 Subject 和 Observer 的基础上，引入 Event Channel 这个中介，进一步解耦。
+ * spring event 参考：https://mp.weixin.qq.com/s?__biz=MzA5MTkxMDQ4MQ==&mid=2648934522&idx=1&sn=7653141d01b260875797bbf1305dd196&chksm=88621044bf15995257129e33068f66fc5e39291e159e5e0de367a14e0195595c866b3aaa1972&token=1081910573&lang=zh_CN&scene=21#wechat_redirect
  *
  * @author Jaquez
  * @date 2021/07/19 10:11
@@ -64,7 +65,7 @@ public class DemoApplication implements ApplicationListener<ApplicationEvent>, S
         } else if (event instanceof ContextClosedEvent) {
             logger.info("[ContextClosedEvent][({}) 关闭服务]", ((ApplicationReadyEvent) event).getSpringApplication());
         } else if (event instanceof ContextStoppedEvent) {
-            logger.info("[ContextClosedEvent][({}) 停止服务完成]", ((ApplicationReadyEvent) event).getSpringApplication());
+            logger.info("[ContextStoppedEvent][({}) 停止服务完成]", ((ApplicationReadyEvent) event).getSpringApplication());
         }
     }
 

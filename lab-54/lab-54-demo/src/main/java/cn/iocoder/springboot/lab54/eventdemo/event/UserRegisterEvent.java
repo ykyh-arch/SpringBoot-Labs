@@ -23,7 +23,7 @@ public class UserRegisterEvent extends ApplicationEvent {
     }
 
     public UserRegisterEvent(Object source, String username) {
-        super(source);
+        super(source); // 时间源
         this.username = username;
     }
 

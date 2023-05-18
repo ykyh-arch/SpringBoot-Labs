@@ -1,0 +1,12 @@
+AbstractEvent - 事件对象，事件源
+EventListener<E extends AbstractEvent> - 事件监听器，负责事件监听处理
+EventMulticaster - 事件广播器，注册&移除事件监听器EventListener，AbstractEvent事件发送广播
+DefaultEventMulticaster - 对EventMulticaster默认实现，缓存事件对象与事件监听器映射关系
+
+注册成 spring 容器 bean
+EventMulticaster - 添加事件对象与事件监听器映射关系
+UserRegisterService - 用户注册服务，发布注册成功消息
+UserRegisterSuccessEvent extends AbstractEvent- 用户注册成功事件
+
+监听器
+SendEmailOnUserRegisterSuccessListener - 用户注册成功事件监听器
