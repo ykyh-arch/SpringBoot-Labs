@@ -16,6 +16,7 @@ public class MyListener4 {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
+    // 自定义注解方式
     @EventListener
     public void listener(MyEvent event) {
         logger.info(String.format("%s监听到事件源：%s.", MyListener4.class.getName(), event.getSource()));

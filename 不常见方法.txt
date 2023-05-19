@@ -1,0 +1,8 @@
+# 判断一个类必须是某接口实现类
+Object target, Class<T> targetInterface - target 类，targetInterface 接口
+targetInterface.isAssignableFrom(target.getClass());
+# 判断一个接口的参数泛型类型
+interface EventListener<E extends AbstractEvent>
+ParameterizedType parameterizedType = (ParameterizedType) eventListener.getClass().getGenericInterfaces()[0];
+Type eventType = parameterizedType.getActualTypeArguments()[0];
+#

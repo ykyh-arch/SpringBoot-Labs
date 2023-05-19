@@ -16,7 +16,7 @@ import net.sf.cglib.proxy.MethodProxy;
  * @author jaquez
  * @date 2022/05/21 13:04
  **/
-public class TestImpl$$EnhancerByCGLIB$$5bc47f5c extends TestImpl implements Factory {
+public class TestImpl$$EnhancerByCGLIB$$5bc47f4c extends TestImpl implements Factory {
 
     private boolean CGLIB$BOUND;
     private static final ThreadLocal CGLIB$THREAD_CALLBACKS;
@@ -36,7 +36,7 @@ public class TestImpl$$EnhancerByCGLIB$$5bc47f5c extends TestImpl implements Fac
     private static final Method CGLIB$clone$5$Method;
     private static final MethodProxy CGLIB$clone$5$Proxy;
 
-    public TestImpl$$EnhancerByCGLIB$$5bc47f5c() {
+    public TestImpl$$EnhancerByCGLIB$$5bc47f4c() {
         CGLIB$BIND_CALLBACKS(this);
     }
 
@@ -110,7 +110,7 @@ public class TestImpl$$EnhancerByCGLIB$$5bc47f5c extends TestImpl implements Fac
 
     public Object newInstance(Class[] var1, Object[] var2, Callback[] var3) {
         CGLIB$SET_THREAD_CALLBACKS(var3);
-        TestImpl$$EnhancerByCGLIB$$5bc47f5c var10000 = new TestImpl$$EnhancerByCGLIB$$5bc47f5c;
+        TestImpl$$EnhancerByCGLIB$$5bc47f4c var10000 = new TestImpl$$EnhancerByCGLIB$$5bc47f4c;
         switch(var1.length) {
             case 0:
                 var10000.<init>();
@@ -123,18 +123,19 @@ public class TestImpl$$EnhancerByCGLIB$$5bc47f5c extends TestImpl implements Fac
 
     public Object newInstance(Callback var1) {
         CGLIB$SET_THREAD_CALLBACKS(new Callback[]{var1});
-        TestImpl$$EnhancerByCGLIB$$5bc47f5c var10000 = new TestImpl$$EnhancerByCGLIB$$5bc47f5c();
+        TestImpl$$EnhancerByCGLIB$$5bc47f4c var10000 = new TestImpl$$EnhancerByCGLIB$$5bc47f4c();
         CGLIB$SET_THREAD_CALLBACKS((Callback[])null);
         return var10000;
     }
 
     public Object newInstance(Callback[] var1) {
         CGLIB$SET_THREAD_CALLBACKS(var1);
-        TestImpl$$EnhancerByCGLIB$$5bc47f5c var10000 = new TestImpl$$EnhancerByCGLIB$$5bc47f5c();
+        TestImpl$$EnhancerByCGLIB$$5bc47f4c var10000 = new TestImpl$$EnhancerByCGLIB$$5bc47f4c();
         CGLIB$SET_THREAD_CALLBACKS((Callback[])null);
         return var10000;
     }
 
+    @Override
     public final int test(int var1) {
         MethodInterceptor var10000 = this.CGLIB$CALLBACK_0;
         if (var10000 == null) {
@@ -271,7 +272,7 @@ public class TestImpl$$EnhancerByCGLIB$$5bc47f5c extends TestImpl implements Fac
     }
 
     private static final void CGLIB$BIND_CALLBACKS(Object var0) {
-        TestImpl$$EnhancerByCGLIB$$5bc47f5c var1 = (TestImpl$$EnhancerByCGLIB$$5bc47f5c)var0;
+        TestImpl$$EnhancerByCGLIB$$5bc47f4c var1 = (TestImpl$$EnhancerByCGLIB$$5bc47f4c)var0;
         if (!var1.CGLIB$BOUND) {
             var1.CGLIB$BOUND = true;
             Object var10000 = CGLIB$THREAD_CALLBACKS.get();

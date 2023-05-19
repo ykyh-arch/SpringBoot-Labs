@@ -18,6 +18,7 @@ public class MyListener1 implements ApplicationListener<MyEvent> {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
+    @Override
     public void onApplicationEvent(MyEvent event) {
         logger.info(String.format("%s监听到事件源：%s.", MyListener1.class.getName(), event.getSource()));
     }

@@ -12,11 +12,12 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * ProxyPerfTester 对比三种代理进行调用的耗时测试，参考自：https://www.iocoder.cn/Fight/The-running-performance-of-Cglib-compared-to-the-JDK-dynamic-proxy/
+ * 另一篇文章参考：https://mp.weixin.qq.com/s?__biz=MzA5MTkxMDQ4MQ==&mid=2648934082&idx=1&sn=c919886400135a0152da23eaa1f276c7&chksm=88621efcbf1597eab943b064147b8fb8fd3dfbac0dc03f41d15d477ef94b60d4e8f78c66b262&token=1042984313&lang=zh_CN#rd
  *
  * @author jaquez
  * @date 2022/05/20 15:05
  **/
-public class ProxyPerfTester {
+public class ProxyPerfTest {
 
     public static void main(String[] args) throws InterruptedException {
         // 创建测试对象；查看代理对象参考：https://www.yisu.com/zixun/597206.html

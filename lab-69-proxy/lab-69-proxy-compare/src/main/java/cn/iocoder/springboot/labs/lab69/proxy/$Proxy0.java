@@ -67,6 +67,7 @@ public class $Proxy0 extends Proxy implements Test {
         }
     }
 
+    @Override
     public final int test(int var1) {
         try {
             return (Integer)super.h.invoke(this, m3, new Object[]{var1});

@@ -16,7 +16,9 @@ public class DecoratorTest implements Test {
         this.target = target;
     }
 
+    @Override
     public int test(int i) {
+        // 方法前后可以做一些特殊业务逻辑处理，如：统计耗时
         return target.test(i);
     }
 
