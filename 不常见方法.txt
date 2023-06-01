@@ -5,4 +5,32 @@ targetInterface.isAssignableFrom(target.getClass());
 interface EventListener<E extends AbstractEvent>
 ParameterizedType parameterizedType = (ParameterizedType) eventListener.getClass().getGenericInterfaces()[0];
 Type eventType = parameterizedType.getActualTypeArguments()[0];
-#
+# AnnotatedElement 注解元素信息，根接口
+# Class 注解信息
+xxx.class.getAnnotations()
+# Class<T> 类泛型变量注解信息
+TypeVariable<Class<Xxx>>[] typeParameters = xxx.class.getTypeParameters();
+# Field 注解信息
+Field nameField = xxx.class.getDeclaredField("name");
+nameField.getAnnotations();
+# Map Field 注解信息
+Field field = xxx.class.getDeclaredField("map");
+Type genericType = field.getGenericType();
+Type[] actualTypeArguments = ((ParameterizedType) genericType).getActualTypeArguments();
+AnnotatedType annotatedType = field.getAnnotatedType();
+AnnotatedType[] annotatedActualTypeArguments = ((AnnotatedParameterizedType) annotatedType).getAnnotatedActualTypeArguments();
+int i = 0;
+for (AnnotatedType actualTypeArgument : annotatedActualTypeArguments) {
+    Type actualTypeArgument1 = actualTypeArguments[i++];
+    System.out.println(actualTypeArgument1.getTypeName() + "类型上的注解如下：");
+    for (Annotation annotation : actualTypeArgument.getAnnotations()) {
+        System.out.println(annotation);
+    }
+}
+# Constructor 注解信息
+constructor.getAnnotations();
+# Method 注解信息
+method.getAnnotations();
+# Method Parameters 注解信息
+parameter.getAnnotations();
+
