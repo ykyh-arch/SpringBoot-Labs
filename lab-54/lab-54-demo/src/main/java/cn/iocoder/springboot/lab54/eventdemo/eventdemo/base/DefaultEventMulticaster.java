@@ -13,6 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
  **/
 public class DefaultEventMulticaster implements EventMulticaster{
 
+    // 事件与对应的监听器的一一映射关系
     private Map<Class<?>, List<EventListener>> eventObjectEventListenerMap = new ConcurrentHashMap<>();
 
     @Override

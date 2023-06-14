@@ -1,9 +1,6 @@
 package cn.iocoder.springboot.lab54.eventdemo.springeventdemo;
 
-import cn.iocoder.springboot.lab54.eventdemo.eventdemo.config.EventConfig;
-import cn.iocoder.springboot.lab54.eventdemo.eventdemo.user.UserRegisterService;
 import org.junit.Test;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.event.ApplicationEventMulticaster;
 import org.springframework.context.event.SimpleApplicationEventMulticaster;
 
