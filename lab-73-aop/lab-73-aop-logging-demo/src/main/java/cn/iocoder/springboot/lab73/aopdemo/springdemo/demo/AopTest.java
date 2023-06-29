@@ -1,9 +1,12 @@
 package cn.iocoder.springboot.lab73.aopdemo.springdemo.demo;
 
+import org.aopalliance.intercept.MethodInterceptor;
+import org.aopalliance.intercept.MethodInvocation;
 import org.junit.Test;
 import org.springframework.aop.MethodBeforeAdvice;
 import org.springframework.aop.ThrowsAdvice;
 import org.springframework.aop.framework.ProxyFactory;
+import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.lang.Nullable;
 
 import java.lang.reflect.Method;
@@ -61,6 +64,74 @@ public class AopTest {
         FundsService proxy = (FundsService) proxyFactory.getProxy();
         //调用代理的方法
         proxy.cashOut("路人", 2000);
+    }
+
+    @Test
+    public void test3() {
+        ProxyFactory proxyFactory = new ProxyFactory();
+        proxyFactory.setTarget(new FundsService());
+        proxyFactory.addAdvisor(new DefaultPointcutAdvisor(new MethodBeforeAdvice() {
+            @Override
+            public void before(Method method, Object[] args, @Nullable Object target) throws Throwable {
+                System.out.println(method);
+            }
+        }));
+        //创建代理对象
+        Object proxy = proxyFactory.getProxy();
+        System.out.println("代理对象的类型：" + proxy.getClass());
+        System.out.println("代理对象的父类：" + proxy.getClass().getSuperclass());
+        System.out.println("代理对象实现的接口列表");
+        for (Class<?> cf : proxy.getClass().getInterfaces()) {
+            System.out.println(cf);
+        }
+    }
+
+    @Test
+    public void test4() {
+        Service target = new Service();
+        ProxyFactory proxyFactory = new ProxyFactory();
+        //设置需要被代理的对象
+        proxyFactory.setTarget(target);
+        //设置需要代理的接口
+        proxyFactory.addInterface(IService.class);
+        //强制使用 cglib 代理
+        proxyFactory.setProxyTargetClass(true);
+        proxyFactory.addAdvice(new MethodBeforeAdvice() {
+            @Override
+            public void before(Method method, Object[] args, @Nullable Object target) throws Throwable {
+                System.out.println(method);
+            }
+        });
+        IService proxy = (IService) proxyFactory.getProxy();
+        System.out.println("代理对象的类型：" + proxy.getClass());
+        System.out.println("代理对象的父类：" + proxy.getClass().getSuperclass());
+        System.out.println("代理对象实现的接口列表");
+        for (Class<?> cf : proxy.getClass().getInterfaces()) {
+            System.out.println(cf);
+        }
+        //调用代理的方法
+        System.out.println("\n调用代理的方法");
+        proxy.say("spring aop");
+    }
+
+    @Test
+    public void test5() {
+        Service target = new Service();
+        ProxyFactory proxyFactory = new ProxyFactory();
+        proxyFactory.setTarget(target);
+        proxyFactory.addAdvice(new MethodInterceptor() {
+            @Override
+            public Object invoke(MethodInvocation invocation) throws Throwable {
+                long startTime = System.nanoTime();
+                Object result = invocation.proceed();
+                long endTime = System.nanoTime();
+                System.out.println(String.format("%s方法耗时(纳秒):%s", invocation.getMethod().getName(), endTime - startTime));
+                return result;
+            }
+        });
+        //proxyFactory.setExposeProxy(true);// 将代理对象暴露在 threadlocal 中
+        Service proxy = (Service) proxyFactory.getProxy();
+        proxy.m1();
     }
 
 }
