@@ -1,0 +1,91 @@
+1、基本接口以及类
+JoinPoint - Invocation - MethodInvocation - ProxyMethodInvocation - ReflectiveMethodInvocation - CglibMethodInvocation
+JoinPoint#proceed、JoinPoint#getThis、JoinPoint#getStaticPart（Method）
+Invocation#getArguments
+MethodInvocation#getMethod
+ProxyMethodInvocation#getProxy
+ReflectiveMethodInvocation - jdk proxy 方法调用 -> MethodInterceptor#invoke
+CglibMethodInvocation - Cglib proxy 方法调用 -> MethodInterceptor#invoke
+
+Advice - BeforeAdvice、AfterAdvice - Interceptor
+Interceptor - MethodInterceptor 
+MethodInterceptor#invoke
+MethodBeforeAdvice#before - MethodBeforeAdviceInterceptor 拦截器
+AfterReturningAdvice#afterReturning - AfterReturningAdviceInterceptor 拦截器 
+ThrowsAdvice#afterThrowing - ThrowsAdviceInterceptor 拦截器
+
+PointCut
+PointCut#getClassFilter、PointCut#getMethodMatcher
+ClassFilter#matches
+MethodMatcher#matches、MethodMatcher#isRuntime
+
+Advisor - PointcutAdvisor - DefaultPointcutAdvisor - IntroductionAdvisor
+Advisor#getAdvice
+PointcutAdvisor#getPointcut
+IntroductionAdvisor#validateInterfaces、IntroductionAdvisor#getInterfaces
+
+2、aop 创建过程（参数配置、AopProxy、getProxy 获取代理对象）
+TargetClassAware - Advised - AdvisedSupport
+TargetClassAware#getTargetClass
+ProxyConfig 代理配置类
+ProxyConfig#proxyTargetClass、ProxyConfig#optimize 、ProxyConfig#exposeProxy、
+ProxyConfig#opaque、ProxyConfig#frozen、ProxyConfig#copyFrom
+Advised 代理管理接口
+Advised#isFrozen、Advised#isProxyTargetClass、Advised#getProxiedInterfaces、
+Advised#isInterfaceProxied、Advised#setTargetSource、Advised#getTargetSource、
+Advised#setExposeProxy、Advised#isExposeProxy、Advised#setPreFiltered、
+Advised#isPreFiltered、Advised#getAdvisors、Advised#addAdvisor、Advised#removeAdvisor、
+Advised#addAdvice、Advised#removeAdvice、
+AdvisedSupport 配置管理类
+AdvisedSupport#getInterceptorsAndDynamicInterceptionAdvice - MethodInterceptor[] 
+AdvisedSupport#copyConfigurationFrom
+AdvisedSupport#addInterface
+AopProxy - CglibAopProxy（ObjenesisCglibAopProxy）、JdkDynamicAopProxy
+AopProxy#getProxy
+AopProxyFactory - DefaultAopProxyFactory
+AopProxyFactory#createAopProxy
+JdkDynamicAopProxy -> ReflectiveMethodInvocation#proceed  -> MethodInterceptor#invoke -> joinpoint#proceed 下一个拦截器链 -> 反射目标方法执行
+JdkDynamicAopProxy#invoke -> InvocationHandler#invoke
+AopProxyUtils.completeProxiedInterfaces - [被代理的接口列表,SpringProxy,Advised,DecoratingProxy]
+AopProxyUtils.ultimateTargetClass - 嵌套的目标对象 -> 针对 DecoratingProxy 
+AopUtils.invokeJoinpointUsingReflection - 反射执行目标方法
+DecoratingProxy#getDecoratedClass
+CglibAopProxy
+CglibAopProxy#getProxy 
+AopProxyUtils.completeProxiedInterfaces - [被代理的接口列表,SpringProxy,Advised,Factory]
+getCallbacks - callbacks 列表
+ProxyCallbackFilter - filter method 与 callback 对应 
+DynamicAdvisedInterceptor#intercept （MethodInterceptor#intercept） -> CglibMethodInvocation#proceed -> MethodInterceptor#invoke -> joinpoint#proceed 下一个拦截器链 -> 反射目标方法执行
+callback - MethodInterceptor - DynamicAdvisedInterceptor
+
+AdvisorChainFactory - DefaultAdvisorChainFactory
+AdvisorChainFactory#getInterceptorsAndDynamicInterceptionAdvice -> MethodInterceptor[] 
+AdvisorAdapterRegistry - DefaultAdvisorAdapterRegistry
+AdvisorAdapterRegistry#getInterceptors、AdvisorAdapterRegistry#wrap、AdvisorAdapterRegistry#registerAdvisorAdapter
+AdvisorAdapter - MethodBeforeAdviceAdapter、AfterReturningAdviceAdapter、ThrowsAdviceAdapter
+AdvisorAdapter 将 Advisor 中的 advice 适配成 MethodInterceptor
+AdvisorAdapter#supportsAdvice、AdvisorAdapter#getInterceptor 
+MethodInterceptor - MethodBeforeAdviceInterceptor、AfterReturningAdviceInterceptor、ThrowsAdviceInterceptor 
+
+3、aop 调用执行 - 拦截器链执行
+MethodInterceptor#invoke -> joinpoint#proceed -> reflection target method
+
+4、ProxyFactory
+AdvisedSupport - ProxyCreatorSupport - ProxyFactory
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
