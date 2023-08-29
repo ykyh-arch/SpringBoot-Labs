@@ -1,0 +1,10 @@
+# SpEl
+ExpressionParser - SpelExpressionParser
+ExpressionParser#parseExpression(String expressionString, ParserContext context)
+ParserContext#isTemplate
+ParserContext#getExpressionPrefix、ParserContext#getExpressionSuffix
+EvaluationContext - StandardEvaluationContext
+EvaluationContext#setVariable、EvaluationContext#setRootObject、EvaluationContext#registerFunction
+Expression - SpelExpression
+Expression#getValue
+
