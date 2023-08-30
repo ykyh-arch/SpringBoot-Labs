@@ -1,6 +1,8 @@
 package cn.iocoder.springboot.lab21.cache.demo;
 
 import org.junit.jupiter.api.Test;
+import org.redisson.spring.cache.RedissonCache;
+import org.redisson.spring.cache.RedissonSpringCacheManager;
 import org.springframework.cache.concurrent.ConcurrentMapCache;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -124,5 +126,21 @@ public class CacheTest {
 
         // 再次调用findById方法，发现缓存中没有了，则会调用目标方法
         System.out.println(articleService.findById(1L));
+    }
+
+    @Test
+    public void test7() {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfig2.class);
+
+        BookService bookService = context.getBean(BookService.class);
+        System.out.println(bookService.list());
+        System.out.println(bookService.list());
+
+        {
+            System.out.println("下面打印出cache1缓存中的key列表");
+            RedissonSpringCacheManager cacheManager = context.getBean(RedissonSpringCacheManager.class);
+            RedissonCache cache1 = (RedissonCache) cacheManager.getCache("cache1");
+            cache1.getNativeCache().keySet().stream().forEach(System.out::println);
+        }
     }
 }

@@ -19,10 +19,10 @@
             <version>1.0.5</version>
         </dependency>
         <!-- 由于 screw-extension 项目处于初步开发阶段，暂时未将该依赖推到 Maven 中央仓库，所以需要自己克隆项目，进行编译打包到本地。-->
-        <dependency>
+        <!--<dependency>
             <groupId>cn.smallbun.screw</groupId>
             <artifactId>screw-extension</artifactId>
-        </dependency>
+        </dependency>-->
 
         <!-- 数据库连接 -->
         <dependency>
