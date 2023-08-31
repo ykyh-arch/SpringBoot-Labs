@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>lab-83-spring-bean-demo-01</module>
+        <module>lab-83-spring-bean-demo-02-transaction</module>
     </modules>
 
     <properties>
