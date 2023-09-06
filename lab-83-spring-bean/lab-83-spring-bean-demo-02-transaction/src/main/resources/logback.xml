@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d{MM-dd HH:mm:ss.SSS}][%thread{20}:${PID:- }][%X{trace_id}][%level][%logger{56}:%line:%method\(\)]:%msg%n##########**********##########%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.springframework" level="debug">
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+</configuration>
