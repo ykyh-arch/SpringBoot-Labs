@@ -1,0 +1,23 @@
+# 编程式事务过程
+TransactionDefinition - DefaultTransactionDefinition # 事务定义对象，事务超时时间、级别、传播机制、只读
+PlatformTransactionManager - DataSourceTransactionManager
+platformTransactionManager.getTransaction() # 获取事务，内部逻辑如下
+1.doGetTransaction - ConnectionHolder conHolder = (ConnectionHolder)TransactionSynchronizationManager.getResource(obtainDataSource) # 初始null
+2.doBegin - TransactionSynchronizationManager.bindResource(obtainDataSource(), txObject.getConnectionHolder()); # datasource 与 connect 绑定在一起
+3.prepareSynchronization(status, def) - TransactionSynchronizationManager.initSynchronization() # 事务同步
+jdbctemplate#execute - Connection con = DataSourceUtils.getConnection(obtainDataSource()) # 执行sql操作通过JdbcTemplate的各种方法执行各种sql操作
+platformTransactionManager.commit / rollback # 事务提交或回滚
+1.processCommit(DefaultTransactionStatus status) - doCommit(DefaultTransactionStatus status) # 事务提交后会清理写资源
+# 嵌套事务处理
+1、判断上线文中是否有事务
+isExistingTransaction(Object transaction)
+2、挂起当前事务
+Object suspendedResources = suspend(transaction) - doSuspend(transaction) #事务数据存到SuspendedResourcesHolder 
+3、开启新事务，并执行新事务 #PROPAGATION_REQUIRES_NEW
+doBegin(transaction, definition)、prepareSynchronization(status, definition);
+4、恢复被挂起的事务
+resume(transaction,resourcesHolder) - doResume(transaction, suspendedResources) / doResumeSynchronization(suspendedSynchronizations) # 恢复挂起事务资源和扩展点
+# TransactionSynchronization 接口回调
+TransactionSynchronizationManager.registerSynchronization(transactionSynchronization) # 注册
+
+
