@@ -1,0 +1,53 @@
+# 编程式事务过程
+TransactionDefinition - DefaultTransactionDefinition # 事务定义对象，事务超时时间、级别、传播机制、只读
+PlatformTransactionManager - DataSourceTransactionManager
+platformTransactionManager.getTransaction() # 获取事务，内部逻辑如下
+1.doGetTransaction - ConnectionHolder conHolder = (ConnectionHolder)TransactionSynchronizationManager.getResource(obtainDataSource) # 初始null
+2.doBegin - TransactionSynchronizationManager.bindResource(obtainDataSource(), txObject.getConnectionHolder()); # datasource 与 connect 绑定在一起
+3.prepareSynchronization(status, def) - TransactionSynchronizationManager.initSynchronization() # 事务同步
+jdbctemplate#execute - Connection con = DataSourceUtils.getConnection(obtainDataSource()) # 执行sql操作通过JdbcTemplate的各种方法执行各种sql操作
+platformTransactionManager.commit / rollback # 事务提交或回滚
+1.processCommit(DefaultTransactionStatus status) - doCommit(DefaultTransactionStatus status) # 事务提交后会清理些资源
+# 嵌套事务处理
+1、判断上下线文中是否有事务
+isExistingTransaction(Object transaction)
+2、挂起当前事务
+Object suspendedResources = suspend(transaction) - doSuspend(transaction) #事务数据存到SuspendedResourcesHolder，相当于一个快照
+3、开启新事务，并执行新事务 #PROPAGATION_REQUIRES_NEW
+doBegin(transaction, definition)、prepareSynchronization(status, definition);
+4、恢复被挂起的事务
+resume(transaction,resourcesHolder) - doResume(transaction, suspendedResources) / doResumeSynchronization(suspendedSynchronizations) # 恢复挂起事务资源和扩展点
+# TransactionSynchronization 接口回调
+TransactionSynchronizationManager.registerSynchronization(transactionSynchronization) # 注册
+
+# 申明式事务过程
+@EnableTransactionManagement #开启spring自动管理事务的功能
+1、@Import(TransactionManagementConfigurationSelector.class) - AutoProxyRegistrar、ProxyTransactionManagementConfiguration
+2、AutoProxyRegistrar - AopConfigUtils.registerAutoProxyCreatorIfNecessary(registry) #启用spring aop的功能，对符合条件的bean创建代理
+3、ProxyTransactionManagementConfiguration -  BeanFactoryTransactionAttributeSourceAdvisor、TransactionAttributeSource、TransactionInterceptor #为代理对象添加事务拦截器
+TransactionAttributeSource - AnnotationTransactionAttributeSource - SpringTransactionAnnotationParser#parseTransactionAnnotation，将事务信息存储在RuleBasedTransactionAttribute
+TransactionAttributeSource#isCandidateClass、TransactionAttributeSource#getTransactionAttribute
+TransactionAttribute#getQualifier、TransactionAttribute#rollbackOn
+4、TransactionInterceptor
+TransactionInterceptor#invokeWithinTransaction # 方法执行进行事务的提交或回滚，涉及到一些步骤
+1、determineTransactionManager(txAttr) # 查找事务管理器
+2、completeTransactionAfterThrowing(txInfo, ex) # 出现异常时，进行事务的提交和回滚
+3、commitTransactionAfterReturning # 没有异常进行事务的提交
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
