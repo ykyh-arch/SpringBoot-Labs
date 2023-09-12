@@ -12,7 +12,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class DemoTest {
 
     // @Test
-    public void test1() {
+    public void test() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfig.class);
         UserService userService = context.getBean(UserService.class);
         userService.bus1();
