@@ -21,7 +21,7 @@ import javax.sql.DataSource;
  * @author Jaquez
  * @date 2021/06/15 22:07
  */
-@Configuration //接口存放位置，指定了数据源
+@Configuration // 接口存放位置，指定了数据源
 @MapperScan(basePackages = "cn.iocoder.springboot.lab17.dynamicdatasource.mapper.orders", sqlSessionTemplateRef = "ordersSqlSessionTemplate")
 public class MyBatisOrdersConfig {
 
