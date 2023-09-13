@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 /**
  * AopTest
+ * 扩展，Spring 集成 Junit 参考示例：https://mp.weixin.qq.com/s/dWksJ5l1NWBYRp2wqSMP0Q
  *
  * @author jaquez
  * @date 2023/06/19 15:16
