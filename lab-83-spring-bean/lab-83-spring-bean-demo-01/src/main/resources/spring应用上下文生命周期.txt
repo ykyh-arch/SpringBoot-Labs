@@ -1,0 +1,37 @@
+ApplicationContext # 应用上下文，ClassPathXmlApplicationContext、AnnotationConfigApplicationContext
+# ApplicationContext 生命周期
+阶段1：创建Spring应用上下文
+new AnnotationConfigApplicationContext() # 做了以下几件事
+1、子类GenericApplicationContext将beanFactory创建好了
+2、new AnnotatedBeanDefinitionReader(this) # 向容器中注册5个重要的bean
+a、ConfigurationClassPostProcessor # 可以完成自定义bean批量注册，在阶段6实现
+ConfigurationClassPostProcessor 实现 BeanDefinitionRegistryPostProcessor 继承 BeanFactoryPostProcessor
+b、AutowiredAnnotationBeanPostProcessor # 处理@Autowire注解bean属性赋值
+c、CommonAnnotationBeanPostProcessor # 处理@Resource注解bean属性赋值
+d、EventListenerMethodProcessor # 负责处理@EventListener标注的方法，即事件处理器
+e、DefaultEventListenerFactory # 负责将@EventListener标注的方法包装为ApplicationListener对象
+阶段2：上下文启动准备阶段（prepareRefresh()）（阶段2-12都在applicationContext.refresh()中）
+主要提供标记启动时间、标记启动关闭、初始化PropertySource、验证环境配置中是否包含必须的配置参数信息、存放早期的事件以及事件监听器
+阶段3：BeanFactory创建阶段（obtainFreshBeanFactory()）# 由子类实现，即GenericApplicationContext获取工厂
+阶段4：BeanFactory准备阶段（prepareBeanFactory(beanFactory)） # 主要做了以下几件事
+a、工厂添加一个BeanPostProcessor：ApplicationContextAwareProcessor # 自定义bean实现了xxxAware接口，通过Aware回调使得bean拥有了xxx对象
+b、注册依赖注入的时候查找的对象
+c、注入一个beanpostprocessor：ApplicationListenerDetector # 处理自定义事件监听器，即自定义bean实现了ApplicationListener接口，将bean添加到spring上下文容器的事件监听器列表中
+d、将Environment、systemProperties、systemEnvironment注册到spring容器中
+阶段5：BeanFactory后置处理阶段（invokeBeanFactoryPostProcessors(beanFactory)） # BeanFactory扩展点：BeanFactoryPostProcessor、BeanDefinitionRegistryPostProcessor
+a、完成自定义bean的批量注册，将BeanDefinition丢到BeanFactory中
+b、BeanFactoryPostProcessor可以对容器中已注册的bean进行属性修改
+阶段6：BeanFactory注册BeanPostProcessor阶段（registerBeanPostProcessors(beanFactory)） # 维护spring容器中所有bean实现了BeanPostProcessor接口列表中
+阶段7：初始化内建Bean：MessageSource（initMessageSource()） # 初始化国家化消息
+阶段8：初始化内建Bean：Spring事件广播器（initApplicationEventMulticaster） # 初始化事件广播器
+阶段9：Spring应用上下文刷新阶段（onRefresh()） # 由子类实现
+阶段10：Spring事件监听器注册阶段（registerListeners()） # 注册事件监听器，将上下文监听器绑定到广播器里，广播早期事件。自定义的bean实现了ApplicationListener接口会添加到容器里
+阶段11：BeanFactory初始化完成阶段（finishBeanFactoryInitialization(beanFactory)） # 将实例化所有单例的bean（不包需要延迟实例化的bean）
+阶段12：Spring应用上下文启动完成阶段（finishRefresh()） # 刷新完成阶段，完成以下几件事
+a、初始化当前上下文中的生命周期处理器LifecycleProcessor
+b、内部会调用spring容器中所有实现Lifecycle接口的bean的start方法
+c、发布ContextRefreshedEvent事件
+阶段13：Spring应用上下文关闭阶段（applicationContext.close()） # 主要做以下几件事
+a、发布关闭事件ContextClosedEvent
+b、调用生命周期处理器的onClose方法
+c、销毁上下文的BeanFactory中所有缓存的单例，destroyBeans() # 有实现DisposableBean接口的，有@PreDestroy标记注解的，将bean的信息从BeanFactory中清理掉
