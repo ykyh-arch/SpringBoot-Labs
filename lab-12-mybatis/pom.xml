@@ -17,6 +17,7 @@
         <module>lab-12-mybatis-plus</module>
         <module>lab-12-mybatis-tk</module>
         <module>lab-12-mybatis-plus-gui</module>
+        <module>lab-12-spring-mybatis</module>
     </modules>
 
 
