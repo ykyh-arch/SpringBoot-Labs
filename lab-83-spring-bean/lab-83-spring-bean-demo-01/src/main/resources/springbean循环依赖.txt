@@ -1,0 +1,22 @@
+# spring bean 循环依赖，参考自：https://mp.weixin.qq.com/s/pBo5NkBwPwA_WATGe2xugQ
+# 循环依赖的注入对象的 2 种方式：构造器的方式、setter 的方式
+构造器的方式无法解决对象注入的问题
+# singletonsCurrentlyInCreation # 记录正在创建中的 bean 名称列表，可以发现是否存在循环依赖beforeSingletonCreation(String beanName)
+# singletonObjects # 创建好的 bean 放到这个列表中
+# 三级缓存
+Map<String, Object> singletonObjects - 单例bean对象
+Map<String, Object> earlySingletonObjects - 早期暴露的单例bean对象
+Map<String, ObjectFactory<?>> singletonFactories - 单例的beanFactory（早期暴露的单例bean对象）
+# 循环依赖源码位置 - AbstractBeanFactory#doGetBean
+doGetBean -> getSingleton(beanName,true) # 查找顺序，一级缓存->二级缓存->三级缓存（找到，bean存到二级缓存，并从三级缓存移除）
+getSingleton(beanName,singletonFactory) # 上一步为null，则创建bean，查找顺序，从一级缓存查找，没有则创建，创建成功后存到一级缓存，并从二、三级缓存移除
+createBean -> doCreateBean # 创建对象，内在逻辑判断早期的bean与最终的bean是否是同一个bean，不一样会抛出异常
+1、什么时候 bean 被放入 3 级缓存？
+早期的 bean 被放入 3 级缓存
+2、什么时候 bean 会被放入 2 级缓存？
+当 beanX 还在创建的过程中，此时被加入当前 beanName 创建列表了，但是这个时候 bean 并没有被创建完毕（bean 被丢到一级缓存才算创建完毕），此时 bean 还是个半成品，这个时候其他 bean 需要用到 beanX，此时会从三级缓存中获取到 beanX，beanX 会从三级缓存中丢到 2 级缓存中。
+3、什么时候 bean 会被放入 1 级缓存？
+bean 实例化完毕，初始化完毕，属性注入完毕，bean 完全组装完毕之后，才会被丢到 1 级缓存。
+
+
+
