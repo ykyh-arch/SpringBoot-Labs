@@ -61,6 +61,20 @@
                 </includes>
             </resource>
         </resources>
+
+        <plugins>
+            <!--在执行javac编译的时候，参数名保留-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
 </project>

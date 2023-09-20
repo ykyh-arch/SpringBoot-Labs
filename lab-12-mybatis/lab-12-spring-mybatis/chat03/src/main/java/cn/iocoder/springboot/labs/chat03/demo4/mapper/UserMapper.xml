@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.iocoder.springboot.labs.chat03.demo4.mapper.UserMapper">
+    <!-- 通过name查询
+         select用来定义一个查询操作
+         resultType：指定查询结果保存的类型
+     -->
+    <select id="getByName" resultType="cn.iocoder.springboot.labs.chat03.demo4.model.UserModel">
+        <!--当一个参数的时候#{变量名称}中变量名称可以随意写，都可以取到传入的参数。-->
+        <![CDATA[
+        SELECT * FROM t_user WHERE name = #{value} LIMIT 1
+        ]]>
+    </select>
+
+    <!-- 通过map查询 -->
+    <select id="getByMap" resultType="cn.iocoder.springboot.labs.chat03.demo4.model.UserModel">
+    <![CDATA[
+        SELECT * FROM t_user WHERE id=#{id} OR name = #{name}
+        ]]>
+    </select>
+
+    <!-- 通过javabean查询 -->
+    <select id="getListByUserFindDto" parameterType="cn.iocoder.springboot.labs.chat03.demo4.dto.UserFindDto" resultType="cn.iocoder.springboot.labs.chat03.demo4.model.UserModel">
+    <![CDATA[
+        SELECT * FROM t_user WHERE id=#{userId} OR name = #{userName}
+        ]]>
+    </select>
+
+    <!-- 通过id或者name查询 -->
+    <select id="getByIdOrName" resultType="cn.iocoder.springboot.labs.chat03.demo4.model.UserModel">
+    <![CDATA[
+        SELECT * FROM t_user WHERE id=#{param1} OR name = #{param2} LIMIT 1
+        ]]>
+    </select>
+
+    <!-- 通过用户id列表查询 -->
+    <select id="getListByIdCollection" resultType="cn.iocoder.springboot.labs.chat03.demo4.model.UserModel">
+    <![CDATA[
+        SELECT * FROM t_user WHERE id IN (#{collection[0]},#{collection[1]})
+        ]]>
+    </select>
+
+    <!-- 通过用户id列表查询 -->
+    <select id="getListByIdList" resultType="cn.iocoder.springboot.labs.chat03.demo4.model.UserModel">
+    <![CDATA[
+        SELECT * FROM t_user WHERE id IN (#{list[0]},#{collection[1]})
+        ]]>
+    </select>
+
+    <!-- 通过用户id列表查询 -->
+    <select id="getListByIdArray" resultType="cn.iocoder.springboot.labs.chat03.demo4.model.UserModel">
+    <![CDATA[
+        SELECT * FROM t_user WHERE id IN (#{array[0]},#{array[1]})
+        ]]>
+    </select>
+
+    <select id="getList" resultType="cn.iocoder.springboot.labs.chat03.demo4.model.UserModel">
+    <![CDATA[
+        SELECT * FROM t_user
+        ]]>
+</select>
+
+</mapper>
+
+
