@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.iocoder.springboot.labs.chat03.demo1.UserMapper">
+    <!-- insert用来定义一个插入操作
+         id：操作的具体标识
+         parameterType：指定插入操作接受的参数类型
+     -->
+    <insert id="insertUser" parameterType="cn.iocoder.springboot.labs.chat03.demo1.UserModel" useGeneratedKeys="true">
+        <![CDATA[
+        INSERT INTO t_user (id,name,age,salary,sex) VALUES (#{id},#{name},#{age},#{salary},#{sex})
+        ]]>
+    </insert>
+
+    <!-- update用来定义一个更新操作
+         id：操作的具体标识
+         parameterType：指定操作接受的参数类型
+     -->
+    <update id="updateUser" parameterType="cn.iocoder.springboot.labs.chat03.demo1.UserModel">
+        <![CDATA[
+        UPDATE t_user SET name = #{name},age = #{age},salary = #{salary},sex = #{sex} WHERE id = #{id}
+        ]]>
+    </update>
+
+    <!-- update用来定义一个删除操作
+         id：操作的具体标识
+         parameterType：指定操作接受的参数类型
+     -->
+    <update id="deleteUser" parameterType="java.lang.Long">
+        <![CDATA[
+        DELETE FROM t_user WHERE id = #{id}
+        ]]>
+    </update>
+
+    <!-- select用来定义一个查询操作
+         id：操作的具体标识
+         resultType：指定查询结果保存的类型，在这里可以使用typeAlias别名：user，别名不区分大小写
+     -->
+    <select id="getUserList" resultType="cn.iocoder.springboot.labs.chat03.demo1.UserModel">
+        <![CDATA[
+        SELECT * FROM t_user
+        ]]>
+    </select>
+
+</mapper>
