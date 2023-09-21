@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.iocoder.springboot.labs.chat04.mapper.UserMapper">
+
+    <insert id="insertUser" parameterType="cn.iocoder.springboot.labs.chat04.model.UserModel">
+        <![CDATA[
+        INSERT INTO t_user (id,name,age,salary,sex) VALUES (#{id},#{name},#{age},#{salary},#{sex})
+        ]]>
+    </insert>
+
+    <update id="updateUser" parameterType="cn.iocoder.springboot.labs.chat04.model.UserModel">
+        <![CDATA[
+        UPDATE t_user SET name = #{name},age = #{age},salary = #{salary},sex = #{sex} WHERE id = #{id}
+        ]]>
+    </update>
+
+    <update id="deleteUser" parameterType="java.lang.Long">
+        <![CDATA[
+        DELETE FROM t_user WHERE id = #{id}
+        ]]>
+    </update>
+
+    <!-- 插入的时候获取值增值，必须需指定2个属性
+    useGeneratedKeys：设置为true
+    keyProperty：参数对象中的属性，插入成功之后会将值增值设置给这个属性
+    源码参考：org.apache.ibatis.executor.keygen.KeyGenerator
+ -->
+    <insert id="insertUser1" parameterType="cn.iocoder.springboot.labs.chat04.model.UserModel" useGeneratedKeys="true" keyProperty="id">
+    <![CDATA[
+        INSERT INTO t_user (name,age,salary,sex) VALUES (#{name},#{age},#{salary},#{sex})
+        ]]>
+    </insert>
+
+    <insert id="insertUser2" parameterType="cn.iocoder.springboot.labs.chat04.model.UserModel">
+        <selectKey keyProperty="id" order="AFTER" resultType="long">
+            <![CDATA[
+                SELECT LAST_INSERT_ID()
+             ]]>
+        </selectKey>
+        <![CDATA[
+            INSERT INTO t_user (name,age,salary,sex) VALUES (#{name},#{age},#{salary},#{sex})
+         ]]>
+    </insert>
+
+</mapper>
