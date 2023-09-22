@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 引入外部jdbc配置 -->
+    <properties resource="jdbc.properties"/>
+
+    <settings>
+        <!-- 是否开启自动驼峰命名规则映射，及从xx_yy映射到xxYy -->
+        <!--<setting name="mapUnderscoreToCamelCase" value="true"/>-->
+        <!-- 关闭自动映射开关，源码位置：org.apache.ibatis.builder.xml.XMLConfigBuilder#settingsElement -->
+        <setting name="autoMappingBehavior" value="NONE"/>
+        <!-- 对除在内部定义了嵌套结果映射（也就是连接的属性）以外的属性进行映射，这个也是autoMappingBehavior的默认值。 -->
+        <!--<setting name="autoMappingBehavior" value="PARTIAL"/>-->
+        <!-- 自动映射所有属性 -->
+        <setting name="autoMappingBehavior" value="FULL"/>
+    </settings>
+
+    <!-- 环境配置，可以配置多个环境 -->
+    <environments default="demo5">
+        <environment id="demo5">
+            <!-- 事务管理器工厂配置 -->
+            <transactionManager type="JDBC"/>
+            <!-- 数据源工厂配置，使用工厂来创建数据源 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="demo4/mapper/OrderMapper.xml" />
+        <mapper resource="demo4/mapper/OrderDetailMapper.xml" />
+    </mappers>
+
+</configuration>

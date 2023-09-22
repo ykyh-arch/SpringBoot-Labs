@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.iocoder.springboot.labs.chat05.demo4.OrderMapper">
+
+    <resultMap id="orderModelMap1" type="cn.iocoder.springboot.labs.chat05.demo4.OrderModel">
+        <id column="id" property="id"/>
+        <result column="userId" property="userId" />
+        <result column="createTime" property="createTime" />
+        <result column="upTime" property="upTime" />
+    </resultMap>
+
+    <resultMap id="orderModelMap2" type="cn.iocoder.springboot.labs.chat05.demo4.OrderModel" autoMapping="true">
+    </resultMap>
+
+    <resultMap id="orderModelMap3" type="cn.iocoder.springboot.labs.chat05.demo4.OrderModel">
+    </resultMap>
+
+    <resultMap id="orderModelMap4" type="cn.iocoder.springboot.labs.chat05.demo4.OrderModel">
+    </resultMap>
+
+    <resultMap id="orderModelMap5" type="cn.iocoder.springboot.labs.chat05.demo4.OrderUserModel">
+        <association property="userModel">
+        </association>
+    </resultMap>
+
+    <resultMap id="orderModelMap6" type="cn.iocoder.springboot.labs.chat05.demo4.OrderUserModel">
+        <association property="userModel">
+            <!--自动映射时，sql字段名称与javabean属性名称相同会自动映射-->
+            <id column="user_id" property="id"/>
+        </association>
+    </resultMap>
+
+    <!--autoMapping生效优先级要大于autoMappingBehavior-->
+    <resultMap id="orderModelMap7" type="cn.iocoder.springboot.labs.chat05.demo4.OrderUserModel" autoMapping="true">
+        <association property="userModel" autoMapping="true">
+            <id column="user_id" property="id"/>
+        </association>
+    </resultMap>
+
+    <resultMap id="orderModelMap8" type="cn.iocoder.springboot.labs.chat05.demo4.OrderOrderDetailModel" autoMapping="true">
+        <!--多表关联时，mybatis认为已经对id字段手动指定了映射关系，导致值为null-->
+        <id column="id" property="id" />
+        <collection property="orderDetailModelList" select="cn.iocoder.springboot.labs.chat05.demo4.OrderDetailModelMapper.getListByOrderId1" column="id" autoMapping="true"/>
+    </resultMap>
+
+    <select id="getById1" resultMap="orderModelMap1">
+    <![CDATA[
+        SELECT
+            a.id,
+            a.user_id userId,
+            a.create_time createTime,
+            a.up_time upTime
+        FROM
+            t_order a
+        WHERE
+            a.id = #{value}
+        ]]>
+    </select>
+
+    <!--自动映射-->
+    <select id="getById2" resultMap="orderModelMap2">
+    <![CDATA[
+        SELECT
+            a.id,
+            a.user_id userId,
+            a.create_time createTime,
+            a.up_time upTime
+        FROM
+            t_order a
+        WHERE
+            a.id = #{value}
+        ]]>
+    </select>
+
+    <select id="getById3" resultMap="orderModelMap3">
+    <![CDATA[
+        SELECT
+            a.id,
+            a.user_id userId,
+            a.create_time createTime,
+            a.up_time upTime
+        FROM
+            t_order a
+        WHERE
+            a.id = #{value}
+        ]]>
+    </select>
+
+    <select id="getById4" resultMap="orderModelMap4">
+    <![CDATA[
+        SELECT
+            a.id,
+            a.user_id userId,
+            a.create_time createTime,
+            a.up_time upTime
+        FROM
+            t_order a
+        WHERE
+            a.id = #{value}
+        ]]>
+    </select>
+
+    <select id="getById5" resultMap="orderModelMap5">
+    <![CDATA[
+        SELECT
+            a.id,
+            a.user_id userId,
+            a.create_time createTime,
+            a.up_time upTime,
+            b.id as user_id,
+            b.name
+        FROM
+            t_order a,t_user b
+        WHERE
+            a.user_id = b.id
+          AND a.id = #{value}
+        ]]>
+    </select>
+
+    <select id="getById6" resultMap="orderModelMap6">
+    <![CDATA[
+        SELECT
+            a.id,
+            a.user_id userId,
+            a.create_time createTime,
+            a.up_time upTime,
+            b.id as user_id,
+            b.name
+        FROM
+            t_order a,t_user b
+        WHERE
+            a.user_id = b.id
+          AND a.id = #{value}
+        ]]>
+    </select>
+
+    <select id="getById7" resultMap="orderModelMap7">
+    <![CDATA[
+        SELECT
+            a.id,
+            a.user_id userId,
+            a.create_time createTime,
+            a.up_time upTime,
+            b.id as user_id,
+            b.name
+        FROM
+            t_order a,t_user b
+        WHERE
+            a.user_id = b.id
+          AND a.id = #{value}
+        ]]>
+    </select>
+
+    <select id="getById8" resultMap="orderModelMap8">
+    <![CDATA[
+        SELECT
+            a.id,
+            a.user_id userId,
+            a.create_time createTime,
+            a.up_time upTime
+        FROM
+            t_order a
+        WHERE a.id = #{value}
+        ]]>
+    </select>
+
+</mapper>
