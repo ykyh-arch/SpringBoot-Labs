@@ -17,6 +17,7 @@
         <module>chat02</module>
         <module>chat03</module>
         <module>chat04</module>
+        <module>chat05</module>
     </modules>
 
     <properties>

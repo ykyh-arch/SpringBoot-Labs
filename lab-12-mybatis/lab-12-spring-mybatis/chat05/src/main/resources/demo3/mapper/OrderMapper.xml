@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.iocoder.springboot.labs.chat05.demo3.OrderMapper">
+
+    <resultMap id="orderModelMap1" type="cn.iocoder.springboot.labs.chat05.demo3.OrderModel">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="up_time" property="upTime"/>
+
+        <collection property="orderDetailModelList" ofType="cn.iocoder.springboot.labs.chat05.demo3.OrderDetailModel">
+            <id column="orderDetailId" property="id"/>
+            <result column="order_id" property="orderId"/>
+            <result column="goods_id" property="goodsId"/>
+            <result column="num" property="num"/>
+            <result column="total_price" property="totalPrice"/>
+        </collection>
+    </resultMap>
+
+    <resultMap id="orderModelMap2" type="cn.iocoder.springboot.labs.chat05.demo3.OrderModel">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="up_time" property="upTime"/>
+        <collection property="orderDetailModelList" select="cn.iocoder.springboot.labs.chat05.demo3.OrderDetailModelMapper.getListByOrderId1" column="id"/>
+    </resultMap>
+
+    <!--一对多查询(2种方式)，方式一-->
+    <select id="getById1" resultMap="orderModelMap1">
+    <![CDATA[
+        SELECT
+            a.id ,
+            a.user_id,
+            a.create_time,
+            a.up_time,
+            b.id orderDetailId,
+            b.order_id,
+            b.goods_id,
+            b.num,
+            b.total_price
+        FROM
+            t_order a,
+            t_order_detail b
+        WHERE
+            a.id = b.order_id
+          AND a.id = #{value}
+        ]]>
+    </select>
+
+    <!--一对多查询(2种方式)，方式二-->
+    <select id="getById2" resultMap="orderModelMap2">
+    <![CDATA[
+        SELECT
+            a.id ,
+            a.user_id,
+            a.create_time,
+            a.up_time
+        FROM
+            t_order a
+        WHERE
+            a.id = #{value}
+        ]]>
+    </select>
+
+</mapper>

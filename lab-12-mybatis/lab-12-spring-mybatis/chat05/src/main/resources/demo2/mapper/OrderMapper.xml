@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.iocoder.springboot.labs.chat05.demo2.OrderMapper">
+
+    <resultMap id="orderModelMap1" type="cn.iocoder.springboot.labs.chat05.demo2.OrderModel">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="up_time" property="upTime"/>
+        <!--级联赋值，多级之间用.进行引用-->
+        <result column="user_id" property="userModel.id"/>
+        <result column="name" property="userModel.name"/>
+    </resultMap>
+
+    <resultMap id="orderModelMap2" type="cn.iocoder.springboot.labs.chat05.demo2.OrderModel">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="up_time" property="upTime"/>
+        <!--association标签进行关联-->
+        <association property="userModel">
+            <id column="user_id" property="id"/>
+            <result column="name" property="name" />
+        </association>
+    </resultMap>
+
+    <resultMap id="orderModelMap3" type="cn.iocoder.springboot.labs.chat05.demo2.OrderModel">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="up_time" property="upTime"/>
+        <association property="userModel" select="cn.iocoder.springboot.labs.chat05.demo2.UserMapper.getById" column="user_id" />
+    </resultMap>
+
+    <resultMap id="orderModelMap4" type="cn.iocoder.springboot.labs.chat05.demo2.OrderModel">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="up_time" property="upTime"/>
+        <association property="userModel" select="cn.iocoder.springboot.labs.chat05.demo2.UserMapper.getById1" column="{uid1=user_id,uid2=create_time}" />
+    </resultMap>
+
+    <!--一对一关联查询（4种方式）详解，方式一-->
+    <select id="getById1" resultMap="orderModelMap1">
+    <![CDATA[
+        SELECT
+            a.id,
+            a.user_id,
+            a.create_time,
+            a.up_time,
+            b.name
+        FROM
+            t_order a,
+            t_user b
+        WHERE
+            a.user_id = b.id
+          AND a.id = #{value}
+    ]]>
+    </select>
+
+    <!--一对一关联查询（4种方式）详解，方式二-->
+    <select id="getById2" resultMap="orderModelMap2">
+    <![CDATA[
+        SELECT
+            a.id,
+            a.user_id,
+            a.create_time,
+            a.up_time,
+            b.name
+        FROM
+            t_order a,
+            t_user b
+        WHERE
+            a.user_id = b.id
+          AND a.id = #{value}
+        ]]>
+    </select>
+
+    <!--一对一关联查询（4种方式）详解，方式三-->
+    <select id="getById3" resultMap="orderModelMap3">
+    <![CDATA[
+        SELECT
+            a.id,
+            a.user_id,
+            a.create_time,
+            a.up_time
+        FROM
+            t_order a
+        WHERE
+            a.id = #{value}
+        ]]>
+    </select>
+
+    <!--一对一关联查询（4种方式）详解，方式四-->
+    <select id="getById4" resultMap="orderModelMap4">
+    <![CDATA[
+        SELECT
+            a.id,
+            a.user_id,
+            a.create_time,
+            a.up_time
+        FROM
+            t_order a
+        WHERE
+            a.id = #{value}
+        ]]>
+    </select>
+
+</mapper>

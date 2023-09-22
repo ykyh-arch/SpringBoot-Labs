@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.iocoder.springboot.labs.chat05.demo2.UserMapper">
+
+    <select id="getById" resultType="cn.iocoder.springboot.labs.chat05.demo2.UserModel">
+    <![CDATA[
+        SELECT id,name FROM t_user where id = #{value}
+        ]]>
+    </select>
+
+    <select id="getById1" resultType="cn.iocoder.springboot.labs.chat05.demo2.UserModel">
+        <![CDATA[
+            SELECT id,name FROM t_user where id = #{uid1} and id = #{uid2}
+        ]]>
+    </select>
+
+</mapper>
