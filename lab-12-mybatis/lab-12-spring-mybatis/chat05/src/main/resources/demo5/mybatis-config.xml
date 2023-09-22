@@ -10,12 +10,16 @@
         <!-- 是否开启自动驼峰命名规则映射，及从xx_yy映射到xxYy -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
         <!-- 关闭自动映射开关，源码位置：org.apache.ibatis.builder.xml.XMLConfigBuilder#settingsElement -->
-<!--        <setting name="autoMappingBehavior" value="NONE"/>-->
+        <!--<setting name="autoMappingBehavior" value="NONE"/>-->
         <!-- 对除在内部定义了嵌套结果映射（也就是连接的属性）以外的属性进行映射，这个也是autoMappingBehavior的默认值。 -->
         <!--<setting name="autoMappingBehavior" value="PARTIAL"/>-->
         <!-- 自动映射所有属性 -->
         <setting name="autoMappingBehavior" value="FULL"/>
 
+        <!--打开延迟加载的开关  -->
+        <setting name="lazyLoadingEnabled" value="false"/>
+        <!-- 当为true的时候，调用任意延迟属性，会去加载所有延迟属性，如果为false，则调用某个属性的时候，只会加载指定的属性 -->
+        <setting name="aggressiveLazyLoading" value="false"/>
     </settings>
 
     <!-- 环境配置，可以配置多个环境 -->
@@ -36,6 +40,7 @@
     <mappers>
         <mapper resource="demo5/mapper/OrderMapper.xml" />
         <mapper resource="demo5/mapper/OrderDetailMapper.xml" />
+        <mapper resource="demo5/mapper/UserMapper.xml" />
     </mappers>
 
 </configuration>
