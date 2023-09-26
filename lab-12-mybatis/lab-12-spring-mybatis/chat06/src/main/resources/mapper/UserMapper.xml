@@ -3,6 +3,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.iocoder.springboot.labs.chat06.UserMapper">
 
+    <!-- 启用二级缓存 -->
+    <cache/>
+
     <!--if元素使用-->
     <select id="getList1" resultType="cn.iocoder.springboot.labs.chat06.UserModel" parameterType="map">
         SELECT id,name,age FROM t_user
@@ -133,6 +136,11 @@
         </foreach>
     </insert>
 
+    <!--插入-->
+    <insert id="insert" parameterType="cn.iocoder.springboot.labs.chat06.UserModel">
+        INSERT INTO t_user (id,name,age) VALUES (#{id}, #{name}, #{age})
+    </insert>
+
     <!--sql/include元素-->
     <sql id="findSql">
         <where>
@@ -177,5 +185,37 @@
         </if>
     </select>
 
+    <!-- 清除缓存-->
+    <select id="getList8" flushCache="true" resultType="cn.iocoder.springboot.labs.chat06.UserModel" parameterType="map">
+        SELECT id,name,age FROM t_user
+        <where>
+            <if test="id!=null">
+                AND id = #{id}
+            </if>
+            <if test="name!=null and name.toString()!=''">
+                AND name = #{name}
+            </if>
+            <if test="age!=null">
+                AND age = #{age}
+            </if>
+        </where>
+    </select>
+
+    <!--跳过二级缓存-->
+    <select id="getList9" useCache="false" resultType="cn.iocoder.springboot.labs.chat06.UserModel"
+            parameterType="map">
+        SELECT id,name,age FROM t_user
+        <where>
+            <if test="id!=null">
+                AND id = #{id}
+            </if>
+            <if test="name!=null and name.toString()!=''">
+                AND name = #{name}
+            </if>
+            <if test="age!=null">
+                AND age = #{age}
+            </if>
+        </where>
+    </select>
 
 </mapper>

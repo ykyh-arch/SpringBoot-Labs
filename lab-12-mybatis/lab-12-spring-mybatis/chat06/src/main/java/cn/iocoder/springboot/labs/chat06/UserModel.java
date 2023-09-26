@@ -2,6 +2,8 @@ package cn.iocoder.springboot.labs.chat06;
 
 import lombok.*;
 
+import java.io.Serializable;
+
 /**
  * UserModel
  *
@@ -14,7 +16,7 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserModel {
+public class UserModel implements Serializable {
 
     private Integer id;
     private String name;

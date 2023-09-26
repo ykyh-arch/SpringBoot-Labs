@@ -9,6 +9,8 @@
     <settings>
         <!-- 是否开启自动驼峰命名规则映射，及从xx_yy映射到xxYy -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!-- 开启二级缓存 -->
+        <setting name="cacheEnabled" value="true"/>
     </settings>
 
     <!-- 环境配置，可以配置多个环境 -->
