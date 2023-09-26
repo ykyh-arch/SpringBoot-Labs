@@ -64,7 +64,7 @@
             <version>RELEASE</version>
         </dependency>
     </dependencies>
-    <!-- SpringBoot专用的打包插件 -->
+    <!-- SpringBoot专用的打包插件，提供了mvn spring-boot:run等插件功能 -->
     <build>
         <plugins>
             <plugin>

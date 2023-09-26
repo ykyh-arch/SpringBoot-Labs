@@ -43,6 +43,27 @@
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis</artifactId>
                 <version>${mybatis.version}</version>
+                <!--依赖的类型，对应构建中packaging-->
+                <!--<type>pom</type>-->
+                <!--scope依赖范围：
+                    classpath分：1编译源码、2编译测试代码、3运行测试代码、4运行项目
+                    具体有以下几种：
+                    compile：编译依赖范围，1234classpath都有效，默认，如：spring-web
+                    test：测试依赖范围，23classpath有效，14无效，如：junit
+                    provide：已提供依赖范围，123classpath有效，4无效，如：servlet-api
+                    runtime：运行时依赖范围，234classpath都有效，1效，如：jdbc
+                    system：系统依赖范围，与provide一致的，需要指定systemPath元素
+                    scope范围会对依赖传递产生影响，具体参考：https://mp.weixin.qq.com/s?__biz=MzA5MTkxMDQ4MQ==&mid=2648933527&idx=1&sn=b09b1d6bd7a893224ad53282f15b962e&chksm=88621ca9bf1595bfb7034a5fc201f36ea24b7d80aa77d89505976c3bc52787b71cf4e28fb711&token=1919005508&lang=zh_CN#rd
+                -->
+                <!--<scope>compile</scope>-->
+                <!--maven依赖调解功能，2个原则：路径最近原则、最先声明原则-->
+                <!--可选依赖，当A->B中scope:compile、B->C中scope:compile时，则依据依赖传递性，C会传递给A，被A依赖，若B不想让C被A自动依赖，则通过optional设置为true-->
+                <!--<optional>true</optional>-->
+                <!--排除依赖传递，可用于版本升级-->
+                <!--<exclusions>
+                    <exclusion></exclusion>
+                    <exclusion></exclusion>
+                </exclusions>-->
             </dependency>
             <dependency>
                 <groupId>mysql</groupId>

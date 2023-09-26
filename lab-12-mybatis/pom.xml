@@ -3,13 +3,25 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
+        <!--项目的唯一ID，一个groupId下面可能多个项目，就是靠artifactId来区分的-->
         <artifactId>labs-parent</artifactId>
+        <!-- 定义当前构件所属的组，通常与域名反向一一对应 -->
         <groupId>cn.iocoder.springboot.labs</groupId>
+        <!-- 版本号，区分为：snapshots快照版本和releases稳定版 -->
         <version>1.0-SNAPSHOT</version>
     </parent>
+<!--    POM 中可以指定以下配置：-->
+<!--    项目依赖-->
+<!--    插件-->
+<!--    执行目标-->
+<!--    项目构件 profile-->
+<!--    项目版本-->
+<!--    项目开发者列表-->
+<!--    相关邮件列表信息-->
+    <!-- 模型版本，POM( Project Object Model，项目对象模型 ) 是 Maven 工程的基本工作单元 -->
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>lab-12-mybatis</artifactId>
+    <!--构件的打包方式，默认：jar，可选jar、war、ear、pom、maven-plugin-->
     <packaging>pom</packaging>
     <modules>
         <module>lab-12-mybatis-xml</module>
@@ -20,5 +32,29 @@
         <module>lab-12-spring-mybatis</module>
     </modules>
 
+    <!--配置远程仓库地址，方式一-->
+    <repositories>
+        <repository>
+            <id>aliyun-releases</id>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <!--是否需要从这个远程仓库下载稳定版本构建-->
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <!--是否需要从这个远程仓库下载快照版本构建-->
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <!--配置远程仓库地址，方式二：镜像方式，在~/.m2/settings.xml中配置，或者在M2_HOME/conf/settings.xml中，以下配置参考-->
+    <!--<mirrors>
+        <mirror>
+            <id>mirror-aliyun-releases</id>
+            <mirrorOf>*</mirrorOf>
+            <name>阿里云maven镜像</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </mirror>
+    </mirrors>-->
 
 </project>
