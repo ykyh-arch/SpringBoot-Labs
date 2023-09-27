@@ -22,6 +22,7 @@
         <module>chat07</module>
     </modules>
 
+    <!--自定义一些用户属性-->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- 配置maven编译的时候采用的编译器版本 -->
