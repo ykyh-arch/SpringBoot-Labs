@@ -32,8 +32,25 @@
         <module>lab-12-spring-mybatis</module>
     </modules>
 
+    <!--私服搭建参考：https://cloud.tencent.com/developer/article/2105636-->
     <!--配置远程仓库地址，方式一-->
     <repositories>
+        <repository>
+            <!--这里可以使用私服，若nexus私服需要有用户名和密码登录才能访问，需要在~/.m2/settings.xml添加如下配置-->
+            <!--<server>
+                <id>maven-nexus</id>
+                <username>admin</username>
+                <password>nexus@123</password>
+            </server>-->
+            <id>maven-nexus</id>
+            <url>http://192.168.177.1:8081/repository/maven-public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
         <repository>
             <id>aliyun-releases</id>
             <url>https://maven.aliyun.com/repository/public</url>
@@ -48,13 +65,49 @@
         </repository>
     </repositories>
     <!--配置远程仓库地址，方式二：镜像方式，在~/.m2/settings.xml中配置，或者在M2_HOME/conf/settings.xml中，以下配置参考-->
-    <!--<mirrors>
-        <mirror>
+    <!--<mirrors>-->
+        <!--<mirror>
             <id>mirror-aliyun-releases</id>
             <mirrorOf>*</mirrorOf>
             <name>阿里云maven镜像</name>
             <url>https://maven.aliyun.com/repository/public</url>
-        </mirror>
-    </mirrors>-->
+        </mirror>-->
+        <!--若需要有用户名和密码登录才能访问，需要在~/.m2/settings.xml添加如下配置-->
+        <!--<server>
+            <id>mirror-nexus</id>
+            <username>admin</username>
+            <password>nexus@123</password>
+        </server>-->
+        <!--<mirror>
+            <id>mirror-nexus</id>
+            <mirrorOf>*</mirrorOf>
+            <name>nexus镜像</name>
+            <url>http://192.168.177.1:8081/repository/maven-public/</url>
+        </mirror>-->
+    <!--</mirrors>-->
+
+    <!--分发管理，将本地的构件发布到私服执行`mvn deploy`，若需要账户密码，需要在~/.m2/settings.xml添加如下配置-->
+    <!--<server>
+        <id>release-nexus</id>
+        <username>admin</username>
+        <password>nexus@123</password>
+    </server>-->
+    <!--<server>
+        <id>snapshot-nexus</id>
+        <username>admin</username>
+        <password>nexus@123</password>
+    </server>-->
+    <distributionManagement>
+        <repository>
+            <id>release-nexus</id>
+            <url>http://192.168.177.1:8081/repository/maven-releases/</url>
+            <name>nexus私服中宿主仓库->存放/下载稳定版本的构件</name>
+        </repository>
+        <snapshotRepository>
+            <id>snapshot-nexus</id>
+            <url>http://192.168.177.1:8081/repository/maven-snapshots/</url>
+            <name>nexus私服中宿主仓库->存放/下载快照版本的构件</name>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
