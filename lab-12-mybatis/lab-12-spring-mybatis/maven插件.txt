@@ -1,0 +1,23 @@
+## 列出插件所有目标
+mvn 插件goupId:插件artifactId[:插件version]:help，如：mvn org.apache.maven.plugins:maven-clean-plugin:help
+## 查看插件目标参数列表
+mvn 插件goupId:插件artifactId[:插件version]:help -Dgoal=目标名称 -Ddetail，如：mvn org.apache.maven.plugins:maven-clean-plugin:help -Dgoal=help -Ddetail，或：mvn org.apache.maven.plugins:maven-clean-plugin:help -Dgoal=help -Ddetail=false
+## 命令行运行插件
+mvn 插件goupId:插件artifactId[:插件version]:插件目标 [-D目标参数1] [-D目标参数2] [-D目标参数n]，如：mvn org.apache.maven.plugins:maven-surefire-plugin:test -Dmaven.test.skip=true
+方式二：在pom.xml中配置<maven.test.skip>true</maven.test.skip>，然后执行：mvn org.apache.maven.plugins:maven-surefire-plugin:test
+## 获取插件目标详细描述信息，help插件的describe这个目标可以列出其他指定插件目标的详细信息
+mvn help:describe -Dplugin=插件goupId:插件artifactId[:插件version] -Dgoal=目标名称 -Ddetail，如：mvn help:describe -Dplugin=org.apache.maven.plugins:maven-surefire-plugin -Dgoal=test -Ddetail
+## 查看插件前缀
+mvn help:describe -Dplugin=插件goupId:插件artifactId[:插件version]，如：mvn help:describe -Dplugin=org.apache.maven.plugins:maven-surefire-plugin
+## 用插件前缀运行插件
+mvn surefire:test
+## 插件和生命周期阶段绑定，maven内置插件以及绑定
+## 查看插件的目标默认绑定到一些生命周期的阶段
+mvn help:describe -Dplugin=插件goupId:插件artifactId[:插件version] -Dgoal=目标名称 -Ddetail，如：mvn help:describe -Dplugin=source -Dgoal=jar-no-fork -Ddetail
+## 自定义插件与生命周期绑定
+## 查看最终的pom.xml
+mvn help:effective-pom > final.xml
+
+
+
+

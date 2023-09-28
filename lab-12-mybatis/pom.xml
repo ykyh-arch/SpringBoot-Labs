@@ -110,4 +110,20 @@
         </snapshotRepository>
     </distributionManagement>
 
+    <!--maven 生命周期，分为3种：clean、default、site，各生命周期相互独立，互不影响；同生命周期内各阶段有先后顺序，后阶段执行依赖前一阶段
+        执行mvn 生命周期阶段名称，如：mvn clean
+        详细内容参考：https://mp.weixin.qq.com/s?__biz=MzA5MTkxMDQ4MQ==&mid=2648933601&idx=1&sn=b3263c2c02029521609abc248c5d3233&chksm=88621cdfbf1595c91ee4d5067ddbb2cbde5ef6ed78ef0c68d0e058c685626300ec64bf4366ae&token=1776250768&lang=zh_CN#rd
+    -->
+
+    <!--maven插件仓库-->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>plugin-repository</id>
+            <url>http://repo1.maven.org/maven2/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+
 </project>
