@@ -17,7 +17,8 @@ mvn help:describe -Dplugin=插件goupId:插件artifactId[:插件version] -Dgoal=
 ## 自定义插件与生命周期绑定
 ## 查看最终的pom.xml
 mvn help:effective-pom > final.xml
-
+## 查看pom.xml依赖树
+mvn dependency:tree
 
 
 

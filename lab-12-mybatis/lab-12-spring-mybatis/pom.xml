@@ -3,16 +3,42 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <!--maven继承，parent从父构件继承了依赖-->
     <parent>
         <groupId>cn.iocoder.springboot.labs</groupId>
         <artifactId>lab-12-mybatis</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <!--默认是../pom.xml，当前文件上级目录找pom.xml-->
+        <!--<relativePath>../pom.xml</relativePath>-->
     </parent>
 
+    <!--groupId、version都没有，是因为继承了父pom.xml内容-->
     <artifactId>lab-12-spring-mybatis</artifactId>
     <packaging>pom</packaging>
 
+    <!--以下元素都可以从父元素中继承-->
+<!--    groupId：项目组ID，项目坐标的核心元素-->
+<!--    version：项目版本，项目坐标的核心元素-->
+<!--    description：项目的描述信息-->
+<!--    organization：项目的组织信息-->
+<!--    inceptionYear：项目的创始年份-->
+<!--    url：项目的url地址-->
+<!--    developers：项目的开发者信息-->
+<!--    contributors：项目的贡献者信息-->
+<!--    distributionManagement：项目的部署配置信息-->
+<!--    issueManagement：项目的缺陷跟踪系统信息-->
+<!--    ciManagement：项目的持续集成系统信息-->
+<!--    scm：项目的版本控制系统信息-->
+<!--    mailingLists：项目的邮件列表信息-->
+<!--    properties：自定义的maven属性配置信息-->
+<!--    dependencyManagement：项目的依赖管理配置-->
+<!--    repositories：项目的仓库配置-->
+<!--    build：包括项目的源码目录配置、输出目录配置、插件管理配置等信息-->
+<!--    reporting：包括项目的报告输出目录配置、报告插件配置等信息-->
+
+    <!--maven聚合，在父构件执行mvn指令，同步执行到子构件-->
     <modules>
+        <!--被聚合的模块pom.xml所在的目录路径，可以相对路径，也可以绝对路径-->
         <module>chat01</module>
         <module>chat02</module>
         <module>chat03</module>
@@ -40,6 +66,7 @@
     </properties>
 
     <!--项目采用maven中聚合及继承的方式来管理-->
+    <!--申明了依赖管理，当前模块没有真正依赖，可以通过mvn dependency:tree查看依赖关系-->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -92,5 +119,28 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <!--插件管理，在父构件中申明-->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.2.1</version>
+                    <executions>
+                        <execution>
+                            <id>attach-source</id>
+                            <!--绑定default生命周期-->
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>
