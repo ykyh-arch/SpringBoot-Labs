@@ -20,5 +20,19 @@ mvn help:effective-pom > final.xml
 ## 查看pom.xml依赖树
 mvn dependency:tree
 
+## 多模块按需构件
+mvn -pl 模块1相对路径 [,模块2相对路径] [,模块n相对路径]
+mvn -pl [模块1的groupId]:模块1的artifactId [,[模块2的groupId]:模块2的artifactId] [,[模块n的groupId]:模块n的artifactId]
+如：mvn clean install -pl b2b-account
+  mvn clean install -pl b2b-account/b2b-account-api
+  mvn clean install -pl b2b-account/b2b-account-api,b2b-account/b2b-account-service
+  mvn clean install -pl :b2b-account-api,b2b-order/b2b-order-api
+  mvn clean install -pl :b2b-account-api,:b2b-order-service
+# 从指定的模块恢复反应堆，对前面的构件进行裁剪
+mvn -rf,--resume-from <arg>，如：mvn clean install -rf b2b-order/b2b-order-service
+# 同时构建所列模块的依赖模块，我还依赖谁
+mvn -am,--also-make，如：mvn clean install -pl b2b-order/b2b-order-service -am
+# 同时构件依赖于所列模块的模块，谁依赖了我
+mvn -amd,--also-make-dependents，如：mvn clean install -pl b2b-account/b2b-account-api -amd
 
 
