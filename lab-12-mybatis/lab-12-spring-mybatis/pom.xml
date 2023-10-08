@@ -45,6 +45,7 @@
         <module>chat04</module>
         <module>chat05</module>
         <module>chat06</module>
+        <!--chat07补充演示资源文件打包过程-->
         <module>chat07</module>
     </modules>
 

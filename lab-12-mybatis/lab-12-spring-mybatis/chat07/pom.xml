@@ -15,6 +15,12 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- 指定资源文件复制过程中采用的编码方式，供资源文件内使用 -->
+        <encoding>UTF-8</encoding>
+        <jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
+        <jdbc.url>jdbc:mysql://192.168.177.1:3306/lab-12-spring-mybatis?characterEncoding=UTF-8</jdbc.url>
+        <jdbc.username>root</jdbc.username>
+        <jdbc.password>123456</jdbc.password>
     </properties>
 
     <dependencies>
@@ -44,5 +50,56 @@
             <artifactId>logback-classic</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <!--开启动态替换配置，将${*}替换成具体内容-->
+        <resources>
+            <resource>
+                <!-- 指定资源文件的目录 -->
+                <directory>${project.basedir}/src/main/resources</directory>
+                <!-- 是否开启过滤替换配置，默认是不开启的 -->
+                <filtering>true</filtering>
+            </resource>
+            <!--多资源配置，资源配置到classes目录下，但内容未被过滤替换-->
+<!--            <resource>-->
+<!--                <directory>${project.basedir}/src/main/resources</directory>-->
+<!--                <includes>-->
+<!--                    <include>**/const.properties</include>-->
+<!--                </includes>-->
+<!--            </resource>-->
+        </resources>
+        <testResources>
+            <testResource>
+                <!-- 指定资源文件的目录 -->
+                <directory>${project.basedir}/src/test/resources</directory>
+                <!-- 是否开启过滤替换配置，默认是不开启的 -->
+                <filtering>true</filtering>
+                <!--处理需要构建或排除的资源文件，**任意深度目录，*单个字符-->
+                <includes>
+                    <include>**/jdbc.properties</include>
+                </includes>
+                <excludes>
+                    <exclude>**/const.properties</exclude>
+                </excludes>
+            </testResource>
+        </testResources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <!-- 是否使用默认的分隔符，默认分隔符是${*}和@ ,这个地方设置为false，表示不启用默认分隔符配置-->
+                    <useDefaultDelimiters>false</useDefaultDelimiters>
+                    <!-- 自定义分隔符 -->
+                    <delimiters>
+                        <delimiter>$*$</delimiter>
+                        <delimiter>##</delimiter>
+                    </delimiters>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
