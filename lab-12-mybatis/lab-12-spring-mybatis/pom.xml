@@ -38,7 +38,7 @@
 
     <!--maven聚合，在父构件执行mvn指令，同步执行到子构件-->
     <modules>
-        <!--被聚合的模块pom.xml所在的目录路径，可以相对路径，也可以绝对路径-->
+        <!--被聚合的模块pom.xml所在的目录路径，可以相对路径，也可以绝对路径，以chat01演示-->
         <module>chat01</module>
         <module>chat02</module>
         <module>chat03</module>
@@ -63,6 +63,34 @@
         <mysql.version>5.1.47</mysql.version>
         <!--<lombok.version>RELEASE</lombok.version>-->
         <lombok.version>1.18.22</lombok.version>
+        <!--支持属性，包括：内置属性、pom属性、settings属性、java系统属性、环境变量属性-->
+        <!--pom属性-->
+        <!-- 项目的主源码目录，默认为src/main/java/ -->
+        <a>${pom.build.sourceDirectory}</a>
+        <!-- 项目的测试源码目录，默认为src/test/java/ -->
+        <b>${project.build.testSourceDirectory}</b>
+        <!-- 项目构建输出目录，默认为target/ -->
+        <c>${project.build.directory}</c>
+        <!-- 项目主代码编译输出目录，默认为target/classes -->
+        <d>${project.build.outputDirectory}</d>
+        <!-- 项目测试代码编译输出目录，默认为target/test-classes -->
+        <e>${project.build.testOutputDirectory}</e>
+        <!-- 项目的groupId -->
+        <f>${project.groupId}</f>
+        <!-- 项目的artifactId -->
+        <g>${project.artifactId}</g>
+        <!-- 项目的version，与${version}等价-->
+        <h>${project.version}</h>
+        <!-- 项目打包输出文件的名称，默认为${project.artifactId}-${project.version} -->
+        <i>${project.build.finalName}</i>
+        <!-- setting属性 -->
+        <!-- 获取本地仓库地址-->
+        <a1>${settings.localRepository}</a1>
+        <!-- 系统属性 -->
+        <!-- 用户目录 -->
+        <a2>${user.home}</a2>
+        <!-- 环境变量属性，获取环境变量JAVA_HOME的值 -->
+        <a3>${env.JAVA_HOME}</a3>
     </properties>
 
     <!--项目采用maven中聚合及继承的方式来管理-->
