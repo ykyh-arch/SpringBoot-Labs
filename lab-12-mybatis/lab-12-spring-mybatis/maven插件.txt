@@ -35,4 +35,8 @@ mvn -am,--also-make，如：mvn clean install -pl b2b-order/b2b-order-service -a
 # 同时构件依赖于所列模块的模块，谁依赖了我
 mvn -amd,--also-make-dependents，如：mvn clean install -pl b2b-account/b2b-account-api -amd
 
-
+## 多环境构建
+# 查看目前有哪些环境
+mvn help:all-profiles，如：mvn help:all-profiles -pl :b2b-account-service
+# 查看目前激活的是哪些环境
+mvn help:active-profiles，如：mvn help:active-profiles -pl :b2b-account-service -Ptest,prod

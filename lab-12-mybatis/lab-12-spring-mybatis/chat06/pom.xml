@@ -15,7 +15,74 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- 指定资源文件复制过程中采用的编码方式 -->
+        <encoding>UTF-8</encoding>
     </properties>
+
+    <!-- 配置多套环境，执行：mvn clean package -pl :xxx -Pdev，-P后面跟的是pom.xml中profile的id -->
+    <profiles>
+        <!-- 开发环境使用的配置 -->
+        <profile>
+            <id>dev</id>
+            <activation>
+                <!--默认开启环境的配置，执行的时候就不需要指定-P参数-->
+                <activeByDefault>true</activeByDefault>
+                <!--执行的时候，mvn需要添加 -D属性xx=属性xx的值，匹配上就使用当前配置-->
+                <property>
+                    <name>env</name>
+                    <value>env_dev</value>
+                </property>
+            </activation>
+            <!-- 配置属性，本pom.xml中配置-->
+            <properties>
+                <jdbc.url>dev jdbc url</jdbc.url>
+                <jdbc.username>dev jdbc username</jdbc.username>
+                <jdbc.password>dev jdbc password</jdbc.password>
+            </properties>
+            <!--将配置信息统一维护到共用的文件里-->
+            <build>
+                <filters>
+                    <filter>../../config/dev.properties</filter>
+                </filters>
+            </build>
+        </profile>
+        <!-- 测试环境使用的配置 -->
+        <profile>
+            <id>test</id>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>env_test</value>
+                </property>
+            </activation>
+            <properties>
+                <jdbc.url>test jdbc url</jdbc.url>
+                <jdbc.username>test jdbc username</jdbc.username>
+                <jdbc.password>test jdbc password</jdbc.password>
+            </properties>
+            <!--将配置信息统一维护到共用的文件里-->
+            <build>
+                <filters>
+                    <filter>../../config/test.properties</filter>
+                </filters>
+            </build>
+        </profile>
+        <!-- 线上环境使用的配置 -->
+        <profile>
+            <id>prod</id>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>env_prod</value>
+                </property>
+            </activation>
+            <properties>
+                <jdbc.url>prod jdbc url</jdbc.url>
+                <jdbc.username>prod jdbc username</jdbc.username>
+                <jdbc.password>prod jdbc password</jdbc.password>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <!-- mybatis依赖 -->
@@ -44,5 +111,41 @@
             <artifactId>logback-classic</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <!-- 指定资源文件的目录 -->
+                <directory>${project.basedir}/src/main/resources</directory>
+                <!-- 是否开启过滤替换配置，默认是不开启的 -->
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <!-- 指定资源文件的目录 -->
+                <directory>${project.basedir}/src/test/resources</directory>
+                <!-- 是否开启过滤替换配置，默认是不开启的 -->
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <!-- 是否使用默认的分隔符，默认分隔符是${*}和@ ,这个地方设置为false，表示不启用默认分隔符配置-->
+                    <useDefaultDelimiters>false</useDefaultDelimiters>
+                    <!-- 自定义分隔符 -->
+                    <delimiters>
+                        <delimiter>$*$</delimiter>
+                        <delimiter>##</delimiter>
+                    </delimiters>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
