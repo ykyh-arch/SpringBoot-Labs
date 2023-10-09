@@ -30,6 +30,7 @@
         <module>lab-12-mybatis-tk</module>
         <module>lab-12-mybatis-plus-gui</module>
         <module>lab-12-spring-mybatis</module>
+        <module>lab-12-maven-plugin</module>
     </modules>
 
     <!--私服搭建参考：https://cloud.tencent.com/developer/article/2105636-->
