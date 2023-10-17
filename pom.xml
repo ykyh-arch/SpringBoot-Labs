@@ -137,6 +137,7 @@
         <module>lab-84-spring-retry</module>
         <module>lab-85-datamask</module>
         <module>lab-86-disruptor</module>
+        <module>lab-00-java</module>
     </modules>
 
 </project>

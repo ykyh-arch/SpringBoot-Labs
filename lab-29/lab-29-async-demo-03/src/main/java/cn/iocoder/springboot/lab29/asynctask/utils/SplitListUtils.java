@@ -88,7 +88,7 @@ public class SplitListUtils {
         // 大集合拆分成 N 个小集合, 这里集合的 size 可以稍微小一些（这里我用 100 刚刚好）, 以保证多线程异步执行, 过大容易回到单线程
         List<List<String>> splitNList = SplitListUtils.split(totalList, 100);
 
-        // 记录单个任务的执行次数
+        // 记录单个任务的执行次数，以下线程池处理任务可以使用 TaskDisposeUtils 类进行优化
         CountDownLatch countDownLatch = new CountDownLatch(splitNList.size());
         // 对拆分的集合进行批量处理，先拆分的集合，再多线程执行
         for (List<String> singleList : splitNList) {
