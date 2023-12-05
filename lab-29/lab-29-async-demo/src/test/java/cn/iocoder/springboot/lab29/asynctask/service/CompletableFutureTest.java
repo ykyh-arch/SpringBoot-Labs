@@ -124,7 +124,8 @@ public class CompletableFutureTest {
     public void testCompletableThenRunAsync() throws InterruptedException, ExecutionException {
         long startTime = System.currentTimeMillis();
 
-        CompletableFuture<Void> cp1 = CompletableFuture.runAsync(() -> {
+        CompletableFuture<Void> cp1 = CompletableFuture.
+                runAsync(() -> {
             try {
                 // 执行任务A
                 Thread.sleep(600);
