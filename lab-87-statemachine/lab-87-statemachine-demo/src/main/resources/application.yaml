@@ -1,0 +1,38 @@
+spring:
+  # datasource 数据源配置内容
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/lab-87-statemachine?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+  redis:
+    database: 10
+    host: localhost
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: ''
+        min-idle: 0
+    password: ''
+    port: 6379
+    timeout: 0
+
+# mybatis-plus 配置内容，更多配置参考：https://mybatis.plus/config/#mapperlocations
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true # 虽然默认为 true ，但是还是显示去指定下。
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 在启动 @Test 需要显示 Sql 的细节需要配置日志
+  global-config:
+    db-config:
+      id-type: auto # ID 主键自增
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: cn.iocoder.springboot.labs.statemachine.entity
+
+# logging
+logging:
+  level:
+    # dao 开启 debug 模式 mybatis 输入 sql
+    cn.iocoder.springboot.labs.statemachine.mapper: error
